@@ -1,90 +1,79 @@
 function RESTful() {
     var self = this;
+    var URL = "http://127.0.0.1:5000";
 
-    self.fillResult = function(data, response) {
-        var result = {};
-        result.data = data;
-        result.response = response;
-        return result;
-    };
-
-    self.get = function(url, data) {
-        var result = {};
+    self.get = function(path, data , callback) {
         try {
             $.ajax({
                 type: 'GET',
-                dataType: 'json',
-                url: url,
+                dataType: 'jsonp',
+                url: URL + path,
                 data: data,
-                async: false
+                async: true,
             }).done(function(data) {
-                result = self.fillResult(data, true);
-            }).fail(function() {
-                result = self.fillResult(null, false);
+                callback(data);
+            }).fail(function(err) {
+                console.log(err);
             });
         } catch (e) {
-            result = self.fillResult(null, false);
+           console.log(e);
         }
-        return result;
     };
 
-    self.insert = function(url, data) {
-        var result = {};
+    this.insert = function(url, data , callback) {
         try {
             $.ajax({
                 type: 'POST',
-                dataType: 'json',
-                url: url,
+                dataType: 'jsonp',
+                url: URL + path,
                 data: data,
-                async: false
+                async: true
             }).done(function(data) {
-                result = self.fillResult(data, true);
-            }).fail(function() {
-                result = self.fillResult(null, false);
+                callback(data);
+            }).fail(function(err) {
+                console.log(err);
             });
         } catch (e) {
-            result = self.fillResult(null, false);
+            console.log(e);
         }
-        return result;
     };
 
-    self.update = function(url, data) {
-        var result = {};
+
+   this.update = function(url, data , callback) {
         try {
             $.ajax({
                 type: 'PUT',
-                dataType: 'json',
-                url: url,
+                dataType: 'jsonp',
+                url: URL + path,
                 data: data,
-                async: false
+                async: true
             }).done(function(data) {
-                result = self.fillResult(data, true);
-            }).fail(function() {
-                result = self.fillResult(null, false);
+                callback(data);
+            }).fail(function(err) {
+                console.log(err);
             });
         } catch (e) {
-            result = self.fillResult(null, false);
+            console.log(e);
         }
-        return result;
     };
 
-    self.delete = function(url) {
-        var result = {};
+
+
+    this.delete = function(url, data , callback) {
         try {
             $.ajax({
                 type: 'DELETE',
-                dataType: 'json',
-                url: url,
+                dataType: 'jsonp',
+                url: URL + path,
                 data: data,
-                async: false
+                async: true
             }).done(function(data) {
-                result = self.fillResult(data, true);
-            }).fail(function() {
-                result = self.fillResult(null, false);
+                callback(data);
+            }).fail(function(err) {
+                console.log(err);
             });
         } catch (e) {
-            result = self.fillResult(null, false);
+            console.log(e);
         }
-        return result;
     };
 }

@@ -2,14 +2,10 @@ function Pin() {
     var rest = new RESTful();
     var self = this;
 
-    self.path = URL+'/pins/';
+    self.path = '/pins/';
 
-    self.getPins = function() {
-        var result = rest.get(self.path, null);
-        if ((result.response) && (result.data !== undefined)) {
-           return result.data.pins;
-        }
-        return null;
+    self.getPins = function(callback) {
+        rest.get(self.path, null , callback );
     };
 
     self.updatePin = function(idPin,data) {
@@ -19,4 +15,8 @@ function Pin() {
         }
         return null;
     };
+
+  
+
 }
+

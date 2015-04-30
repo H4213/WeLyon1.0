@@ -131,7 +131,6 @@ function MapManager(){
 			icon: image,
 			title: titre
 		});
-		
 		google.maps.event.addListener(aMarker, 'click', function() {
 			infowindow.open(map,aMarker);
 		});
@@ -147,13 +146,15 @@ function MapManager(){
 	  	}
 		pins = [];
 		markers = [];
-		
-		var listePins = pin.getPins();
-		console.log(listePins);
-		for(var i in listePins){
-			var p = listePins[i];
+		pin.getPins(self.cbGetAllPins);
+	};
+
+	self.cbGetAllPins = function(data){
+		for(var i in data.pins){
+			var p = data.pins[i];
 			self.addMarker(p);
 		}
+
 	};
 
 }

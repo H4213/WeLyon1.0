@@ -88,21 +88,22 @@ function WeLyon(){
 	};
 
 //----------------- Getters/Setters------------------
-	self.getCategories = function(){
-		var listeCategories = category.getCategories();
-		return listeCategories;
+	self.getCategories = function(callback){
+		category.getCategories(callback);
 	};
 
 	self.fillCategories = function(){
-		var listeCategories = self.getCategories();
+		self.getCategories(self.cbFillCat);
+	};
+
+	self.cbFillCat = function (data) {
 		var cat = '';
-		for(var i in listeCategories){
-			cat +=' <button data-id-category="'+listeCategories[i].id+'" class="col-md-4 btn btn-default category-item" type="button" style="display:none">'+ listeCategories[i].nom +'</button> ';
+		for(var i in data.categories){
+			cat +=' <button data-id-category="'+data.categories[i].id+'" class="col-md-4 btn btn-default category-item" type="button" style="display:none">'+ data.categories[i].nom +'</button> ';
 		}
 		$('#categories').append(cat);
-
-		//TODO: remplir la liste des categories
-	};
+		//TODO: remplir la liste des categories 
+	}
 
 	self.ouvrirPanelAuthentification = function(bouton){
 		if(bouton.hasClass('active')){
