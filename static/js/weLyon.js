@@ -1,9 +1,12 @@
 function WeLyon(){
 	var self = this;
+	var category = new Category();
+	var mapManager = new MapManager();
 
+//------------Les setups des pages/panels et ses boutons------------------
 	self.setup = function(){
-		// google.maps.event.addDomListener(window, 'load', self.initializeMap);
-		// google.maps.event.addDomListener(window, 'load', initMap)
+		google.maps.event.addDomListener(window, 'load', mapManager.initMap());
+		self.fillCategories();
 
 		$('#categoryButton').on('click',function(){
 			self.toggleCategories();
@@ -39,9 +42,8 @@ function WeLyon(){
 			$('#incscriptionPanel').toggle();
 		});
 	};
-
+//--------------Remplissage des formulaires----------------------
 	self.fillAuthentificationForm = function(bouton){
-		//TODO: remplissage du formulaire par rapport au bouton pressé
 		$("#incscriptionPanel").find(".panel-body").html("");
 		var form = '';
 		if(bouton.get(0) === $('#signinButton').get(0)){
@@ -85,6 +87,23 @@ function WeLyon(){
 		self.setupAuthentificationPanel(bouton);
 	};
 
+//----------------- Getters/Setters------------------
+	self.getCategories = function(){
+		var listeCategories = category.getCategories();
+		return listeCategories;
+	};
+
+	self.fillCategories = function(){
+		var listeCategories = self.getCategories();
+		var cat = '';
+		for(var i in listeCategories){
+			cat +=' <button data-id-category="'+listeCategories[i].id+'" class="col-md-4 btn btn-default category-item" type="button" style="display:none">'+ listeCategories[i].nom +'</button> ';
+		}
+		$('#categories').append(cat);
+
+		//TODO: remplir la liste des categories
+	};
+
 	self.ouvrirPanelAuthentification = function(bouton){
 		if(bouton.hasClass('active')){
 			bouton.toggleClass('active');
@@ -107,62 +126,7 @@ function WeLyon(){
 	self.toggleCategories = function(){
 		$('.category-item').toggle();
 	};
-
-	self.initializeMap = function(){
-		
-		var markers = [];
-		// var pins = [{type : 'velov',
-		// 			lat : 45.7601676,
-		// 			lng :  4.8328885 },
-		// 			{ type : 'normal',
-		// 			lat : 45.7436,
-		// 			lng :  4.87011 }];
-		var pins = [];
-		var map; // object containing the map
-		var cordinateLyon = new google.maps.LatLng(45.7601676, 4.8328885);
-
-		// image de marker
-		// var imageVelov = './images/iconeVelov.png';
-		// var imageNormal = './images/marker.PNG';
-		
-		var mapOptions = {
-			zoom: 13,
-			center: cordinateLyon
-	    	};
-	    map = new google.maps.Map(document.getElementById('map'),
-	    							mapOptions);
-
-	    
-	    //pins = doGet("/pins")
-
-	    //pins.forEach(function(pin , index) {  	
-	    //	addMarker(pin);
-	    //});
-	    // var x = 0;
-		
-
-		// function addMarker(aPin) {
-		// 	// ToDo : gerer les différents types de marker
-			
-		// 	var type = aPin.type;
-		// 	var image;
-		// 	switch (type) { 
-		// 		case "velov" : 
-		// 			image = imageVelov;
-		// 			break;
-		// 		default :
-		// 			image = imageNormal
-		// 		}
-
-		// 	var aMarker = new google.maps.Marker({
-		// 		position: new google.maps.LatLng(aPin.lat, aPin.lng),
-		// 		map: map,
-		// 		icon: image
-		// 	});
-		// 	markers.push({pin : aPin,
-		// 					marker : aMarker})
-		// }
-	};
+	
 }
 
 var weLyon = new WeLyon();
