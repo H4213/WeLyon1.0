@@ -187,14 +187,17 @@ function MapManager(){
 		$(document).on("click",".like",function(){
 			var pinID= $(this).closest('#content').data('id-pin');
 			var userID=1;
+			//pin.vote(userID,pinID,1);
 		});
 		$(document).on("click",".unlike",function(){
 			var pinID= $(this).closest('#content').data('id-pin');
 			var userID=1;
+			//pin.vote(userID,pinID,0);
 		});
 		$(document).on("click",".dislike",function(){
 			var pinID= $(this).closest('#content').data('id-pin');
 			var userID=1;
+			//pin.vote(userID,pinID,-1);
 		});
 			
 	};
