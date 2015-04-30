@@ -153,6 +153,10 @@ if __name__ == '__main__':
   init_databases.init_all()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
+<<<<<<< HEAD
   service.UpdateUserVoteEvent(1,-1,2)
+=======
+  app.debug = True
+>>>>>>> origin/dev-selfHeritance-Category
   app.run()
 	
