@@ -170,7 +170,6 @@ function MapManager(){
 	  	}
 		pins = [];
 		markers = [];
-<<<<<<< HEAD
 		pin.getPins(self.cbGetAllPins);
 	};
 
@@ -179,27 +178,16 @@ function MapManager(){
 			var p = data.pins[i];
 			self.addMarker(p);
 		}
-
-=======
-		
-		var listePins = pin.getPins();
-
-		console.log(listePins);
-		for(var i in listePins){
-			var p = listePins[i];
-			self.addMarker(p);
-		}
-
 	};
+
+
 
 	self.pinSetup = function(){
 
 		$(document).on("click",".like",function(){
 			var pinID= $(this).closest('#content').data('id-pin');
 			
-
 		});
->>>>>>> origin/dev-fonctionnalites
 	};
 
 }
