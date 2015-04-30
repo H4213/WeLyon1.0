@@ -44,56 +44,70 @@ def file (file) :
 @app.route('/pins/<category>/')
 def pins(category = None):
   if request.method == "POST":
-    return servicePin.majPin(request.form)
+    return service.majPin(request.form)
 
   if request.method == 'PUT':
-    return servicePin.addPinFromForm(request.form)
+    return service.addPin(request.form)
 
   if request.method == 'DELETE':
-    return servicePin.delete(request.form)
+    item = Pin.query.get(id)
+    if item:
+      db.session.delete(Pin.query.get(id))
+      db.session.commit()
+      return jsonify(deleted = "1")
 
-  if category:
-    return servicePin.getPinsByIdCategory()
+    return jsonify(deleted = "0")
 
-  return servicePin.getAllPin()
+  return service.getAllPin(category)
 
 @app.route('/pin/<idPin>/')
 def pin(idPin = None):
-  return servicePin.getPinById(idPin)
+  return service.getPinById(idPin)
 
 @app.route('/user', methods=('GET', 'POST', 'PUT', 'DELETE'))
 @app.route('/user/<idUser>/')
 def user(idUser = None):
+
   if request.method == "POST":
-    return serviceUser.majUser(request.form)
+    return service.majUser(request.form)
 
   if request.method == 'PUT':
-    return serviceUser.addUserFromForm(request.form)
+    return service.addUser(request.form)
 
   if request.method == 'DELETE':
-    return serviceUser.delete(request.form)
+    item = User.query.get(id)
+    if item:
+      db.session.delete(User.query.get(id))
+      db.session.commit()
+      return jsonify(deleted = "1")
 
-  if idUser:
-    return serviceUser.getUserById(idUser)
+    return jsonify(deleted = "0")
 
-  return serviceUser.getAllUser()
+  return service.getAllUser(idUser)
 
 @app.route('/categories/', methods=('GET', 'POST', 'PUT', 'DELETE'))
+@app.route('/categories/<pin>/')
 def categories(pin = None):
   if request.method == "POST":
-    return serviceCategory.majCategory(request.form)
+    return service.majCategory(request.form)
 
   if request.method == 'PUT':
-    return serviceCategory.addCategoryFromForm(request.form)
+    return service.addCategory(request.form)
 
   if request.method == 'DELETE':
-    return serviceCategory.delete(request.form)
+    item = Category.query.get(id)
+    if item:
+      db.session.delete(Category.query.get(id))
+      db.session.commit()
+      return jsonify(deleted = "1")
 
-  return serviceCategory.getAllCategory()
+    return jsonify(deleted = "0")
+
+  return service.getAllCategory(pin)
 
 @app.route('/category/<category>/')
 def category(category = None):
-  return serviceCategory.getCategoryById(category)
+  return service.getCategoryById(category)
 
 #renvoie l'id après l'authentification de l'utilisateur
 @app.route('/auth', methods=('GET', 'POST'))
