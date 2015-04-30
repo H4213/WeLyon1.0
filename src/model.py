@@ -49,8 +49,14 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     nom = db.Column(db.String(50))
     description = db.Column(db.String(50))
-    #categoryFather = db.Column(db.Integer, db.ForeignKey("categories.id"))
-    #categoriesChild = db.relationship('Category',lazy='dynamic')
+    IdCategoryFather = db.Column(db.Integer, db.ForeignKey("categories.id"))
+    categoryFather = db.relationship('Category', remote_side=[id], backref="categoriesChild")
+
+    #-------Usage-------
+    #
+    #   cat = Category("nom","description")
+    #   cat.categoryFather = LaCategorieParent
+    #   cat.categoriesChild.append(UneCategorieEnfant)
 
     def __init__(self, nom, description):
         self.nom = nom
