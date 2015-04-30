@@ -9,13 +9,13 @@ function MapManager(){
 	var cordinateLyon = new google.maps.LatLng(45.7601676, 4.8328885);
 
 	// image de marker
-	// var imageNormal = Flask.url_for("static", {"filename": "./assets/normal.png"});
-	// var imageVelov = Flask.url_for("static", {"filename": "./assets/velov.png"});
-	// var imageBar =  Flask.url_for("static", {"filename": "./assets/bar.png"});
-	// var imageSoiree =Flask.url_for("static", {"filename": "./assets/soiree.png"});
-	// var imageRestau = Flask.url_for("static", {"filename": "./assets/restau.png"});
-	// var imageHotel = Flask.url_for("static", {"filename": "./assets/hotel.png"});
-	// var imageMonument = Flask.url_for("static", {"filename": "./assets/monument.png"});
+	var imageNormal = Flask.url_for("static", {"filename": "./assets/normal.png"});
+	var imageVelov = Flask.url_for("static", {"filename": "./assets/velov.png"});
+	var imageBar =  Flask.url_for("static", {"filename": "./assets/bar.png"});
+	var imageSoiree =Flask.url_for("static", {"filename": "./assets/soiree.png"});
+	var imageRestau = Flask.url_for("static", {"filename": "./assets/restau.png"});
+	var imageHotel = Flask.url_for("static", {"filename": "./assets/hotel.png"});
+	var imageMonument = Flask.url_for("static", {"filename": "./assets/monument.png"});
 
 	self.initMap = function() {
 		 var mapOptions = {
@@ -25,7 +25,7 @@ function MapManager(){
 	    map = new google.maps.Map(document.getElementById('map'),
 	    							mapOptions);
 	    self.refreshPins();
-	    setInterval(self.refreshPins(), 60000 );
+	    //setInterval(self.refreshPins(), 60000 );
 	}
  
 
@@ -147,13 +147,12 @@ function MapManager(){
 	  	}
 		pins = [];
 		markers = [];
-		// doGetPins("/pins/");
-
-		//--- ou ---
+		
 		var listePins = pin.getPins();
+		console.log(listePins);
 		for(var i in listePins){
-			var pin = listePins[i];
-			self.addMarker(pin);
+			var p = listePins[i];
+			self.addMarker(p);
 		}
 	};
 

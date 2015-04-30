@@ -11,12 +11,12 @@
         <title>WeLyon</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="../static/components/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
-        <!-- <link href="{{url_for('static', filename='./components/bootstrap-3.3.4/css/bootstrap.min.css') }}" rel="stylesheet"> -->
+        <!-- <link href="../static/components/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet"> -->
+        <link href="{{url_for('static', filename='./components/bootstrap-3.3.4/css/bootstrap.min.css') }}" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="../static/css/weLyon.css" rel="stylesheet">  
-        <!-- <link href="{{url_for('static', filename='./css/weLyon.css') }}" rel="stylesheet">         -->
+        <!-- <link href="../static/css/weLyon.css" rel="stylesheet">   -->
+        <link href="{{url_for('static', filename='./css/weLyon.css') }}" rel="stylesheet">        
     </head>
   
 
@@ -34,8 +34,8 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="#"> 
-                            <img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoNoir.png"> 
-                            <!-- <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoNoir.png') }}">  -->
+                            <!-- <img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoNoir.png">  -->
+                            <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoNoir.png') }}"> 
                         </a>
                     </div>
 
@@ -111,28 +111,29 @@
         Placed at the end of the document so the pages load faster -->
 
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="../static/components/jquery/jquery.js"></script>
-        <script src="../static/components/bootstrap-3.3.4/js/bootstrap.min.js"></script>  
-        <!-- // <script src="{{url_for('static', filename='./components/jquery/jquery.js') }}"></script>    -->
-        <!-- // <script src="{{url_for('static', filename='./components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>     -->
+       <!--  // <script src="../static/components/jquery/jquery.js"></script>
+        // <script src="../static/components/bootstrap-3.3.4/js/bootstrap.min.js"></script>  -->
+         
+        <script src="{{url_for('static', filename='./components/jquery/jquery.js') }}"></script>   
+        <script src="{{url_for('static', filename='./components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>    
 
           <!-- JavaScript inputs -->
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
 
-        <script src="../static/js/RESTful.js"></script> 
-        <script src="../static/js/pin.js"></script> 
-        <script src="../static/js/mapManager.js"></script>
-        <script src="../static/js/util.js"></script>     
-        <script src="../static/js/category.js"></script>
-        <script src="../static/js/weLyon.js"></script>
+      <!--   // <script src="../static/js/RESTful.js"></script> 
+        // <script src="../static/js/pin.js"></script> 
+        // <script src="../static/js/mapManager.js"></script>
+        // <script src="../static/js/util.js"></script>     
+        // <script src="../static/js/category.js"></script>
+        // <script src="../static/js/weLyon.js"></script> -->
 
-        <!-- {{ JSGlue.include() }} -->
-        <!-- // <script src="{{url_for('static', filename='./js/mapManager.js') }}"></script> -->
-        <!-- // <script src="{{url_for('static', filename='./js/util.js') }}"></script> -->
-        <!-- // <script src="{{url_for('static', filename='./js/weLyon.js') }}"></script> -->
-        <!-- <script type="text/javascript"> 
-            // google.maps.event.addDomListener(window, 'load', initMap); 
-        </script> --> 
+        {{ JSGlue.include() }}
+         <script src="{{url_for('static', filename='./js/RESTful.js') }}"></script>
+         <script src="{{url_for('static', filename='./js/pin.js') }}"></script>
+         <script src="{{url_for('static', filename='./js/mapManager.js') }}"></script>
+         <script src="{{url_for('static', filename='./js/category.js') }}"></script>
+         <script src="{{url_for('static', filename='./js/util.js') }}"></script>
+         <script src="{{url_for('static', filename='./js/weLyon.js') }}"></script>
     </body>
 </html>
