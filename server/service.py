@@ -1,5 +1,5 @@
 from src import model
-from src.model import User, Pin, Category, Velov , FacebookPin
+from src.model import User, Pin, Category, Velov , FacebookPin , PointOfInterest
 from flask import Flask, flash, render_template, request, session
 from flask.ext.jsonpify import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -59,4 +59,17 @@ def updateFacebookByIdFacebook(current):
 		item = FacebookPin.query.filter_by(idFacebook=current.idFacebook).first()
 		
 		if item == None:
+			addPin(current)
+
+#Creates points of interest sncf
+def addPointOfInterest(form):
+
+	db.session.add(form)
+	db.session.commit()
+
+def updatePointOfInterestByIdPointOfInterest(current) :
+	if current:
+		item = PointOfInterest.query.filter_by(idPointOfInterest=current.idPointOfInterest).first()
+		
+		if item is None:
 			addPin(current)

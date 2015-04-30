@@ -24,6 +24,7 @@ from server import velov
 from server import facebookPin
 from server import service
 from server import init_databases
+from server import sncf
 
 
 
@@ -149,8 +150,13 @@ def refresh():
 def start_refresh_thread():
 	thread.start_new_thread (refresh, ())
 
+def load_sncf_data():
+  sncf.loadSncfData()
+
+
 if __name__ == '__main__':
   init_databases.init_all()
+  load_sncf_data()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
   app.debug = True

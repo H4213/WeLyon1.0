@@ -247,6 +247,42 @@ class FacebookPin(DynPin):
         
         
     }
+
+class PointOfInterest(Pin) :     
+    __tablename__ = 'pointOfInterest'    
+    id = Column(db.Integer, db.ForeignKey('pins.id'), primary_key=True)
+    idPointOfInterest = Column(db.BigInteger)
+    uid = Column(db.BigInteger)
+    
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'idPointOfInterest': self.idPointOfInterest,
+            'user': self.idUser,
+            'title': self.title,
+            'category': [item.serializeSmall() for item in self.categories],
+            'description': self.description,
+            'lng': self.lng,
+            'lat': self.lat,     
+           
+        }
+    
+    def serializeSmall(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+        }
+        
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+        
+        
+    __mapper_args__ = {
+        'polymorphic_identity':'pointOfInterest',
+        
+    }
     
 class Vote(db.Model):
     __tablename__ = "votes"
