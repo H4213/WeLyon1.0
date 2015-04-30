@@ -5,14 +5,14 @@ function doGetPins (parameters)
 {
 	$.ajax({
 		url : URL+parameters,
-		dataType : "jsonp",
+		dataType : "json",
 		method : "GET",
 		data : {},
 		success : function (data) {
 			console.log('Success');
 			pins = data.pins;
 			pins.forEach(function(pin , index) {  	
-    			addMarker(pin);
+    			//addMarker(pin);
     		});
 		},
 		error : function () {
