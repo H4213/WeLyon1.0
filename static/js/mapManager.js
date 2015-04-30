@@ -112,7 +112,7 @@ function MapManager(){
 												'<p>' +
 													'<INPUT TYPE="button" NAME="like" class="like" VALUE="Like"> ' +
 													'<INPUT TYPE="button" NAME="dislike" VALUE="Dislike" class="dislike"> ' +
-													'<INPUT TYPE="button" NAME="unvote" VALUE="Unvote" onClick="vote(1,' + aPin.id + ',0)"> ' +
+													'<INPUT TYPE="button" NAME="unlike" VALUE="Unlike" class="unlike"> ' +
 													'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
 												'</p>' +
 											'</form>' +
@@ -131,9 +131,9 @@ function MapManager(){
 					'<p><small>Posté par ' + aPin.user + '</small></p>'+
 					'<form name="form1">' +
 						'<p>' +
-							'<INPUT TYPE="button" NAME="like" VALUE="Like" onClick="pin.vote(1,' + aPin.id + ',1)"> ' +
-							'<INPUT TYPE="button" NAME="dislike" VALUE="Dislike" onClick="pin.vote(1,' + aPin.id + ',-1)"> ' +
-							'<INPUT TYPE="button" NAME="unvote" VALUE="Unvote" onClick="pin.vote(1,' + aPin.id + ',0)"> ' +
+							'<INPUT TYPE="button" NAME="like" class="like" VALUE="Like"> ' +
+							'<INPUT TYPE="button" NAME="dislike" VALUE="Dislike" class="dislike"> ' +
+							'<INPUT TYPE="button" NAME="unlike" VALUE="Unlike" class="unlike"> ' +
 							'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
 						'</p>' +
 					'</form>' +
@@ -151,9 +151,9 @@ function MapManager(){
 					'<p><small>Posté par ' + aPin.user + '</small></p>'+
 					'<form name="form1">' +
 						'<p>' +
-							'<INPUT TYPE="button" NAME="like" VALUE="Like" onClick="pin.vote(1,' + aPin.id + ',1)"> ' +
-							'<INPUT TYPE="button" NAME="dislike" VALUE="Dislike" onClick="pin.vote(1,' + aPin.id + ',-1)"> ' +
-							'<INPUT TYPE="button" NAME="unvote" VALUE="Unvote" onClick="pin.vote(1,' + aPin.id + ',0)"> ' +
+							'<INPUT TYPE="button" NAME="like" class="like" VALUE="Like"> ' +
+							'<INPUT TYPE="button" NAME="dislike" VALUE="Dislike" class="dislike"> ' +
+							'<INPUT TYPE="button" NAME="unlike" VALUE="Unlike" class="unlike"> ' +
 							'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
 						'</p>' +
 					'</form>' +
@@ -186,8 +186,17 @@ function MapManager(){
 
 		$(document).on("click",".like",function(){
 			var pinID= $(this).closest('#content').data('id-pin');
-			
+			var userID=1;
 		});
+		$(document).on("click",".unlike",function(){
+			var pinID= $(this).closest('#content').data('id-pin');
+			var userID=1;
+		});
+		$(document).on("click",".dislike",function(){
+			var pinID= $(this).closest('#content').data('id-pin');
+			var userID=1;
+		});
+			
 	};
 
 }
