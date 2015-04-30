@@ -63,11 +63,19 @@ class Category(db.Model):
         self.description = description
 
     def serialize(self):
+        if self.categoriesChild:
+            return {
+                'id': self.id,
+                'nom': self.nom,
+                'description': self.description,
+                'pins' : [item.serializeSmall() for item in self.pins],
+                'Child': [item.serializeSmall() for item in self.categoriesChild]
+            }
         return {
             'id': self.id,
             'nom': self.nom,
             'description': self.description,
-            'pins' : [item.serializeSmall() for item in self.pins]
+            'pins' : [item.serializeSmall() for item in self.pins],
         }
 
     def serializeSmall(self):
