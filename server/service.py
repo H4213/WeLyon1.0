@@ -1,5 +1,5 @@
 from src import model
-from src.model import User, Pin, Category, Velov , FacebookPin
+from src.model import User, Pin, Category, Velov , FacebookPin, Vote
 from flask import Flask, flash, render_template, request, session
 from flask.ext.jsonpify import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy

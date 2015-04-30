@@ -10,7 +10,7 @@ from sqlalchemy.orm import backref, relation
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tmucotknskzdvn:B5Hyna3G7I1xIhPj3i_CSdl-GS@ec2-54-163-238-96.compute-1.amazonaws.com:5432/d6fisokcj01ulm'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://H4213:SabreESS32@82.241.33.248:3306/WeLyon-dev'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://H4213:SabreESS32@82.241.33.248:3306/WeLyon-paul'
 db = SQLAlchemy(app)
  
 ########################################################################
@@ -84,12 +84,14 @@ class Pin(db.Model):
     title = db.Column(db.String(100))
     categories = db.relationship("Category",
                     secondary=association_table)
+    score = db.Column(db.Integer)
+
 					
     description = db.Column(db.String(400)) 
     lng = db.Column(db.Float)
     lat = db.Column(db.Float)
 
-    def __init__(self, title, lng, lat, idUser = 1, categories = [], description = ""):
+    def __init__(self, title, lng, lat, idUser = 1, categories = [], description = "",score=0):
         self.idUser = idUser
         self.title = title
         self.categories = categories
@@ -106,6 +108,7 @@ class Pin(db.Model):
             'description': self.description,
             'lng': self.lng,
             'lat': self.lat,
+            'score': self.score
         }
 
     def serializeSmall(self):
@@ -236,7 +239,6 @@ class Vote(db.Model):
     idUser= db.Column(db.Integer,db.ForeignKey('users.id'))
     idPin = db.Column(db.Integer,db.ForeignKey('pins.id'))
     posneg = db.Column(db.Integer)
-    
     def __init__(self, idUser, idPin, posneg=0):
         self.idUser = idUser
         self.idPin  = idPin
@@ -251,5 +253,6 @@ class Vote(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-
+# db.reflect()
+# db.drop_all()
 db.create_all()
