@@ -180,8 +180,6 @@ function MapManager(){
 		}
 	};
 
-
-
 	self.pinSetup = function(){
 
 		$(document).on("click",".like",function(){
