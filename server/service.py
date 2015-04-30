@@ -167,3 +167,33 @@ def addUser(form):
 def addCategory(form):
 	db.session.add(form)
 	db.session.commit()
+	
+def UpdateUserVoteEvent(idUser,posneg,idPin):
+
+	if idUser and idPin and posneg:
+		item = Vote.query.filter_by(idUser=idUser, idPin=idPin).first()
+		pinItem = Pin.query.filter_by(id=idPin).first()
+		if item:
+
+			if item.posneg != posneg:
+				oldposneg=item.posneg
+				
+				if posneg>0 and oldposneg<0:
+					
+					pinItem.score=int(pinItem.score)+2
+				elif (posneg>0 and oldposneg==0) or (posneg==0 and oldposneg<0) :
+					pinItem.score=int(pinItem.score)+1
+				elif (posneg<0 and oldposneg==0) or (posneg==0 and oldposneg>0):
+					pinItem.score=int(pinItem.score)-1
+				elif posneg<0 and oldposneg>0:
+					pinItem.score=int(pinItem.score)-2
+			item.posneg=posneg
+			db.session.commit()
+
+		else:
+			
+			newVote=Vote(idUser,idPin)
+			newVote.posneg=posneg
+			pinItem.score=posneg
+			db.session.add(newVote)
+			db.session.commit()

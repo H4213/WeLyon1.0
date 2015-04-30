@@ -229,5 +229,27 @@ class FacebookPin(DynPin):
         
         
     }
+    
+class Vote(db.Model):
+    __tablename__ = "votes"
+    id= db.Column(db.Integer, primary_key = True)
+    idUser= db.Column(db.Integer,db.ForeignKey('users.id'))
+    idPin = db.Column(db.Integer,db.ForeignKey('pins.id'))
+    posneg = db.Column(db.Integer)
+    
+    def __init__(self, idUser, idPin, posneg=0):
+        self.idUser = idUser
+        self.idPin  = idPin
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'idUser': self.idUser,
+            'idPin': self.idPin,
+        }
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
 db.create_all()
