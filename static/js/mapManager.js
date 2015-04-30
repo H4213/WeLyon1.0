@@ -18,6 +18,8 @@ function MapManager(){
 	var imageMonument = Flask.url_for("static", {"filename": "./assets/monument.png"});
 
 	self.initMap = function() {
+		self.pinSetup();
+
 		 var mapOptions = {
 			zoom: 13,
 			center: cordinateLyon
@@ -26,99 +28,49 @@ function MapManager(){
 	    							mapOptions);
 	    self.refreshPins();
 	    //setInterval(self.refreshPins(), 60000 );
-	}
+	};
  
 
 	self.addMarker = function(aPin) {
-		// ToDo : gerer les différents types de marker
-		
 		var type = aPin.type;
 		var image;
+		var contentString;
+		  
 		switch (type) { 
 			case "velov" : 
 				image = imageVelov;
 				titre = "Velo'v";
-				contentString = '<div id="content">'+
-					'<div id="siteNotice">'+
-					'</div>'+
-					'<h2 id="firstHeading" class="firstHeading">Station de Velo\'v</h2>'+
-					'<div id="bodyContent">'+
-					'<p> ------DESCRIPTION DE LA STATION DE VELO\'V------ </p>'+
-					'</div>'+
-					aPin.libre +
-					'</div>';
+				contentString = self.buildDescription(aPin,"velov");
 				break;
 			case "bar" : 
 				image = imageBar;
 				titre = "Bar";
-				contentString = '<div id="content">'+
-					'<div id="siteNotice">'+
-					'</div>'+
-					'<h2 id="firstHeading" class="firstHeading">Bar</h2>'+
-					'<div id="bodyContent">'+
-					'<p> ------DESCRIPTION DU BAR------ </p>'+
-					'</div>'+
-					'</div>';
+				contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "restau" : 
 				image = imageRestau;
 				titre = "Restaurant";
-				contentString = '<div id="content">'+
-					'<div id="siteNotice">'+
-					'</div>'+
-					'<h2 id="firstHeading" class="firstHeading">Restaurant</h2>'+
-					'<div id="bodyContent">'+
-					'<p> ------DESCRIPTION DU RESTAURANT------ </p>'+
-					'</div>'+
-					'</div>';
+				contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "soiree" : 
 				image = imageSoiree;
 				titre = "Soirée";
-				contentString = '<div id="content">'+
-					'<div id="siteNotice">'+
-					'</div>'+
-					'<h2 id="firstHeading" class="firstHeading">Soirée</h2>'+
-					'<div id="bodyContent">'+
-					'<p> ------DESCRIPTION DE LA SOIREE------ </p>'+
-					'</div>'+
-					'</div>';
+				contentString = self.buildDescription(aPin,"dynamique");
 				break;
 			case "hotel" : 
 				image = imageHotel;
 				titre = "Hôtel";
-				contentString = '<div id="content">'+
-					'<div id="siteNotice">'+
-					'</div>'+
-					'<h2 id="firstHeading" class="firstHeading">Hôtel</h2>'+
-					'<div id="bodyContent">'+
-					'<p> ------DESCRIPTION DE L\'HOTEL------ </p>'+
-					'</div>'+
-					'</div>';
+				contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "monument" : 
 				image = imageMonument;
 				titre = "Monument";
-				contentString = '<div id="content">'+
-					'<div id="siteNotice">'+
-					'</div>'+
-					'<h2 id="firstHeading" class="firstHeading">Monument</h2>'+
-					'<div id="bodyContent">'+
-					'<p> ------DESCRIPTION DU MONUMENT------ </p>'+
-					'</div>'+
-					'</div>';
+				contentString = self.buildDescription(aPin,"normal");
 				break;
 			default :
 				image = imageNormal
 				titre = "Autre";
-				contentString = '<div id="content">'+
-					'<div id="siteNotice">'+
-					'</div>'+
-					'<h2 id="firstHeading" class="firstHeading">Autre point d\'intérêt</h2>'+
-					'<div id="bodyContent">'+
-					'<p> ------DESCRIPTION DU POINT d\'INTERET------ </p>'+
-					'</div>'+
-					'</div>';
+				contentString = self.buildDescription(aPin,"normal");
 			}
 
 		var infowindow = new google.maps.InfoWindow({
@@ -133,12 +85,84 @@ function MapManager(){
 		});
 		google.maps.event.addListener(aMarker, 'click', function() {
 			infowindow.open(map,aMarker);
+
 		});
 		
 		markers.push({pin : aPin,
-						marker : aMarker})
+						marker : aMarker});
+		
+
+
 	};
 
+	self.buildDescription=function(aPin, pinType) {
+		var contentString = '';
+		switch (pinType) { 
+			case "velov" : 
+				contentString = '<div id="content" data-id-pin=' + aPin.id + '>'+
+									'<div id="siteNotice">'+
+									'</div>'+
+									'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
+										'<div id="bodyContent">'+						
+											'<p>' + aPin.description + '</p>'+
+											'<p>Nombre de places: <b>' + aPin.velo + '</b><br />' +
+											'Nombre de vélos disponibles: <b>' + aPin.libre + '</b></p>'+
+											'<p><small>Posté par ' + aPin.user + '</small></p>'+
+											'<form name="form1">' +
+												'<p>' +
+													'<INPUT TYPE="button" NAME="like" class="like" VALUE="Like"> ' +
+													'<INPUT TYPE="button" NAME="dislike" VALUE="Dislike" class="dislike"> ' +
+													'<INPUT TYPE="button" NAME="unvote" VALUE="Unvote" onClick="vote(1,' + aPin.id + ',0)"> ' +
+													'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
+												'</p>' +
+											'</form>' +
+										'</div>'+
+									'</div>';
+				break;
+				
+			case "dynamique" : 
+				contentString = '<div id="content">'+
+					'<div id="siteNotice">'+
+					'</div>'+
+					'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
+					'<div id="bodyContent">'+
+					'<p>' + aPin.description + '</p>'+
+					'<p>Début: <b>' + aPin.dateDebut + '</b><br />Fin: <b>' + aPin.dateFin + '</b></p>'+
+					'<p><small>Posté par ' + aPin.user + '</small></p>'+
+					'<form name="form1">' +
+						'<p>' +
+							'<INPUT TYPE="button" NAME="like" VALUE="Like" onClick="pin.vote(1,' + aPin.id + ',1)"> ' +
+							'<INPUT TYPE="button" NAME="dislike" VALUE="Dislike" onClick="pin.vote(1,' + aPin.id + ',-1)"> ' +
+							'<INPUT TYPE="button" NAME="unvote" VALUE="Unvote" onClick="pin.vote(1,' + aPin.id + ',0)"> ' +
+							'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
+						'</p>' +
+					'</form>' +
+					'</div>'+
+					'</div>';
+				break;
+			
+			default :
+				contentString = '<div id="content">'+
+					'<div id="siteNotice">'+
+					'</div>'+
+					'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
+					'<div id="bodyContent">'+
+					'<p>' + aPin.description + '</p>'+
+					'<p><small>Posté par ' + aPin.user + '</small></p>'+
+					'<form name="form1">' +
+						'<p>' +
+							'<INPUT TYPE="button" NAME="like" VALUE="Like" onClick="pin.vote(1,' + aPin.id + ',1)"> ' +
+							'<INPUT TYPE="button" NAME="dislike" VALUE="Dislike" onClick="pin.vote(1,' + aPin.id + ',-1)"> ' +
+							'<INPUT TYPE="button" NAME="unvote" VALUE="Unvote" onClick="pin.vote(1,' + aPin.id + ',0)"> ' +
+							'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
+						'</p>' +
+					'</form>' +
+					'</div>'+
+					'</div>';
+		}
+		return contentString;
+	};
+	
 
 	self.refreshPins = function(){
 		for (var i = 0; i < markers.length; i++) {
@@ -146,6 +170,7 @@ function MapManager(){
 	  	}
 		pins = [];
 		markers = [];
+<<<<<<< HEAD
 		pin.getPins(self.cbGetAllPins);
 	};
 
@@ -155,6 +180,26 @@ function MapManager(){
 			self.addMarker(p);
 		}
 
+=======
+		
+		var listePins = pin.getPins();
+
+		console.log(listePins);
+		for(var i in listePins){
+			var p = listePins[i];
+			self.addMarker(p);
+		}
+
+	};
+
+	self.pinSetup = function(){
+
+		$(document).on("click",".like",function(){
+			var pinID= $(this).closest('#content').data('id-pin');
+			
+
+		});
+>>>>>>> origin/dev-fonctionnalites
 	};
 
 }
