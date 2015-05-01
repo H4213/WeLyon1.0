@@ -7,6 +7,8 @@ function RESTful() {
             $.ajax({
                 type: 'GET',
                 dataType: 'jsonp',
+                ContentType: 'application/json; charset=utf-8',
+
                 url: URL + path,
                 data: data,
                 async: true,
@@ -20,11 +22,12 @@ function RESTful() {
         }
     };
 
-    this.insert = function(url, data , callback) {
+    this.insert = function(path, data , callback) {
         try {
             $.ajax({
                 type: 'POST',
                 dataType: 'jsonp',
+                ContentType: 'application/json; charset=utf-8',
                 url: URL + path,
                 data: data,
                 async: true
@@ -39,13 +42,15 @@ function RESTful() {
     };
 
 
-   this.update = function(url, data , callback) {
+   this.update = function(path, data , callback) {
         try {
             $.ajax({
                 type: 'PUT',
                 dataType: 'jsonp',
                 url: URL + path,
                 data: data,
+                ContentType: 'application/json; charset=utf-8',
+
                 async: true
             }).done(function(data) {
                 callback(data);
@@ -59,13 +64,15 @@ function RESTful() {
 
 
 
-    this.delete = function(url, data , callback) {
+    this.delete = function(path, data , callback) {
         try {
             $.ajax({
                 type: 'DELETE',
                 dataType: 'jsonp',
                 url: URL + path,
                 data: data,
+                ContentType: 'application/json; charset=utf-8',
+
                 async: true
             }).done(function(data) {
                 callback(data);

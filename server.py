@@ -8,7 +8,7 @@ DATA_REFRESH_INTERVAL = 20
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
-
+import json
 import threading
 import thread
 import time
@@ -146,6 +146,18 @@ def delete(obj = None, id = None):
   db.session.commit()
   return jsonify(retour = "1") #object deleted
 
+@app.route('/pin/vote/<idPin>/', methods=['POST'])
+def updateVote(idPin =None, data=None):
+  
+  
+  if request.method =='POST':
+    idUser =request.form.get('idUser')
+    posneg=request.form['posneg']
+    service.UpdateUserVoteEvent(idUser,posneg,idPin)
+    return jsonify(retour = "0") 
+  return jsonify(retour = "1") 
+
+  
 @app.errorhandler(404)
 def page_not_found(error):
     return jsonify(error="404"), 404

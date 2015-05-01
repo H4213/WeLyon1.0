@@ -16,6 +16,18 @@ function Pin() {
         return null;
     };
 
+    self.vote =function(userID,pinID,posnegParam,callback){
+       var data = {
+        
+                        "idUser": userID,
+                        "posneg": posnegParam
+                
+                }
+        
+        var url='/pin/vote/'+pinID+'/';
+        rest.insert(url,data,callback);
+    };                                                                                                                                                                                                                                  
+
   
 
 }

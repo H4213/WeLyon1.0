@@ -180,6 +180,14 @@ function MapManager(){
 		}
 	};
 
+	self.cbVotePin = function(data){
+		retour = data.return
+		if (retour == 0){
+			Alert("Erreur:Le vote n'a pas été pris en compte")
+
+		}
+	};
+
 
 
 	self.pinSetup = function(){
@@ -187,17 +195,17 @@ function MapManager(){
 		$(document).on("click",".like",function(){
 			var pinID= $(this).closest('#content').data('id-pin');
 			var userID=1;
-			//pin.vote(userID,pinID,1);
+			pin.vote(userID,pinID,1,self.cbVotePin);
 		});
 		$(document).on("click",".unlike",function(){
 			var pinID= $(this).closest('#content').data('id-pin');
 			var userID=1;
-			//pin.vote(userID,pinID,0);
+			pin.vote(userID,pinID,0,self.cbVotePin);
 		});
 		$(document).on("click",".dislike",function(){
 			var pinID= $(this).closest('#content').data('id-pin');
 			var userID=1;
-			//pin.vote(userID,pinID,-1);
+			pin.vote(userID,pinID,-1,self.cbVotePin);
 		});
 			
 	};
