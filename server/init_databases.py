@@ -16,7 +16,7 @@ def init_admin_user():
 	
 	if admin_user == None:
 		u = User("admin", "pass")
-		service.addUser(u)
+		service.addObject(u)
 		service.logMessage("Ajout de l'utilisateur 'admin'")
 	else:
 		service.logMessage("l'utilisateur 'admin' existe deja")
@@ -25,7 +25,7 @@ def try_push_category(name, descr):
 	categorie = Category.query.filter_by(nom = name).first()
 	if categorie == None:
 		c = Category(name, descr)
-		service.addCategory(c)
+		service.addObject(c)
 		
 def init_categories():
 	service.logMessage("Creation des categories")

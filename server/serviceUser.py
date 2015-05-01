@@ -28,7 +28,7 @@ def getAllUser():
 def getUserById(idUser):
 	print "getUserById"
 	if idUser:
-	item = User.query.get(idUser).first()
+		item = User.query.get(idUser).first()
 
 		if item:
 			return jsonify(categories=[item.serialize()])

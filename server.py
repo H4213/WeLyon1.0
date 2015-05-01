@@ -17,6 +17,9 @@ from flask import Flask, flash, render_template, request, session, jsonify, send
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask_jsglue import JSGlue
 from server import service
+from server import servicePin
+from server import serviceUser
+from server import serviceCategory
 
 import server
 from src.model import User, Pin, Category

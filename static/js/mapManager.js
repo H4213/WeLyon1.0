@@ -33,6 +33,7 @@ function MapManager(){
 
 	self.addMarker = function(aPin) {
 		var type = aPin.type;
+		console.log(type);
 		var image;
 		var contentString;
 		  
@@ -174,8 +175,8 @@ function MapManager(){
 	};
 
 	self.cbGetAllPins = function(data){
-		for(var i in data.pins){
-			var p = data.pins[i];
+		for(var i in data.Pins){
+			var p = data.Pins[i];
 			self.addMarker(p);
 		}
 	};

@@ -22,12 +22,12 @@ def connectToDatabase():
 db = connectToDatabase()
 
 
-def addObjet(obj):
+def addObject(obj):
 	db.session.add(obj)
 	db.session.commit()
 	return obj.serialize()
 
-def deleteObjet(obj):
+def deleteObject(obj):
 	db.session.delete(obj)
 	db.session.commit()
 	return jsonify(deleted = "1")
@@ -51,7 +51,7 @@ def updateVelovByIdVelov(current):
 			item.libre = current.libre
 			db.session.commit()
 		else:
-			addPin(current)
+			addObject(current)
 		
 #Creates Facebook events 
 def updateFacebookByIdFacebook(current):
@@ -59,4 +59,4 @@ def updateFacebookByIdFacebook(current):
 		item = FacebookPin.query.filter_by(idFacebook=current.idFacebook).first()
 		
 		if item == None:
-			addPin(current)
+			addObject(current)

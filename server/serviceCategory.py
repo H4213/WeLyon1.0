@@ -51,7 +51,7 @@ def getCategoryByIdPin(idPin):
 	#items = Category.query.filter_by(rank > rank).all()
 
 def addCategoryFromForm(form):
-	if (Category(form['name'] and form['description'] and form['idFather']):
+	if (Category(form['name'] and form['description'] and form['idFather'])):
 
 		exist = Category.query.filter_by(nom=form['name']).first()
 
