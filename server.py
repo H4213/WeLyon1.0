@@ -64,16 +64,20 @@ def pins(category = None):
 def pin(idPin = None):
   return service.getPinById(idPin)
 
-@app.route('/user', methods=('GET', 'POST', 'PUT', 'DELETE'))
+@app.route('/user/', methods=('GET', 'POST', 'PUT', 'DELETE'))
 @app.route('/user/<idUser>/')
-def user(idUser = None):
+def user(idUser = None, data=None):
 
   if request.method == "POST":
-    return service.majUser(request.form)
 
+    nameUser=request.form.get('pseudo')
+    password=request.form['password']
+    service.addUser(nameUser,password)
+    return jsonify(error=0)
+  return jsonify(error=1)
+  
   if request.method == 'PUT':
-    return service.addUser(request.form)
-
+    return service.majUser(request.form)
   if request.method == 'DELETE':
     item = User.query.get(id)
     if item:

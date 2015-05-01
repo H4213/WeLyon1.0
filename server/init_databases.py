@@ -15,8 +15,7 @@ def init_admin_user():
 	admin_user = User.query.filter_by(pseudo="admin").first()
 	
 	if admin_user == None:
-		u = User("admin", "pass")
-		service.addUser(u)
+		service.addUser("admin", "pass")
 		service.logMessage("Ajout de l'utilisateur 'admin'")
 	else:
 		service.logMessage("l'utilisateur 'admin' existe deja")

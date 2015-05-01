@@ -18,7 +18,6 @@ function Pin() {
 
     self.vote =function(userID,pinID,posnegParam,callback){
        var data = {
-        
                         "idUser": userID,
                         "posneg": posnegParam
                 

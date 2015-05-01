@@ -183,7 +183,7 @@ function MapManager(){
 	self.cbVotePin = function(data){
 		retour = data.return
 		if (retour == 0){
-			Alert("Erreur:Le vote n'a pas été pris en compte")
+			alert("Erreur:Le vote n'a pas été pris en compte")
 
 		}
 	};

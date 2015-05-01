@@ -146,18 +146,9 @@ def updateFacebookByIdFacebook(current):
 		if item == None:
 			addPin(current)
 
-def addUser(form):
-	"""if (form['pseudo'] and form['passw']):
-
-		exist = User.query.filter_by(pseudo=form['pseudo']).first()
-
-		if exist:
-	
-			return jsonify(error="already exist")
-
-		user = User(form['pseudo'], form['passw'])
-	"""
-	db.session.add(form)
+def addUser(name,password):
+	newUser = User(name,password)
+	db.session.add(newUser)
 	db.session.commit()
 
 	#	return jsonify(id=user.id, pseudo=user.pseudo)
