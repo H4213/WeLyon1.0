@@ -51,7 +51,7 @@ def updateVelovByIdVelov(current):
 			item.libre = current.libre
 			db.session.commit()
 		else:
-			addPin(current)
+			addObjet(current)
 		
 #Creates Facebook events 
 def updateFacebookByIdFacebook(current):
@@ -59,7 +59,7 @@ def updateFacebookByIdFacebook(current):
 		item = FacebookPin.query.filter_by(idFacebook=current.idFacebook).first()
 		
 		if item == None:
-			addPin(current)
+			addObjet(current)
 
 #Creates points of interest sncf
 def addPointOfInterest(form):
@@ -72,4 +72,4 @@ def updatePointOfInterestByIdPointOfInterest(current) :
 		item = PointOfInterest.query.filter_by(idPointOfInterest=current.idPointOfInterest).first()
 		
 		if item is None:
-			addPin(current)
+			addObjet(current)
