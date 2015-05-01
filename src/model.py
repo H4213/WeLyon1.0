@@ -69,7 +69,7 @@ class Category(db.Model):
                 'nom': self.nom,
                 'description': self.description,
                 'pins' : [item.serializeSmall() for item in self.pins],
-                'Child': [item.serializeSmall() for item in self.categoriesChild]
+                'child': [item.serializeSmall() for item in self.categoriesChild]
             }
         return {
             'id': self.id,
@@ -81,7 +81,7 @@ class Category(db.Model):
     def serializeSmall(self):
         return {
             'id': self.id,
-            'nom': self.nom,
+            'nom': self.nom
         }
 
     def delete(self):
@@ -187,15 +187,16 @@ class Velov(Pin):
         return {
             'id': self.id,
             'type' : 'velov',
-            'idVelov': self.idVelov,
+            # 'idVelov': self.idVelov,
             'user': self.idUser,
             'title': self.title,
-            'category': [item.serializeSmall() for item in self.categories],
+            #'category': [item.serializeSmall() for item in self.categories],
             'description': self.description,
             'lng': self.lng,
             'lat': self.lat,
-            'libre': self.libre,
-            'velo': self.velo,
+            # 'libre': self.libre,
+            # 'velo': self.velo
+
         }
 
     def serializeSmall(self):
