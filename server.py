@@ -3,7 +3,7 @@
 
 #constants
 VELOV_DATA_SOURCE = "https://download.data.grandlyon.com/ws/rdata/jcd_jcdecaux.jcdvelov/all.json"
-DATA_REFRESH_INTERVAL = 20
+DATA_REFRESH_INTERVAL = 300
 
 import sys
 reload(sys)
@@ -156,6 +156,6 @@ if __name__ == '__main__':
   init_databases.init_all()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
-  app.debug = True
+  #app.debug = True
   app.run()
 	
