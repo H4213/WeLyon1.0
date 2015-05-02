@@ -58,8 +58,8 @@ def addUserFromForm(form):
 def authUser(form):
 	if (form['pseudo'] and form['password']):
 		user = User.query.filter_by(pseudo=form['pseudo']).first()
-		if exist and user.password==form['password']:
-			return jsonify(idUser=user.id)
+		if user and user.passw==form['password']:
+			return jsonify(idUser=user.id, nameUser=user.pseudo)
 		return jsonify(error = "invalid password")
   
 def deleteUser(form):
