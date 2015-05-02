@@ -17,7 +17,11 @@ function Pin() {
     };
 
     self.vote =function(userID,pinID,posnegParam,callback){
-       var data = {
+       if (userID==-1){
+        alert("Veuillez vous connecter")
+       }
+       else{
+        var data = {
                         "idUser": userID,
                         "posneg": posnegParam
                 }
@@ -25,6 +29,7 @@ function Pin() {
         var url='/pin/vote/'+pinID+'/';
         console.log(data);
         rest.insert(url,data,callback);
+       } 
     };                                                                                                                                                                                                                                  
 
   

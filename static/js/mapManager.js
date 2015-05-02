@@ -2,7 +2,7 @@ function MapManager(){
 	var self = this;
 	var rest = new RESTful();
 	var pin = new Pin();
-
+	var idUser = -1;
 	var markers = [];
 	var pins = [];
 	var map; // object containing the map
@@ -190,22 +190,23 @@ function MapManager(){
 
 	self.pinSetup = function(){
 
-		$(document).on("click",".like",function(){
-			var pinID= $(this).closest('#content').data('id-pin');
-			var userID=1;
-			pin.vote(userID,pinID,1,self.cbVotePin);
-		});
-		$(document).on("click",".unlike",function(){
-			var pinID= $(this).closest('#content').data('id-pin');
-			var userID=1;
-			pin.vote(userID,pinID,0,self.cbVotePin);
-		});
-		$(document).on("click",".dislike",function(){
-			var pinID= $(this).closest('#content').data('id-pin');
-			var userID=1;
-			pin.vote(userID,pinID,-1,self.cbVotePin);
-		});
-			
+		
+			$(document).on("click",".like",function(){
+				var pinID= $(this).closest('#content').data('id-pin');
+				pin.vote(idUser,pinID,1,self.cbVotePin);
+			});
+			$(document).on("click",".unlike",function(){
+				var pinID= $(this).closest('#content').data('id-pin');
+				pin.vote(idUser,pinID,0,self.cbVotePin);
+			});
+			$(document).on("click",".dislike",function(){
+				var pinID= $(this).closest('#content').data('id-pin');
+				pin.vote(idUser,pinID,-1,self.cbVotePin);
+			});
+		
+	};		
+	self.setIdUser =function (idUserParam){
+		idUser = idUserParam;
 	};
 
 }

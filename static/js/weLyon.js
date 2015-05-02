@@ -1,7 +1,11 @@
 function WeLyon(){
 	var self = this;
-	var idUser = -1;
-	var nameUser ="";
+	idUser = localStorage.getItem('idUser');
+	var nameUser=localStorage.getItem('nameUser');
+	if ((nameUser ==  null )|| (idUser=null)){
+	nameUser='Anonyme';
+	idUser=-1;
+	}
 	var category = new Category();
 	var mapManager = new MapManager();
 	var user = new User();
@@ -132,6 +136,9 @@ function WeLyon(){
 		{
 		idUser = data['idUser'];
 		nameUser = data['nameUser'];
+		localStorage.setItem('idUser',idUser);
+		localStorage.setItem('nameUser',nameUser);
+		mapManager.setIdUser(idUser);
 		alert("Bienvenue "+nameUser);
 		}
 		
@@ -191,6 +198,7 @@ function WeLyon(){
 			alert("Veuillez indiquez votre mot de passe")
 		}
 	}
+
 
 }
 
