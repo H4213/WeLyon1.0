@@ -39,15 +39,14 @@ def getUserById(idUser):
 
 
 def addUserFromForm(form):
-	if (form['pseudo'] and form['passw']):
-
+	if (form['pseudo'] and form['password']):
 		exist = User.query.filter_by(pseudo=form['pseudo']).first()
 
 		if exist:
 	
 			return jsonify(error="already exist")
 
-		user = User(form['pseudo'], form['passw'])
+		user = User(form['pseudo'], form['password'])
 
 		db.session.add(user)
 		db.session.commit()
@@ -55,7 +54,14 @@ def addUserFromForm(form):
 		return jsonify(id=user.id, pseudo=user.pseudo)
 
 	return jsonify(error="invalid parameters")
-
+	
+def authUser(form):
+	if (form['pseudo'] and form['password']):
+		user = User.query.filter_by(pseudo=form['pseudo']).first()
+		if user and user.passw==form['password']:
+			return jsonify(idUser=user.id, nameUser=user.pseudo)
+		return jsonify(error = "invalid password")
+  
 def deleteUser(form):
 	if (form['id']):
 		item = User.query.get(id)

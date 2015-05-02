@@ -1,9 +1,11 @@
 function WeLyon(){
 	var self = this;
+	var idUser = -1;
+	var nameUser ="";
 	var category = new Category();
 	var mapManager = new MapManager();
 	var user = new User();
-
+	
 //------------Les setups des pages/panels et ses boutons------------------
 	self.setup = function(){
 		google.maps.event.addDomListener(window, 'load', mapManager.initMap());
@@ -50,6 +52,9 @@ function WeLyon(){
 		$('#okInscription').on('click', function(){
 			self.signInUser($(this));
 		});
+		$('#okConnexion').on('click', function(){
+			self.signUpUser($(this));
+		});
 	};
 //--------------Remplissage des formulaires----------------------
 	self.fillAuthentificationForm = function(bouton){
@@ -73,22 +78,22 @@ function WeLyon(){
 	        form+='            <label for="confirmerMdP">Confirmer mot de passe</label>';
 	        form+='            <input type="password" class="form-control" id="confirmerMdP1" placeholder="Confirmez votre mot de passe">';
 	        form+='        </div>';
-	        form+='        <button id="annulerInscription" class="btn btn-danger pull-left">Annuler</button>';
-	        form+='        <button  id="okInscription" class="btn btn-default pull-right">Sinscrire</button>';
+	        form+='        <button id="annulerInscription" type="button" class="btn btn-danger pull-left">Annuler</button>';
+	        form+='        <button  id="okInscription" type="button" class="btn btn-default pull-right">Sinscrire</button>';
 	        form+='    </form>';
 		}
 		else if(bouton.get(0) === $('#connectButton').get(0)){
 			form+='	   <form>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrirePseudo">Pseudo</label>';
-	        form+='            <input type="text" class="form-control" id="inscrirePseudo" placeholder="pseudo">';
+	        form+='            <input type="text" class="form-control" id="inscrirePseudo2" placeholder="pseudo">';
 	        form+='        </div>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrireMdP">Mot de Passe</label>';
-	        form+='           <input type="password" class="form-control" id="inscrireMdP" placeholder="Mot de Passe">';
+	        form+='           <input type="password" class="form-control" id="inscrireMdP2" placeholder="Mot de Passe">';
 	        form+='        </div>';
-	        form+='        <button id="annulerConnexion" class="btn btn-danger pull-left">Annuler</button>';
-	        form+='        <button  id="okConnexion" class="btn btn-default pull-right">Connexion</button>';
+	        form+='        <button id="annulerConnexion" type="button" class="btn btn-danger pull-left">Annuler</button>';
+	        form+='        <button  id="okConnexion" type="button" class="btn btn-default pull-right">Connexion</button>';
 	        form+='    </form>';
 		}
 
@@ -114,7 +119,22 @@ function WeLyon(){
 		//TODO: remplir la liste des categories 
 	}
 	self.cbAddUser = function(data){
-		alert("ok");
+		if (data['error']==null)
+		{
+		alert("Votre compte WeLyon a bien été créé");
+		}
+		else {
+			alert(data['error']);
+		}
+	}
+	self.cbAuthUser = function(data){
+		if (data['error']==null)
+		{
+		idUser = data['idUser'];
+		nameUser = data['nameUser'];
+		alert("Bienvenue "+nameUser);
+		}
+		
 	}
 	self.ouvrirPanelAuthentification = function(bouton){
 		if(bouton.hasClass('active')){
@@ -147,16 +167,31 @@ function WeLyon(){
 		if (password == password2 && pseudo!=null && password!=null){
 			user.addUser(pseudo,password,self.cbAddUser);
 		}
-		else if (pseudo==null){
+		else if (pseudo==""){
 			alert("veuillez choisir un pseudo")
 		}
-		else if (password == null){
+		else if (password == ""){
 			alert("Veuillez choisir un mot de passe")
 		}
-		else if (password == null){
+		else if (password == ""){
 			alert("Les mots de passe ne correspondent pas")
 		};
+	};
+	self.signUpUser = function(bouton){
+		var pseudo= document.getElementById('inscrirePseudo2').value;
+		var password= document.getElementById('inscrireMdP2').value;
+		if (password!= null && pseudo != null)
+		{
+			user.authUser(pseudo,password,self.cbAuthUser);
+		}
+		else if (pseudo==null){
+			alert("veuillez indiquez votre pseudo")
+		}
+		else if (password == null){
+			alert("Veuillez indiquez votre mot de passe")
+		}
 	}
+
 }
 var weLyon = new WeLyon();
 weLyon.setup();
