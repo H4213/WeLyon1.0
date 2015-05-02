@@ -6,6 +6,7 @@ function MapManager(){
 	if (idUser==null){
 	idUser=-1;
 	}
+	var infowindow = new google.maps.InfoWindow({content : ""});
 	var markers = [];
 	var pins = [];
 	var map; // object containing the map
@@ -76,23 +77,26 @@ function MapManager(){
 				contentString = self.buildDescription(aPin,"normal");
 			}
 
-		var infowindow = new google.maps.InfoWindow({
-	      content: contentString
-		});
+		
 			
 		var aMarker = new google.maps.Marker({
 			position: new google.maps.LatLng(aPin.lat, aPin.lng),
 			map: map,
 			icon: image,
-			title: titre
+			title: titre,
+			'idPin': aPin.id
 		});
+
+		markers[id]={pin : aPin,
+						marker : aMarker};
 		google.maps.event.addListener(aMarker, 'click', function() {
+			infowindow.setContent(self.buildDescription(markers[aMarker['idPin']].pin,markers[aMarker['idPin']].pin.type));
+		
 			infowindow.open(map,aMarker);
 
 		});
 		
-		markers[id]={pin : aPin,
-						marker : aMarker};
+		
 		
 
 
@@ -189,8 +193,7 @@ function MapManager(){
 			aPin = data.pin;
 
 		self.addMarker(aPin);
-		var infowindow = new google.maps.InfoWindow({
-	     content: self.buildDescription(aPin, aPin.Type)})
+		infowindow.setContent(self.buildDescription(aPin, aPin.type));
 		
 		infowindow.open(map, markers[aPin.id].marker);
 		}
