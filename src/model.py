@@ -109,7 +109,7 @@ class Pin(db.Model):
 		self.type = type
 		self.idUser = idUser
 		self.title = title
-		self.categories = ""
+		self.categories = ","
 		for i in categories:
 			self.categories = str(self.categories)+str(i.id)+","
 		self.description = description
@@ -117,6 +117,10 @@ class Pin(db.Model):
 		self.lat = lat
 
 	def serialize(self):
+	
+		liste = self.categories.strip(",").split(",")
+		if liste[0] == "":
+			liste = []
 		return {
 			'id': self.id,
 			'type':self.type,
@@ -125,7 +129,7 @@ class Pin(db.Model):
 			'dateEnd':self.dateEnd,
 			'user': self.idUser,
 			'title': self.title,
-			'category': self.categories.strip(",").split(","),
+			'category': liste,
 			'description': self.description,
 			'lng': self.lng,
 			'lat': self.lat,
@@ -134,12 +138,6 @@ class Pin(db.Model):
 			'data2': self.data2,
 			'data3': self.data3,
 			'typeSpecificID': self.typeSpecificID
-		}
-
-	def serializeSmall(self):
-		return {
-			'id': self.id,
-			'title': self.title,
 		}
 
 	def delete(self):

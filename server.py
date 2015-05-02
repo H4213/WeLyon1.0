@@ -57,7 +57,7 @@ def pins(category = None):
     return servicePin.delete(request.form)
 
   if category:
-    return servicePin.getPinsByIdCategory()
+    return servicePin.getPinsByIdCategory(category)
 
   return servicePin.getAllPin()
 
