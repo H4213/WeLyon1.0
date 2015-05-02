@@ -1,8 +1,8 @@
 function WeLyon(){
 	var self = this;
-	idUser = localStorage.getItem('idUser');
+	var idUser = localStorage.getItem('idUser');
 	var nameUser=localStorage.getItem('nameUser');
-	if ((nameUser ==  null )|| (idUser=null)){
+	if ((nameUser ==  null )|| (idUser==null)){
 	nameUser='Anonyme';
 	idUser=-1;
 	}

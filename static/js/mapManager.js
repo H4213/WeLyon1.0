@@ -2,7 +2,10 @@ function MapManager(){
 	var self = this;
 	var rest = new RESTful();
 	var pin = new Pin();
-	var idUser = -1;
+	var idUser = localStorage.getItem('idUser');
+	if (idUser==null){
+	idUser=-1;
+	}
 	var markers = [];
 	var pins = [];
 	var map; // object containing the map
@@ -30,12 +33,16 @@ function MapManager(){
 	    //setInterval(self.refreshPins(), 60000 );
 	};
  
+	/*self.delMarker = function(aPin){
+		var id=aPin.id;
+		var marker = markers[id];
 
+	}*/
 	self.addMarker = function(aPin) {
 		var type = aPin.type;
 		var image;
 		var contentString;
-		  
+		var id=aPin.id;
 		switch (type) { 
 			case "velov" : 
 				image = imageVelov;
@@ -88,8 +95,8 @@ function MapManager(){
 
 		});
 		
-		markers.push({pin : aPin,
-						marker : aMarker});
+		markers[id]={pin : aPin,
+						marker : aMarker};
 		
 
 
@@ -181,10 +188,10 @@ function MapManager(){
 	};
 
 	self.cbVotePin = function(data){
-		retour = data.return
-		if (retour == 0){
-			alert("Erreur:Le vote n'a pas été pris en compte")
+		if (data['error']==null){
+			aPin = data.pin;
 
+		self.addMarker(aPin);
 		}
 	};
 
@@ -203,7 +210,7 @@ function MapManager(){
 				var pinID= $(this).closest('#content').data('id-pin');
 				pin.vote(idUser,pinID,-1,self.cbVotePin);
 			});
-		
+
 	};		
 	self.setIdUser =function (idUserParam){
 		idUser = idUserParam;

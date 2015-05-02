@@ -69,30 +69,36 @@ def addCategory(form):
 	db.session.add(form)
 	db.session.commit()
 	
-def UpdateUserVoteEvent(idUser,posneg,idPin):
-
+def UpdateUserVoteEvent(form,idPin):
+	idUser=form['idUser'];
+	posneg = form['posneg'];
 	if idUser and idPin and posneg:
 		item = Vote.query.filter_by(idUser=idUser, idPin=idPin).first()
 		pinItem = Pin.query.filter_by(id=idPin).first()
-		if item:
-
-			if item.posneg != posneg:
-				oldposneg=item.posneg
-				
-				if posneg>0 and oldposneg<0:
-					
-					pinItem.score=int(pinItem.score)+2
-				elif (posneg>0 and oldposneg==0) or (posneg==0 and oldposneg<0) :
-					pinItem.score=int(pinItem.score)+1
-				elif (posneg<0 and oldposneg==0) or (posneg==0 and oldposneg>0):
-					pinItem.score=int(pinItem.score)-1
-				elif posneg<0 and oldposneg>0:
-					pinItem.score=int(pinItem.score)-2
-			item.posneg=posneg
-			db.session.commit()
-
-		else:
+		oldposneg=0
+		print ("ici")
+		if item==None:
 			newVote=Vote(idUser,idPin)
 			newVote.posneg=posneg
-			pinItem.score=posneg
 			addObject(newVote)
+			print (idUser+","+idPin)
+			if pinItem.score==None:
+				pinItem.score=0
+		else :
+			oldposneg=item.posneg
+			item.posneg=posneg
+			
+		if posneg>0 and oldposneg<0:
+				
+			pinItem.score=int(pinItem.score)+2
+		elif (posneg>0 and oldposneg==0) or (posneg==0 and oldposneg<0) :
+			pinItem.score=int(pinItem.score)+1
+		elif (posneg<0 and oldposneg==0) or (posneg==0 and oldposneg>0):
+			pinItem.score=int(pinItem.score)-1
+		elif posneg<0 and oldposneg>0:
+			pinItem.score=int(pinItem.score)-2
+		
+		db.session.commit()
+
+		return jsonify(pin=pinItem.serialize())
+			
