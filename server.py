@@ -66,16 +66,8 @@ def pin(idPin = None):
 
 @app.route('/user/', methods=('GET', 'POST', 'PUT', 'DELETE'))
 @app.route('/user/<idUser>/')
-<<<<<<< HEAD
-def user(idUser = None):
-  if request.method == "POST":
-    return serviceUser.majUser(request.form)
-=======
 def user(idUser = None, data=None):
-
   if request.method == "POST":
->>>>>>> origin/dev-fonctionnalites
-
     nameUser=request.form.get('pseudo')
     password=request.form['password']
     service.addUser(nameUser,password)
@@ -83,12 +75,7 @@ def user(idUser = None, data=None):
   return jsonify(error=1)
   
   if request.method == 'PUT':
-<<<<<<< HEAD
-    return serviceUser.addUserFromForm(request.form)
-
-=======
     return service.majUser(request.form)
->>>>>>> origin/dev-fonctionnalites
   if request.method == 'DELETE':
     return serviceUser.delete(request.form)
 
@@ -153,8 +140,6 @@ def delete(obj = None, id = None):
 
 @app.route('/pin/vote/<idPin>/', methods=['POST'])
 def updateVote(idPin =None, data=None):
-  
-  
   if request.method =='POST':
     idUser =request.form.get('idUser')
     posneg=request.form['posneg']
@@ -184,6 +169,6 @@ if __name__ == '__main__':
   init_databases.init_all()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
-  #app.debug = True
+  app.debug = True
   app.run()
 	

@@ -33,7 +33,6 @@ function MapManager(){
 
 	self.addMarker = function(aPin) {
 		var type = aPin.type;
-		console.log(type);
 		var image;
 		var contentString;
 		  
@@ -188,8 +187,6 @@ function MapManager(){
 
 		}
 	};
-
-
 
 	self.pinSetup = function(){
 

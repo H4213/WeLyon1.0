@@ -38,10 +38,6 @@ function WeLyon(){
 			self.ouvrirPanelAuthentification($(this));
 		});
 
-		
-
-	
-
 		//TODO: remplir page (a l'ouverture/connexion) en accord avec les droits de l'utilisateur 
 
 	};
@@ -159,7 +155,8 @@ function WeLyon(){
 		}
 		else if (password == null){
 			alert("Les mots de passe ne correspondent pas")
-	};
+		};
+	}
 }
 
 var weLyon = new WeLyon();

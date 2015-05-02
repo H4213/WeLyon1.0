@@ -1,5 +1,5 @@
 from src import model
-from src.model import User, Pin, Category, Velov , FacebookPin
+from src.model import User, Pin, Category, Velov , FacebookPin, Vote
 from flask import Flask, flash, render_template, request, session
 from flask.ext.jsonpify import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -59,19 +59,11 @@ def updateFacebookByIdFacebook(current):
 		item = FacebookPin.query.filter_by(idFacebook=current.idFacebook).first()
 		
 		if item == None:
-<<<<<<< HEAD
 			addObject(current)
-=======
-			addPin(current)
 
 def addUser(name,password):
 	newUser = User(name,password)
-	db.session.add(newUser)
-	db.session.commit()
-
-	#	return jsonify(id=user.id, pseudo=user.pseudo)
-
-	#return jsonify(error="invalid parameters")
+	addObject(newUser)
 	
 def addCategory(form):
 	db.session.add(form)
@@ -100,10 +92,7 @@ def UpdateUserVoteEvent(idUser,posneg,idPin):
 			db.session.commit()
 
 		else:
-			
 			newVote=Vote(idUser,idPin)
 			newVote.posneg=posneg
 			pinItem.score=posneg
-			db.session.add(newVote)
-			db.session.commit()
->>>>>>> origin/dev-fonctionnalites
+			addObject(newVote)

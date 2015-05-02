@@ -11,7 +11,6 @@ function User() {
                    }
         var url=self.path;
         rest.insert(url,data,callback);
-        alert('Bienvenue sur WeLyon')
     };                                    
   
 

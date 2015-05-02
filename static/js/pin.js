@@ -20,10 +20,10 @@ function Pin() {
        var data = {
                         "idUser": userID,
                         "posneg": posnegParam
-                
                 }
         
         var url='/pin/vote/'+pinID+'/';
+        console.log(data);
         rest.insert(url,data,callback);
     };                                                                                                                                                                                                                                  
 

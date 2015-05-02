@@ -8,7 +8,6 @@ function RESTful() {
                 type: 'GET',
                 dataType: 'jsonp',
                 ContentType: 'application/json; charset=utf-8',
-
                 url: URL + path,
                 data: data,
                 async: true,
@@ -50,7 +49,6 @@ function RESTful() {
                 url: URL + path,
                 data: data,
                 ContentType: 'application/json; charset=utf-8',
-
                 async: true
             }).done(function(data) {
                 callback(data);

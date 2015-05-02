@@ -17,7 +17,6 @@ db = service.connectToDatabase()
 def getAllPin():
 	print "getAllPin"
 	items = Pin.query.all()
-
 	if items :
 		print "pin non vide"
 		return jsonify(Pins=[item.serialize() for item in items])

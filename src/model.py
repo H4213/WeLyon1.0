@@ -99,9 +99,7 @@ class Pin(db.Model):
     categories = db.relationship("Category",
                     secondary=association_table,
                     backref='pins')
-    score = db.Column(db.Integer)
-
-					
+    score = db.Column(db.Integer)		
     description = db.Column(db.String(400)) 
     lng = db.Column(db.Float)
     lat = db.Column(db.Float)
@@ -138,7 +136,7 @@ class Pin(db.Model):
 
     __mapper_args__ = {
         'polymorphic_on':type,
-        'polymorphic_identity':'employee'
+        'polymorphic_identity':'pin'
     }
 
 class DynPin(Pin):
@@ -195,7 +193,8 @@ class Velov(Pin):
             'lng': self.lng,
             'lat': self.lat,
             # 'libre': self.libre,
-            # 'velo': self.velo
+            # 'velo': self.velo,
+            'score': self.score
 
         }
 
