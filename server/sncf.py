@@ -5,19 +5,17 @@ import sys
 sys.path.append("../")
 
 import service
-
-
-
-
+from src import model
+from src.model import User, Pin
 
 def createPointOfInterestTable() :
-	print("[LOG]  Loading json sncf file")
+	service.logMessage("Loading json sncf file")
 
 	json_file = open('sncf.json')
 	data = json.load(json_file)
 	listPointOfInterest = []
 
-	print("[LOG] Parsing the json sncf file")
+	service.logMessage("Parsing the json sncf file")
 	
 	i = 0
 	while i < 88 :
@@ -29,16 +27,14 @@ def createPointOfInterestTable() :
 		lng = data["node"][i]["-lon"]
 
 				
-		obj = PointOfInterest(title, lng, lat, idUser, [], "")
-		obj.idPointOfInterest = data["node"][i]["-id"]
+		obj = Pin('pointOfInterest', title, lng, lat, idUser, [], "")
+		obj.typeSpecificID = data["node"][i]["-id"]
 		listPointOfInterest.append(obj)
 		
 		i+=1
 		
 
 	json_file.close()
-	
-	print(title)
 
 	return listPointOfInterest
 

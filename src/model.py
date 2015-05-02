@@ -7,7 +7,7 @@ from sqlalchemy import Table, Column, create_engine
 from sqlalchemy import Integer, ForeignKey, String, Unicode, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import backref, relation
-
+import datetime
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tmucotknskzdvn:B5Hyna3G7I1xIhPj3i_CSdl-GS@ec2-54-163-238-96.compute-1.amazonaws.com:5432/d6fisokcj01ulm'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://H4213:SabreESS32@82.241.33.248:3306/WeLyon-simple'
@@ -96,9 +96,9 @@ class Pin(db.Model):
 	lng = db.Column(db.Float)
 	lat = db.Column(db.Float)
 	
-	dateCreation = db.Column(db.DateTime)
-	dateDebutValidite = db.Column(db.DateTime)
-	dateDebutFin = db.Column(db.DateTime)
+	dateCreation = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	dateBegin = db.Column(db.DateTime)
+	dateEnd = db.Column(db.DateTime)
 	
 	typeSpecificID = Column(db.BigInteger)
 	data1 = db.Column(db.String(30))
@@ -120,10 +120,12 @@ class Pin(db.Model):
 		return {
 			'id': self.id,
 			'type':self.type,
-			'dateCreateion':self.dateCreation,
+			'dateCreation':self.dateCreation,
+			'dateBegin':self.dateBegin,
+			'dateEnd':self.dateEnd,
 			'user': self.idUser,
 			'title': self.title,
-			'category': self.categories.split(","),
+			'category': self.categories.strip(",").split(","),
 			'description': self.description,
 			'lng': self.lng,
 			'lat': self.lat,
