@@ -7,7 +7,6 @@ sys.path.append("../")
 import service
 
 
-from src.model import PointOfInterest
 
 
 

@@ -8,7 +8,7 @@ sys.path.append("../")
 import service
 import init_databases
 
-from src.model import Velov, Category, User
+from src.model import Category, User, Pin
 
 #constants
 
@@ -36,7 +36,7 @@ def createVelovTable(urlSource) :
 		init_databases.init_admin_user()
 		admin_user = User.query.filter_by(pseudo="admin").first()
 		
-	for i in  range(0, 10):
+	for i in  range(0, data["nb_results"]):
 	#data["nb_results"]	
 		title = "Velov de " + data["values"][i][2]
 		if data["values"][i][11]=="OPEN":
@@ -47,11 +47,11 @@ def createVelovTable(urlSource) :
 		lnd = data["values"][i][9]
 		
 		
-		obj = Velov(title, lnd, lat, admin_user.id, [categorie], description)
-		obj.libre = data["values"][i][12]
-		obj.velo = data["values"][i][13]
+		obj = Pin('velov', title, lnd, lat, admin_user.id, [categorie], description)
+		obj.data1 = data["values"][i][12]
+		obj.data2 = data["values"][i][13]
 
-		obj.idVelov = data["values"][i][17]
+		obj.typeSpecificID = data["values"][i][17]
 		listVelov.append(obj);
 
 	json_file.close()

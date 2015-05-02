@@ -8,7 +8,6 @@ sys.path.append("../")
 
 import service
 
-from src.model import FacebookPin
 
 def createFacebookTable() :
 	# FACEBOOK_APP_ID     = '1620948188142851'
