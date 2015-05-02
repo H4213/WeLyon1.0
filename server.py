@@ -68,11 +68,7 @@ def pin(idPin = None):
 @app.route('/user/<idUser>/')
 def user(idUser = None, data=None):
   if request.method == "POST":
-    nameUser=request.form.get('pseudo')
-    password=request.form['password']
-    service.addUser(nameUser,password)
-    return jsonify(error=0)
-  return jsonify(error=1)
+    return serviceUser.addUserFromForm(request.form)
   
   if request.method == 'PUT':
     return service.majUser(request.form)

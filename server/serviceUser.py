@@ -39,15 +39,14 @@ def getUserById(idUser):
 
 
 def addUserFromForm(form):
-	if (form['pseudo'] and form['passw']):
-
+	if (form['pseudo'] and form['password']):
 		exist = User.query.filter_by(pseudo=form['pseudo']).first()
 
 		if exist:
 	
 			return jsonify(error="already exist")
 
-		user = User(form['pseudo'], form['passw'])
+		user = User(form['pseudo'], form['password'])
 
 		db.session.add(user)
 		db.session.commit()

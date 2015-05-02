@@ -73,8 +73,8 @@ function WeLyon(){
 	        form+='            <label for="confirmerMdP">Confirmer mot de passe</label>';
 	        form+='            <input type="password" class="form-control" id="confirmerMdP1" placeholder="Confirmez votre mot de passe">';
 	        form+='        </div>';
-	        form+='        <button id="annulerInscription" class="btn btn-danger pull-left">Annuler</button>';
-	        form+='        <button  id="okInscription" class="btn btn-default pull-right">Sinscrire</button>';
+	        form+='        <button id="annulerInscription" type="button" class="btn btn-danger pull-left">Annuler</button>';
+	        form+='        <button  id="okInscription" type="button" class="btn btn-default pull-right">Sinscrire</button>';
 	        form+='    </form>';
 		}
 		else if(bouton.get(0) === $('#connectButton').get(0)){
@@ -87,8 +87,8 @@ function WeLyon(){
 	        form+='            <label for="inscrireMdP">Mot de Passe</label>';
 	        form+='           <input type="password" class="form-control" id="inscrireMdP" placeholder="Mot de Passe">';
 	        form+='        </div>';
-	        form+='        <button id="annulerConnexion" class="btn btn-danger pull-left">Annuler</button>';
-	        form+='        <button  id="okConnexion" class="btn btn-default pull-right">Connexion</button>';
+	        form+='        <button id="annulerConnexion" type="button" class="btn btn-danger pull-left">Annuler</button>';
+	        form+='        <button  id="okConnexion" type="button" class="btn btn-default pull-right">Connexion</button>';
 	        form+='    </form>';
 		}
 
@@ -114,7 +114,13 @@ function WeLyon(){
 		//TODO: remplir la liste des categories 
 	}
 	self.cbAddUser = function(data){
-		alert("ok");
+		if (data['error']==null)
+		{
+		alert("Votre compte WeLyon a bien été créé");
+		}
+		else {
+			alert(data['error']);
+		}
 	}
 	self.ouvrirPanelAuthentification = function(bouton){
 		if(bouton.hasClass('active')){
