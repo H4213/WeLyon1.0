@@ -1,5 +1,9 @@
 from src import model
+<<<<<<< HEAD
 from src.model import User, Pin, Category, Velov , FacebookPin, Vote
+=======
+from src.model import User, Pin, Category, Velov , FacebookPin , PointOfInterest
+>>>>>>> origin/dev-PointsOfInterest
 from flask import Flask, flash, render_template, request, session
 from flask.ext.jsonpify import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -51,7 +55,11 @@ def updateVelovByIdVelov(current):
 			item.libre = current.libre
 			db.session.commit()
 		else:
+<<<<<<< HEAD
 			addObject(current)
+=======
+			addObjet(current)
+>>>>>>> origin/dev-PointsOfInterest
 		
 #Creates Facebook events 
 def updateFacebookByIdFacebook(current):
@@ -59,6 +67,7 @@ def updateFacebookByIdFacebook(current):
 		item = FacebookPin.query.filter_by(idFacebook=current.idFacebook).first()
 		
 		if item == None:
+<<<<<<< HEAD
 			addObject(current)
 
 def addUser(name,password):
@@ -96,3 +105,19 @@ def UpdateUserVoteEvent(idUser,posneg,idPin):
 			newVote.posneg=posneg
 			pinItem.score=posneg
 			addObject(newVote)
+=======
+			addObjet(current)
+
+#Creates points of interest sncf
+def addPointOfInterest(form):
+
+	db.session.add(form)
+	db.session.commit()
+
+def updatePointOfInterestByIdPointOfInterest(current) :
+	if current:
+		item = PointOfInterest.query.filter_by(idPointOfInterest=current.idPointOfInterest).first()
+		
+		if item is None:
+			addObjet(current)
+>>>>>>> origin/dev-PointsOfInterest

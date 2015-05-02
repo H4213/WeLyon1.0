@@ -11,8 +11,8 @@ function RESTful() {
                 url: URL + path,
                 data: data,
                 async: true,
-            }).done(function(data) {
-                callback(data);
+            }).done(function(resp) {
+                callback(resp);
             }).fail(function(err) {
                 console.log(err);
             });
@@ -30,8 +30,8 @@ function RESTful() {
                 url: URL + path,
                 data: data,
                 async: true
-            }).done(function(data) {
-                callback(data);
+            }).done(function(resp) {
+                callback(resp);
             }).fail(function(err) {
                 console.log(err);
             });
@@ -50,8 +50,8 @@ function RESTful() {
                 data: data,
                 ContentType: 'application/json; charset=utf-8',
                 async: true
-            }).done(function(data) {
-                callback(data);
+            }).done(function(resp) {
+                callback(resp);
             }).fail(function(err) {
                 console.log(err);
             });
@@ -59,8 +59,6 @@ function RESTful() {
             console.log(e);
         }
     };
-
-
 
     this.delete = function(path, data , callback) {
         try {
@@ -72,8 +70,8 @@ function RESTful() {
                 ContentType: 'application/json; charset=utf-8',
 
                 async: true
-            }).done(function(data) {
-                callback(data);
+            }).done(function(resp) {
+                callback(resp);
             }).fail(function(err) {
                 console.log(err);
             });

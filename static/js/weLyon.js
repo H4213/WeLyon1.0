@@ -158,6 +158,5 @@ function WeLyon(){
 		};
 	}
 }
-
 var weLyon = new WeLyon();
 weLyon.setup();
