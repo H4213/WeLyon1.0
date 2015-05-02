@@ -27,8 +27,16 @@ function MapManager(){
 	    map = new google.maps.Map(document.getElementById('map'),
 	    							mapOptions);
 
-	var trafficLayer = new *google.maps.TrafficLayer()*;
-	trafficLayer.setMap(map);
+	var bikeLayer = new google.maps.BicyclingLayer();
+
+
+	var trafficLayer = new google.maps.TrafficLayer();
+
+
+	var transitLayer = new google.maps.TransitLayer();
+	transitLayer.setMap(map);
+
+	
 
 	    self.refreshPins();
 	    //setInterval(self.refreshPins(), 60000 );

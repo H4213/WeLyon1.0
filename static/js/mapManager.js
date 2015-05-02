@@ -27,8 +27,20 @@ function MapManager(){
 	    map = new google.maps.Map(document.getElementById('map'),
 	    							mapOptions);
 
+	var bikeLayer = new google.maps.BicyclingLayer();
+	bikeLayer.setMap(map);
+
+
 	var trafficLayer = new google.maps.TrafficLayer();
 	trafficLayer.setMap(map);
+
+
+	var transitLayer = new google.maps.TransitLayer();
+	transitLayer.setMap(map);
+
+	//http://stackoverflow.com/questions/10805257/how-to-toggle-between-kml-kmz-layers-in-google-maps-api-v3 -> how to toggle layers
+
+	
 
 	    self.refreshPins();
 	    //setInterval(self.refreshPins(), 60000 );
