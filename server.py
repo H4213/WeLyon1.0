@@ -64,6 +64,11 @@ def pins(category = None):
 def pin(idPin = None):
   return servicePin.getPinById(idPin)
 
+@app.route('/user/connect/', methods=['POST'])
+def connectUser(data=None):
+    if request.method == 'POST':
+      return serviceUser.authUser(request.form)
+
 @app.route('/user/', methods=('GET', 'POST', 'PUT', 'DELETE'))
 @app.route('/user/<idUser>/')
 def user(idUser = None, data=None):
