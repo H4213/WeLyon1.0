@@ -33,11 +33,7 @@ function MapManager(){
 	    //setInterval(self.refreshPins(), 60000 );
 	};
  
-	/*self.delMarker = function(aPin){
-		var id=aPin.id;
-		var marker = markers[id];
 
-	}*/
 	self.addMarker = function(aPin) {
 		var type = aPin.type;
 		var image;
@@ -102,6 +98,7 @@ function MapManager(){
 
 	};
 
+
 	self.buildDescription=function(aPin, pinType) {
 		var contentString = '';
 		switch (pinType) { 
@@ -128,7 +125,7 @@ function MapManager(){
 				break;
 				
 			case "dynamique" : 
-				contentString = '<div id="content">'+
+				contentString = '<div id="content" data-id-pin=' + aPin.id + '>'+
 					'<div id="siteNotice">'+
 					'</div>'+
 					'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
@@ -149,7 +146,7 @@ function MapManager(){
 				break;
 			
 			default :
-				contentString = '<div id="content">'+
+				contentString = '<div id="content" data-id-pin=' + aPin.id + '>'+
 					'<div id="siteNotice">'+
 					'</div>'+
 					'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
@@ -192,6 +189,10 @@ function MapManager(){
 			aPin = data.pin;
 
 		self.addMarker(aPin);
+		var infowindow = new google.maps.InfoWindow({
+	     content: self.buildDescription(aPin, aPin.Type)})
+		
+		infowindow.open(map, markers[aPin.id].marker);
 		}
 	};
 

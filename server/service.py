@@ -77,27 +77,23 @@ def UpdateUserVoteEvent(form,idPin):
 		pinItem = Pin.query.filter_by(id=idPin).first()
 		oldposneg=0
 		print ("ici")
-		if item==None:
+		if item:
+			oldposneg=item.posneg
+			print(oldposneg)
+			item.posneg=posneg
+		else :
+		
+			print("item=none")
 			newVote=Vote(idUser,idPin)
 			newVote.posneg=posneg
 			addObject(newVote)
 			print (idUser+","+idPin)
-			if pinItem.score==None:
+			if pinItem.score:
+				print('la')
+			else:
 				pinItem.score=0
-		else :
-			oldposneg=item.posneg
-			item.posneg=posneg
 			
-		if posneg>0 and oldposneg<0:
-				
-			pinItem.score=int(pinItem.score)+2
-		elif (posneg>0 and oldposneg==0) or (posneg==0 and oldposneg<0) :
-			pinItem.score=int(pinItem.score)+1
-		elif (posneg<0 and oldposneg==0) or (posneg==0 and oldposneg>0):
-			pinItem.score=int(pinItem.score)-1
-		elif posneg<0 and oldposneg>0:
-			pinItem.score=int(pinItem.score)-2
-		
+		pinItem.score=int(pinItem.score)-oldposneg+int(posneg)
 		db.session.commit()
 
 		return jsonify(pin=pinItem.serialize())
