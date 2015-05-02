@@ -2,12 +2,16 @@ function WeLyon(){
 	var self = this;
 	var category = new Category();
 	var mapManager = new MapManager();
+	var user = new User();
 
 //------------Les setups des pages/panels et ses boutons------------------
 	self.setup = function(){
 		google.maps.event.addDomListener(window, 'load', mapManager.initMap());
 		self.fillCategories();
 
+
+	
+	
 		$('#categoryButton').on('click',function(){
 			self.toggleCategories();
 		});
@@ -26,11 +30,17 @@ function WeLyon(){
 
 		$('#signinButton').on('click', function(){
 			self.ouvrirPanelAuthentification($(this));
+
+
 		});
 
 		$('#connectButton').on('click', function(){
 			self.ouvrirPanelAuthentification($(this));
 		});
+
+		
+
+	
 
 		//TODO: remplir page (a l'ouverture/connexion) en accord avec les droits de l'utilisateur 
 
@@ -41,6 +51,9 @@ function WeLyon(){
 			bouton.toggleClass('active');
 			$('#incscriptionPanel').toggle();
 		});
+		$('#okInscription').on('click', function(){
+			self.signInUser($(this));
+		});
 	};
 //--------------Remplissage des formulaires----------------------
 	self.fillAuthentificationForm = function(bouton){
@@ -50,19 +63,19 @@ function WeLyon(){
 			form+='	   <form>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrirePseudo">Pseudo</label>';
-	        form+='            <input type="text" class="form-control" id="inscrirePseudo" placeholder="pseudo">';
+	        form+='            <input type="text" class="form-control" id="inscrirePseudo1" placeholder="pseudo">';
 	        form+='        </div>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrireEmail">Email</label>';
-	        form+='            <input type="email" class="form-control" id="inscrireEmail" placeholder="Entrez votre email">';
+	        form+='            <input type="email" class="form-control" id="inscrireEmail1" placeholder="Entrez votre email">';
 	        form+='        </div>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrireMdP">Mot de Passe</label>';
-	        form+='           <input type="password" class="form-control" id="inscrireMdP" placeholder="Mot de Passe">';
+	        form+='           <input type="password" class="form-control" id="inscrireMdP1" placeholder="Mot de Passe">';
 	        form+='        </div>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="confirmerMdP">Confirmer mot de passe</label>';
-	        form+='            <input type="password" class="form-control" id="confirmerMdP" placeholder="Confirmez votre mot de passe">';
+	        form+='            <input type="password" class="form-control" id="confirmerMdP1" placeholder="Confirmez votre mot de passe">';
 	        form+='        </div>';
 	        form+='        <button id="annulerInscription" class="btn btn-danger pull-left">Annuler</button>';
 	        form+='        <button  id="okInscription" class="btn btn-default pull-right">Sinscrire</button>';
@@ -104,7 +117,9 @@ function WeLyon(){
 		$('#categories').append(cat);
 		//TODO: remplir la liste des categories 
 	}
-
+	self.cbAddUser = function(data){
+		alert("ok");
+	}
 	self.ouvrirPanelAuthentification = function(bouton){
 		if(bouton.hasClass('active')){
 			bouton.toggleClass('active');
@@ -127,7 +142,24 @@ function WeLyon(){
 	self.toggleCategories = function(){
 		$('.category-item').toggle();
 	};
-	
+		
+	self.signInUser = function(bouton){
+		var pseudo= document.getElementById('inscrirePseudo1').value;
+		var password= document.getElementById('inscrireMdP1').value;
+		var password2= document.getElementById('confirmerMdP1').value;
+		var mail = document.getElementById('inscrireEmail1').value;
+		if (password == password2 && pseudo!=null && password!=null){
+			user.addUser(pseudo,password,self.cbAddUser);
+		}
+		else if (pseudo==null){
+			alert("veuillez choisir un pseudo")
+		}
+		else if (password == null){
+			alert("Veuillez choisir un mot de passe")
+		}
+		else if (password == null){
+			alert("Les mots de passe ne correspondent pas")
+	};
 }
 
 var weLyon = new WeLyon();

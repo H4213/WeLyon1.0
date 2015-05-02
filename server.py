@@ -8,7 +8,7 @@ DATA_REFRESH_INTERVAL = 300
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
-
+import json
 import threading
 import thread
 import time
@@ -64,15 +64,31 @@ def pins(category = None):
 def pin(idPin = None):
   return servicePin.getPinById(idPin)
 
-@app.route('/user', methods=('GET', 'POST', 'PUT', 'DELETE'))
+@app.route('/user/', methods=('GET', 'POST', 'PUT', 'DELETE'))
 @app.route('/user/<idUser>/')
+<<<<<<< HEAD
 def user(idUser = None):
   if request.method == "POST":
     return serviceUser.majUser(request.form)
+=======
+def user(idUser = None, data=None):
 
+  if request.method == "POST":
+>>>>>>> origin/dev-fonctionnalites
+
+    nameUser=request.form.get('pseudo')
+    password=request.form['password']
+    service.addUser(nameUser,password)
+    return jsonify(error=0)
+  return jsonify(error=1)
+  
   if request.method == 'PUT':
+<<<<<<< HEAD
     return serviceUser.addUserFromForm(request.form)
 
+=======
+    return service.majUser(request.form)
+>>>>>>> origin/dev-fonctionnalites
   if request.method == 'DELETE':
     return serviceUser.delete(request.form)
 
@@ -135,6 +151,18 @@ def delete(obj = None, id = None):
   db.session.commit()
   return jsonify(retour = "1") #object deleted
 
+@app.route('/pin/vote/<idPin>/', methods=['POST'])
+def updateVote(idPin =None, data=None):
+  
+  
+  if request.method =='POST':
+    idUser =request.form.get('idUser')
+    posneg=request.form['posneg']
+    service.UpdateUserVoteEvent(idUser,posneg,idPin)
+    return jsonify(retour = "0") 
+  return jsonify(retour = "1") 
+
+  
 @app.errorhandler(404)
 def page_not_found(error):
     return jsonify(error="404"), 404

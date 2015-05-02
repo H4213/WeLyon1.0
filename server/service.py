@@ -59,4 +59,51 @@ def updateFacebookByIdFacebook(current):
 		item = FacebookPin.query.filter_by(idFacebook=current.idFacebook).first()
 		
 		if item == None:
+<<<<<<< HEAD
 			addObject(current)
+=======
+			addPin(current)
+
+def addUser(name,password):
+	newUser = User(name,password)
+	db.session.add(newUser)
+	db.session.commit()
+
+	#	return jsonify(id=user.id, pseudo=user.pseudo)
+
+	#return jsonify(error="invalid parameters")
+	
+def addCategory(form):
+	db.session.add(form)
+	db.session.commit()
+	
+def UpdateUserVoteEvent(idUser,posneg,idPin):
+
+	if idUser and idPin and posneg:
+		item = Vote.query.filter_by(idUser=idUser, idPin=idPin).first()
+		pinItem = Pin.query.filter_by(id=idPin).first()
+		if item:
+
+			if item.posneg != posneg:
+				oldposneg=item.posneg
+				
+				if posneg>0 and oldposneg<0:
+					
+					pinItem.score=int(pinItem.score)+2
+				elif (posneg>0 and oldposneg==0) or (posneg==0 and oldposneg<0) :
+					pinItem.score=int(pinItem.score)+1
+				elif (posneg<0 and oldposneg==0) or (posneg==0 and oldposneg>0):
+					pinItem.score=int(pinItem.score)-1
+				elif posneg<0 and oldposneg>0:
+					pinItem.score=int(pinItem.score)-2
+			item.posneg=posneg
+			db.session.commit()
+
+		else:
+			
+			newVote=Vote(idUser,idPin)
+			newVote.posneg=posneg
+			pinItem.score=posneg
+			db.session.add(newVote)
+			db.session.commit()
+>>>>>>> origin/dev-fonctionnalites
