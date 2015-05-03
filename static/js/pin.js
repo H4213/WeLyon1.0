@@ -27,10 +27,61 @@ function Pin() {
                 }
         
         var url='/pin/vote/'+pinID+'/';
-        console.log(data);
         rest.insert(url,data,callback);
        } 
-    };                                                                                                                                                                                                                                  
+    };   
+
+    self.addDynPin=function(title,description,user,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin,lat,lng,categorie,callback){
+        if (title=="")
+            {alert("Donnez un titre à votre évènement")}
+        else if (user==-1)
+            {alert("veuillez vous connecter")}
+        else{
+            var data = {
+                        "titre": title,
+                        "description": description,
+                        "idUser": user,
+                        "jour_debut": jour_debut,
+                        "mois_debut": mois_debut,
+                        "annee_debut": annee_debut,
+                        "heure_debut": heure_debut,
+                        "minute_debut": minute_debut,
+                        "jour_fin": jour_fin,
+                        "mois_fin": mois_fin,
+                        "annee_fin": annee_fin,
+                        "heure_fin": heure_fin,
+                        "minute_fin": minute_fin,
+                        "lat": lat,
+                        "lng": lng,
+                        "category": categorie
+
+
+                }
+            console.log(data)
+            var url="/add/dynPin/"
+            rest.insert(url,data,callback);
+        }
+    }
+    self.addStaticPin=function(title,description,user,lat,lng,categorie,callback){
+         if (title=="")
+            {alert("Donnez un titre à votre évènement")}
+        else if (user==-1)
+            {alert("veuillez vous connecter")}
+        else{
+            var data = {
+                        "titre": title,
+                        "description": description,
+                        "idUser": user,
+                        "lat": lat,
+                        "lng": lng,
+                        "category": categorie
+            }
+            console.log(data)
+            var url="/add/pin/"
+            rest.insert(url,data,callback);
+        }
+    }
+
 
   
 

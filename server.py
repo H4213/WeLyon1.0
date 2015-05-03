@@ -110,12 +110,17 @@ def auth():
   return jsonify(error="false request")
 
 #ajout d'un marqueur
-@app.route('/add/pin', methods=('GET', 'POST'))
+@app.route('/add/pin/', methods=('GET', 'POST'))
 def addPin():
   if request.method == 'POST':
-    return service.addPin(request.form)
+    return servicePin.addPin(request.form)
   return jsonify(error="false request")
 
+@app.route('/add/dynPin/', methods=['POST'])
+def addDynPin():
+  if request.method == 'POST':
+    print("ok")
+    return servicePin.addDynPin(request.form)
 #inscription d'un utilisateur
 @app.route('/add/user', methods=('GET', 'POST'))
 def addUser():
