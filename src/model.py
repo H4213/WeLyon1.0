@@ -20,6 +20,8 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     pseudo = db.Column(db.String(50))
     passw = db.Column(db.String(50))
+    pins = db.relationship('Pin', backref='user',
+                                lazy='joined')
 
     def __init__(self, username, passw):
         self.pseudo = username
@@ -304,6 +306,32 @@ class Vote(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
+associationGroupeUser = db.Table('assGrpUsr',
+    db.Column('idUser', db.Integer, db.ForeignKey('users.id')),
+    db.Column('idGroupe', db.Integer, db.ForeignKey('groupes.id'))
+)
+
+assoGroupeCat = db.Table('assGrpCat',
+    db.Column('idCat', db.Integer, db.ForeignKey('categories.id')),
+    db.Column('idGroupe', db.Integer, db.ForeignKey('groupes.id'))
+)
+
+class Groupe(db.Model):
+    __tablename__= "groupes"
+
+    id= db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(20))
+    users = db.relationship('User', secondary=associationGroupeUser)
+    categories = db.relationship('User', secondary=assoGroupeCat)
+
+    def __init__(self, nom):
+        self.name = nom
+
+    def serialize(self):
+        return {
+            'name': self.name
+        }
 
 #db.reflect()
 #db.drop_all()

@@ -73,9 +73,9 @@ def addCategoryFromForm(form):
 
 def deleteCategory(form):
 	if (form['id']):
-		item = Category.query.get(id)
+		item = Category.query.getform['id'])
 		if item:
-			db.session.delete(Category.query.get(id))
+			db.session.delete(item)
 			db.session.commit()
 			return jsonify(deleted = "1")
 

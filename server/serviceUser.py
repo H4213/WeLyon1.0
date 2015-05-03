@@ -58,9 +58,9 @@ def addUserFromForm(form):
 
 def deleteUser(form):
 	if (form['id']):
-		item = User.query.get(id)
+		item = User.query.get(form['id'])
 		if item:
-			db.session.delete(User.query.get(id))
+			db.session.delete(item)
 			db.session.commit()
 			return jsonify(deleted = "1")
 

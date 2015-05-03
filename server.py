@@ -19,7 +19,7 @@ from flask_jsglue import JSGlue
 from server import service
 from server import servicePin
 from server import serviceUser
-from server import serviceCategory
+from server import serviceCategory, serviceSocial
 
 import server
 from src.model import User, Pin, Category
@@ -147,6 +147,41 @@ def updateVote(idPin =None, data=None):
     service.UpdateUserVoteEvent(idUser,posneg,idPin)
     return jsonify(retour = "0") 
   return jsonify(retour = "1") 
+
+#renvoie les pins créé par l'utilisateur en question
+@app.route('/follow/<nomUser>/')
+def follow(nomUser = None):
+  if nomUser:
+    return serviceSocial.getPinByIdUser(nomUser)
+
+  return jsonify(retour = "0")
+
+#Vérification de la disponibilité du nom de groupe
+@app.route('/groupe/free/<name>')
+def request(name = None):
+  if name:
+    return serviceSocial.requestGroupNameFree(name)
+
+  return jsonify(retour = "0")
+
+
+@app.route('/groupe/', methods=('GET', 'POST', 'PUT', 'DELETE'))
+@app.route('/groupe/<name>/')
+def groupe(name = None):
+  if request.method == "POST":
+    return serviceSocial.majGroupe(request.form)
+
+  if request.method == 'PUT':
+    return serviceSocial.addGroupeFromForm(request.form)
+
+  if request.method == 'DELETE':
+    return serviceSocial.deleteGroupe(request.form)
+
+  if name:
+    return serviceSocial.getGroupeByName(name)
+
+  return jsonify(error='invalid parameters')
+
 
   
 @app.errorhandler(404)

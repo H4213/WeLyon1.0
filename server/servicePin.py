@@ -75,9 +75,9 @@ def addPinFromForm(form):
 
 def deletePin(form):
 	if (form['id']):
-		item = Pin.query.get(id)
+		item = Pin.query.get(form['id'])
 		if item:
-			db.session.delete(Pin.query.get(id))
+			db.session.delete(item)
 			db.session.commit()
 			return jsonify(deleted = "1")
 
