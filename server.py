@@ -168,9 +168,9 @@ def refresh():
 
 def start_refresh_thread():
 	thread.start_new_thread (refresh, ())
-
 if __name__ == '__main__':
   init_databases.init_all()
+  facebookPin.refreshFacebookData()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
   app.debug = True

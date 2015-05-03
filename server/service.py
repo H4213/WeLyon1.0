@@ -57,8 +57,11 @@ def updateVelovByIdVelov(current):
 def updateFacebookByIdFacebook(current):
 	if current:
 		item = FacebookPin.query.filter_by(idFacebook=current.idFacebook).first()
-		
-		if item == None:
+		print(item)
+
+		if not(item):
+
+			print('item est bien Vide')
 			addObject(current)
 
 def addUser(name,password):
