@@ -10,7 +10,9 @@ from sqlalchemy.orm import backref, relation
 import datetime
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tmucotknskzdvn:B5Hyna3G7I1xIhPj3i_CSdl-GS@ec2-54-163-238-96.compute-1.amazonaws.com:5432/d6fisokcj01ulm'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://H4213:SabreESS32@82.241.33.248:3306/WeLyon-amine'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://H4213:SabreESS32@82.241.33.248:3306/WeLyon-amine'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///d:\\test.db' 
+
 db = SQLAlchemy(app)
  
 ########################################################################
@@ -32,11 +34,14 @@ class User(db.Model):
             'passw': self.passw,
         }
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+
+    # ceci est un service !!!!!!!     
+    # def delete(self):
+    #     db.session.delete(self)
+    #     db.session.commit()
 
     #---------------------------------------------------------------
+
 class Category(db.Model):
 
     __tablename__ = "categories"
@@ -62,14 +67,12 @@ class Category(db.Model):
                 'id': self.id,
                 'nom': self.nom,
                 'description': self.description,
-                #'pins' : [item.serializeSmall() for item in self.pins],
                 'child': [item.serializeSmall() for item in self.categoriesChild]
             }
         return {
             'id': self.id,
             'nom': self.nom,
             'description': self.description,
-            #'pins' : [item.serializeSmall() for item in self.pins],
         }
 
     def serializeSmall(self):
@@ -78,9 +81,10 @@ class Category(db.Model):
             'nom': self.nom
         }
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+    # PAREIL, C'EST UN SERVICE N'A RIEN A FAIRE DANS LE MODELE
+    # def delete(self):
+    #     db.session.delete(self)
+    #     db.session.commit()
 
     #------------------------------------------------------------------
 
@@ -100,7 +104,7 @@ class Pin(db.Model):
 	dateBegin = db.Column(db.DateTime)
 	dateEnd = db.Column(db.DateTime)
 	
-	typeSpecificID = Column(db.BigInteger)
+	typeSpecificID = Column(db.BigInteger , index=True)
 	data1 = db.Column(db.String(30))
 	data2 = db.Column(db.String(30))
 	data3 = db.Column(db.String(30))
@@ -140,11 +144,6 @@ class Pin(db.Model):
 			'typeSpecificID': self.typeSpecificID
 		}
 
-	def delete(self):
-		db.session.delete(self)
-		db.session.commit()
-
-
 class Vote(db.Model):
     __tablename__ = "votes"
     id= db.Column(db.Integer, primary_key = True)
@@ -162,9 +161,6 @@ class Vote(db.Model):
             'idPin': self.idPin,
         }
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
 
 #db.reflect()
 #db.drop_all()

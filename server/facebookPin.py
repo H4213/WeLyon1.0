@@ -6,35 +6,16 @@ import sys
 import requests
 sys.path.append("../")
 
+from src import model
+from src.model import Category, User, Pin
+
+
 import service
 
 
 def createFacebookTable() :
-	# FACEBOOK_APP_ID     = '1620948188142851'
-	# FACEBOOK_APP_SECRET = '52762f86fefa57c8f828617d15625169'
-	FACEBOOK_APP_ID     = '1620948188142851'
-	FACEBOOK_APP_SECRET = '52762f86fefa57c8f828617d15625169'
 
-
-	# payload = {'grant_type': 'client_credentials', 'client_id': FACEBOOK_APP_ID, 'client_secret': FACEBOOK_APP_SECRET }
-	# file = requests.post('https://graph.facebook.com/oauth/access_token?', params = payload)
-	# #print file.text #to test what the FB api responded with    
-	token = 'CAACEdEose0cBAKpzSWaR0KzdW4ZCzMGJ56ZCBM3OehDhcikUmxYqUKJyAwMkKxQ3t5n3hu0yutvBsjmvu9SkeoNdnxaRQbs1WJKQ0r8oiSZBQIT8vpqSitUljKZC2DT9Kj5Rmo9WsSLZAZBd27QS752fRhJWCrOnhmQ4VUh34o5uxAfZBzob9pHZCQ9cZCtosvx30wuPqHZC52Ex0h9FZBR2K68'
-
-
-	# # Trying to get an access token. Very awkward.
-	# oauth_args = dict(client_id     = FACEBOOK_APP_ID, client_secret = FACEBOOK_APP_SECRET, grant_type    = 'client_credentials')
-	# oauth_curl_cmd = ['curl','https://graph.facebook.com/oauth/access_token?' + urllib.urlencode(oauth_args)]
-	# oauth_response = subprocess.Popen(oauth_curl_cmd,stdout = subprocess.PIPE,stderr = subprocess.PIPE).communicate()[0]
-
-	# try:
-	#     token = urlparse.parse_qs(str(oauth_response))['access_token'][0]
-	# except KeyError:
-	#     print('Unable to grab an access token!')
-	#     exit()
-
-	#token = 'CAACEdEose0cBAPfoaH5UtoC3nt4KYqNShODlAJyOh71QPX4FLKFldn1Tw44wu95CdtMm96gnvPkUkJGPIhsuUtzvNDncxmLrcWGA64ZCULx0GYOGmbZBS9s1jjLqg7ZB9PAaxK26XwtEgIPvciuJySZAF93FLzuBvjNUU4ANB2rQm8VnhNZCOoDjb8JDKjYiU6Q8yMMaNGoQuKFpFx8Q1'
-
+	token = 'CAACEdEose0cBAGMeZATLfVZB10rFKSYJZBYDSgegZB5sBFfKX0KmcS9AiThTgVNCcZCo0HSFZAPOo0VEFffZBbPudoUeloirKyHqEjd10hwrfPdbnjBeCkWRVxF0m9wJjL3e0ekFx5ZCUI0QuwnOjBTQ7iZClY6zd149f8mctXah8eTx9M91kRkndMjDwtrHtqDfnZAocZBgyZAZC3dka60ttOxhB '
 	nbEvent=100
 	latitudeMin=45.6389404
 	longitudeMin=4.7530973
@@ -42,7 +23,7 @@ def createFacebookTable() :
 	longitudeMax=5.0036580
 	graph = facebook.GraphAPI(token)
 
-	t=graph.request("search",{ 'q' : 'Villeurbanne', 'type' : 'event', 'limit' : nbEvent, 'start_time' : 'currentTime'})
+	t=graph.request("search",{ 'q' : 'Lyon', 'type' : 'event', 'limit' : nbEvent, 'start_time' : 'currentTime'})
 	events = json.dumps(t['data'],[0], indent=1)
 	i=-1
 	listFacebook =[]
@@ -62,11 +43,11 @@ def createFacebookTable() :
 		admin_user = User.query.filter_by(pseudo="admin").first()
 		
 	while i < nbIter:
-		
 		i+=1
 
 		title=t['data'][i]['name']
-
+		title=title[:19]
+		title="".join([x if ord(x) < 128 else '?' for x in title])
 		idEvent=t['data'][i]['id']
 		try :
 			Event=graph.request(idEvent)
@@ -78,6 +59,10 @@ def createFacebookTable() :
 					if (latitude>latitudeMin) & (longitude >longitudeMin) & (latitude <latitudeMax) & (longitude<longitudeMax) :
 						if 'description' in Event:
 							description = Event['description']
+							#description= unicode(description,"utf-8")
+							description= description[:99]
+
+							description="".join([x if ord(x) < 128 else '?' for x in description])
 						else:
 							description =""
 						if 'start_time' in Event:
@@ -87,30 +72,36 @@ def createFacebookTable() :
 								end_time = Event['end_time']
 							else:
 								 end_time = 'currentTime'
-							#image=graph.request(idEvent+'/picture?redirect=false')
-							#linkpicture=image['data']['url']
 
 							obj = Pin('facebookPin', title, longitude, latitude, admin_user.id, [categorie], description)
-							obj.dateBegin = start_time
-							obj.dateEnd = end_time
+							dateBegin=datetime.datetime(year=int(start_time[:4]),day=int(start_time[8:10]),month=int(start_time[5:7]))
+							if (start_time[12:14]):
+								dateBegin=dateBegin.replace(hour=int(start_time[11:13]))
+								dateBegin=dateBegin.replace(minute=int(start_time[14:16]))
+							if end_time=='currentTime':
+								dateEnd=dateBegin.replace(hour=23,minute=59)
+							else:
+								dateEnd=datetime.datetime(year=int(start_time[:4]),day=int(start_time[8:10]),month=int(start_time[5:7]))
+								if (end_time[12:14]):
+									dateEnd=dateEnd.replace(hour=int(end_time[11:13]))
+									dateEnd=dateEnd.replace(minute=int(end_time[14:16]))
 							obj.typeSpecificID = idEvent
+							obj.dateBegin=dateBegin
+							obj.dateEnd=dateEnd
 							listFacebook.append(obj)
-							#print("Ok")
-
-		except (requests.ConnectionError , urllib2.URLError):
+						
+		except (requests.ConnectionError):
 			service.errorMessage ("ConnectionError")
 		
-			
-
-
 	return listFacebook
 
 def refreshFacebookData():
+	service.logMessage(".Facebook : Getting Facebook Events")
 	list = createFacebookTable()
-	service.logMessage(".Updating the database")
+	service.logMessage(".Facebook : Updating the database")
 	for v in list:
 		service.updateFacebookByIdFacebook(v)
-	service.logMessage(".Facebook  is up to date")
+	service.logMessage(".Facebook :  I'm up to date")
 
 
 
@@ -119,30 +110,3 @@ def refreshFacebookData():
 
 
 
-	# if "location" in t['data'][i] :
-	# 	location = t['data'][i]['location']
-	# 	locationTab=graph.request("search",{ 'q' : location,'type' : 'page'})
-	# 	locationJson = json.dumps(locationTab['data'],[0], indent=1)
-	# 	with open("C:\Test\Test2"+str(i)+".txt", 'w+') as myfile:
-	# 		myfile.write(locationJson)
-	# 		myfile.close()
-	# 	json_size = len(locationJson)
-	# 	j=-1
-	# 	while j<json_size:
-	# 		j+=1
-	# 		locationName=locationTab['data'][j]['name']
-	# 		if locationName == location:
-	# 			truc=locationTab['data'][j]
-	# 			break
-	# 	idLocation = locationTab['data'][j]['id']
-
-	# 	placeTab=graph.request(idLocation)
-	# 	latitude=placeTab['location']['latitude']
-	# 	longitude=placeTab['location']['longitude']
-
-	# 	placeJson=json.dumps(placeTab)
-	# 	with open("C:\Test\Test2"+str(i)+"1.txt", 'w+') as myfile:
-	# 		myfile.write(placeJson)
-	# 		myfile.close()
-
-		
