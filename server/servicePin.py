@@ -1,10 +1,5 @@
 from src import model
-<<<<<<< HEAD
 from src.model import User, Pin, Category
-=======
-from src.model import User, Pin, Category, Velov , FacebookPin, DynPin
->>>>>>> origin/Dev-Authentification
-
 from server import service
 
 from flask import Flask, flash, render_template, request, session
@@ -57,16 +52,12 @@ def getPinsByIdCategory(idCategory):
 
 	return jsonify(error="No category")
 
-<<<<<<< HEAD
-=======
-	return jsonify(error="No idCategory")
+
 def addPin(form):
 	if (form['titre'] and form['idUser'] and form['lng'] and form['lat']):
 		exist = Pin.query.filter_by(title=form['titre'], lng=form['lng'], lat=form['lat']).first()
 		if exist:
 			return jsonify(error="already exists")
->>>>>>> origin/Dev-Authentification
-
 		user = User.query.get(form['idUser'])
 
 		if not(user):
@@ -95,10 +86,10 @@ def addDynPin(form):
 		if not(user):
 			return jsonify(error="user doesn't exist")
 		
-		pin = DynPin(form['titre'], float(form['lng']), float(form['lat']))
-		pin.idUser =form['idUser']
-		pin.description = form['description']
-		pin.categories=[Category.query.filter_by(nom=form['category']).first()]
+		categorie1=Category.query.filter_by(nom=form['category']).first()
+		description = form['description']
+
+		pin = Pin("Event",form['titre'], float(form['lng']), float(form['lat']),form['idUser'],[categorie1],description)
 		print("ici")
 		dateDebut = datetime.datetime(year=int(form['annee_debut']),month=int(form['mois_debut']),day=int(form['jour_debut']),minute=int(form['minute_debut']),hour=int(form['heure_debut']))
 		dateFin  = datetime.datetime(year=int(form['annee_fin']),month=int(form['mois_fin']),day=int(form['jour_fin']),minute=int(form['minute_fin']),hour=int(form['heure_fin']))
@@ -106,7 +97,7 @@ def addDynPin(form):
 		pin.dateEnd=dateFin
 		db.session.add(pin)
 		db.session.commit()
-		
+		print("done")
 		return jsonify(pin = pin.serialize()) 
 		
 	return jsonify(error="invalid parameters")

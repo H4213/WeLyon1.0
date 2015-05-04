@@ -89,20 +89,6 @@ def UpdateUserVoteEvent(form,idPin):
 			newVote=Vote(idUser,idPin)
 			newVote.posneg=posneg
 			addObject(newVote)
-<<<<<<< HEAD
-
-#Creates points of interest sncf
-def addPointOfInterest(form):
-	db.session.add(form)
-	db.session.commit()
-
-def updatePointOfInterestByIdPointOfInterest(current) :
-	if current:
-		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID, type='pointOfInterest').first()
-		if item is None:
-			addObject(current)
-
-=======
 			print (idUser+","+idPin)
 			if pinItem.score:
 				print('la')
@@ -114,4 +100,14 @@ def updatePointOfInterestByIdPointOfInterest(current) :
 
 		return jsonify(pin=pinItem.serialize())
 			
->>>>>>> origin/Dev-Authentification
+#Creates points of interest sncf
+def addPointOfInterest(form):
+	db.session.add(form)
+	db.session.commit()
+
+def updatePointOfInterestByIdPointOfInterest(current) :
+	if current:
+		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID, type='pointOfInterest').first()
+		if item is None:
+			addObject(current)
+
