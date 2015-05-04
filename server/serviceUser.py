@@ -101,3 +101,31 @@ def getUserFriendsById(idUser):
 	else:
 		return jsonify(error = "No idUser")
 
+def addFriendFromForm(form):
+	if (form['userID'] and form['newFriendID']):
+		if int(form['userID']) == int(form['newFriendID']):
+			return jsonify(error="Of course you're your own friend...") 
+
+		exist1 = User.query.filter_by(id=int(form['userID'])).first()
+		exist2 = User.query.filter_by(id=int(form['newFriendID'])).first()
+
+		if exist1 and exist2:
+			query = "insert into assFriends VALUES ("+str(form['userID'])+","+ str(form['newFriendID'])+")"
+			db.engine.execute(query)
+			return jsonify(result="OK")
+		else:
+			return jsonify(error="inexistent member")
+	else:
+		jsonify(error="incorrect form")
+
+def deleteFriendship(form):
+	if (form['ID1'] and form['ID2']):
+		query0 = "select * from assFriends where friend1ID="+str(idUser)+" or " + " friend2ID="+str(idUser)
+		items = db.engine.execute(query)
+		if item:
+			query = "delete from assFriends where friend1ID="+str(form['ID1'])+" and " + " friend2ID="+str(form['ID2'])
+			db.engine.execute(query)
+		else:
+			return jsonify(error="inexistent friendship")
+	else:
+		return jsonify(error="invalid form")

@@ -89,16 +89,14 @@ def user(idUser = None, data=None):
 
   return serviceUser.getAllUser()
 
-@app.route('/friends/', methods=('GET', 'POST', 'PUT', 'DELETE'))
+@app.route('/friends/', methods=('GET', 'POST', 'DELETE'))
 @app.route('/friends/<idUser>/')
 def friend(idUser = None, data=None):
   if request.method == "POST":
-    return serviceUser.addUserFromForm(request.form)
+    return serviceUser.addFriendFromForm(request.form)
   
-  if request.method == 'PUT':
-    return service.majUser(request.form)
   if request.method == 'DELETE':
-    return serviceUser.delete(request.form)
+    return serviceUser.deleteFriendship(request.form)
 
   if idUser:
     return serviceUser.getUserFriendsById(idUser)
