@@ -12,17 +12,39 @@
     margin-left: 15px;
 }
 
-.visibilityItem {
+.valider{
+    background-color: #09B969;
+    border-color: #CCCCCC;
+    color: #666666;
+}
+
+.valider:hover{
+    background-color: #09AF34;    
+}
+
+.annuler{    
+    background-color: white;
+    border-color: #CCCCCC;
+    color: #9F99A1;
+}
+
+.annuler:hover{
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.optionCarteItem {
     color: white;
 }
 
-.visibilityItem > i {
+.optionCarteItem > i {
     text-shadow:-1px 0 rgba(0, 0, 0, 0.3), 0 1px rgba(0, 0, 0, 0.3), 1px 0 rgba(0, 0, 0, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.3);
     text-align: center;
     cursor: pointer;
+    margin-bottom: 5px;
 }
 
-.visibilityItem > i:hover{
+.optionCarteItem > i:hover{
     text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px 1px black;
 }
 
@@ -30,6 +52,10 @@
     background-color: #595757;
     border-radius: 0;
     margin-bottom: 0;
+}
+
+#container{
+    position: relative;
 }
 
 #signinButton.active, #signinButton:hover{
@@ -48,11 +74,17 @@
     z-index:1000;
 }
 
-#visibilityFilter{
+#optionUtilisateur{
     position:absolute;
+    top: 60px;
+    right: 22px;
+    z-index:900;
+}
+
+#optionsCarte{
+    position: absolute;
     top:100px;
-    right: 5px;
-    /*width:25%;*/
+    right: 0;
     z-index:900;
 }
 

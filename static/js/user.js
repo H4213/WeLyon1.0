@@ -11,8 +11,9 @@ function User() {
                    }
         var url=self.path;
         rest.insert(url,data,callback);
-    };                                    
-    self.authUser = function(pseudo,password, callback){
+    };  
+
+    self.authUser = function(pseudo, password, callback){
         var data = {
                         "pseudo": pseudo,
                         "password": password

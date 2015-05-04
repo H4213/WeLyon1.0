@@ -13,6 +13,7 @@ function MapManager(){
 	var map; // object containing the map
 	var cordinateLyon = new google.maps.LatLng(45.7601676, 4.8328885);
 	var newPos =new google.maps.LatLng(0,0);
+	
 	// image de marker
 	var imageNormal = Flask.url_for("static", {"filename": "./assets/normal.png"});
 	var imageVelov = Flask.url_for("static", {"filename": "./assets/velov.png"});
@@ -53,6 +54,7 @@ function MapManager(){
 	  controlUI.style.marginTop = '22px';
 	  controlUI.style.marginRight = '22px';
 	  controlUI.style.textAlign = 'center';
+	  controlUI.style.display = 'none';
 	  controlUI.title = 'Cliquer pour ajouter un event';
 	  controlDiv.appendChild(controlUI);
 
