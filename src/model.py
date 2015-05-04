@@ -10,7 +10,7 @@ from sqlalchemy.orm import backref, relation
 
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tmucotknskzdvn:B5Hyna3G7I1xIhPj3i_CSdl-GS@ec2-54-163-238-96.compute-1.amazonaws.com:5432/d6fisokcj01ulm'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://H4213:SabreESS32@82.241.33.248:3306/WeLyon-paul2'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://H4213:SabreESS32@82.241.33.248:3306/WeLyon-paul'
 db = SQLAlchemy(app)
  
 ########################################################################
@@ -95,12 +95,12 @@ class Pin(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     type = db.Column(db.String(30))
     idUser = db.Column(db.Integer, db.ForeignKey("users.id"))
-    title = db.Column(db.String(20))
+    title = db.Column(db.String(100))
     categories = db.relationship("Category",
                     secondary=association_table,
                     backref='pins')
     score = db.Column(db.Integer)		
-    description = db.Column(db.String(100)) 
+    description = db.Column(db.String(400)) 
     lng = db.Column(db.Float)
     lat = db.Column(db.Float)
 
