@@ -145,6 +145,8 @@ function WeLyon(){
 		{
 		idUser = data['idUser'];
 		nameUser = data['nameUser'];
+		//TODO:Peut rajouter une case se souvenir de moi
+
 		localStorage.setItem('idUser',idUser);
 		localStorage.setItem('nameUser',nameUser);
 		mapManager.setIdUser(idUser);
@@ -171,7 +173,7 @@ function WeLyon(){
 		$('#visibilityFilter').find('.active').toggleClass('active');
 		bouton.toggleClass('active');
 		var visibilite = bouton.data('visibility');
-		//mapManager.filtrerVisibilite(visibilite);
+		mapManager.filtrerVisibilite(visibilite);
 		//TODO: methode qui gere visibilite des pins par leur data-visibility (dans mapManager)	
 	};
 

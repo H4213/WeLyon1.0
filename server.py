@@ -59,6 +59,9 @@ def pins(category = None):
   if category:
     return servicePin.getPinsByIdCategory(category)
 
+  visibility = request.args.get('visibilite')
+  if visibility:
+    return servicePin.getPinByVisibility(visibility)
   return servicePin.getAllPin()
 
 @app.route('/pin/<idPin>/')

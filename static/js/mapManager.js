@@ -37,7 +37,7 @@ function MapManager(){
 		centerControlDiv.index = 1;
 		map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
 	
-	    self.refreshPins();
+	    //self.refreshPins();
 	    //setInterval(self.refreshPins(), 60000 );
 	};
   
@@ -523,6 +523,10 @@ function MapManager(){
 		}
 	};
 
+	self.cbGetPinVisibilite =function(data){
+		self.initMap();
+		self.cbGetAllPins(data)
+   	};
 	self.pinSetup = function(){
 
 		
@@ -540,6 +544,10 @@ function MapManager(){
 			});
 
 	};		
+	self.filtrerVisibilite =function(visibilite){
+		pin.getPinVisibilite(visibilite, self.cbGetPinVisibilite);
+	};
+
 	self.setIdUser =function (idUserParam){
 		idUser = idUserParam;
 	};

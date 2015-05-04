@@ -80,6 +80,14 @@ function Pin() {
             var url="/add/pin/"
             rest.insert(url,data,callback);
         }
+    };
+
+    self.getPinVisibilite=function(visibilite,callback)
+    {
+        var data = {
+            "visibilite": visibilite
+        }
+        rest.get(self.path,data,callback)
     }
 
 

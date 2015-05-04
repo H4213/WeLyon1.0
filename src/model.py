@@ -85,64 +85,66 @@ class Category(db.Model):
     #------------------------------------------------------------------
 
 class Pin(db.Model):
-	__tablename__ = 'pins'
-	id = db.Column(db.Integer, primary_key = True)
-	type = db.Column(db.String(30))
-	idUser = db.Column(db.Integer, db.ForeignKey("users.id"))
-	title = db.Column(db.String(100))
-	categories = db.Column(db.String(100))
-	score = db.Column(db.Integer)		
-	description = db.Column(db.String(400)) 
-	lng = db.Column(db.Float)
-	lat = db.Column(db.Float)
-	
-	dateCreation = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-	dateBegin = db.Column(db.DateTime)
-	dateEnd = db.Column(db.DateTime)
-	
-	typeSpecificID = Column(db.BigInteger)
-	data1 = db.Column(db.String(30))
-	data2 = db.Column(db.String(30))
-	data3 = db.Column(db.String(30))
+    __tablename__ = 'pins'
+    id = db.Column(db.Integer, primary_key = True)
+    type = db.Column(db.String(30))
+    idUser = db.Column(db.Integer, db.ForeignKey("users.id"))
+    title = db.Column(db.String(100))
+    categories = db.Column(db.String(100))
+    score = db.Column(db.Integer)		
+    description = db.Column(db.String(400)) 
+    lng = db.Column(db.Float)
+    lat = db.Column(db.Float)
+    staticHotVisibility =db.Column(db.Boolean)
+    dateCreation = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    dateBegin = db.Column(db.DateTime)
+    dateEnd = db.Column(db.DateTime)
 
-	def __init__(self, type, title, lng, lat, idUser = 1, categories = [], description = "",score=0):
-		self.type = type
-		self.idUser = idUser
-		self.title = title
-		self.categories = ","
-		for i in categories:
-			self.categories = str(self.categories)+str(i.id)+","
-		self.description = description
-		self.lng = lng
-		self.lat = lat
+    typeSpecificID = Column(db.BigInteger)
+    data1 = db.Column(db.String(30))
+    data2 = db.Column(db.String(30))
+    data3 = db.Column(db.String(30))
 
-	def serialize(self):
-	
-		liste = self.categories.strip(",").split(",")
-		if liste[0] == "":
-			liste = []
-		return {
-			'id': self.id,
-			'type':self.type,
-			'dateCreation':self.dateCreation,
-			'dateBegin':self.dateBegin,
-			'dateEnd':self.dateEnd,
-			'user': self.idUser,
-			'title': self.title,
-			'category': liste,
-			'description': self.description,
-			'lng': self.lng,
-			'lat': self.lat,
-			'score': self.score,
-			'data1': self.data1,
-			'data2': self.data2,
-			'data3': self.data3,
-			'typeSpecificID': self.typeSpecificID
-		}
+    def __init__(self, type, title, lng, lat, idUser = 1, categories = [], description = "", score = 0, staticHotVisibilty = False):
+        self.type = type
+        self.idUser = idUser
+        self.title = title
+        self.categories = ","
+        self.score = score
+        for i in categories:
+            self.categories = str(self.categories)+str(i.id)+","
+        self.description = description
+        self.lng = lng
+        self.lat = lat
+        self.staticHotVisibilty=staticHotVisibilty
 
-	def delete(self):
-		db.session.delete(self)
-		db.session.commit()
+    def serialize(self):
+
+        liste = self.categories.strip(",").split(",")
+        if liste[0] == "":
+            liste = []
+        return {
+            'id': self.id,
+            'type':self.type,
+            'dateCreation':self.dateCreation,
+            'dateBegin':self.dateBegin,
+            'dateEnd':self.dateEnd,
+            'user': self.idUser,
+            'title': self.title,
+            'category': liste,
+            'description': self.description,
+            'lng': self.lng,
+            'lat': self.lat,
+            'score': self.score,
+            'data1': self.data1,
+            'data2': self.data2,
+            'data3': self.data3,
+            'typeSpecificID': self.typeSpecificID
+        }
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
 
 class Vote(db.Model):
