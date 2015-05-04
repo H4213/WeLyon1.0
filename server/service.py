@@ -5,6 +5,7 @@ from flask.ext.jsonpify import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import or_
 import time
 
 def logMessage(message):
@@ -101,4 +102,28 @@ def updatePointOfInterestByIdPointOfInterest(current) :
 		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID, type=current.type).first()
 		if item is None:
 			addObject(current)
+
+
+def globalSearch(term):
+	if not(term):
+		return jsonify(result="No results")
+	else:
+		print ('searching for ' + term) 
+		listLevel1 = []
+		items = Pin.query.filter(or_(Pin.title.like("%"+term+"%"), Pin.description.like("%"+term+"%")))
+		if items:
+			listLevel1.append(items)
+			#return jsonify(Pins=[item.serialize() for item in items])
+
+		listLevel2 = []
+		itemsC = Category.query.filter(or_(Category.nom.like("%"+term+"%"), Category.description.like("%"+term+"%")))
+		if items:
+			for i in itemsC:
+				filter="%,"+str(i.id)+",%"
+				items2 = Pin.query.filter(Pin.categories.like(filter))
+				listLevel2.append(items2)
+
+		listLevel1.extend(listLevel2)
+
+		return jsonify(Pins=[[item.serialize() for item in items] for items in listLevel1])
 

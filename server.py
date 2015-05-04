@@ -153,6 +153,15 @@ def updateVote(idPin =None, data=None):
   if request.method =='POST':
     
     return service.UpdateUserVoteEvent(request.form,idPin)
+
+
+@app.route('/search/<term>')
+def search(term):
+  if term:
+    return service.globalSearch(term)
+  else:
+    return jsonify(error="false request")
+
   
 @app.errorhandler(404)
 def page_not_found(error):
@@ -162,7 +171,7 @@ def load_facebook_event():
   facebookPin.refreshFacebookData()
 
 def refresh():
-	load_facebook_event()
+	#load_facebook_event()
 	load_static_data()
 	while 1:
 		velov.refreshVelovData(VELOV_DATA_SOURCE)
@@ -180,6 +189,6 @@ if __name__ == '__main__':
   init_databases.init_all()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
-  #app.debug = True
+  app.debug = True
   app.run()
 	
