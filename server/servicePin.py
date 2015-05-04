@@ -74,7 +74,13 @@ def getPinsByIdCategory(idCategory):
 		return jsonify(error="No pin")
 
 	return jsonify(error="No category")
-
+def addPinTest():
+	dateBegin=datetime.datetime.now()
+	dateEnd=dateBegin.replace(day=05)
+	pin = Pin('Event',"Soire ajout manuel",45.748518880254,4.84052316511319,"1",[Category.query.filter_by(id=7).first()],"")
+	pin.dateBegin=dateBegin
+	pin.dateEnd=dateEnd
+	service.addObject(pin)
 
 def addPin(form):
 	if (form['titre'] and form['idUser'] and form['lng'] and form['lat']):

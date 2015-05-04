@@ -6,7 +6,7 @@ function WeLyon(){
 	var user = new User();
 	var idUser;
 	var nameUser;
-
+	var pinTest=new Pin();
 
 //TODO initialisation par rapport aux droits d'utilisateur
 
@@ -60,6 +60,18 @@ function WeLyon(){
 
 		$('#disconnectButton').on('click', function(){
 			self.setUser();
+		});
+
+		$('#filterByDateButton').on('click', function(){
+			startingDay=$('#jour_debutFilter').val();
+			startingMonth=$('#mois_debutFilter').val();
+			startingYear=$('#annee_debutFilter').val();
+			endingDay=$('#jour_finFilter').val();
+			endingMonth=$('#mois_finFilter').val();
+			endingYear=$('#annee_finFilter').val();
+
+			mapManager.filterByDate(startingDay,startingMonth,startingYear,endingDay,endingMonth,endingYear);
+
 		});
 
 	};

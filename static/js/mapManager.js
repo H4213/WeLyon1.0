@@ -23,7 +23,6 @@ function MapManager(){
 	var imageHotel = Flask.url_for("static", {"filename": "./assets/hotel.png"});
 	var imageMonument = Flask.url_for("static", {"filename": "./assets/monument.png"});
 
-
 	self.initMap = function() {
 		self.pinSetup();
 
@@ -54,8 +53,8 @@ function MapManager(){
 	  controlUI.style.marginTop = '22px';
 	  controlUI.style.marginRight = '22px';
 	  controlUI.style.textAlign = 'center';
-	  controlUI.style.display = 'none';
-	  controlUI.title = 'Cliquer pour ajouter un event';
+/*	  controlUI.style.display = 'none';
+*/	  controlUI.title = 'Cliquer pour ajouter un event';
 	  controlDiv.appendChild(controlUI);
 
 	  // Set CSS for the control interior
@@ -602,6 +601,7 @@ function MapManager(){
 				for (var j=0;j<valeur.pin.category.length;j++){
 					if(valeur.pin.category[j].indexOf(idCategory)!=-1){
 						found=1;
+						console.log(valeur.pin)
 						break;
 					}
 				}
@@ -633,5 +633,41 @@ function MapManager(){
 	self.setListCategories=function(listCategories){
 		listIdCategories=listCategories;
 	};
+
+	self.filterByDate=function(startingDay,startingMonth,startingYear,endingDay,endingMonth,endingYear){
+/*					alert(startingDay+"/"+startingMonth+"/"+startingYear+"/"+endingDay+"/"+endingMonth+"/"+endingYear)
+*/
+		for (var valeur of markers.values()){
+			if(valeur.pin.dateBegin!=null && valeur.pin.dateEnd!=null)
+			{
+				var dateBegin = new Date(valeur.pin.dateBegin);
+				var dateEnd =new Date(valeur.pin.dateEnd);
+				var dateBeginCompare=new Date();
+				dateBeginCompare.setDate(startingDay);
+				dateBeginCompare.setMonth(startingMonth);
+				dateBeginCompare.setYear(startingYear);
+
+				var dateEndCompare=new Date();
+				dateEndCompare.setDate(endingDay);
+				dateEndCompare.setMonth(endingMonth);
+				dateEndCompare.setYear(endingYear);
+				
+
+				if (dateBegin>dateBeginCompare && dateEnd<dateEndCompare)
+				{
+					if(valeur.marker.visibilityCategoryToken>0)
+					{
+					valeur.marker.setVisible(true)
+					}
+				}
+				else
+				{
+					valeur.marker.setVisible(false)
+				}
+				
+			}
+		}
+	};
+
 
 }

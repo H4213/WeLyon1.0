@@ -162,11 +162,12 @@ def load_facebook_event():
   facebookPin.refreshFacebookData()
 
 def refresh():
+  #servicePin.addPinTest()
 	#load_facebook_event()
 	#load_static_data()
-	while 1:
-		velov.refreshVelovData(VELOV_DATA_SOURCE)
-		time.sleep(DATA_REFRESH_INTERVAL)
+  while 1:
+  	velov.refreshVelovData(VELOV_DATA_SOURCE)
+  	time.sleep(DATA_REFRESH_INTERVAL)
 
 
 def start_refresh_thread():
