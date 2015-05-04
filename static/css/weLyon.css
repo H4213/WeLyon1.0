@@ -14,12 +14,15 @@
 
 .visibilityItem {
     color: white;
+}
+
+.visibilityItem > i {
     text-shadow:-1px 0 rgba(0, 0, 0, 0.3), 0 1px rgba(0, 0, 0, 0.3), 1px 0 rgba(0, 0, 0, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.3);
     text-align: center;
     cursor: pointer;
 }
 
-.visibilityItem:hover{
+.visibilityItem > i:hover{
     text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px 1px black;
 }
 
@@ -34,7 +37,7 @@
 }
 
 #connectButton.active, #connectButton:hover{
-    background-color: #EF6530 !important;
+    background-color: #EF6530;
 }
 
 #incscriptionPanel{
@@ -50,7 +53,7 @@
     top:100px;
     right: 5px;
     /*width:25%;*/
-    z-index:1000;
+    z-index:900;
 }
 
 #onFireButton.active{
@@ -91,7 +94,7 @@
 #map-container{
     position: relative;
     width: 100%;
-    padding-bottom: 40%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+    padding-bottom: 50%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
 }
 
 #map-container #map{

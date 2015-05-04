@@ -5,6 +5,8 @@ function WeLyon(){
 	var mapManager = new MapManager();
 	var user = new User();
 
+//TODO initialisation par rapport aux droits d'utilisateur
+
 //------------Les setups des pages/panels et ses boutons------------------
 	self.setup = function(){
 		self.initialiserCarte();		
@@ -139,7 +141,7 @@ function WeLyon(){
 		$('#visibilityFilter').find('.active').toggleClass('active');
 		bouton.toggleClass('active');
 		var visibilite = bouton.data('visibility');
-		mapManager.filtrerVisibilite(visibilite);
+		//mapManager.filtrerVisibilite(visibilite);
 		//TODO: methode qui gere visibilite des pins par leur data-visibility (dans mapManager)	
 	};
 
