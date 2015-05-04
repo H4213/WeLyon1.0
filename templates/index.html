@@ -58,7 +58,7 @@
                                 <li id="connectedUser" class="nav-item " style="display:none;"> 
                                     <a  href="#"><i class="fa fa-user"> </i></a>
                                 </li>
-                                <li id="disconnectButton" class="nav-item nav-connexion"  style="display:none;"><a  href="#"> déconnecter </a></li>
+                                <li id="disconnectButton" class="nav-item nav-connexion"  style="display:none;"><a  href="#"> Déconnecter </a></li>
                             </ul>
                         </div>
                     </div><!-- /.navbar-collapse -->
@@ -116,7 +116,34 @@
 
                     </div>                                                       
                 </div>
- -->
+ -->          <!-- Modal -->
+            <div class="modal fade" id="formulaireAjoutEvenement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="myModalLabel">Ajout d'un nouveau point</h3>
+                  </div>
+                  <div class="modal-body">
+                        <form name="formulaire" id="ajoutPointChoixType">
+                            <p>
+                                <h4>Type de point:</h4>
+                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="type" VALUE="Evenement">Evénement <BR>
+                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="type" VALUE="Lieu">Lieu <BR>
+                            </p>
+                        <p>
+                        </p>
+                        </form>
+                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="valideTypePoint"> Suivant</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+                
+
             <div class="row">
                 <div id="optionUtilisateur" style="display:none";>
                     <div id="newEventButton" class="col-md-offset-9 col-md-2 pull-right optionCarteItem"  data-toggle="tooltip" data-placement="left" title="Ajouter Événement">

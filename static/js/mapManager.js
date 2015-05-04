@@ -79,12 +79,23 @@ function MapManager(){
 	  });
 	};
 
-	// self.ajouterEvenemment = function(){
-	// 	google.maps.event.addListenerOnce(map, 'click', function(e) {	
-	// 		controlText.innerHTML = 'Ajouter un event';
-	// 		self.placeNewMarker(e.latLng, map);
-	// 	});
-	// };
+	self.ajouterEvenemment = function(){
+	 	google.maps.event.addListenerOnce(map, 'click', function(e) {	
+	 		
+	 		$('#formulaireAjoutEvenement').modal('show');
+			$('#valideTypePoint').on('click',function(){
+				switch (document.getElementById('ajoutPointChoixType').type.value){
+					case "Lieu":
+					break;
+					case "Evenement":
+					alert();
+					break;
+				}
+			});
+	 		/*$("#myModal .modal-body").load(target, function() { 
+         $("#myModal").modal("show"); */
+	 	});
+	 };
 
 	self.placeNewMarker=function(position, map) {
 		 if (marker){
@@ -124,7 +135,9 @@ function MapManager(){
 		usedMarker = aMarker;
 		usedInfoWindow = infowindow;
 		google.maps.event.addListener(infowindow, 'closeclick', function(){
-   		marker.setVisible(false); //removes the marker);
+		if (marker){
+			marker.setVisible(false); //removes the marker);
+		}
 		});
 
 	$('#okCreatePin').on("click",function(){
@@ -526,10 +539,11 @@ function MapManager(){
 			aPin = data.pin;
 
 		self.addMarker(aPin);
-		marker.setVisible(false);
+	/*	i
+		marker.setVisible(false);*/
 		infowindow.setContent(self.buildDescription(aPin, aPin.type));
 		
-		infowindow.open(map, markers[aPin.id].marker);
+		infowindow.open(map, markers.get(aPin.id));
 		}
 	};
 

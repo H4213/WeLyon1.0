@@ -34,8 +34,7 @@ function WeLyon(){
 
 
 		$('#newEventButton').on('click', function(){
-			alert();
-			// self.ajouterEvenemment();
+			self.ajouterEvenemment();
 		});
 
 
@@ -223,8 +222,7 @@ function WeLyon(){
 	};
 
 	self.ajouterEvenemment = function(){
-		alert("ajoutEvenement");
-		// mapManager.ajouterEvenemment();
+		mapManager.ajouterEvenemment();
 	};
 
 	self.toggleBoutonsConnexion = function(){
