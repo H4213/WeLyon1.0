@@ -1,0 +1,716 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"date",
+				"dateEnd"
+			],
+			[
+				"categ",
+				"category"
+			],
+			[
+				"ca",
+				"category"
+			],
+			[
+				"cat",
+				"cat11"
+			],
+			[
+				"de",
+				"description"
+			],
+			[
+				"ID",
+				"ID_EGAL"
+			],
+			[
+				"mon",
+				"montantInit"
+			],
+			[
+				"data",
+				"dataReturn"
+			],
+			[
+				"da",
+				"dataReturn"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"tex",
+				"text-transform"
+			],
+			[
+				"padding",
+				"padding-bottom"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"slide",
+				"slideDown"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"mm",
+				"mm-collapsed"
+			],
+			[
+				"b",
+				"bottom"
+			],
+			[
+				"t",
+				"text-bottom"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"borde",
+				"border-bottom"
+			],
+			[
+				"txt",
+				"text-indent"
+			],
+			[
+				"pa",
+				"padding-left"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"ex",
+				"exp_year"
+			],
+			[
+				"pay",
+				"payment-form"
+			],
+			[
+				"label",
+				"labelSlider"
+			],
+			[
+				"fon",
+				"font-size"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "#! /usr/bin/python\n# -*- coding:utf-8 -*-\n\nimport sys\nreload(sys)\nsys.setdefaultencoding(\"utf-8\")\n\nimport os\nfrom flask import Flask, flash, render_template, request, session, jsonify\nfrom flask.ext.sqlalchemy import SQLAlchemy\n\nfrom controler import control\n\nfrom model.modele import User, Pin, Category\n\napp = Flask(__name__)\ndb = control.connectToDatabase()\n\n@app.route('/', methods=('GET', 'POST'))\ndef index():\n  record = Pin.query.first()\n  if record:\n    print \"test1\"\n  else:\n    print \"sdqg\"\n  return \"Hi Bitches\"\n\n#Affichage des différents marqueurs enregistrés\n@app.route('/pins/')\n@app.route('/pins/<category>/')\ndef pins(category = None):\n  return control.pins(category)\n\n@app.route('/pin/<idPin>/')\ndef pin(idPin = None):\n  return control.pin(idPin)\n\n@app.route('/user')\ndef user():\n  print \"user\\n\"\n  return control.displayUser()\n\n@app.route('/categories/')\n@app.route('/categories/<pin>/')\ndef categories(pin = None):\n  return control.displayCategories(pin)\n\n@app.route('/category/<category>/')\ndef category(category = None):\n  return control.displayCategory(category)\n\n#renvoie l'id après l'authentification de l'utilisateur\n@app.route('/auth', methods=('GET', 'POST'))\ndef auth():\n  if request.method == 'POST':\n    return control.authentificaton(request.form)\n  return jsonify(error=\"false request\")\n\n#ajout d'un marqueur\n@app.route('/add/pin', methods=('GET', 'POST'))\ndef addPin():\n  if request.method == 'POST':\n    return control.addPin(request.form)\n  return jsonify(error=\"false request\")\n\n#inscription d'un utilisateur\n@app.route('/add/user', methods=('GET', 'POST'))\ndef addUser():\n  if request.method == 'POST':\n    return control.addUser(request.form)\n  return jsonify(error=\"false request\")\n\n@app.route('/delete/<obj>/<id>/')\n@app.route('/delete/<obj>/<id>/')\n@app.route('/delete/<obj>/<id>/')\ndef delete(obj = None, id = None):\n  if (obj == \"user\"):\n    db.session.delete(User.query.get(id))\n  else if(obj == \"pin\"):\n    db.session.delete(Pin.query.get(id))\n  else if(obj == \"category\")\n    db.session.delete(Category.query.get(id))\n\n  db.session.commit()\nreturn jsonify(retour = \"1\")\n\n\n#test\n@app.route('/test', methods=('GET', 'POST'))\ndef test():\n  if request.method == 'POST':\n    return control.test(request.form)\n  return jsonify(error=\"false request\")\n\n@app.route('/test2')\ndef test2():\n  print \"0\"\n\n  cat1 = Category.query.get(7)\n\n  print str(cat1.nom)\n\n  \n\n  print \"1\"\n  pun = Pin(\"1&er\", 123, 134)\n\n  #cat1.pins.append(pun)\n\n  print \"2\"\n  #db.session.add(pun)\n  print \"3\"\n\n  #db.session.commit()\n\n  print \"5\"\n\n\n  return str(cat1.pins[2].title)\n\n@app.route('/test3')\ndef test3():\n  print \"--------------------------------\\n\\n\\n\"\n\n  pin = Pin.query.filter_by(title=\"1er\").first()\n  print str(pin.id)\n  print pin.title\n  print str(pin.categories)\n\n  return pin.categories[0].id\n\n@app.route('/useer')\ndef displaye():\n  print \"useer\"\n  return render_template('JSON.html')\n\n\n@app.errorhandler(404)\ndef page_not_found(error):\n    return jsonify(error=\"404\"), 404\n\nif __name__ == '__main__':\n  app.debug = True\n  app.run()\n  #port = int(os.environ.get(\"PORT\", 5000))\n  #app.run(host='0.0.0.0', port=port)",
+			"file": "app.py",
+			"file_size": 3140,
+			"file_write_time": 1430210722000000,
+			"settings":
+			{
+				"buffer_size": 3137,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "controler/control.py",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Test Html/testUser.html",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Test Html/AddUser.html",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/JSON.html",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"file": "model/modele.py",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Test Html/AddMarker",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/marker.html",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/user.html",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/leo/Documents/WeLyon/server/model/modele.py",
+		"/home/leo/Documents/Smart-City/testUser.html",
+		"/home/leo/Documents/Smart-City/app.py",
+		"/home/leo/Documents/Smart-City/Serveur/smart-city.sublime-project",
+		"/home/leo/Documents/Smart-City/Serveur/templates/stripe.html",
+		"/home/leo/Documents/Smart-City/Serveur/model/form.py",
+		"/home/leo/Documents/Smart-City/Serveur/templates/stripe2.html~",
+		"/home/leo/Documents/Smart-City/model/modele.py",
+		"/data/Users/Léo/Documents/GL/src/Etat.cpp",
+		"/home/leo/Etat.cpp",
+		"/home/leo/Documents/GL/src/Etat.cpp",
+		"/home/leo/Documents/IGROMM/Dev/3299715/templates/charge.html",
+		"/home/leo/Documents/IGROMM/Dev/3299715/templates/accueil.html",
+		"/data/Users/Léo/Documents/IGROMM/Dev/3299715/app.py",
+		"/data/Users/Léo/Documents/MediCiel/index.html",
+		"/home/leo/Documents/IGROMM/Dev/3299715/templates/layout.html",
+		"/home/leo/Documents/MediCiel/src/css/addons/jquery.mmenu.labels.css",
+		"/home/leo/Documents/MediCiel/src/css/jquery.mmenu.all.css",
+		"/data/Users/Léo/Documents/MediCiel/src/css/menu.css",
+		"/home/leo/Documents/MediCiel/index.html",
+		"/data/Users/Léo/Documents/MediCiel/src/css/style.css",
+		"/home/leo/Documents/MediCiel/bootstrap/css/bootstrap.css",
+		"/home/leo/Documents/IGROMM/swit-B.sublime-project",
+		"/home/leo/Documents/MediCiel/bootstrap/JavaScript · Bootstrap.html",
+		"/home/leo/Documents/MediCiel/src/css/extensions/jquery.mmenu.widescreen.css",
+		"/data/Users/Léo/Documents/MediCiel/test.html",
+		"/home/leo/Documents/MediCiel/src/css/jquery.mmenu.css",
+		"/home/leo/Documents/IGROMM/Dev/python-getting-started/templates/stripe.html",
+		"/home/leo/Documents/IGROMM/Dev/python-getting-started/templates/index.html",
+		"/data/Users/Léo/Documents/IGROMM/Dev/3299715/templates/stripe2.html",
+		"/home/leo/Documents/WebSemantique/H4104-WebSem/html/index.css",
+		"/home/leo/Documents/WebSemantique/H4104-WebSem/html/index.html",
+		"/home/leo/Documents/DevOO/scripts/feuilleDeRoute.js",
+		"/home/leo/Documents/DevOO/scripts/vue/vue.js",
+		"/data/Users/Léo/Documents/qemu/ospie-start/debug/run-qemu",
+		"/data/Users/Léo/Documents/Test.txt",
+		"/home/leo/Téléchargements/Datepicker for Bootstrap, from Twitter.html",
+		"/home/leo/Documents/DevOO/Tests/Plan-10.xml",
+		"/home/leo/Documents/DevOO/Tests/Plan-9.1.xml",
+		"/home/leo/Documents/DevOO/Tests/Plan-3.3.xml",
+		"/home/leo/Documents/DevOO/Tests/Livraison-3.1.xml",
+		"/home/leo/Documents/DevOO/Tests/Plan-1.3.xml"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"athegorie",
+			"marker",
+			"Marker",
+			"Categorys",
+			"categorys",
+			"Cathegorie",
+			"cathegorie",
+			"cathegories",
+			"categories",
+			"Categorys",
+			"Cathegorie",
+			"cathegorie",
+			"marker",
+			"Marker",
+			"marker",
+			"Marker",
+			"return",
+			"print",
+			"form",
+			"Erreur R",
+			"cout",
+			"'id', ",
+			"Column",
+			"Integer",
+			"DeclarativeBase",
+			"idUser = relation(\"User\", backref=\"compte\", cascade_backrefs=False)",
+			"true",
+			"myModal",
+			".label",
+			"label",
+			"menu",
+			"label",
+			"cursor",
+			"mm-label",
+			"mm-label\n",
+			";\n",
+			"Collapsed",
+			"Déo",
+			"hover",
+			"active",
+			"none",
+			"hidden",
+			"transi",
+			"last",
+			"Importante",
+			"Modérée",
+			"<li><span>Articulaire</span></li>",
+			"cursor",
+			"mm-collapsed",
+			"mm-label",
+			"mm-collapsed",
+			"uppe",
+			"upper",
+			"shadow",
+			"body",
+			"440px",
+			"\"Collapsed\"><span>",
+			"<span>",
+			"nav",
+			"path/to/",
+			"false",
+			"menu",
+			"Postérieur",
+			"required",
+			"masquer",
+			"itineraire",
+			"afficher",
+			"map",
+			"afficher",
+			"cercle",
+			"addTo",
+			"afficher",
+			"PlagesHoraires",
+			"margin-right: 10px;",
+			";\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"ategory",
+			"pin",
+			"Pin",
+			"Categories",
+			"categories",
+			"Category",
+			"category",
+			"Categories",
+			"Category",
+			"category",
+			"pin",
+			"Pin"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app.py",
+					"settings":
+					{
+						"buffer_size": 3137,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2837,
+								2837
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1853.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "controler/control.py",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 612.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Test Html/testUser.html",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Test Html/AddUser.html",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "templates/JSON.html",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "model/modele.py",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1321.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Test Html/AddMarker",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "templates/marker.html",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "templates/user.html",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.513201362282,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 417.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Test</title>
+    </head>
+
+    <body>
+        <h1>Ajout d'un pin</h1>
+        <h2>Local</h2>
+        <form action="http://0.0.0.0:5000/add/marker" id="payment-form" autocomplete="on" method="POST">
+            Titre<input id="name" name="title" type="text" class=""><br>
+            User <input type="text" name="user"><br>
+            Description <input type="text" name="description"><br>
+            cathegorie <input type="text" name="cathegorie"><br>
+            Lng <input type="text" name="lng"><br>
+            Lat <input type="text" name="lat"><br>
+            
+            <input type="submit" value="hey">
+
+        </form>
+        <h2>Distant</h2>
+        <form action="https://smart-city-h4213.heroku.com/add/marker" id="payment-form" autocomplete="on" method="POST">
+            Titre<input id="name" name="title" type="text" class=""><br>
+            User <input type="text" name="user"><br>
+            Description <input type="text" name="description"><br>
+            cathegorie <input type="text" name="cathegorie"><br>
+            Lng <input type="text" name="lng"><br>
+            Lat <input type="text" name="lat"><br>
+            
+            <input type="submit" value="hey">
+
+        </form>
+    </body>
+</html>

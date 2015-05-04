@@ -1,0 +1,4017 @@
+{
+
+    "node": [
+      {
+        "-id": "25337611",
+        "-version": "13",
+        "-timestamp": "2015-03-14T10:52:50Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29468591",
+        "-lat": "45.7664422",
+        "-lon": "4.8055028",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Gorge de Loup"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5040"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "29065832",
+        "-version": "14",
+        "-timestamp": "2015-02-20T18:05:09Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28983146",
+        "-lat": "45.747584",
+        "-lon": "4.8652467",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Sans Souci"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5091"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Sans Souci"
+          }
+        ]
+      },
+      {
+        "-id": "29065834",
+        "-version": "15",
+        "-timestamp": "2015-04-06T07:48:08Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "30008624",
+        "-lat": "45.7553541",
+        "-lon": "4.8428428",
+        "tag": [
+          {
+            "-k": "alt_name",
+            "-v": "Guillotière - Gabriel Péri"
+          },
+          {
+            "-k": "name",
+            "-v": "Guillotière"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5044"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Guillotière - Gabriel Péri"
+          }
+        ]
+      },
+      {
+        "-id": "29065835",
+        "-version": "19",
+        "-timestamp": "2015-03-14T10:52:51Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29468591",
+        "-lat": "45.7603035",
+        "-lon": "4.8260947",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Vieux Lyon - Cathédrale Saint-Jean"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5095"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Vieux Lyon - Cathédrale Saint-Jean"
+          }
+        ]
+      },
+      {
+        "-id": "29065837",
+        "-version": "12",
+        "-timestamp": "2014-08-04T15:41:19Z",
+        "-uid": "587405",
+        "-user": "b_mortgat",
+        "-changeset": "24538149",
+        "-lat": "45.7455214",
+        "-lon": "4.8713767",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Monplaisir — Lumière"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5083"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Monplaisir - Lumière"
+          }
+        ]
+      },
+      {
+        "-id": "29065839",
+        "-version": "19",
+        "-timestamp": "2015-03-24T22:52:42Z",
+        "-uid": "1779584",
+        "-user": "dhuyp",
+        "-changeset": "29716494",
+        "-lat": "45.7575745",
+        "-lon": "4.8331247",
+        "tag": [
+          {
+            "-k": "level",
+            "-v": "-1"
+          },
+          {
+            "-k": "name",
+            "-v": "Bellecour"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5002"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Bellecour"
+          }
+        ]
+      },
+      {
+        "-id": "29065840",
+        "-version": "10",
+        "-timestamp": "2014-05-21T22:17:52Z",
+        "-uid": "593214",
+        "-user": "gileri",
+        "-changeset": "22476059",
+        "-lat": "45.7516219",
+        "-lon": "4.853488",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Garibaldi"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5181"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Garibaldi"
+          }
+        ]
+      },
+      {
+        "-id": "29065842",
+        "-version": "17",
+        "-timestamp": "2015-04-06T09:49:29Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "30011071",
+        "-lat": "45.753283",
+        "-lon": "4.8466842",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Saxe - Gambetta"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5092"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Saxe - Gambetta"
+          }
+        ]
+      },
+      {
+        "-id": "29066747",
+        "-version": "12",
+        "-timestamp": "2015-03-14T10:52:51Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29468591",
+        "-lat": "45.7745861",
+        "-lon": "4.8054356",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Valmy"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5094"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Valmy"
+          }
+        ]
+      },
+      {
+        "-id": "29066749",
+        "-version": "14",
+        "-timestamp": "2015-03-14T10:52:50Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29468591",
+        "-lat": "45.7429973",
+        "-lon": "4.8788802",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Grange Blanche"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5041"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Grange Blanche"
+          }
+        ]
+      },
+      {
+        "-id": "29075624",
+        "-version": "15",
+        "-timestamp": "2015-04-23T07:22:23Z",
+        "-uid": "587405",
+        "-user": "b_mortgat",
+        "-changeset": "30422291",
+        "-lat": "45.7383722",
+        "-lon": "4.8865793",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Laennec"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5062"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Laënnec (métro de Lyon)"
+          }
+        ]
+      },
+      {
+        "-id": "29075625",
+        "-version": "16",
+        "-timestamp": "2015-03-15T09:13:34Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29489444",
+        "-lat": "45.7633083",
+        "-lon": "4.8358281",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Cordeliers"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5021"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Cordeliers"
+          }
+        ]
+      },
+      {
+        "-id": "29075626",
+        "-version": "13",
+        "-timestamp": "2015-02-20T18:05:08Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28983146",
+        "-lat": "45.7305576",
+        "-lon": "4.8873009",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Mermoz - Pinel"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5082"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Mermoz - Pinel"
+          }
+        ]
+      },
+      {
+        "-id": "29075627",
+        "-version": "19",
+        "-timestamp": "2015-03-25T21:37:04Z",
+        "-uid": "1779584",
+        "-user": "dhuyp",
+        "-changeset": "29739775",
+        "-lat": "45.7672702",
+        "-lon": "4.8360565",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Hôtel de Ville - Louis Pradel‎"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5046"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Hôtel de Ville - Louis Pradel"
+          }
+        ]
+      },
+      {
+        "-id": "29076107",
+        "-version": "14",
+        "-timestamp": "2015-02-20T18:05:08Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28983146",
+        "-lat": "45.7195177",
+        "-lon": "4.8875525",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Parilly"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5084"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Parilly"
+          }
+        ]
+      },
+      {
+        "-id": "29163412",
+        "-version": "11",
+        "-timestamp": "2014-10-19T21:46:45Z",
+        "-uid": "593214",
+        "-user": "gileri",
+        "-changeset": "26202276",
+        "-lat": "45.7459182",
+        "-lon": "4.8423225",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Jean Macé"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Jean Macé"
+          }
+        ]
+      },
+      {
+        "-id": "29163413",
+        "-version": "12",
+        "-timestamp": "2015-03-16T16:34:47Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29521578",
+        "-lat": "45.7310667",
+        "-lon": "4.8334756",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Debourg"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Debourg"
+          }
+        ]
+      },
+      {
+        "-id": "29867720",
+        "-version": "8",
+        "-timestamp": "2014-10-19T21:46:35Z",
+        "-uid": "593214",
+        "-user": "gileri",
+        "-changeset": "26202276",
+        "-lat": "45.7710134",
+        "-lon": "4.8362035",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Croix-Paquet"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5222"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "no"
+          }
+        ]
+      },
+      {
+        "-id": "29867721",
+        "-version": "10",
+        "-timestamp": "2014-10-19T21:46:35Z",
+        "-uid": "593214",
+        "-user": "gileri",
+        "-changeset": "26202276",
+        "-lat": "45.77451",
+        "-lon": "4.8320022",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Croix-Rousse"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5223"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "33125279",
+        "-version": "7",
+        "-timestamp": "2014-10-19T21:47:01Z",
+        "-uid": "593214",
+        "-user": "gileri",
+        "-changeset": "26202276",
+        "-lat": "45.7571815",
+        "-lon": "4.8163862",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Saint-Just"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          }
+        ]
+      },
+      {
+        "-id": "33125280",
+        "-version": "7",
+        "-timestamp": "2014-10-19T21:46:39Z",
+        "-uid": "593214",
+        "-user": "gileri",
+        "-changeset": "26202276",
+        "-lat": "45.7623841",
+        "-lon": "4.8214827",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Fourvière"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          }
+        ]
+      },
+      {
+        "-id": "36555139",
+        "-version": "10",
+        "-timestamp": "2014-10-19T21:47:04Z",
+        "-uid": "593214",
+        "-user": "gileri",
+        "-changeset": "26202276",
+        "-lat": "45.7267437",
+        "-lon": "4.8308571",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Stade de Gerland"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Stade de Gerland"
+          }
+        ]
+      },
+      {
+        "-id": "192064321",
+        "-version": "12",
+        "-timestamp": "2014-10-19T21:46:42Z",
+        "-uid": "593214",
+        "-user": "gileri",
+        "-changeset": "26202276",
+        "-lat": "45.7794429",
+        "-lon": "4.8274999",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Hénon"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5045"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Hénon (métro de Lyon)"
+          }
+        ]
+      },
+      {
+        "-id": "192064377",
+        "-version": "14",
+        "-timestamp": "2014-10-19T21:46:35Z",
+        "-uid": "593214",
+        "-user": "gileri",
+        "-changeset": "26202276",
+        "-lat": "45.7855301",
+        "-lon": "4.8329016",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Cuire"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5022"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "213409354",
+        "-version": "17",
+        "-timestamp": "2015-04-03T16:09:22Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29955076",
+        "-lat": "45.7530404",
+        "-lon": "4.8291954",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Ampère - Victor Hugo"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5000"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Ampère - Victor Hugo"
+          }
+        ]
+      },
+      {
+        "-id": "244430501",
+        "-version": "15",
+        "-timestamp": "2015-02-14T13:09:50Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7695736",
+        "-lon": "4.8534248",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Masséna"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5081"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Masséna"
+          }
+        ]
+      },
+      {
+        "-id": "244430502",
+        "-version": "15",
+        "-timestamp": "2015-02-14T13:09:50Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.768737",
+        "-lon": "4.8443953",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Foch"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5182"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Foch"
+          }
+        ]
+      },
+      {
+        "-id": "262868465",
+        "-version": "15",
+        "-timestamp": "2015-04-06T15:32:44Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "30018192",
+        "-lat": "45.7591873",
+        "-lon": "4.8473882",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Place Guichard - Bourse du Travail"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Place Guichard - Bourse du Travail"
+          }
+        ]
+      },
+      {
+        "-id": "262868467",
+        "-version": "13",
+        "-timestamp": "2015-04-06T15:32:44Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "30018192",
+        "-lat": "45.7616054",
+        "-lon": "4.8574444",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Gare Part-Dieu - Vivier Merle‎"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Gare Part-Dieu - Vivier Merle"
+          }
+        ]
+      },
+      {
+        "-id": "262868469",
+        "-version": "13",
+        "-timestamp": "2015-02-15T11:24:25Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28860610",
+        "-lat": "45.7671188",
+        "-lon": "4.8593786",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Brotteaux"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Brotteaux"
+          }
+        ]
+      },
+      {
+        "-id": "262875986",
+        "-version": "16",
+        "-timestamp": "2015-02-15T11:24:25Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28860610",
+        "-lat": "45.7704409",
+        "-lon": "4.8631755",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Charpennes - Charles Hernu"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5102"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Charpennes - Charles Hernu"
+          }
+        ]
+      },
+      {
+        "-id": "371532881",
+        "-version": "13",
+        "-timestamp": "2014-05-21T22:17:52Z",
+        "-uid": "593214",
+        "-user": "gileri",
+        "-changeset": "22476059",
+        "-lat": "45.705464",
+        "-lon": "4.8880198",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Gare de Vénissieux"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5104"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "uic_ref",
+            "-v": "8772332"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Gare de Vénissieux"
+          }
+        ]
+      },
+      {
+        "-id": "371852541",
+        "-version": "12",
+        "-timestamp": "2015-02-14T13:09:50Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7705609",
+        "-lon": "4.8739852",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "République - Villeurbanne"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5183"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station République - Villeurbanne"
+          }
+        ]
+      },
+      {
+        "-id": "371852548",
+        "-version": "13",
+        "-timestamp": "2015-02-14T13:09:50Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7690277",
+        "-lon": "4.8822998",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Gratte-Ciel"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5042"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "limited"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Gratte-Ciel"
+          }
+        ]
+      },
+      {
+        "-id": "371868366",
+        "-version": "12",
+        "-timestamp": "2015-02-14T13:09:50Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7677444",
+        "-lon": "4.8892785",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Flachet"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5024"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Flachet"
+          }
+        ]
+      },
+      {
+        "-id": "371868374",
+        "-version": "12",
+        "-timestamp": "2015-02-14T13:09:50Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7656177",
+        "-lon": "4.9008369",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Cusset"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5023"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Cusset"
+          }
+        ]
+      },
+      {
+        "-id": "371868381",
+        "-version": "11",
+        "-timestamp": "2015-02-14T13:09:50Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7641162",
+        "-lon": "4.9088208",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Laurent Bonnevay - Astroballe"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5101"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Laurent Bonnevay - Astroballe"
+          }
+        ]
+      },
+      {
+        "-id": "371868413",
+        "-version": "12",
+        "-timestamp": "2015-03-15T11:03:53Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29491947",
+        "-lat": "45.7612228",
+        "-lon": "4.9219541",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Vaulx-en-Velin - La Soie"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5564"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Vaulx-en-Velin - La Soie"
+          }
+        ]
+      },
+      {
+        "-id": "376027344",
+        "-version": "12",
+        "-timestamp": "2015-02-15T11:24:25Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28860610",
+        "-lat": "45.7166744",
+        "-lon": "4.8145298",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Gare d'Oullins"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Gare d'Oullins"
+          }
+        ]
+      },
+      {
+        "-id": "506587037",
+        "-version": "12",
+        "-timestamp": "2015-03-15T12:03:55Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29493174",
+        "-lat": "45.7375587",
+        "-lon": "4.8373372",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Place Jean Jaurès"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Place Jean Jaurès"
+          }
+        ]
+      },
+      {
+        "-id": "599598652",
+        "-version": "12",
+        "-timestamp": "2015-03-15T08:43:22Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29488774",
+        "-lat": "45.7805642",
+        "-lon": "4.8045386",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Gare de Vaise"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5103"
+          },
+          {
+            "-k": "source",
+            "-v": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2009"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Gare de Vaise"
+          }
+        ]
+      },
+      {
+        "-id": "1977851418",
+        "-version": "10",
+        "-timestamp": "2015-04-04T09:01:11Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29967762",
+        "-lat": "45.7496116",
+        "-lon": "4.8268063",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Perrache"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5085"
+          },
+          {
+            "-k": "source",
+            "-v": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2012"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Gare de Lyon-Perrache"
+          }
+        ]
+      },
+      {
+        "-id": "1978195276",
+        "-version": "9",
+        "-timestamp": "2014-10-19T21:46:51Z",
+        "-uid": "593214",
+        "-user": "gileri",
+        "-changeset": "26202276",
+        "-lat": "45.7586394",
+        "-lon": "4.8213794",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Minimes - Théâtres romains"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "source",
+            "-v": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2012"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "1978195278",
+        "-version": "8",
+        "-timestamp": "2014-10-19T21:46:51Z",
+        "-uid": "593214",
+        "-user": "gileri",
+        "-changeset": "26202276",
+        "-lat": "45.7586613",
+        "-lon": "4.8213685",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Minimes - Théâtres romains"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "source",
+            "-v": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2012"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "no"
+          }
+        ]
+      },
+      {
+        "-id": "3349897007",
+        "-version": "4",
+        "-timestamp": "2015-04-03T16:09:22Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29955076",
+        "-lat": "45.7530516",
+        "-lon": "4.8291603",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Ampère - Victor Hugo"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5000"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Ampère - Victor Hugo"
+          }
+        ]
+      },
+      {
+        "-id": "3349897008",
+        "-version": "3",
+        "-timestamp": "2015-03-24T22:52:42Z",
+        "-uid": "1779584",
+        "-user": "dhuyp",
+        "-changeset": "29716494",
+        "-lat": "45.7575968",
+        "-lon": "4.8331128",
+        "tag": [
+          {
+            "-k": "level",
+            "-v": "-1"
+          },
+          {
+            "-k": "name",
+            "-v": "Bellecour"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5002"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Bellecour"
+          }
+        ]
+      },
+      {
+        "-id": "3349897009",
+        "-version": "1",
+        "-timestamp": "2015-02-14T13:09:45Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7705346",
+        "-lon": "4.863645",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Charpennes - Charles Hernu"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5102"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Charpennes - Charles Hernu"
+          }
+        ]
+      },
+      {
+        "-id": "3349897010",
+        "-version": "2",
+        "-timestamp": "2015-03-15T09:13:34Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29489444",
+        "-lat": "45.7633092",
+        "-lon": "4.8357895",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Cordeliers"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5021"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Cordeliers"
+          }
+        ]
+      },
+      {
+        "-id": "3349897011",
+        "-version": "1",
+        "-timestamp": "2015-02-14T13:09:45Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7656434",
+        "-lon": "4.9008478",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Cusset"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5023"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Cusset"
+          }
+        ]
+      },
+      {
+        "-id": "3349897012",
+        "-version": "1",
+        "-timestamp": "2015-02-14T13:09:45Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7677706",
+        "-lon": "4.8892877",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Flachet"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5024"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Flachet"
+          }
+        ]
+      },
+      {
+        "-id": "3349897013",
+        "-version": "1",
+        "-timestamp": "2015-02-14T13:09:45Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7687638",
+        "-lon": "4.8443892",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Foch"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5182"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Foch"
+          }
+        ]
+      },
+      {
+        "-id": "3349897014",
+        "-version": "1",
+        "-timestamp": "2015-02-14T13:09:45Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7690539",
+        "-lon": "4.8823107",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Gratte-Ciel"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5042"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "limited"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Gratte-Ciel"
+          }
+        ]
+      },
+      {
+        "-id": "3349897015",
+        "-version": "3",
+        "-timestamp": "2015-03-25T21:37:04Z",
+        "-uid": "1779584",
+        "-user": "dhuyp",
+        "-changeset": "29739775",
+        "-lat": "45.7672691",
+        "-lon": "4.8360162",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Hôtel de Ville - Louis Pradel‎"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5046"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Hôtel de Ville - Louis Pradel"
+          }
+        ]
+      },
+      {
+        "-id": "3349897016",
+        "-version": "2",
+        "-timestamp": "2015-03-25T21:37:05Z",
+        "-uid": "1779584",
+        "-user": "dhuyp",
+        "-changeset": "29739775",
+        "-lat": "45.7681512",
+        "-lon": "4.836032",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Hôtel de Ville - Louis Pradel‎"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5046"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Hôtel de Ville - Louis Pradel"
+          }
+        ]
+      },
+      {
+        "-id": "3349897017",
+        "-version": "1",
+        "-timestamp": "2015-02-14T13:09:45Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7641424",
+        "-lon": "4.9088323",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Laurent Bonnevay - Astroballe"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5101"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Laurent Bonnevay - Astroballe"
+          }
+        ]
+      },
+      {
+        "-id": "3349897018",
+        "-version": "1",
+        "-timestamp": "2015-02-14T13:09:46Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.7695999",
+        "-lon": "4.8534191",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Masséna"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5081"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Masséna"
+          }
+        ]
+      },
+      {
+        "-id": "3349897019",
+        "-version": "2",
+        "-timestamp": "2015-04-04T09:01:11Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29967762",
+        "-lat": "45.7496228",
+        "-lon": "4.8267713",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Perrache"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5085"
+          },
+          {
+            "-k": "source",
+            "-v": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2012"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Gare de Lyon-Perrache"
+          }
+        ]
+      },
+      {
+        "-id": "3349897020",
+        "-version": "1",
+        "-timestamp": "2015-02-14T13:09:46Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28840718",
+        "-lat": "45.770587",
+        "-lon": "4.8739945",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "République - Villeurbanne"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5183"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station République - Villeurbanne"
+          }
+        ]
+      },
+      {
+        "-id": "3349897021",
+        "-version": "2",
+        "-timestamp": "2015-03-15T11:03:53Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29491947",
+        "-lat": "45.7612489",
+        "-lon": "4.9219433",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Vaulx-en-Velin - La Soie"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5564"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Vaulx-en-Velin - La Soie"
+          }
+        ]
+      },
+      {
+        "-id": "3351610288",
+        "-version": "1",
+        "-timestamp": "2015-02-15T11:24:11Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28860610",
+        "-lat": "45.767117",
+        "-lon": "4.8593396",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Brotteaux"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Brotteaux"
+          }
+        ]
+      },
+      {
+        "-id": "3351610289",
+        "-version": "1",
+        "-timestamp": "2015-02-15T11:24:11Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28860610",
+        "-lat": "45.770508",
+        "-lon": "4.8636502",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Charpennes - Charles Hernu"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5102"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Charpennes - Charles Hernu"
+          }
+        ]
+      },
+      {
+        "-id": "3351610290",
+        "-version": "3",
+        "-timestamp": "2015-03-16T16:34:47Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29521578",
+        "-lat": "45.7310747",
+        "-lon": "4.8334388",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Debourg"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Debourg"
+          }
+        ]
+      },
+      {
+        "-id": "3351610291",
+        "-version": "2",
+        "-timestamp": "2015-04-06T15:32:44Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "30018192",
+        "-lat": "45.761645",
+        "-lon": "4.8574339",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Gare Part-Dieu - Vivier Merle‎"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Gare Part-Dieu - Vivier Merle"
+          }
+        ]
+      },
+      {
+        "-id": "3351610292",
+        "-version": "1",
+        "-timestamp": "2015-02-15T11:24:12Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28860610",
+        "-lat": "45.7167014",
+        "-lon": "4.8145276",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Gare d'Oullins"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Gare d'Oullins"
+          }
+        ]
+      },
+      {
+        "-id": "3351626493",
+        "-version": "1",
+        "-timestamp": "2015-02-15T11:24:12Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28860610",
+        "-lat": "45.7459347",
+        "-lon": "4.8422918",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Jean Macé"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Jean Macé"
+          }
+        ]
+      },
+      {
+        "-id": "3351626494",
+        "-version": "3",
+        "-timestamp": "2015-04-06T15:32:44Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "30018192",
+        "-lat": "45.7592161",
+        "-lon": "4.8473512",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Place Guichard - Bourse du Travail"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Place Guichard - Bourse du Travail"
+          }
+        ]
+      },
+      {
+        "-id": "3351626495",
+        "-version": "2",
+        "-timestamp": "2015-03-15T12:03:55Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29493174",
+        "-lat": "45.7375695",
+        "-lon": "4.8373033",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Place Jean Jaurès"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Place Jean Jaurès"
+          }
+        ]
+      },
+      {
+        "-id": "3351626496",
+        "-version": "4",
+        "-timestamp": "2015-04-06T09:49:29Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "30011071",
+        "-lat": "45.7532993",
+        "-lon": "4.8466125",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Saxe - Gambetta"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5092"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Saxe - Gambetta"
+          }
+        ]
+      },
+      {
+        "-id": "3351626498",
+        "-version": "1",
+        "-timestamp": "2015-02-15T11:24:12Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28860610",
+        "-lat": "45.7267611",
+        "-lon": "4.8308278",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Stade de Gerland"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Stade de Gerland"
+          }
+        ]
+      },
+      {
+        "-id": "3362091541",
+        "-version": "1",
+        "-timestamp": "2015-02-20T18:05:03Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28983146",
+        "-lat": "45.7054642",
+        "-lon": "4.8879809",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Gare de Vénissieux"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5104"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "uic_ref",
+            "-v": "8772332"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Gare de Vénissieux"
+          }
+        ]
+      },
+      {
+        "-id": "3362091542",
+        "-version": "1",
+        "-timestamp": "2015-02-20T18:05:03Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28983146",
+        "-lat": "45.7515988",
+        "-lon": "4.8534682",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Garibaldi"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5181"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Garibaldi"
+          }
+        ]
+      },
+      {
+        "-id": "3362091543",
+        "-version": "2",
+        "-timestamp": "2015-03-14T10:52:50Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29468591",
+        "-lat": "45.7428657",
+        "-lon": "4.8787972",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Grange Blanche"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5041"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Grange Blanche"
+          }
+        ]
+      },
+      {
+        "-id": "3362091544",
+        "-version": "3",
+        "-timestamp": "2015-04-06T07:48:08Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "30008624",
+        "-lat": "45.7553232",
+        "-lon": "4.842822",
+        "tag": [
+          {
+            "-k": "alt_name",
+            "-v": "Guillotière - Gabriel Péri"
+          },
+          {
+            "-k": "name",
+            "-v": "Guillotière"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5044"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Guillotière - Gabriel Péri"
+          }
+        ]
+      },
+      {
+        "-id": "3362091545",
+        "-version": "1",
+        "-timestamp": "2015-02-20T18:05:03Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28983146",
+        "-lat": "45.7383578",
+        "-lon": "4.8865465",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Laënnec"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5062"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Laënnec"
+          }
+        ]
+      },
+      {
+        "-id": "3362091546",
+        "-version": "1",
+        "-timestamp": "2015-02-20T18:05:03Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28983146",
+        "-lat": "45.7305707",
+        "-lon": "4.8872668",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Mermoz - Pinel"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5082"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Mermoz - Pinel"
+          }
+        ]
+      },
+      {
+        "-id": "3362091547",
+        "-version": "1",
+        "-timestamp": "2015-02-20T18:05:03Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28983146",
+        "-lat": "45.7455001",
+        "-lon": "4.8713538",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Monplaisir — Lumière"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5083"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Monplaisir - Lumière"
+          }
+        ]
+      },
+      {
+        "-id": "3362091548",
+        "-version": "1",
+        "-timestamp": "2015-02-20T18:05:04Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28983146",
+        "-lat": "45.7195102",
+        "-lon": "4.8875158",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Parilly"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5084"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Parilly"
+          }
+        ]
+      },
+      {
+        "-id": "3362091549",
+        "-version": "1",
+        "-timestamp": "2015-02-20T18:05:04Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "28983146",
+        "-lat": "45.7475601",
+        "-lon": "4.8652292",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Sans Souci"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5091"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Sans Souci"
+          }
+        ]
+      },
+      {
+        "-id": "3362091550",
+        "-version": "2",
+        "-timestamp": "2015-04-06T09:49:30Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "30011071",
+        "-lat": "45.753884",
+        "-lon": "4.8470054",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Saxe - Gambetta"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5092"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Saxe - Gambetta"
+          }
+        ]
+      },
+      {
+        "-id": "3362091551",
+        "-version": "2",
+        "-timestamp": "2015-04-06T09:49:30Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "30011071",
+        "-lat": "45.7539138",
+        "-lon": "4.847025",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Saxe - Gambetta"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5092"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Saxe - Gambetta"
+          }
+        ]
+      },
+      {
+        "-id": "3397995076",
+        "-version": "4",
+        "-timestamp": "2015-04-12T16:23:17Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "30166810",
+        "-lat": "45.7570215",
+        "-lon": "4.8332692",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Bellecour"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5002"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Bellecour"
+          }
+        ]
+      },
+      {
+        "-id": "3397995077",
+        "-version": "3",
+        "-timestamp": "2015-04-12T07:27:25Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "30157040",
+        "-lat": "45.7570913",
+        "-lon": "4.8334117",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Bellecour"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5002"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Bellecour"
+          }
+        ]
+      },
+      {
+        "-id": "3397995078",
+        "-version": "2",
+        "-timestamp": "2015-03-15T08:43:22Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29488774",
+        "-lat": "45.7805781",
+        "-lon": "4.8045057",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Gare de Vaise"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5103"
+          },
+          {
+            "-k": "source",
+            "-v": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2009"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "subway",
+            "-v": "yes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Gare de Vaise"
+          }
+        ]
+      },
+      {
+        "-id": "3397995079",
+        "-version": "1",
+        "-timestamp": "2015-03-14T10:52:41Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29468591",
+        "-lat": "45.7664386",
+        "-lon": "4.8054645",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Gorge de Loup"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5040"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "3397995080",
+        "-version": "1",
+        "-timestamp": "2015-03-14T10:52:41Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29468591",
+        "-lat": "45.7745881",
+        "-lon": "4.805281",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Valmy"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5094"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Valmy"
+          }
+        ]
+      },
+      {
+        "-id": "3397995081",
+        "-version": "1",
+        "-timestamp": "2015-03-14T10:52:41Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29468591",
+        "-lat": "45.7599855",
+        "-lon": "4.8259394",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Vieux Lyon - Cathédrale Saint-Jean"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5095"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Vieux Lyon - Cathédrale Saint-Jean"
+          }
+        ]
+      },
+      {
+        "-id": "3397995082",
+        "-version": "1",
+        "-timestamp": "2015-03-14T10:52:42Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29468591",
+        "-lat": "45.7600559",
+        "-lon": "4.8257703",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Vieux Lyon - Cathédrale Saint-Jean"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5095"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Vieux Lyon - Cathédrale Saint-Jean"
+          }
+        ]
+      },
+      {
+        "-id": "3397995083",
+        "-version": "1",
+        "-timestamp": "2015-03-14T10:52:42Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "29468591",
+        "-lat": "45.7602768",
+        "-lon": "4.8260865",
+        "tag": [
+          {
+            "-k": "name",
+            "-v": "Vieux Lyon - Cathédrale Saint-Jean"
+          },
+          {
+            "-k": "network",
+            "-v": "TCL"
+          },
+          {
+            "-k": "public_transport",
+            "-v": "stop_position"
+          },
+          {
+            "-k": "railway",
+            "-v": "station"
+          },
+          {
+            "-k": "ref",
+            "-v": "5095"
+          },
+          {
+            "-k": "station",
+            "-v": "subway"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Station Vieux Lyon - Cathédrale Saint-Jean"
+          }
+        ]
+      }
+    ]
+  }

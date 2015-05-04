@@ -1,0 +1,501 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"date",
+				"dateEnd"
+			],
+			[
+				"categ",
+				"category"
+			],
+			[
+				"ca",
+				"category"
+			],
+			[
+				"cat",
+				"cat11"
+			],
+			[
+				"de",
+				"description"
+			],
+			[
+				"ID",
+				"ID_EGAL"
+			],
+			[
+				"mon",
+				"montantInit"
+			],
+			[
+				"data",
+				"dataReturn"
+			],
+			[
+				"da",
+				"dataReturn"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"tex",
+				"text-transform"
+			],
+			[
+				"padding",
+				"padding-bottom"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"slide",
+				"slideDown"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"mm",
+				"mm-collapsed"
+			],
+			[
+				"b",
+				"bottom"
+			],
+			[
+				"t",
+				"text-bottom"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"borde",
+				"border-bottom"
+			],
+			[
+				"txt",
+				"text-indent"
+			],
+			[
+				"pa",
+				"padding-left"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"ex",
+				"exp_year"
+			],
+			[
+				"pay",
+				"payment-form"
+			],
+			[
+				"label",
+				"labelSlider"
+			],
+			[
+				"fon",
+				"font-size"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "server/service.py",
+			"settings":
+			{
+				"buffer_size": 3074,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "server.py",
+			"settings":
+			{
+				"buffer_size": 3212,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/model.py",
+			"settings":
+			{
+				"buffer_size": 5552,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/leo/Documents/WeLyon/web/Test Html/JSON.html",
+		"/home/leo/Documents/WeLyon/server/model/modele.py",
+		"/home/leo/Documents/Smart-City/testUser.html",
+		"/home/leo/Documents/Smart-City/app.py",
+		"/home/leo/Documents/Smart-City/Serveur/smart-city.sublime-project",
+		"/home/leo/Documents/Smart-City/Serveur/templates/stripe.html",
+		"/home/leo/Documents/Smart-City/Serveur/model/form.py",
+		"/home/leo/Documents/Smart-City/Serveur/templates/stripe2.html~",
+		"/home/leo/Documents/Smart-City/model/modele.py",
+		"/data/Users/Léo/Documents/GL/src/Etat.cpp",
+		"/home/leo/Etat.cpp",
+		"/home/leo/Documents/GL/src/Etat.cpp",
+		"/home/leo/Documents/IGROMM/Dev/3299715/templates/charge.html",
+		"/home/leo/Documents/IGROMM/Dev/3299715/templates/accueil.html",
+		"/data/Users/Léo/Documents/IGROMM/Dev/3299715/app.py",
+		"/data/Users/Léo/Documents/MediCiel/index.html",
+		"/home/leo/Documents/IGROMM/Dev/3299715/templates/layout.html",
+		"/home/leo/Documents/MediCiel/src/css/addons/jquery.mmenu.labels.css",
+		"/home/leo/Documents/MediCiel/src/css/jquery.mmenu.all.css",
+		"/data/Users/Léo/Documents/MediCiel/src/css/menu.css",
+		"/home/leo/Documents/MediCiel/index.html",
+		"/data/Users/Léo/Documents/MediCiel/src/css/style.css",
+		"/home/leo/Documents/MediCiel/bootstrap/css/bootstrap.css",
+		"/home/leo/Documents/IGROMM/swit-B.sublime-project",
+		"/home/leo/Documents/MediCiel/bootstrap/JavaScript · Bootstrap.html",
+		"/home/leo/Documents/MediCiel/src/css/extensions/jquery.mmenu.widescreen.css",
+		"/data/Users/Léo/Documents/MediCiel/test.html",
+		"/home/leo/Documents/MediCiel/src/css/jquery.mmenu.css",
+		"/home/leo/Documents/IGROMM/Dev/python-getting-started/templates/stripe.html",
+		"/home/leo/Documents/IGROMM/Dev/python-getting-started/templates/index.html",
+		"/data/Users/Léo/Documents/IGROMM/Dev/3299715/templates/stripe2.html",
+		"/home/leo/Documents/WebSemantique/H4104-WebSem/html/index.css",
+		"/home/leo/Documents/WebSemantique/H4104-WebSem/html/index.html",
+		"/home/leo/Documents/DevOO/scripts/feuilleDeRoute.js",
+		"/home/leo/Documents/DevOO/scripts/vue/vue.js",
+		"/data/Users/Léo/Documents/qemu/ospie-start/debug/run-qemu",
+		"/data/Users/Léo/Documents/Test.txt",
+		"/home/leo/Téléchargements/Datepicker for Bootstrap, from Twitter.html",
+		"/home/leo/Documents/DevOO/Tests/Plan-10.xml",
+		"/home/leo/Documents/DevOO/Tests/Plan-9.1.xml",
+		"/home/leo/Documents/DevOO/Tests/Plan-3.3.xml",
+		"/home/leo/Documents/DevOO/Tests/Livraison-3.1.xml",
+		"/home/leo/Documents/DevOO/Tests/Plan-1.3.xml"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"control",
+			"athegorie",
+			"marker",
+			"Marker",
+			"Categorys",
+			"categorys",
+			"Cathegorie",
+			"cathegorie",
+			"cathegories",
+			"categories",
+			"Categorys",
+			"Cathegorie",
+			"cathegorie",
+			"marker",
+			"Marker",
+			"marker",
+			"Marker",
+			"return",
+			"print",
+			"form",
+			"Erreur R",
+			"cout",
+			"'id', ",
+			"Column",
+			"Integer",
+			"DeclarativeBase",
+			"idUser = relation(\"User\", backref=\"compte\", cascade_backrefs=False)",
+			"true",
+			"myModal",
+			".label",
+			"label",
+			"menu",
+			"label",
+			"cursor",
+			"mm-label",
+			"mm-label\n",
+			";\n",
+			"Collapsed",
+			"Déo",
+			"hover",
+			"active",
+			"none",
+			"hidden",
+			"transi",
+			"last",
+			"Importante",
+			"Modérée",
+			"<li><span>Articulaire</span></li>",
+			"cursor",
+			"mm-collapsed",
+			"mm-label",
+			"mm-collapsed",
+			"uppe",
+			"upper",
+			"shadow",
+			"body",
+			"440px",
+			"\"Collapsed\"><span>",
+			"<span>",
+			"nav",
+			"path/to/",
+			"false",
+			"menu",
+			"Postérieur",
+			"required",
+			"masquer",
+			"itineraire",
+			"afficher",
+			"map",
+			"afficher",
+			"cercle",
+			"addTo",
+			"afficher",
+			"PlagesHoraires",
+			"margin-right: 10px;",
+			";\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"service",
+			"ategory",
+			"pin",
+			"Pin",
+			"Categories",
+			"categories",
+			"Category",
+			"category",
+			"Categories",
+			"Category",
+			"category",
+			"pin",
+			"Pin"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "server/service.py",
+					"settings":
+					{
+						"buffer_size": 3074,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								803,
+								803
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "server.py",
+					"settings":
+					{
+						"buffer_size": 3212,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2121,
+								2121
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "src/model.py",
+					"settings":
+					{
+						"buffer_size": 5552,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5524,
+								5524
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1967.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 417.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
