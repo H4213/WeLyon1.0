@@ -100,10 +100,7 @@ def UpdateUserVoteEvent(form,idPin):
 
 		return jsonify(pin=pinItem.serialize())
 			
-#Creates points of interest sncf
-def addPointOfInterest(form):
-	db.session.add(form)
-	db.session.commit()
+
 
 def updatePointOfInterestByIdPointOfInterest(current) :
 	if current:

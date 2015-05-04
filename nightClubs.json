@@ -1,0 +1,322 @@
+{
+  
+    "node": [
+      {
+        "-id": "98242252",
+        "-version": "2",
+        "-timestamp": "2013-01-02T21:04:25Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "14504748",
+        "-lat": "45.766685",
+        "-lon": "4.8373855",
+        "tag": [
+          {
+            "-k": "addr:housenumber",
+            "-v": "38"
+          },
+          {
+            "-k": "addr:postcode",
+            "-v": "69001"
+          },
+          {
+            "-k": "addr:street",
+            "-v": "Rue de l'Arbre Sec"
+          },
+          {
+            "-k": "amenity",
+            "-v": "nightclub"
+          },
+          {
+            "-k": "name",
+            "-v": "Le Pink's"
+          }
+        ]
+      },
+      {
+        "-id": "246746973",
+        "-version": "2",
+        "-timestamp": "2013-01-12T15:13:16Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "14622980",
+        "-lat": "45.767287",
+        "-lon": "4.826556",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "nightclub"
+          },
+          {
+            "-k": "name",
+            "-v": "La Luna"
+          }
+        ]
+      },
+      {
+        "-id": "246746976",
+        "-version": "2",
+        "-timestamp": "2013-09-09T16:54:49Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "17753307",
+        "-lat": "45.7672379",
+        "-lon": "4.8268169",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "nightclub"
+          },
+          {
+            "-k": "name",
+            "-v": "New Ibiza"
+          }
+        ]
+      },
+      {
+        "-id": "248737175",
+        "-version": "2",
+        "-timestamp": "2014-01-02T20:16:20Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "19774206",
+        "-lat": "45.7485148",
+        "-lon": "4.8419247",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "nightclub"
+          },
+          {
+            "-k": "name",
+            "-v": "Loft Club"
+          }
+        ]
+      },
+      {
+        "-id": "2062871143",
+        "-version": "2",
+        "-timestamp": "2015-02-28T00:46:21Z",
+        "-uid": "1550321",
+        "-user": "Jitrixis",
+        "-changeset": "29147653",
+        "-lat": "45.7312097",
+        "-lon": "4.8589408",
+        "tag": [
+          {
+            "-k": "addr:city",
+            "-v": "Lyon"
+          },
+          {
+            "-k": "addr:housenumber",
+            "-v": "6"
+          },
+          {
+            "-k": "addr:postcode",
+            "-v": "69008"
+          },
+          {
+            "-k": "addr:street",
+            "-v": "Rue Henri Barbusse"
+          },
+          {
+            "-k": "amenity",
+            "-v": "nightclub"
+          },
+          {
+            "-k": "name",
+            "-v": "New Hollywood"
+          },
+          {
+            "-k": "phone",
+            "-v": "+33 4 78 69 42 77"
+          },
+          {
+            "-k": "source",
+            "-v": "http://www.petitpaume.com/etablissement/nh-club.htm"
+          }
+        ]
+      },
+      {
+        "-id": "2077035523",
+        "-version": "2",
+        "-timestamp": "2013-03-03T06:17:01Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "15229573",
+        "-lat": "45.7546472",
+        "-lon": "4.8409551",
+        "tag": [
+          {
+            "-k": "addr:city",
+            "-v": "Lyon"
+          },
+          {
+            "-k": "addr:country",
+            "-v": "FR"
+          },
+          {
+            "-k": "addr:postcode",
+            "-v": "69007"
+          },
+          {
+            "-k": "addr:street",
+            "-v": "Rue Pasteur"
+          },
+          {
+            "-k": "amenity",
+            "-v": "nightclub"
+          },
+          {
+            "-k": "name",
+            "-v": "Tago Mago"
+          }
+        ]
+      },
+      {
+        "-id": "2283833291",
+        "-version": "1",
+        "-timestamp": "2013-04-28T06:29:04Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "15891067",
+        "-lat": "45.7691081",
+        "-lon": "4.8362133",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "nightclub"
+          },
+          {
+            "-k": "name",
+            "-v": "Vertige X"
+          }
+        ]
+      },
+      {
+        "-id": "2543375734",
+        "-version": "1",
+        "-timestamp": "2013-11-21T15:50:30Z",
+        "-uid": "1418137",
+        "-user": "Test360",
+        "-changeset": "19038275",
+        "-lat": "45.7537825",
+        "-lon": "4.8193338",
+        "tag": [
+          {
+            "-k": "addr:city",
+            "-v": "Lyon"
+          },
+          {
+            "-k": "addr:housenumber",
+            "-v": "60"
+          },
+          {
+            "-k": "addr:postcode",
+            "-v": "69005"
+          },
+          {
+            "-k": "addr:street",
+            "-v": "Montée de Choulans"
+          },
+          {
+            "-k": "amenity",
+            "-v": "nightclub"
+          },
+          {
+            "-k": "name",
+            "-v": "La Cour des Grands"
+          }
+        ]
+      },
+      {
+        "-id": "2566370191",
+        "-version": "1",
+        "-timestamp": "2013-12-05T14:33:45Z",
+        "-uid": "10209",
+        "-user": "ryra6453",
+        "-changeset": "19290407",
+        "-lat": "45.7518297",
+        "-lon": "4.8236614",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "nightclub"
+          },
+          {
+            "-k": "name",
+            "-v": "Le Pop"
+          }
+        ]
+      },
+      {
+        "-id": "2606763436",
+        "-version": "3",
+        "-timestamp": "2015-03-21T15:29:12Z",
+        "-uid": "2772976",
+        "-user": "bot_gileri",
+        "-changeset": "29636321",
+        "-lat": "45.7482591",
+        "-lon": "4.8420109",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "nightclub"
+          },
+          {
+            "-k": "name",
+            "-v": "Le Fox Club Latino"
+          },
+          {
+            "-k": "phone",
+            "-v": "+33 9 50 78 07 12"
+          },
+          {
+            "-k": "website",
+            "-v": "http://www.fox-club-latino.com/"
+          }
+        ]
+      },
+      {
+        "-id": "2684855938",
+        "-version": "3",
+        "-timestamp": "2015-03-21T15:29:19Z",
+        "-uid": "2772976",
+        "-user": "bot_gileri",
+        "-changeset": "29636321",
+        "-lat": "45.7843017",
+        "-lon": "4.8874697",
+        "tag": [
+          {
+            "-k": "addr:city",
+            "-v": "Villeurbanne"
+          },
+          {
+            "-k": "addr:housenumber",
+            "-v": "45"
+          },
+          {
+            "-k": "amenity",
+            "-v": "nightclub"
+          },
+          {
+            "-k": "name",
+            "-v": "L'Avenue 45"
+          },
+          {
+            "-k": "phone",
+            "-v": "+33 6 23 82 17 92"
+          },
+          {
+            "-k": "source",
+            "-v": "Grand Lyon - 10/2011"
+          },
+          {
+            "-k": "website",
+            "-v": "http://www.lavenue45.com"
+          }
+        ]
+      }
+    ]
+  
+}
