@@ -89,6 +89,23 @@ def user(idUser = None, data=None):
 
   return serviceUser.getAllUser()
 
+@app.route('/friends/', methods=('GET', 'POST', 'PUT', 'DELETE'))
+@app.route('/friends/<idUser>/')
+def friend(idUser = None, data=None):
+  if request.method == "POST":
+    return serviceUser.addUserFromForm(request.form)
+  
+  if request.method == 'PUT':
+    return service.majUser(request.form)
+  if request.method == 'DELETE':
+    return serviceUser.delete(request.form)
+
+  if idUser:
+    return serviceUser.getUserFriendsById(idUser)
+  
+  return jsonify(error="false request")
+
+
 @app.route('/categories/', methods=('GET', 'POST', 'PUT', 'DELETE'))
 def categories(pin = None):
   if request.method == "POST":
@@ -180,6 +197,6 @@ if __name__ == '__main__':
   init_databases.init_all()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
-  #app.debug = True
+  app.debug = True
   app.run()
 	

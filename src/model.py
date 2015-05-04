@@ -16,13 +16,19 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
  
 ########################################################################
+
+assFriends = db.Table('assFriends',
+    db.Column('friend1ID', db.Integer, db.ForeignKey('users.id')),
+    db.Column('friend2ID', db.Integer, db.ForeignKey('users.id'))
+)
+
 class User(db.Model):
 
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key = True)
     pseudo = db.Column(db.String(50))
     passw = db.Column(db.String(50))
-
+    
     def __init__(self, username, passw):
         self.pseudo = username
         self.passw = passw

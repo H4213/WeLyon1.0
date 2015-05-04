@@ -76,3 +76,28 @@ def deleteUser(form):
 
 def majUser(form):
 	return "0"
+
+def getUserFriendsById(idUser):
+
+	if idUser:
+		print "Query Getting Friends"
+		query = "select * from assFriends where friend1ID="+str(idUser)+" or " + " friend2ID="+str(idUser)
+		items = db.engine.execute(query)
+		list = []
+		if items:
+			print "...Got Results"
+			for row in items:
+				if int(row["friend1ID"]) != int(row["friend2ID"]):
+					#print idUser
+					if int(idUser) == int(row["friend1ID"]):
+						list.append(row["friend2ID"])
+					else:
+						list.append(row["friend1ID"])
+
+			return jsonify(friends=list)
+		else:
+			print "...No result"				
+			return jsonify(error="No friend")
+	else:
+		return jsonify(error = "No idUser")
+
