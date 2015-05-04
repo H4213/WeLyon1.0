@@ -166,6 +166,21 @@ class Vote(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+class Log(db.Model):
+    __tablename__= "logs"
+    id= db.Column(db.Integer, primary_key = True)
+    action = db.Column(db.String(10))
+    dateTime = db.Column(db.DateTime, default=datetime.datetime.now)
+    idUser= db.Column(db.Integer,db.ForeignKey('users.id'))
+    idPin = db.Column(db.Integer,db.ForeignKey('pins.id'))
+
+    def __init__(self, idUser, action, idPin):
+        self.idUser = idUser
+        self.action = action
+        self.idPin = idPin
+        self.dateTime = datetime.datetime.now
+
+
 #db.reflect()
 #db.drop_all()
 db.create_all()

@@ -1,6 +1,6 @@
 from src import model
 from src.model import User, Pin, Category
-from server import service
+from server import service, serviceLog
 
 from flask import Flask, flash, render_template, request, session
 from flask.ext.jsonpify import jsonify
@@ -68,6 +68,8 @@ def addPin(form):
 		pin.categories=[Category.query.filter_by(nom=form['category']).first()]
 		db.session.add(pin)
 		db.session.commit()
+
+		serviceLog.add(pin.user, pin.id)
 		
 		return jsonify(pin = pin.serialize()) 
 		

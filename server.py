@@ -19,7 +19,7 @@ from flask_jsglue import JSGlue
 from server import service
 from server import servicePin
 from server import serviceUser
-from server import serviceCategory
+from server import serviceCategory, serviceLog
 
 import server
 from src.model import User, Pin, Category
@@ -109,6 +109,11 @@ def auth():
   if request.method == 'POST':
     return service.authentificaton(request.form)
   return jsonify(error="false request")
+
+@app.route('/fil/')
+@app.route('/fil/<more>/')
+def fil(more = None):
+  return serviceLog.getFil(more)
 
 #ajout d'un marqueur
 @app.route('/add/pin/', methods=('GET', 'POST'))
