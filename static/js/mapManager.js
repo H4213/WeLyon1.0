@@ -584,6 +584,9 @@ function MapManager(){
 					else{
 
 						valeur.marker['visibilityCategoryToken']-=1;
+						if (valeur.marker['visibilityCategoryToken']<0){
+							valeur.marker['visibilityCategoryToken']=0
+						}
 					} 
 					if (valeur.marker['visibilityCategoryToken']==0)
 					{

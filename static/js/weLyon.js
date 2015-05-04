@@ -176,7 +176,7 @@ function WeLyon(){
 	self.cbFillCat = function (data) {
 		var cat = '';
 		for(var i in data.categories){
-			cat +=' <button data-id-category="'+data.categories[i].id+'" class="col-md-4 btn btn-default category-item" type="button" style="display:none">'+ data.categories[i].nom +'</button> ';
+			cat +=' <button data-id-category="'+data.categories[i].id+'" class="col-md-4 btn btn-default category-item active" type="button" style="display:none">'+ data.categories[i].nom +'</button> ';
 		}
 		$('#categories').append(cat);
 		//TODO: remplir la liste des categories 

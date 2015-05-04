@@ -181,6 +181,6 @@ if __name__ == '__main__':
   init_databases.init_all()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
-  #app.debug = True
+  app.debug = True
   app.run()
 	
