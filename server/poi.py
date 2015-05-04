@@ -10,8 +10,6 @@ from src.model import User, Pin
 def createPointOfInterestTable() :
 	global title
 	listPointOfInterest = []
-
-
 	#POI sncf
 	service.logMessage(".Loading sncf file")
 	json_file_tcl = open('sncf.json')
@@ -19,8 +17,6 @@ def createPointOfInterestTable() :
 	service.logMessage(".Parsing the json sncf file")
 	
 	for i in range (0, 88) :
-
-
 		idUser = 1
 		title = dataSncf["node"][i]["tag"][0]["-v"]
 		lat = dataSncf["node"][i]["-lat"]
@@ -32,8 +28,6 @@ def createPointOfInterestTable() :
 		listPointOfInterest.append(obj)
 		
 	json_file_tcl.close()
-
-
 	#POI cafes
 	service.logMessage(".Loading cafes file")
 	json_file_cafes = open('cafes.json')
@@ -56,8 +50,6 @@ def createPointOfInterestTable() :
 			listPointOfInterest.append(obj)
 			
 	json_file_cafes.close()
-
-
 
 	#POI restaurants
 	service.logMessage(".Loading Restaurants file")
@@ -82,10 +74,7 @@ def createPointOfInterestTable() :
 				
 	json_file_restaurants.close()
 
-	
-
 	#POI hopitaux
-
 	service.logMessage(".Loading hospital file")
 	json_file_hopitaux = open('hopitaux.json')
 	dataHopitaux = json.load(json_file_hopitaux)
@@ -109,14 +98,12 @@ def createPointOfInterestTable() :
 	json_file_hopitaux.close()
 
 	#POI nightclubs
-
-
 	service.logMessage(".Loading nightclubs file")
 	json_file_nc = open('nightClubs.json')
 	dataNC = json.load(json_file_nc)
 
 
-	service.logMessage(".Parsing restaurant file") 
+	service.logMessage(".Parsing Night Club") 
 		
 	for i in range (0,10):
 		for j in dataNC["node"][i]["tag"] :
@@ -132,20 +119,15 @@ def createPointOfInterestTable() :
 				listPointOfInterest.append(obj)
 				
 	json_file_nc.close()
-
-	
-
 	return listPointOfInterest
 
 
-
-
-
-
 def loadData() :
+	service.logMessage(".PointOfInterests : Getting data")
 	list = createPointOfInterestTable()
-	service.logMessage(".Updating the POI database")
+	service.logMessage(".PointOfInterests : Updating the database")
 	for l in list :
 		service.updatePointOfInterestByIdPointOfInterest(l)
-	service.logMessage(".Loading POI data")
+	service.logMessage(".PointOfInterests : I'm up to date !")
 
+	

@@ -96,10 +96,9 @@ def UpdateUserVoteEvent(form,idPin):
 		return jsonify(pin=pinItem.serialize())
 			
 
-
 def updatePointOfInterestByIdPointOfInterest(current) :
 	if current:
-		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID, type='pointOfInterest').first()
+		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID, type=current.type).first()
 		if item is None:
 			addObject(current)
 
