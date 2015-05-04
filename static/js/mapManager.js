@@ -524,8 +524,14 @@ function MapManager(){
 	};
 
 	self.cbGetPinVisibilite =function(data){
-		self.initMap();
-		self.cbGetAllPins(data)
+		for (var i = 0; i < markers.length; i++) {
+    		if (markers[i]!=null)
+    		{
+    		markers[i].marker.setMap(null);
+    		}
+    	}
+    	self.cbGetAllPins(data);
+
    	};
 	self.pinSetup = function(){
 
@@ -550,6 +556,28 @@ function MapManager(){
 
 	self.setIdUser =function (idUserParam){
 		idUser = idUserParam;
+	};
+
+	self.categoryFilter = function(visible, idCategory){
+		
+		for (var i = 0; i < markers.length; i++) {
+			if (markers[i]!=null){
+				var found=-1
+				for (var j=0;j<markers[i].pin.category.length;j++){
+					if(markers[i].pin.category[j].indexOf(idCategory)!=-1){
+						found=0;
+						break;
+					}
+				}
+				if (found==0){
+
+				
+		    		
+		    		markers[i].marker.setVisible(visible);
+		    	}
+		    }
+		}
+	  	
 	};
 
 }

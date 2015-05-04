@@ -110,6 +110,7 @@ def addDynPin(form):
 			return jsonify(error="user doesn't exist")
 		
 		categorie1=Category.query.filter_by(nom=form['category']).first()
+		print("lo")
 		description = form['description']
 
 		pin = Pin("Event",form['titre'], float(form['lng']), float(form['lat']),form['idUser'],[categorie1],description)

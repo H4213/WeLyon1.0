@@ -123,7 +123,6 @@ def addPin():
 @app.route('/add/dynPin/', methods=['POST'])
 def addDynPin():
   if request.method == 'POST':
-    print("ok")
     return servicePin.addDynPin(request.form)
 #inscription d'un utilisateur
 @app.route('/add/user', methods=('GET', 'POST'))
@@ -180,7 +179,7 @@ def load_sncf_data():
 
 if __name__ == '__main__':
   init_databases.init_all()
-  start_refresh_thread()
+  #start_refresh_thread()
   service.logMessage("Démarrage du serveur")
   #app.debug = True
   app.run()

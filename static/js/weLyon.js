@@ -21,7 +21,19 @@ function WeLyon(){
 	
 		$('#categoryButton').on('click',function(){
 			self.toggleCategories();
+			$('.category-item').on('click', function() {
+ 				$(this).toggleClass('active');
+ 				var idCategory=$(this).data('id-category')
+ 				if ($(this).hasClass('active')){
+ 					mapManager.categoryFilter(true,idCategory);
+ 				}
+ 				else{
+ 					mapManager.categoryFilter(false,idCategory);
+ 				}
+  			
+			});
 		});
+
 
 		$('#onFireButton').on('click', function(){
 			self.gererVisibilite($(this));
@@ -214,6 +226,8 @@ function WeLyon(){
 			alert("Veuillez indiquez votre mot de passe")
 		}
 	};
+
+
 
 
 }
