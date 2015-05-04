@@ -179,7 +179,7 @@ def load_sncf_data():
 
 if __name__ == '__main__':
   init_databases.init_all()
-  #start_refresh_thread()
+  start_refresh_thread()
   service.logMessage("Démarrage du serveur")
   #app.debug = True
   app.run()
