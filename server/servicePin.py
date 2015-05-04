@@ -1,5 +1,5 @@
 from src import model
-from src.model import User, Pin, Category, Velov , FacebookPin
+from src.model import User, Pin, Category
 
 from server import service
 
@@ -37,19 +37,22 @@ def getPinById(idPin):
 	return jsonify(error="No idPin")
 
 def getPinsByIdCategory(idCategory):
+	filter="%,"+str(idCategory)+",%"
+	
+	print "requested category " + str(idCategory)
 	if idCategory:
-		cat = Category.query.get(int(idCategory))
-
-		if cat:
+		items = Pin.query.filter(Pin.categories.like(filter))
+		
+		"""if cat:
 			items = cat.pint 
+		"""
+		if items:
+			print("got results")
+			return jsonify(Pins=[item.serialize() for item in items])
+		return jsonify(error="No pin")
 
-			if items:
-				return jsonify(Pins=[item.serialize() for item in items])
-			return jsonify(error="No pin")
+	return jsonify(error="No category")
 
-		return jsonify(error="No category")
-
-	return jsonify(error="No idCategory")
 
 def addPinFromForm(form):
 	print "addPin"

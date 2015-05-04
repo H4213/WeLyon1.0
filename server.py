@@ -57,7 +57,7 @@ def pins(category = None):
     return servicePin.delete(request.form)
 
   if category:
-    return servicePin.getPinsByIdCategory()
+    return servicePin.getPinsByIdCategory(category)
 
   return servicePin.getAllPin()
 
@@ -160,6 +160,7 @@ def load_facebook_event():
 
 def refresh():
 	#load_facebook_event()
+	load_sncf_data()
 	while 1:
 		velov.refreshVelovData(VELOV_DATA_SOURCE)
 		time.sleep(DATA_REFRESH_INTERVAL)
@@ -173,9 +174,8 @@ def load_sncf_data():
 
 if __name__ == '__main__':
   init_databases.init_all()
-  load_sncf_data()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
-  app.debug = True
+  #app.debug = True
   app.run()
 	

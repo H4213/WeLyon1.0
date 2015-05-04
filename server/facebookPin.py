@@ -8,7 +8,6 @@ sys.path.append("../")
 
 import service
 
-from src.model import FacebookPin
 
 def createFacebookTable() :
 	# FACEBOOK_APP_ID     = '1620948188142851'
@@ -91,10 +90,10 @@ def createFacebookTable() :
 							#image=graph.request(idEvent+'/picture?redirect=false')
 							#linkpicture=image['data']['url']
 
-							obj = FacebookPin(title, longitude, latitude, admin_user.id, [categorie], description)
+							obj = Pin('facebookPin', title, longitude, latitude, admin_user.id, [categorie], description)
 							obj.dateBegin = start_time
 							obj.dateEnd = end_time
-							obj.idFacebook = idEvent
+							obj.typeSpecificID = idEvent
 							listFacebook.append(obj)
 							#print("Ok")
 

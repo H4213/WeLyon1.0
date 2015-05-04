@@ -1,5 +1,5 @@
 from src import model
-from src.model import User, Pin, Category, Velov , FacebookPin
+from src.model import User, Pin, Category
 
 from server import service
 

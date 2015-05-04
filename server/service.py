@@ -1,5 +1,5 @@
 from src import model
-from src.model import User, Pin, Category, Velov , FacebookPin , PointOfInterest , Vote
+from src.model import User, Pin, Category, Vote
 from flask import Flask, flash, render_template, request, session
 from flask.ext.jsonpify import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -44,20 +44,21 @@ def authentification(form):
 #updates or creates a velov 
 def updateVelovByIdVelov(current):
 	if current:
-		item = Velov.query.filter_by(idVelov=current.idVelov).first()
+		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID , type='velov').first()
 		
 		if item:
-			item.velo = current.velo
-			item.libre = current.libre
+			item.data1 = current.data1
+			item.data2 = current.data2
 			db.session.commit()
 		else:
 			addObject(current)
+			
 
 		
 #Creates Facebook events 
 def updateFacebookByIdFacebook(current):
 	if current:
-		item = FacebookPin.query.filter_by(idFacebook=current.idFacebook).first()
+		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID, type='facebookPin').first()
 		
 		if item == None:
 			addObject(current)
@@ -105,7 +106,7 @@ def addPointOfInterest(form):
 
 def updatePointOfInterestByIdPointOfInterest(current) :
 	if current:
-		item = PointOfInterest.query.filter_by(idPointOfInterest=current.idPointOfInterest).first()
+		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID, type='pointOfInterest').first()
 		if item is None:
 			addObject(current)
 
