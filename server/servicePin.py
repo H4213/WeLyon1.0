@@ -1,5 +1,9 @@
 from src import model
+<<<<<<< HEAD
 from src.model import User, Pin, Category
+=======
+from src.model import User, Pin, Category, Velov , FacebookPin, DynPin
+>>>>>>> origin/Dev-Authentification
 
 from server import service
 
@@ -9,7 +13,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import time
-
+import datetime
 db = service.connectToDatabase()
 
 #---------------------------------------------------
@@ -53,23 +57,54 @@ def getPinsByIdCategory(idCategory):
 
 	return jsonify(error="No category")
 
+<<<<<<< HEAD
+=======
+	return jsonify(error="No idCategory")
+def addPin(form):
+	if (form['titre'] and form['idUser'] and form['lng'] and form['lat']):
+		exist = Pin.query.filter_by(title=form['titre'], lng=form['lng'], lat=form['lat']).first()
+		if exist:
+			return jsonify(error="already exists")
+>>>>>>> origin/Dev-Authentification
 
-def addPinFromForm(form):
-	print "addPin"
-	if (form['title'] and form['user'] and form['lng'] and form['lat']):
-		exist = Pin.query.filter_by(title=form['title'], lng=form['lng'], lat=form['lat']).first()
+		user = User.query.get(form['idUser'])
+
+		if not(user):
+			return jsonify(error="user doesn't exist")
+		pin = DynPin(form['titre'], float(form['lng']), float(form['lat']))
+		pin.idUser =form['idUser']
+		pin.description = form['description']
+		pin.categories=[Category.query.filter_by(nom=form['category']).first()]
+		db.session.add(pin)
+		db.session.commit()
 		
+		return jsonify(pin = pin.serialize()) 
+		
+	return jsonify(error="invalid parameters")
+
+def addDynPin(form):
+#
+	if (form['titre'] and form['idUser'] and form['lng'] and form['lat']):
+		exist = Pin.query.filter_by(title=form['titre'], lng=form['lng'], lat=form['lat']).first()
+		print("la")
 		if exist:
 			return jsonify(error="already exists")
 
-		user = User.query.get(form['user'])
+		user = User.query.get(form['idUser'])
 
 		if not(user):
 			return jsonify(error="user doesn't exist")
 		
-		#FAUX pin = Pin(form['title'], float(form['lng']), float(form['lat']), form['user'], form['category'], form['description'])
-	
-		db.session.add(form)
+		pin = DynPin(form['titre'], float(form['lng']), float(form['lat']))
+		pin.idUser =form['idUser']
+		pin.description = form['description']
+		pin.categories=[Category.query.filter_by(nom=form['category']).first()]
+		print("ici")
+		dateDebut = datetime.datetime(year=int(form['annee_debut']),month=int(form['mois_debut']),day=int(form['jour_debut']),minute=int(form['minute_debut']),hour=int(form['heure_debut']))
+		dateFin  = datetime.datetime(year=int(form['annee_fin']),month=int(form['mois_fin']),day=int(form['jour_fin']),minute=int(form['minute_fin']),hour=int(form['heure_fin']))
+		pin.dateBegin=dateDebut
+		pin.dateEnd=dateFin
+		db.session.add(pin)
 		db.session.commit()
 		
 		return jsonify(pin = pin.serialize()) 
