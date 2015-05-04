@@ -8,6 +8,8 @@ from sqlalchemy import Integer, ForeignKey, String, Unicode, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import backref, relation
 import datetime
+#pour test
+from random import randint
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tmucotknskzdvn:B5Hyna3G7I1xIhPj3i_CSdl-GS@ec2-54-163-238-96.compute-1.amazonaws.com:5432/d6fisokcj01ulm'
 
@@ -107,7 +109,9 @@ class Pin(db.Model):
         self.idUser = idUser
         self.title = title
         self.categories = ","
-        self.score = score
+        #self.score = score
+        #pour test
+        self.score = randint(0,100)
         for i in categories:
             self.categories = str(self.categories)+str(i.id)+","
         self.description = description

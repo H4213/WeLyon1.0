@@ -27,9 +27,6 @@ def createVelovTable(urlSource) :
 	categorie = Category.query.filter_by(nom = "Velo'v").first()
 	
 	admin_user = User.query.filter_by(pseudo="admin").first()
-	if admin_user==None:
-		init_databases.init_admin_user()
-		admin_user = User.query.filter_by(pseudo="admin").first()
 		
 	for i in  range(0, data["nb_results"]):
 	#data["nb_results"]	

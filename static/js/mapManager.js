@@ -79,8 +79,7 @@ function MapManager(){
 				titre = "Autre";
 				contentString = self.buildDescription(aPin,"normal");
 			}
-
-	// <a href="https://icons8.com/web-app/3781/Marker"> mettre dans le html	
+	
 			
 		var aMarker = new google.maps.Marker({
 			position: new google.maps.LatLng(aPin.lat, aPin.lng),
@@ -115,10 +114,44 @@ function MapManager(){
 		var centerControl = self.CenterControl(centerControlDiv, map);
 		centerControlDiv.index = 1;
 		map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
-	
+		
+
+		google.maps.event.addListener(map, 'zoom_changed', self.zoomHandler );
+		google.maps.event.addListener(map, 'center_changed', self.zoomHandler );
+
+
 	    //self.refreshPins();
 	    //setInterval(self.refreshPins(), 60000 );
 	};
+
+	self.zoomHandler = function () {
+		var bounds = map.getBounds();
+		var height =  $("#map").height();
+		var width =  $("#map").width();
+		var numberOfMarkers = Math.floor(height*width/(50*50));
+		console.log(numberOfMarkers);
+		var toDisplay = [];
+		for (var valeur of markers.values()) {
+			if (bounds.contains(valeur.marker.getPosition())) {
+				valeur.marker.setVisible(false);
+				toDisplay.push(valeur);	
+			}
+		}
+		toDisplay.sort(function(a,b) {
+			if (a.pin.score < b.pin.score) {
+				return -1;
+			}
+			if (a.pin.score > b.pin.score) {
+				return 1;
+			}
+			return 0;
+		});
+		console.log(toDisplay.length);
+		for ( var i = 0 ;  ( i <30 ) && (i < toDisplay.length)  ; i++) {
+			
+			toDisplay[i].marker.setVisible(true);
+		}
+	}
   
 	self.CenterControl=function (controlDiv, map) {
 
