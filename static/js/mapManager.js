@@ -22,6 +22,7 @@ function MapManager(){
 	var imageHotel = Flask.url_for("static", {"filename": "./assets/hotel.png"});
 	var imageMonument = Flask.url_for("static", {"filename": "./assets/monument.png"});
 
+
 	self.initMap = function() {
 		self.pinSetup();
 

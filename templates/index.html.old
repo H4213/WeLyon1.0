@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="H4213">
+
+        <title>WeLyon</title>
+
+        <!-- Bootstrap core CSS -->
+        <!--<link href="../static/components/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet"> -->
+        <link href="{{url_for('static', filename='./components/bootstrap-3.3.4/css/bootstrap.min.css') }}" rel="stylesheet"> 
+
+        <!-- Font-Awesome core CSS -->
+        <!--<link href="../static/components/fonts/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">-->
+        <link href="{{url_for('static', filename='./components/fonts/font-awesome-4.2.0/css/font-awesome.min.css') }}" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <!--<link href="../static/css/weLyon.css" rel="stylesheet">  -->
+        <link href="{{url_for('static', filename='./css/weLyon.css') }}" rel="stylesheet">  
+    </head>
+  
+
+    <body role="document">
+
+        <div id="nav">
+            <div class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"> 
+                            <!-- <img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoNoir.png">  -->
+                            <!--<img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoBlanc.png"> -->
+                            <!-- <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoNoir.png') }}">  -->
+                             <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoBlanc.png') }}">  
+                        </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <button id="signinButton"  type="button" class="btn btn-default navbar-btn">S'inscrire</button>
+                            <button id="connectButton" type="button" class="btn btn-default navbar-btn">Se connecter</button>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </div>
+        </div>
+
+        <div id="incscriptionPanel" style="display:none;">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                </div>
+            </div>               
+        </div>
+
+        <div id="container" class="container-fluid">
+            <div class="row">
+
+                <div id="alert">
+                </div>
+
+                <div id="filters" class="col-sm-12 col-md-2">
+                    <div id="filter" class="col-md-12">
+                        <form>
+                            <div class="form-group">
+                                <p>De</p>
+                                <input type="date" class="form-control" id="dateInit" placeholder="">
+                            </div>
+                            <div class=" form-group">
+                                <p>à</p>
+                                <input type="date" class="form-control" id="dateFin" placeholder="">
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right">Filtrer</button>
+                        </form>
+                    </div>
+
+                    <div id="categories" class="btn-group-vertical btn-block" role="group" aria-label="...">
+                        <button id="categoryButton" class="col-md-4 btn btn-default category-title" type="button"><strong>Categories</strong></button> 
+                        <button class="col-md-4 btn btn-default category-item" type="button" style="display:none">Categorie 1</button> 
+                        <button class="col-md-4 btn btn-default category-item" type="button" style="display:none">Categorie 2</button> 
+                        <button class="col-md-4 btn btn-default category-item" type="button" style="display:none">Categorie 3</button>
+                    </div>                                                       
+                </div>
+
+                <div id="main" class="col-sm-12 col-md-10">
+                    <div id="visibility" class="row">
+                        <div class="col-md-12 btn-group" role="group">
+                            <button id="onFireButton" class="col-md-4 btn btn-default" type="button">On FIRE</button>
+                            <button id="allButton" class="col-md-4 btn btn-default active" type="button">All</button>
+                            <button id="freshButton" class="col-md-4 btn btn-default" type="button">Fresh</button>
+                        </div>
+                    </div>
+
+                    <div id="map-container">
+                        <div id="map">                            
+                        </div>
+                    </div>        
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== 
+        Placed at the end of the document so the pages load faster -->
+
+          <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <!--<script src="../static/components/jquery/jquery.js"></script>-->
+        <!--<script src="../static/components/bootstrap-3.3.4/js/bootstrap.min.js"></script>--> 
+         
+         <script src="{{url_for('static', filename='./components/jquery/jquery.js') }}"></script>   
+        <script src="{{url_for('static', filename='./components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>  
+          <!-- JavaScript inputs -->
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+
+      <!--   // <script src="../static/js/RESTful.js"></script> 
+        // <script src="../static/js/pin.js"></script> 
+        // <script src="../static/js/mapManager.js"></script>
+        // <script src="../static/js/util.js"></script>     
+        // <script src="../static/js/category.js"></script>
+        // <script src="../static/js/weLyon.js"></script> -->
+
+        {{ JSGlue.include() }}
+         <script src="{{url_for('static', filename='./js/mapManager.js') }}"></script>
+         <script src="{{url_for('static', filename='./js/RESTful.js') }}"></script>
+         <script src="{{url_for('static', filename='./js/category.js') }}"></script>
+         <script src="{{url_for('static', filename='./js/pin.js') }}"></script>
+         <script src="{{url_for('static', filename='./js/user.js') }}"></script>
+         <script src="{{url_for('static', filename='./js/weLyon.js') }}"></script>
+
+    </body>
+</html>

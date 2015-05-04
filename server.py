@@ -163,7 +163,7 @@ def load_facebook_event():
 
 def refresh():
 	#load_facebook_event()
-	load_sncf_data()
+	#load_sncf_data()
 	while 1:
 		velov.refreshVelovData(VELOV_DATA_SOURCE)
 		time.sleep(DATA_REFRESH_INTERVAL)
