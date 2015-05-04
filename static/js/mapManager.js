@@ -8,8 +8,8 @@ function MapManager(){
 	}
 	var infowindow = new google.maps.InfoWindow({content : ""});
 	var markers = new Map();
-	var pins = [];
 	var marker;
+	var listIdCategories=[];
 	var map; // object containing the map
 	var cordinateLyon = new google.maps.LatLng(45.7601676, 4.8328885);
 	var newPos =new google.maps.LatLng(0,0);
@@ -84,7 +84,7 @@ function MapManager(){
 	 		
 	 		$('#formulaireAjoutEvenement').modal('show');
 			$('#valideTypePoint').on('click',function(){
-				switch (document.getElementById('ajoutPointChoixType').type.value){
+				switch ($('#ajoutPointChoixType').type.value){
 					case "Lieu":
 					break;
 					case "Evenement":
@@ -92,7 +92,7 @@ function MapManager(){
 					break;
 				}
 			});
-	 		/*$("#myModal .modal-body").load(target, function() { 
+	 		/*("#myModal .modal-body").load(target, function() { 
          $("#myModal").modal("show"); */
 	 	});
 	 };
@@ -532,6 +532,20 @@ function MapManager(){
 			var p = data.Pins[i];
 			self.addMarker(p);
 		}
+		for(var i=0; i<listIdCategories.length; i++){
+
+			if($('#categoryButton'+listIdCategories[i]).data('id-category')!=null){
+				if ($('#categoryButton'+listIdCategories[i]).hasClass('active'))
+				{
+					self.categoryFilter(true,listIdCategories[i])
+				}
+				else
+				{
+				self.categoryFilter(false,listIdCategories[i])
+
+				}
+			}
+		}
 	};
 
 	self.cbVotePin = function(data){
@@ -614,6 +628,10 @@ function MapManager(){
 		    }
 		}
 	  	
+	};
+
+	self.setListCategories=function(listCategories){
+		listIdCategories=listCategories;
 	};
 
 }

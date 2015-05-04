@@ -174,10 +174,16 @@ function WeLyon(){
 //---------------- Callbacks ------------------------ 
 	self.cbFillCat = function (data) {
 		var cat = '';
+		var listIdCategories=[];
+		nbCategorie=0;
 		for(var i in data.categories){
-			cat +=' <button data-id-category="'+data.categories[i].id+'" class="col-md-4 btn btn-default category-item active" type="button" style="display:none">'+ data.categories[i].nom +'</button> ';
+			cat +=' <button id="categoryButton'+data.categories[i].id+'" data-id-category="'+data.categories[i].id+'" class="col-md-4 btn btn-default category-item active" type="button" style="display:none">'+ data.categories[i].nom +'</button> ';
+			listIdCategories[nbCategorie]=data.categories[i].id;
+			nbCategorie++;
+
 		}
 		$('#categories').append(cat);
+		mapManager.setListCategories(listIdCategories);
 		//TODO: remplir la liste des categories 
 	};
 
