@@ -22,6 +22,84 @@ function MapManager(){
 	var imageRestau = Flask.url_for("static", {"filename": "./assets/restaurant.png"});
 	var imageHotel = Flask.url_for("static", {"filename": "./assets/hotel.png"});
 	var imageMonument = Flask.url_for("static", {"filename": "./assets/monument.png"});
+	var imageFacebook = Flask.url_for("static", {"filename": "./assets/facebook.png"})
+	var imageTCL = Flask.url_for("static", {"filename": "./assets/tcl.png"})
+	var imageHopital = Flask.url_for("static", {"filename": "./assets/hopital.png"})
+
+
+
+	self.addMarker = function(aPin) {
+		var type = aPin.type;
+		var image;
+		var contentString;
+		var id=aPin.id;
+		switch (type) { 
+			case "velov" : 
+				image = imageVelov;
+				titre = "Velo'v";
+				contentString = self.buildDescription(aPin,"velov");
+				break;
+			case "stationTCL" : 
+				image = imageTCL;
+				titre = "Velo'v";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "cafe" : 
+				image = imageBar;
+				titre = "Café/Bar";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "restaurant" : 
+				image = imageRestau;
+				titre = "Restaurant";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "nightClub" : 
+				image = imageSoiree;
+				titre = "Night Club";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "hopital" : 
+				image = imageHopital;
+				titre = "Hopital";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "facebookPin" : 
+				image = imageFacebook;
+				titre = "Facebook";
+				contentString = self.buildDescription(aPin,"dynamique");
+				break;
+			case "event" : 
+				image = imageFacebook;
+				titre = "Evenement";
+				contentString = self.buildDescription(aPin,"dynamique");
+				break;
+			default :
+				image = imageNormal
+				titre = "Autre";
+				contentString = self.buildDescription(aPin,"normal");
+			}
+
+	// <a href="https://icons8.com/web-app/3781/Marker"> mettre dans le html	
+			
+		var aMarker = new google.maps.Marker({
+			position: new google.maps.LatLng(aPin.lat, aPin.lng),
+			map: map,
+			icon: image,
+			title: titre,
+			'idPin': aPin.id,
+			'visibilityCategoryToken': 0
+		});
+
+		markers.set(id,{pin : aPin,
+						marker : aMarker});
+		google.maps.event.addListener(aMarker, 'click', function() {
+			infowindow.setContent(self.buildDescription(markers.get(aMarker['idPin']).pin,markers.get(aMarker['idPin']).pin.type));
+		
+			infowindow.open(map,aMarker);
+
+		});
+	};
 
 
 	self.initMap = function() {
@@ -367,73 +445,6 @@ function MapManager(){
 		
 		
 	//};
-	self.addMarker = function(aPin) {
-		var type = aPin.type;
-		var image;
-		var contentString;
-		var id=aPin.id;
-		switch (type) { 
-			case "velov" : 
-				image = imageVelov;
-				titre = "Velo'v";
-				contentString = self.buildDescription(aPin,"velov");
-				break;
-			case "bar" : 
-				image = imageBar;
-				titre = "Bar";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "restau" : 
-				image = imageRestau;
-				titre = "Restaurant";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "soiree" : 
-				image = imageSoiree;
-				titre = "Soirée";
-				contentString = self.buildDescription(aPin,"dynamique");
-				break;
-			case "hotel" : 
-				image = imageHotel;
-				titre = "Hôtel";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "monument" : 
-				image = imageMonument;
-				titre = "Monument";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			default :
-				image = imageNormal
-				titre = "Autre";
-				contentString = self.buildDescription(aPin,"normal");
-			}
-
-		
-			
-		var aMarker = new google.maps.Marker({
-			position: new google.maps.LatLng(aPin.lat, aPin.lng),
-			map: map,
-			icon: image,
-			title: titre,
-			'idPin': aPin.id,
-			'visibilityCategoryToken': 0
-		});
-
-		markers.set(id,{pin : aPin,
-						marker : aMarker});
-		google.maps.event.addListener(aMarker, 'click', function() {
-			infowindow.setContent(self.buildDescription(markers.get(aMarker['idPin']).pin,markers.get(aMarker['idPin']).pin.type));
-		
-			infowindow.open(map,aMarker);
-
-		});
-		
-		
-		
-
-
-	};
 
 
 	self.buildDescription=function(aPin, pinType) {

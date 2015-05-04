@@ -1,0 +1,4 @@
+arboresence categorie 
+
+Lieux{Bar/café , hopital , musée, oeuvre d'art, monument, police, restaurant, transport{velov, parking, TCL}}
+Evenment{EvenementUtilisateur{soirée,concert,spectacle,associatif,sport,etudiant,conference},EvenementFacebook}

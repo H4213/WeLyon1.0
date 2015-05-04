@@ -53,22 +53,23 @@ class Category(db.Model):
 
 
 
-    def __init__(self, nom, description):
+    def __init__(self, nom, description, idFather = id ):
         self.nom = nom
         self.description = description
+        self.IdCategoryFather = idFather
 
     def serialize(self):
-        if self.categoriesChild:
+        if self.IdCategoryFather:
             return {
                 'id': self.id,
                 'nom': self.nom,
                 'description': self.description,
-                'child': [item.serializeSmall() for item in self.categoriesChild]
+                'idFather': self.IdCategoryFather
             }
         return {
             'id': self.id,
             'nom': self.nom,
-            'description': self.description,
+            'description': self.description
         }
 
     def serializeSmall(self):
@@ -161,6 +162,6 @@ class Vote(db.Model):
         }
 
 
-##db.reflect()
-##db.drop_all()
+db.reflect()
+db.drop_all()
 db.create_all()

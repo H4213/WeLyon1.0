@@ -16,8 +16,8 @@ import service
 
 def createFacebookTable() :
 
-	token = 'CAAXCPmj0HQMBAIm5MabtrPSXWh6TtYbkbGh9Io33G8zOyBNNZCZAeAZCrC3FaBhPFWKo7W3SGWziZBBRsiMv4r9ZCihbLpOeEQIS6HL6K2T7ycG8PTZBPUp7ogKVN1tILjdflq547V2A3pRwizNOcwfSEOiwMhQ1zN4OiJTA9yPEN5ZBLbmzU8x'
-	nbEvent=100
+	token = 'CAACEdEose0cBAFfLB9zc5M2XQmDsTV9PzxlnK1hbo1kZCmFicst09AZCg9drafcg8mgQISJU3ZA1HnPEdJHZBabsaHuZB56xhxcDntrQmpXSwLxqwBbjPjZA0iJluz4KNCUrFlFJl1T8aHpbDvWVSj7qUK8iR6WKYusHBx7CbplAnxa3EfsWuq7EhXdHyBuCV7P8qXQA9GQ17MZBuK2rK6a'
+	nbEvent=1000
 	latitudeMin=45.6389404
 	longitudeMin=4.7530973
 	latitudeMax=46.2276655
@@ -31,17 +31,10 @@ def createFacebookTable() :
 	nbIter = nbEvent-1
 	
 	#add categorie (creates if not exists)
-	categorie = Category.query.filter_by(nom = "Facebook Event").first()
-	
-	if not(categorie):
-		init_databases.init_categories()
-		categorie = Category.query.filter_by(nom = "Facebook Event").first()
+	categorie = Category.query.filter_by(nom = "Evenement Facebook").first()
 		
 	#add admin (creates if not exists)
 	admin_user = User.query.filter_by(pseudo="admin").first()
-	if admin_user==None:
-		init_databases.init_admin_user()
-		admin_user = User.query.filter_by(pseudo="admin").first()
 		
 	while i < nbIter:
 		i+=1

@@ -25,7 +25,7 @@ db = connectToDatabase()
 def addObject(obj):
 	db.session.add(obj)
 	db.session.commit()
-	return obj.serialize()
+	return obj
 
 def deleteObject(obj):
 	db.session.delete(obj)
