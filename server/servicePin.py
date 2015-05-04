@@ -22,6 +22,29 @@ def getAllPin():
 
 	print "pin vide"
 	return jsonify(error="No pin")
+def getPinByVisibility(visibility):
+	if visibility=="fresh":
+		dateLimit = datetime.datetime.now() -datetime.timedelta(days=7)
+		items= Pin.query.filter(Pin.dateCreation>dateLimit)
+		if items:
+			return jsonify(Pins=[item.serialize() for item in items])
+	if visibility=="hot":
+		HOT_CONSTANT=10
+
+		itemsStaticHot = Pin.query.filter(Pin.staticHotVisibility==True, Pin.score<HOT_CONSTANT)
+		itemsScoreHot=Pin.query.filter(Pin.score>=HOT_CONSTANT)
+		for item in itemsStaticHot:
+			pint("?")
+			itemsScoreHot.push(itemsStaticHot)
+		if itemsScoreHot:
+			print('lel')
+			return jsonify(Pins=[item.serialize() for item in itemsScoreHot])
+	if visibility=="all":
+		return getAllPin()
+
+	return jsonify(error="No pin for "+visibility)
+
+
 
 def getPinById(idPin):
 	print idPin
@@ -80,6 +103,7 @@ def addDynPin(form):
 			return jsonify(error="user doesn't exist")
 		
 		categorie1=Category.query.filter_by(nom=form['category']).first()
+		print("lo")
 		description = form['description']
 
 		pin = Pin("Event",form['titre'], float(form['lng']), float(form['lat']),form['idUser'],[categorie1],description)

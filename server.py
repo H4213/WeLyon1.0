@@ -59,6 +59,9 @@ def pins(category = None):
   if category:
     return servicePin.getPinsByIdCategory(category)
 
+  visibility = request.args.get('visibilite')
+  if visibility:
+    return servicePin.getPinByVisibility(visibility)
   return servicePin.getAllPin()
 
 @app.route('/pin/<idPin>/')
@@ -120,7 +123,6 @@ def addPin():
 @app.route('/add/dynPin/', methods=['POST'])
 def addDynPin():
   if request.method == 'POST':
-    print("ok")
     return servicePin.addDynPin(request.form)
 
 #inscription d'un utilisateur
@@ -166,6 +168,7 @@ def refresh():
 	#	velov.refreshVelovData(VELOV_DATA_SOURCE)
 	#	time.sleep(DATA_REFRESH_INTERVAL)
 
+
 def start_refresh_thread():
 	thread.start_new_thread (refresh, ())
 
@@ -177,6 +180,6 @@ if __name__ == '__main__':
   init_databases.init_all()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
-  #app.debug = True
+  app.debug = True
   app.run()
 	

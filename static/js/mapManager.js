@@ -7,12 +7,13 @@ function MapManager(){
 	idUser=-1;
 	}
 	var infowindow = new google.maps.InfoWindow({content : ""});
-	var markers = [];
+	var markers = new Map();
 	var pins = [];
 	var marker;
 	var map; // object containing the map
 	var cordinateLyon = new google.maps.LatLng(45.7601676, 4.8328885);
 	var newPos =new google.maps.LatLng(0,0);
+	
 	// image de marker
 	var imageNormal = Flask.url_for("static", {"filename": "./assets/normal.png"});
 	var imageVelov = Flask.url_for("static", {"filename": "./assets/velov.png"});
@@ -21,6 +22,7 @@ function MapManager(){
 	var imageRestau = Flask.url_for("static", {"filename": "./assets/restaurant.png"});
 	var imageHotel = Flask.url_for("static", {"filename": "./assets/hotel.png"});
 	var imageMonument = Flask.url_for("static", {"filename": "./assets/monument.png"});
+
 
 	self.initMap = function() {
 		self.pinSetup();
@@ -36,7 +38,7 @@ function MapManager(){
 		centerControlDiv.index = 1;
 		map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
 	
-	    self.refreshPins();
+	    //self.refreshPins();
 	    //setInterval(self.refreshPins(), 60000 );
 	};
   
@@ -52,6 +54,7 @@ function MapManager(){
 	  controlUI.style.marginTop = '22px';
 	  controlUI.style.marginRight = '22px';
 	  controlUI.style.textAlign = 'center';
+	  controlUI.style.display = 'none';
 	  controlUI.title = 'Cliquer pour ajouter un event';
 	  controlDiv.appendChild(controlUI);
 
@@ -75,6 +78,13 @@ function MapManager(){
 		});
 	  });
 	};
+
+	// self.ajouterEvenemment = function(){
+	// 	google.maps.event.addListenerOnce(map, 'click', function(e) {	
+	// 		controlText.innerHTML = 'Ajouter un event';
+	// 		self.placeNewMarker(e.latLng, map);
+	// 	});
+	// };
 
 	self.placeNewMarker=function(position, map) {
 		 if (marker){
@@ -406,13 +416,14 @@ function MapManager(){
 			map: map,
 			icon: image,
 			title: titre,
-			'idPin': aPin.id
+			'idPin': aPin.id,
+			'visibilityCategoryToken': 0
 		});
 
-		markers[id]={pin : aPin,
-						marker : aMarker};
+		markers.set(id,{pin : aPin,
+						marker : aMarker});
 		google.maps.event.addListener(aMarker, 'click', function() {
-			infowindow.setContent(self.buildDescription(markers[aMarker['idPin']].pin,markers[aMarker['idPin']].pin.type));
+			infowindow.setContent(self.buildDescription(markers.get(aMarker['idPin']).pin,markers.get(aMarker['idPin']).pin.type));
 		
 			infowindow.open(map,aMarker);
 
@@ -435,8 +446,8 @@ function MapManager(){
 									'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
 										'<div id="bodyContent">'+						
 											'<p>' + aPin.description + '</p>'+
-											'<p>Nombre de places: <b>' + aPin.velo + '</b><br />' +
-											'Nombre de vélos disponibles: <b>' + aPin.libre + '</b></p>'+
+											'<p>Nombre de places: <b>' + aPin.data1 + '</b><br />' +
+											'Nombre de vélos disponibles: <b>' + aPin.data2 + '</b></p>'+
 											'<p><small>Posté par ' + aPin.user + '</small></p>'+
 											'<form name="form1">' +
 												'<p>' +
@@ -495,8 +506,8 @@ function MapManager(){
 	
 
 	self.refreshPins = function(){
-		for (var i = 0; i < markers.length; i++) {
-	    	markers[i].marker.setMap(null);
+		for (var valeur of markers.values()) {
+	    	valeur.marker.setMap(null);
 	  	}
 		pins = [];
 		markers = [];
@@ -522,6 +533,15 @@ function MapManager(){
 		}
 	};
 
+	self.cbGetPinVisibilite =function(data){
+		for (var valeur of markers.values()) {
+ 			
+    		valeur.marker.setMap(null);
+    		
+    	}
+    	self.cbGetAllPins(data);
+
+   	};
 	self.pinSetup = function(){
 
 		
@@ -539,8 +559,47 @@ function MapManager(){
 			});
 
 	};		
+	self.filtrerVisibilite =function(visibilite){
+		pin.getPinVisibilite(visibilite, self.cbGetPinVisibilite);
+	};
+
 	self.setIdUser =function (idUserParam){
 		idUser = idUserParam;
+	};
+
+	self.categoryFilter = function(visible, idCategory){
+		for (var valeur of markers.values()) {
+			if (valeur!=null){
+				var found=-1
+				for (var j=0;j<valeur.pin.category.length;j++){
+					if(valeur.pin.category[j].indexOf(idCategory)!=-1){
+						found=1;
+						break;
+					}
+				}
+				if (found==1){
+					if (visible==true){
+						valeur.marker['visibilityCategoryToken']+=1;
+					}
+					else{
+
+						valeur.marker['visibilityCategoryToken']-=1;
+						if (valeur.marker['visibilityCategoryToken']<0){
+							valeur.marker['visibilityCategoryToken']=0
+						}
+					} 
+					if (valeur.marker['visibilityCategoryToken']==0)
+					{
+						valeur.marker.setVisible(false);
+					}
+					else{
+						valeur.marker.setVisible(true);
+
+					}
+		    	}
+		    }
+		}
+	  	
 	};
 
 }

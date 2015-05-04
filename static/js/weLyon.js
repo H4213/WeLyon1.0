@@ -1,26 +1,43 @@
 function WeLyon(){
+
 	var self = this;
-	var idUser = localStorage.getItem('idUser');
-	var nameUser=localStorage.getItem('nameUser');
-	if ((nameUser ==  null )|| (idUser==null)){
-	nameUser='Anonyme';
-	idUser=-1;
-	}
 	var category = new Category();
 	var mapManager = new MapManager();
 	var user = new User();
-	
+	var idUser;
+	var nameUser;
+
+
+//TODO initialisation par rapport aux droits d'utilisateur
+
 //------------Les setups des pages/panels et ses boutons------------------
 	self.setup = function(){
-		google.maps.event.addDomListener(window, 'load', mapManager.initMap());
+		localStorage.clear();
+		self.setUser();
+		self.initialiserCarte();		
 		self.fillCategories();
-
-
-	
 	
 		$('#categoryButton').on('click',function(){
 			self.toggleCategories();
+			$('.category-item').on('click', function() {
+ 				$(this).toggleClass('active');
+ 				var idCategory=$(this).data('id-category')
+ 				if ($(this).hasClass('active')){
+ 					mapManager.categoryFilter(true,idCategory);
+ 				}
+ 				else{
+ 					mapManager.categoryFilter(false,idCategory);
+ 				}
+  			
+			});
 		});
+
+
+		$('#newEventButton').on('click', function(){
+			alert();
+			// self.ajouterEvenemment();
+		});
+
 
 		$('#onFireButton').on('click', function(){
 			self.gererVisibilite($(this));
@@ -36,16 +53,22 @@ function WeLyon(){
 
 		$('#signinButton').on('click', function(){
 			self.ouvrirPanelAuthentification($(this));
-
-
 		});
 
 		$('#connectButton').on('click', function(){
 			self.ouvrirPanelAuthentification($(this));
 		});
 
-		//TODO: remplir page (a l'ouverture/connexion) en accord avec les droits de l'utilisateur 
+		$('#disconnectButton').on('click', function(){
+			self.setUser();
+		});
 
+	};
+
+	self.initialiserCarte = function(){		
+		google.maps.event.addDomListener(window, 'load', mapManager.initMap());
+		$('[data-toggle="tooltip"]').tooltip();
+		self.gererVisibilite($('#onFireButton'));
 	};
 
 	self.setupAuthentificationPanel = function(bouton){
@@ -53,16 +76,24 @@ function WeLyon(){
 			bouton.toggleClass('active');
 			$('#incscriptionPanel').toggle();
 		});
+		
 		$('#okInscription').on('click', function(){
 			self.signInUser($(this));
 		});
+
 		$('#okConnexion').on('click', function(){
 			self.signUpUser($(this));
 		});
+
+		$('.annuler').on('click', function(){
+			$('#incscriptionPanel').hide();
+		});
 	};
+
 //--------------Remplissage des formulaires----------------------
 	self.fillAuthentificationForm = function(bouton){
-		$("#incscriptionPanel").find(".panel-body").html("");
+		$("#incscriptionPanel").find(".panel-body").find('form').remove();
+		
 		var form = '';
 		if(bouton.get(0) === $('#signinButton').get(0)){
 			form+='	   <form>';
@@ -82,8 +113,8 @@ function WeLyon(){
 	        form+='            <label for="confirmerMdP">Confirmer mot de passe</label>';
 	        form+='            <input type="password" class="form-control" id="confirmerMdP1" placeholder="Confirmez votre mot de passe">';
 	        form+='        </div>';
-	        form+='        <button id="annulerInscription" type="button" class="btn btn-danger pull-left">Annuler</button>';
-	        form+='        <button  id="okInscription" type="button" class="btn btn-default pull-right">Sinscrire</button>';
+	        form+='        <button id="annulerInscription" type="button" class="btn btn-danger pull-left annuler">Annuler</button>';
+	        form+='        <button  id="okInscription" type="button" class="btn btn-default pull-right valider">S\'inscrire</button>';
 	        form+='    </form>';
 		}
 		else if(bouton.get(0) === $('#connectButton').get(0)){
@@ -96,8 +127,8 @@ function WeLyon(){
 	        form+='            <label for="inscrireMdP">Mot de Passe</label>';
 	        form+='           <input type="password" class="form-control" id="inscrireMdP2" placeholder="Mot de Passe">';
 	        form+='        </div>';
-	        form+='        <button id="annulerConnexion" type="button" class="btn btn-danger pull-left">Annuler</button>';
-	        form+='        <button  id="okConnexion" type="button" class="btn btn-default pull-right">Connexion</button>';
+	        form+='        <button id="annulerConnexion" type="button" class="btn btn-danger pull-left annuler">Annuler</button>';
+	        form+='        <button  id="okConnexion" type="button" class="btn btn-default pull-right valider">Connexion</button>';
 	        form+='    </form>';
 		}
 
@@ -105,7 +136,7 @@ function WeLyon(){
 		self.setupAuthentificationPanel(bouton);
 	};
 
-//----------------- Getters/Setters------------------
+//----------------- Getters/Setters ------------------
 	self.getCategories = function(callback){
 		category.getCategories(callback);
 	};
@@ -114,35 +145,62 @@ function WeLyon(){
 		self.getCategories(self.cbFillCat);
 	};
 
+	self.setUser = function(id,nom){
+		if(typeof(Storage) !== "undefined") {
+			if((typeof nameUser ===  "undefined" )|| (typeof idUser === "undefined")){
+				idUser = localStorage.getItem('idUser');
+				nameUser = localStorage.getItem('nameUser');	
+			}			
+			if ((nameUser ===  null )|| (idUser === null)){
+				nameUser='Anonyme';
+				idUser=-1;
+			} else if((typeof id !== "undefined") || (typeof nom !== "undefined")){
+				idUser = id;
+				nameUser = nom;
+				$('#connectedUser').find('i').html(" "+nom);
+				self.toggleBoutonsConnexion();	
+			} else {
+				nameUser='Anonyme';
+				idUser=-1;
+				self.toggleBoutonsConnexion();
+			}
+			localStorage.setItem('idUser',idUser);
+			localStorage.setItem('nameUser',nameUser);
+		} else {
+		    alert("WebStorage not supported, can't login");
+		    //TODO: message d'erreur
+		}		
+	};
+
+//---------------- Callbacks ------------------------ 
 	self.cbFillCat = function (data) {
 		var cat = '';
 		for(var i in data.categories){
-			cat +=' <button data-id-category="'+data.categories[i].id+'" class="col-md-4 btn btn-default category-item" type="button" style="display:none">'+ data.categories[i].nom +'</button> ';
+			cat +=' <button data-id-category="'+data.categories[i].id+'" class="col-md-4 btn btn-default category-item active" type="button" style="display:none">'+ data.categories[i].nom +'</button> ';
 		}
 		$('#categories').append(cat);
 		//TODO: remplir la liste des categories 
-	}
+	};
+
 	self.cbAddUser = function(data){
-		if (data['error']==null)
-		{
-		alert("Votre compte WeLyon a bien été créé");
-		}
-		else {
+		if (data['error'] == null){
+			self.cbAuthUser(data);
+			alert("Votre compte WeLyon a bien été créé");
+		}else {
 			alert(data['error']);
 		}
-	}
+	};
+
 	self.cbAuthUser = function(data){
-		if (data['error']==null)
-		{
-		idUser = data['idUser'];
-		nameUser = data['nameUser'];
-		localStorage.setItem('idUser',idUser);
-		localStorage.setItem('nameUser',nameUser);
-		mapManager.setIdUser(idUser);
-		alert("Bienvenue "+nameUser);
+
+		if (data['error'] == null){
+			self.setUser(data.idUser, data.nameUser);
+			mapManager.setIdUser(idUser);
+			// alert("Bienvenue "+ nameUser);
 		}
 		
-	}
+	};
+
 	self.ouvrirPanelAuthentification = function(bouton){
 		if(bouton.hasClass('active')){
 			bouton.toggleClass('active');
@@ -151,15 +209,30 @@ function WeLyon(){
 			self.fillAuthentificationForm(bouton);
 			$('#nav').find('.active').toggleClass('active');
 			bouton.toggleClass('active');
-			$('#incscriptionPanel').show()
+			$('#incscriptionPanel').show();
 		}
 		
 	};
 
 	self.gererVisibilite = function(bouton){		
-		$('#visibility').find('.active').toggleClass('active');
+		$('#visibilityFilter').find('.active').toggleClass('active');
 		bouton.toggleClass('active');
-		//TODO: methode qui gere la visibilite des evenements	
+		var visibilite = bouton.data('visibility');
+		mapManager.filtrerVisibilite(visibilite);
+		//TODO: methode qui gere visibilite des pins par leur data-visibility (dans mapManager)	
+	};
+
+	self.ajouterEvenemment = function(){
+		alert("ajoutEvenement");
+		// mapManager.ajouterEvenemment();
+	};
+
+	self.toggleBoutonsConnexion = function(){
+		$('#connectButton').toggle();
+		$('#signinButton').toggle();
+		$('#disconnectButton').toggle();
+		$('#connectedUser').toggle();
+		$('#optionUtilisateur').toggle();
 	};
 
 	self.toggleCategories = function(){
@@ -182,8 +255,10 @@ function WeLyon(){
 		}
 		else if (password == ""){
 			alert("Les mots de passe ne correspondent pas")
-		};
+		}
+		$('#incscriptionPanel').hide();
 	};
+
 	self.signUpUser = function(bouton){
 		var pseudo= document.getElementById('inscrirePseudo2').value;
 		var password= document.getElementById('inscrireMdP2').value;
@@ -197,7 +272,10 @@ function WeLyon(){
 		else if (password == null){
 			alert("Veuillez indiquez votre mot de passe")
 		}
-	}
+		$('#incscriptionPanel').hide();
+	};
+
+
 
 
 }

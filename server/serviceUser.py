@@ -51,7 +51,7 @@ def addUserFromForm(form):
 		db.session.add(user)
 		db.session.commit()
 
-		return jsonify(id=user.id, pseudo=user.pseudo)
+		return jsonify(idUser=user.id, nameUser=user.pseudo)
 
 	return jsonify(error="invalid parameters")
 	
