@@ -1,5 +1,5 @@
 from src import model
-from src.model import User, Pin, Category, Vote
+from src.model import User, Pin, Category, Velov , FacebookPin , PointOfInterest , Vote
 from flask import Flask, flash, render_template, request, session
 from flask.ext.jsonpify import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -32,29 +32,33 @@ def deleteObject(obj):
 	db.session.commit()
 	return jsonify(deleted = "1")
 
+
+
 def authentification(form):
 	user = User.query.filter_by(pseudo=form['pseudo'], passw=form['passw']).first()
 	if user:
 		return jsonify(id=user.id, pseudo=user.pseudo)
 	return jsonify(error="authentification error")
+
 	
 #updates or creates a velov 
 def updateVelovByIdVelov(current):
 	if current:
-		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID , type='velov').first()
+		item = Velov.query.filter_by(idVelov=current.idVelov).first()
 		
 		if item:
-			item.data1 = current.data1
-			item.data2 = current.data2
+			item.velo = current.velo
+			item.libre = current.libre
 			db.session.commit()
 		else:
 			addObject(current)
-					
+
+		
 #Creates Facebook events 
 def updateFacebookByIdFacebook(current):
 	if current:
-		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID, type='facebookPin').first()
-		print item
+		item = FacebookPin.query.filter_by(idFacebook=current.idFacebook).first()
+		
 		if item == None:
 			addObject(current)
 
@@ -66,39 +70,42 @@ def addCategory(form):
 	db.session.add(form)
 	db.session.commit()
 	
-def UpdateUserVoteEvent(form,idPin):
-	idUser=form['idUser'];
-	posneg = form['posneg'];
+def UpdateUserVoteEvent(idUser,posneg,idPin):
+
 	if idUser and idPin and posneg:
 		item = Vote.query.filter_by(idUser=idUser, idPin=idPin).first()
 		pinItem = Pin.query.filter_by(id=idPin).first()
-		oldposneg=0
-		print ("ici")
 		if item:
-			oldposneg=item.posneg
-			print(oldposneg)
+
+			if item.posneg != posneg:
+				oldposneg=item.posneg
+				
+				if posneg>0 and oldposneg<0:
+					
+					pinItem.score=int(pinItem.score)+2
+				elif (posneg>0 and oldposneg==0) or (posneg==0 and oldposneg<0) :
+					pinItem.score=int(pinItem.score)+1
+				elif (posneg<0 and oldposneg==0) or (posneg==0 and oldposneg>0):
+					pinItem.score=int(pinItem.score)-1
+				elif posneg<0 and oldposneg>0:
+					pinItem.score=int(pinItem.score)-2
 			item.posneg=posneg
-		else :
-		
-			print("item=none")
+			db.session.commit()
+
+		else:
 			newVote=Vote(idUser,idPin)
 			newVote.posneg=posneg
+			pinItem.score=posneg
 			addObject(newVote)
-			print (idUser+","+idPin)
-			if pinItem.score:
-				print('la')
-			else:
-				pinItem.score=0
-			
-		pinItem.score=int(pinItem.score)-oldposneg+int(posneg)
-		db.session.commit()
 
-		return jsonify(pin=pinItem.serialize())
-			
+#Creates points of interest sncf
+def addPointOfInterest(form):
+	db.session.add(form)
+	db.session.commit()
 
 def updatePointOfInterestByIdPointOfInterest(current) :
 	if current:
-		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID, type=current.type).first()
+		item = PointOfInterest.query.filter_by(idPointOfInterest=current.idPointOfInterest).first()
 		if item is None:
 			addObject(current)
 

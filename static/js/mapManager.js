@@ -544,3 +544,19 @@ function MapManager(){
 	};
 
 }
+
+
+
+
+/*Pour recuperer l'etat du trafic, les piste cyclable et les lignes de metro/tram
+
+var bikeLayer = new google.maps.BicyclingLayer();
+	bikeLayer.setMap(map);
+
+
+	var trafficLayer = new google.maps.TrafficLayer();
+	trafficLayer.setMap(map);
+
+
+	var transitLayer = new google.maps.TransitLayer();
+	transitLayer.setMap(map);*/
