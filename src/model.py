@@ -21,6 +21,10 @@ assFriends = db.Table('assFriends',
     db.Column('friend1ID', db.Integer, db.ForeignKey('users.id')),
     db.Column('friend2ID', db.Integer, db.ForeignKey('users.id'))
 )
+usrCategories = db.Table('usrCategories',
+    db.Column('usrID', db.Integer, db.ForeignKey('users.id')),
+    db.Column('categoryID', db.Integer, db.ForeignKey('categories.id'))
+)
 
 class User(db.Model):
 
@@ -28,7 +32,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     pseudo = db.Column(db.String(50))
     passw = db.Column(db.String(50))
-    
+
     def __init__(self, username, passw):
         self.pseudo = username
         self.passw = passw

@@ -120,7 +120,7 @@ def addFriendFromForm(form):
 
 def deleteFriendship(form):
 	if (form['ID1'] and form['ID2']):
-		query0 = "select * from assFriends where friend1ID="+str(idUser)+" or " + " friend2ID="+str(idUser)
+		query0 = "select * from assFriends where friend1ID="+str(form['ID1'])+" or " + " friend2ID="+str(form['ID2'])
 		items = db.engine.execute(query)
 		if item:
 			query = "delete from assFriends where friend1ID="+str(form['ID1'])+" and " + " friend2ID="+str(form['ID2'])
@@ -129,3 +129,50 @@ def deleteFriendship(form):
 			return jsonify(error="inexistent friendship")
 	else:
 		return jsonify(error="invalid form")
+
+
+def addUserCategory(form):
+	if (form['userID'] and form['categoryID']):
+
+		exist1 = User.query.filter_by(id=int(form['userID'])).first()
+		exist2 = Category.query.filter_by(id=int(form['categoryID'])).first()
+
+		if exist1 and exist2:
+			query = "insert into usrCategories VALUES ("+str(form['userID'])+","+ str(form['categoryID'])+")"
+			db.engine.execute(query)
+			return jsonify(result="OK")
+		else:
+			return jsonify(error="inexistent object")
+	else:
+		jsonify(error="incorrect form")
+  
+
+def deleteUserCategory(form):
+	if (form['userID'] and form['categoryID']):
+		query0 = "select * from usrCategories where userID="+str(form['userID'])+" or " + " categoryID="+str(form['categoryID'])
+		items = db.engine.execute(query)
+		if item:
+			query = "delete from assFriends where userID="+str(form['userID'])+" or " + " categoryID="+str(form['categoryID'])
+			db.engine.execute(query)
+		else:
+			return jsonify(error="inexistent user category")
+	else:
+		return jsonify(error="invalid form")
+
+def getUserCategoriesById(idUser):
+	if idUser:
+		print "Query Getting user categories"
+		query = "select * from usrCategories where usrID="+str(idUser)
+		items = db.engine.execute(query)
+		list = []
+		if items:
+			print "...Got Results"
+			for row in items:
+				list.append(row["categoryID"])
+
+			return jsonify(userCategories=list)
+		else:
+			print "...No result"				
+			return jsonify(error="No user categories")
+	else:
+		return jsonify(error = "No idUser")

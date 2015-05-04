@@ -103,6 +103,21 @@ def friend(idUser = None, data=None):
   
   return jsonify(error="false request")
 
+@app.route('/user/categories/', methods=('GET', 'POST', 'DELETE'))
+@app.route('/user/categories/<idUser>/')
+def userCategories(idUser = None, data=None):
+  if request.method == "POST":
+    return serviceUser.addUserCategory(request.form)
+  
+  if request.method == 'DELETE':
+    return serviceUser.deleteUserCategory(request.form)
+
+  if idUser:
+    return serviceUser.getUserCategoriesById(idUser)
+  
+  return jsonify(error="false request")
+
+
 
 @app.route('/categories/', methods=('GET', 'POST', 'PUT', 'DELETE'))
 def categories(pin = None):
