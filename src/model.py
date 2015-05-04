@@ -7,10 +7,12 @@ from sqlalchemy import Table, Column, create_engine
 from sqlalchemy import Integer, ForeignKey, String, Unicode, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import backref, relation
-
+import datetime
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tmucotknskzdvn:B5Hyna3G7I1xIhPj3i_CSdl-GS@ec2-54-163-238-96.compute-1.amazonaws.com:5432/d6fisokcj01ulm'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://H4213:SabreESS32@82.241.33.248:3306/WeLyon-amine'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://H4213:SabreESS32@82.241.33.248:3306/WeLyon-amine'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///d:\\test.db' 
+
 db = SQLAlchemy(app)
  
 ########################################################################
@@ -32,16 +34,13 @@ class User(db.Model):
             'passw': self.passw,
         }
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
 
-    #------------------------------------------------------------------
+    # ceci est un service !!!!!!!     
+    # def delete(self):
+    #     db.session.delete(self)
+    #     db.session.commit()
 
-association_table = Table('associationPinCategory', db.Model.metadata,
-    Column('pin_id', Integer, ForeignKey('pins.id')),
-    Column('category_id', Integer, ForeignKey('categories.id'))
-)
+    #---------------------------------------------------------------
 
 class Category(db.Model):
 
@@ -68,14 +67,12 @@ class Category(db.Model):
                 'id': self.id,
                 'nom': self.nom,
                 'description': self.description,
-                'pins' : [item.serializeSmall() for item in self.pins],
                 'child': [item.serializeSmall() for item in self.categoriesChild]
             }
         return {
             'id': self.id,
             'nom': self.nom,
             'description': self.description,
-            'pins' : [item.serializeSmall() for item in self.pins],
         }
 
     def serializeSmall(self):
@@ -84,206 +81,69 @@ class Category(db.Model):
             'nom': self.nom
         }
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+    # PAREIL, C'EST UN SERVICE N'A RIEN A FAIRE DANS LE MODELE
+    # def delete(self):
+    #     db.session.delete(self)
+    #     db.session.commit()
 
     #------------------------------------------------------------------
 
 class Pin(db.Model):
-    __tablename__ = 'pins'
-    id = db.Column(db.Integer, primary_key = True)
-    type = db.Column(db.String(30))
-    idUser = db.Column(db.Integer, db.ForeignKey("users.id"))
-    title = db.Column(db.String(100))
-    categories = db.relationship("Category",
-                    secondary=association_table,
-                    backref='pins')
-    score = db.Column(db.Integer)		
-    description = db.Column(db.String(400)) 
-    lng = db.Column(db.Float)
-    lat = db.Column(db.Float)
+	__tablename__ = 'pins'
+	id = db.Column(db.Integer, primary_key = True)
+	type = db.Column(db.String(30))
+	idUser = db.Column(db.Integer, db.ForeignKey("users.id"))
+	title = db.Column(db.String(100))
+	categories = db.Column(db.String(100))
+	score = db.Column(db.Integer)		
+	description = db.Column(db.String(400)) 
+	lng = db.Column(db.Float)
+	lat = db.Column(db.Float)
+	
+	dateCreation = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+	dateBegin = db.Column(db.DateTime)
+	dateEnd = db.Column(db.DateTime)
+	
+	typeSpecificID = Column(db.BigInteger , index=True)
+	data1 = db.Column(db.String(30))
+	data2 = db.Column(db.String(30))
+	data3 = db.Column(db.String(30))
 
-    def __init__(self, title, lng, lat, idUser = 1, categories = [], description = "",score=0):
-        self.idUser = idUser
-        self.title = title
-        self.categories = categories
-        self.description = description
-        self.lng = lng
-        self.lat = lat
+	def __init__(self, type, title, lng, lat, idUser = 1, categories = [], description = "",score=0):
+		self.type = type
+		self.idUser = idUser
+		self.title = title
+		self.categories = ","
+		for i in categories:
+			self.categories = str(self.categories)+str(i.id)+","
+		self.description = description
+		self.lng = lng
+		self.lat = lat
 
-    def serialize(self):
-        return {
-            'id': self.id,
-            'user': self.idUser,
-            'title': self.title,
-            'category': [item.serializeSmall() for item in self.categories],
-            'description': self.description,
-            'lng': self.lng,
-            'lat': self.lat,
-            'score': self.score
-        }
+	def serialize(self):
+	
+		liste = self.categories.strip(",").split(",")
+		if liste[0] == "":
+			liste = []
+		return {
+			'id': self.id,
+			'type':self.type,
+			'dateCreation':self.dateCreation,
+			'dateBegin':self.dateBegin,
+			'dateEnd':self.dateEnd,
+			'user': self.idUser,
+			'title': self.title,
+			'category': liste,
+			'description': self.description,
+			'lng': self.lng,
+			'lat': self.lat,
+			'score': self.score,
+			'data1': self.data1,
+			'data2': self.data2,
+			'data3': self.data3,
+			'typeSpecificID': self.typeSpecificID
+		}
 
-    def serializeSmall(self):
-        return {
-            'id': self.id,
-            'title': self.title,
-        }
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
-    __mapper_args__ = {
-        'polymorphic_on':type,
-        'polymorphic_identity':'pin'
-    }
-
-class DynPin(Pin):
-    __tablename__ = 'dynpins'
-
-    id = Column(db.Integer, db.ForeignKey('pins.id'), primary_key=True)
-    dateBegin = Column(db.DateTime)
-    dateEnd = Column(db.DateTime)
-
-    def serialize(self):
-        return {
-            'id': self.id,
-            'user': self.idUser,
-            'title': self.title,
-            'category': [item.serializeSmall() for item in self.categories],
-            'description': self.description,
-            'lng': self.lng,
-            'lat': self.lat,
-            'DateDebut': self.dateBegin,
-            'DateFin': self.dateEnd,
-        }
-
-    def serializeSmall(self):
-        return {
-            'id': self.id,
-            'title': self.title,
-        }
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
-    __mapper_args__ = {
-        'polymorphic_identity':'dynpin',
-    }
-
-class Velov(Pin):
-    __tablename__ = 'velovs'
-
-    id = Column(db.Integer, db.ForeignKey('pins.id'), primary_key=True)
-    libre = Column(db.Integer)
-    velo = Column(db.Integer)
-    idVelov = Column(db.Integer)
-
-    def serialize(self):
-        return {
-            'id': self.id,
-            'type' : 'velov',
-            # 'idVelov': self.idVelov,
-            'user': self.idUser,
-            'title': self.title,
-            #'category': [item.serializeSmall() for item in self.categories],
-            'description': self.description,
-            'lng': self.lng,
-            'lat': self.lat,
-            # 'libre': self.libre,
-            # 'velo': self.velo,
-            'score': self.score
-
-        }
-
-    def serializeSmall(self):
-        return {
-            'id': self.id,
-            'title': self.title,
-        }
-		
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
-    __mapper_args__ = {
-        'polymorphic_identity':'velov',	
-    }
-
-class FacebookPin(DynPin):
-    __tablename__ = 'facebookpins'
-
-    id = Column(db.Integer, db.ForeignKey('dynpins.id'), primary_key=True)
-    idFacebook = Column(db.BigInteger)
-
-    def serialize(self):
-        return {
-            'id': self.id,
-            'type' : 'facebook',
-            'idFacebook': self.idFacebook,
-            'user': self.idUser,
-            'title': self.title,
-            'category': [item.serializeSmall() for item in self.categories],
-            'description': self.description,
-            'lng': self.lng,
-            'lat': self.lat,
-        }
-
-    def serializeSmall(self):
-        return {
-            'id': self.id,
-            'title': self.title,
-        }
-        
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
-    __mapper_args__ = {
-        'polymorphic_identity':'facebook',
-        
-        
-        
-    }
-
-class PointOfInterest(Pin) :     
-    __tablename__ = 'pointOfInterest'    
-    id = Column(db.Integer, db.ForeignKey('pins.id'), primary_key=True)
-    idPointOfInterest = Column(db.BigInteger)
-    uid = Column(db.BigInteger)
-    
-
-    def serialize(self):
-        return {
-            'id': self.id,
-            'idPointOfInterest': self.idPointOfInterest,
-            'user': self.idUser,
-            'title': self.title,
-            'category': [item.serializeSmall() for item in self.categories],
-            'description': self.description,
-            'lng': self.lng,
-            'lat': self.lat,     
-           
-        }
-    
-    def serializeSmall(self):
-        return {
-            'id': self.id,
-            'title': self.title,
-        }
-        
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-        
-        
-    __mapper_args__ = {
-        'polymorphic_identity':'pointOfInterest',
-        
-    }
-    
 class Vote(db.Model):
     __tablename__ = "votes"
     id= db.Column(db.Integer, primary_key = True)
@@ -301,10 +161,7 @@ class Vote(db.Model):
             'idPin': self.idPin,
         }
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
 
-#db.reflect()
-#db.drop_all()
+db.reflect()
+db.drop_all()
 db.create_all()
