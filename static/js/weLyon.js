@@ -22,7 +22,8 @@ function WeLyon(){
 		});
 
 		$('#newEventButton').on('click', function(){
-			self.ajouterEvenemment();
+			alert();
+			// self.ajouterEvenemment();
 		});
 
 		$('#onFireButton').on('click', function(){
@@ -79,6 +80,7 @@ function WeLyon(){
 //--------------Remplissage des formulaires----------------------
 	self.fillAuthentificationForm = function(bouton){
 		$("#incscriptionPanel").find(".panel-body").find('form').remove();
+		
 		var form = '';
 		if(bouton.get(0) === $('#signinButton').get(0)){
 			form+='	   <form>';
@@ -174,7 +176,8 @@ function WeLyon(){
 		}else {
 			alert(data['error']);
 		}
-	}
+	};
+
 	self.cbAuthUser = function(data){
 		if (data['error'] == null){
 			self.setUser(data.idUser, data.nameUser);
@@ -182,8 +185,7 @@ function WeLyon(){
 			// alert("Bienvenue "+ nameUser);
 		}
 		
-	}
-
+	};
 
 	self.ouvrirPanelAuthentification = function(bouton){
 		if(bouton.hasClass('active')){
@@ -207,7 +209,8 @@ function WeLyon(){
 	};
 
 	self.ajouterEvenemment = function(){
-		mapManager.ajouterEvenemment();
+		alert("ajoutEvenement");
+		// mapManager.ajouterEvenemment();
 	};
 
 	self.toggleBoutonsConnexion = function(){

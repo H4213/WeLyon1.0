@@ -79,6 +79,13 @@ function MapManager(){
 	  });
 	};
 
+	// self.ajouterEvenemment = function(){
+	// 	google.maps.event.addListenerOnce(map, 'click', function(e) {	
+	// 		controlText.innerHTML = 'Ajouter un event';
+	// 		self.placeNewMarker(e.latLng, map);
+	// 	});
+	// };
+
 	self.placeNewMarker=function(position, map) {
 		 if (marker){
 		 marker.setVisible(false);
