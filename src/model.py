@@ -51,11 +51,7 @@ class Category(db.Model):
     IdCategoryFather = db.Column(db.Integer, db.ForeignKey("categories.id"))
     categoryFather = db.relationship('Category', remote_side=[id], backref="categoriesChild")
 
-    #-------Usage-------
-    #
-    #   cat = Category("nom","description")
-    #   cat.categoryFather = LaCategorieParent
-    #   cat.categoriesChild.append(UneCategorieEnfant)
+
 
     def __init__(self, nom, description):
         self.nom = nom
@@ -80,11 +76,6 @@ class Category(db.Model):
             'id': self.id,
             'nom': self.nom
         }
-
-    # PAREIL, C'EST UN SERVICE N'A RIEN A FAIRE DANS LE MODELE
-    # def delete(self):
-    #     db.session.delete(self)
-    #     db.session.commit()
 
     #------------------------------------------------------------------
 
@@ -170,6 +161,6 @@ class Vote(db.Model):
         }
 
 
-db.reflect()
-db.drop_all()
+##db.reflect()
+##db.drop_all()
 db.create_all()

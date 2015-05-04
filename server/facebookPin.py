@@ -4,6 +4,7 @@ import json
 import datetime
 import sys
 import requests
+import urllib2
 sys.path.append("../")
 
 from src import model
@@ -15,7 +16,7 @@ import service
 
 def createFacebookTable() :
 
-	token = 'CAACEdEose0cBAGMeZATLfVZB10rFKSYJZBYDSgegZB5sBFfKX0KmcS9AiThTgVNCcZCo0HSFZAPOo0VEFffZBbPudoUeloirKyHqEjd10hwrfPdbnjBeCkWRVxF0m9wJjL3e0ekFx5ZCUI0QuwnOjBTQ7iZClY6zd149f8mctXah8eTx9M91kRkndMjDwtrHtqDfnZAocZBgyZAZC3dka60ttOxhB '
+	token = 'CAAXCPmj0HQMBAIm5MabtrPSXWh6TtYbkbGh9Io33G8zOyBNNZCZAeAZCrC3FaBhPFWKo7W3SGWziZBBRsiMv4r9ZCihbLpOeEQIS6HL6K2T7ycG8PTZBPUp7ogKVN1tILjdflq547V2A3pRwizNOcwfSEOiwMhQ1zN4OiJTA9yPEN5ZBLbmzU8x'
 	nbEvent=100
 	latitudeMin=45.6389404
 	longitudeMin=4.7530973
@@ -90,7 +91,7 @@ def createFacebookTable() :
 							obj.dateEnd=dateEnd
 							listFacebook.append(obj)
 						
-		except (requests.ConnectionError):
+		except (requests.ConnectionError , urllib2.URLError):
 			service.errorMessage ("ConnectionError")
 		
 	return listFacebook

@@ -162,11 +162,11 @@ def load_facebook_event():
   facebookPin.refreshFacebookData()
 
 def refresh():
-	#load_facebook_event()
+	load_facebook_event()
 	load_static_data()
-	#while 1:
-	#	velov.refreshVelovData(VELOV_DATA_SOURCE)
-	#	time.sleep(DATA_REFRESH_INTERVAL)
+	while 1:
+		velov.refreshVelovData(VELOV_DATA_SOURCE)
+		time.sleep(DATA_REFRESH_INTERVAL)
 
 
 def start_refresh_thread():
@@ -180,6 +180,6 @@ if __name__ == '__main__':
   init_databases.init_all()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
-  app.debug = True
+  #app.debug = True
   app.run()
 	
