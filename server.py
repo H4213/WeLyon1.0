@@ -27,7 +27,7 @@ from server import velov
 from server import facebookPin
 from server import service
 from server import init_databases
-from server import sncf
+from server import poi
 
 
 
@@ -161,16 +161,23 @@ def load_facebook_event():
 
 def refresh():
 	#load_facebook_event()
+<<<<<<< HEAD
 	load_sncf_data()
 	#while 1:
 	#	velov.refreshVelovData(VELOV_DATA_SOURCE)
 	#	time.sleep(DATA_REFRESH_INTERVAL)
+=======
+	load_static_data()
+	while 1:
+		velov.refreshVelovData(VELOV_DATA_SOURCE)
+		time.sleep(DATA_REFRESH_INTERVAL)
+>>>>>>> origin/dev-POI
 
 def start_refresh_thread():
 	thread.start_new_thread (refresh, ())
 
-def load_sncf_data():
-  sncf.loadSncfData()
+def load_static_data():
+  poi.loadData()
 
 
 if __name__ == '__main__':
