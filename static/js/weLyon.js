@@ -6,7 +6,7 @@ function WeLyon(){
 	var user = new User();
 	var idUser;
 	var nameUser;
-
+	var pinTest=new Pin();
 
 //TODO initialisation par rapport aux droits d'utilisateur
 
@@ -34,8 +34,7 @@ function WeLyon(){
 
 
 		$('#newEventButton').on('click', function(){
-			alert();
-			// self.ajouterEvenemment();
+			self.ajouterEvenemment();
 		});
 
 
@@ -61,6 +60,13 @@ function WeLyon(){
 
 		$('#disconnectButton').on('click', function(){
 			self.setUser();
+		});
+
+		$('#filterByDateButton').on('click', function(){
+			
+
+			mapManager.filterByDate();
+
 		});
 
 	};
@@ -174,6 +180,7 @@ function WeLyon(){
 
 //---------------- Callbacks ------------------------ 
 	self.cbFillCat = function (data) {
+<<<<<<< HEAD
 		var dataTree = self.transformToTreeFormat(data.categories , 0);
     	$('#categoryTreeView').treeview({
           color: "#428bca",
@@ -217,6 +224,20 @@ function WeLyon(){
 		}
 		return result;
 
+=======
+		var cat = '';
+		var listIdCategories=[];
+		nbCategorie=0;
+		for(var i in data.categories){
+			cat +=' <button id="categoryButton'+data.categories[i].id+'" data-id-category="'+data.categories[i].id+'" class="col-md-4 btn btn-default category-item active" type="button" style="display:none">'+ data.categories[i].nom +'</button> ';
+			listIdCategories[nbCategorie]=data.categories[i].id;
+			nbCategorie++;
+
+		}
+		$('#categories').append(cat);
+		mapManager.setListCategories(listIdCategories);
+		//TODO: remplir la liste des categories 
+>>>>>>> origin/dev-Paul-frontAjoutEvent
 	};
 
 	self.cbAddUser = function(data){
@@ -260,8 +281,7 @@ function WeLyon(){
 	};
 
 	self.ajouterEvenemment = function(){
-		alert("ajoutEvenement");
-		// mapManager.ajouterEvenemment();
+		mapManager.ajouterEvenemment();
 	};
 
 	self.toggleBoutonsConnexion = function(){

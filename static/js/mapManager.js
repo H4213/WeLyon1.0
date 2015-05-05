@@ -8,8 +8,8 @@ function MapManager(){
 	}
 	var infowindow = new google.maps.InfoWindow({content : ""});
 	var markers = new Map();
-	var pins = [];
 	var marker;
+	var listIdCategories=[];
 	var map; // object containing the map
 	var cordinateLyon = new google.maps.LatLng(45.7601676, 4.8328885);
 	var newPos =new google.maps.LatLng(0,0);
@@ -100,7 +100,6 @@ function MapManager(){
 		});
 	};
 
-
 	self.initMap = function() {
 		self.pinSetup();
 
@@ -165,8 +164,8 @@ function MapManager(){
 	  controlUI.style.marginTop = '22px';
 	  controlUI.style.marginRight = '22px';
 	  controlUI.style.textAlign = 'center';
-	  controlUI.style.display = 'none';
-	  controlUI.title = 'Cliquer pour ajouter un event';
+/*	  controlUI.style.display = 'none';
+*/	  controlUI.title = 'Cliquer pour ajouter un event';
 	  controlDiv.appendChild(controlUI);
 
 	  // Set CSS for the control interior
@@ -190,12 +189,23 @@ function MapManager(){
 	  });
 	};
 
-	// self.ajouterEvenemment = function(){
-	// 	google.maps.event.addListenerOnce(map, 'click', function(e) {	
-	// 		controlText.innerHTML = 'Ajouter un event';
-	// 		self.placeNewMarker(e.latLng, map);
-	// 	});
-	// };
+	self.ajouterEvenemment = function(){
+	 	google.maps.event.addListenerOnce(map, 'click', function(e) {	
+	 		
+	 		$('#formulaireAjoutEvenement').modal('show');
+			$('#valideTypePoint').on('click',function(){
+				switch ($('#ajoutPointChoixType').type.value){
+					case "Lieu":
+					break;
+					case "Evenement":
+					alert();
+					break;
+				}
+			});
+	 		/*("#myModal .modal-body").load(target, function() { 
+         $("#myModal").modal("show"); */
+	 	});
+	 };
 
 	self.placeNewMarker=function(position, map) {
 		 if (marker){
@@ -235,7 +245,9 @@ function MapManager(){
 		usedMarker = aMarker;
 		usedInfoWindow = infowindow;
 		google.maps.event.addListener(infowindow, 'closeclick', function(){
-   		marker.setVisible(false); //removes the marker);
+		if (marker){
+			marker.setVisible(false); //removes the marker);
+		}
 		});
 
 	$('#okCreatePin').on("click",function(){
@@ -478,6 +490,77 @@ function MapManager(){
 		
 		
 	//};
+<<<<<<< HEAD
+=======
+	self.addMarker = function(aPin) {
+		var type = aPin.type;
+		var image;
+		var contentString;
+		var id=aPin.id;
+		switch (type) { 
+			case "velov" : 
+				image = imageVelov;
+				titre = "Velo'v";
+				contentString = self.buildDescription(aPin,"velov");
+				break;
+			case "bar" : 
+				image = imageBar;
+				titre = "Bar";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "restau" : 
+				image = imageRestau;
+				titre = "Restaurant";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "soiree" : 
+				image = imageSoiree;
+				titre = "Soirée";
+				contentString = self.buildDescription(aPin,"dynamique");
+				break;
+			case "hotel" : 
+				image = imageHotel;
+				titre = "Hôtel";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "monument" : 
+				image = imageMonument;
+				titre = "Monument";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			default :
+				image = imageNormal
+				titre = "Autre";
+				contentString = self.buildDescription(aPin,"normal");
+			}
+
+		
+			
+		var aMarker = new google.maps.Marker({
+			position: new google.maps.LatLng(aPin.lat, aPin.lng),
+			map: map,
+			icon: image,
+			title: titre,
+			'idPin': aPin.id,
+			'visibilityCategoryToken': 0,
+			'visibilityDateToken': 1
+		});
+
+		markers.set(id,{pin : aPin,
+						marker : aMarker});
+		google.maps.event.addListener(aMarker, 'click', function() {
+			infowindow.setContent(self.buildDescription(markers.get(aMarker['idPin']).pin,markers.get(aMarker['idPin']).pin.type));
+		
+			infowindow.open(map,aMarker);
+
+		});
+		
+		
+		
+
+
+	};
+>>>>>>> origin/dev-Paul-frontAjoutEvent
 
 
 	self.buildDescription=function(aPin, pinType) {
@@ -563,6 +646,22 @@ function MapManager(){
 			var p = data.Pins[i];
 			self.addMarker(p);
 		}
+		for(var i=0; i<listIdCategories.length; i++){
+
+			if($('#categoryButton'+listIdCategories[i]).data('id-category')!=null){
+				if ($('#categoryButton'+listIdCategories[i]).hasClass('active'))
+				{
+					self.categoryFilter(true,listIdCategories[i])
+				}
+				else
+				{
+				self.categoryFilter(false,listIdCategories[i])
+
+				}			
+			}
+		}
+		self.filterByDate();
+
 	};
 
 	self.cbVotePin = function(data){
@@ -570,10 +669,11 @@ function MapManager(){
 			aPin = data.pin;
 
 		self.addMarker(aPin);
-		marker.setVisible(false);
+	/*	i
+		marker.setVisible(false);*/
 		infowindow.setContent(self.buildDescription(aPin, aPin.type));
 		
-		infowindow.open(map, markers[aPin.id].marker);
+		infowindow.open(map, markers.get(aPin.id));
 		}
 	};
 
@@ -618,6 +718,7 @@ function MapManager(){
 				for (var j=0;j<valeur.pin.category.length;j++){
 					if(valeur.pin.category[j].indexOf(idCategory)!=-1){
 						found=1;
+						console.log(valeur.pin)
 						break;
 					}
 				}
@@ -632,12 +733,12 @@ function MapManager(){
 							valeur.marker['visibilityCategoryToken']=0
 						}
 					} 
-					if (valeur.marker['visibilityCategoryToken']==0)
+					if (valeur.marker['visibilityCategoryToken']>0 && valeur.marker['visibilityDateToken']>0)
 					{
-						valeur.marker.setVisible(false);
+						valeur.marker.setVisible(true);
 					}
 					else{
-						valeur.marker.setVisible(true);
+						valeur.marker.setVisible(false);
 
 					}
 		    	}
@@ -645,5 +746,51 @@ function MapManager(){
 		}
 	  	
 	};
+
+	self.setListCategories=function(listCategories){
+		listIdCategories=listCategories;
+	};
+
+	self.filterByDate=function(){
+			startingDay=$('#jour_debutFilter').val();
+			startingMonth=$('#mois_debutFilter').val();
+			startingYear=$('#annee_debutFilter').val();
+			endingDay=$('#jour_finFilter').val();
+			endingMonth=$('#mois_finFilter').val();
+			endingYear=$('#annee_finFilter').val();
+		for (var valeur of markers.values()){
+			if(valeur.pin.dateBegin!=null && valeur.pin.dateEnd!=null)
+			{
+				var dateBegin = new Date(valeur.pin.dateBegin);
+				var dateEnd =new Date(valeur.pin.dateEnd);
+				var dateBeginCompare=new Date();
+				dateBeginCompare.setDate(startingDay);
+				dateBeginCompare.setMonth(startingMonth);
+				dateBeginCompare.setYear(startingYear);
+
+				var dateEndCompare=new Date();
+				dateEndCompare.setDate(endingDay);
+				dateEndCompare.setMonth(endingMonth);
+				dateEndCompare.setYear(endingYear);
+				
+
+				if (dateBegin>dateBeginCompare && dateEnd<dateEndCompare)
+				{
+					if(valeur.marker.visibilityCategoryToken>0)
+					{
+					valeur.marker.visibilityDateToken=0
+					valeur.marker.setVisible(true)
+					}
+				}
+				else
+				{
+					valeur.marker.visibilityDateToken=0
+					valeur.marker.setVisible(false)
+				}
+				
+			}
+		}
+	};
+
 
 }
