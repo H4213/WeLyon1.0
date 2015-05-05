@@ -261,7 +261,7 @@ function WeLyon(){
 		
 	};
 
-	self.remplirFiltreDate = function(){		
+	self.remplirFiltreDate = function(){
 		var jour ='<option value="" disabled selected>Jour</option>';
 		var mois = '<option value="" disabled selected>Mois</option>';
 		var annee = '<option value="" disabled selected>Année</option>';
