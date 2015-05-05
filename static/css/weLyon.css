@@ -13,13 +13,13 @@
 }
 
 .valider{
-    background-color: #09B969;
+    background-color: rgba(19,188,62,0.7);    
     border-color: #CCCCCC;
     color: #666666;
 }
 
 .valider:hover{
-    background-color: #09AF34;    
+    background-color: #13BC3E;
 }
 
 .annuler{    
@@ -35,6 +35,7 @@
 
 .optionCarteItem {
     color: white;
+    display: inline;
 }
 
 .optionCarteItem > i {
@@ -48,6 +49,28 @@
     text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px 1px black;
 }
 
+.closed-filter{
+    padding: 2px 24px 1px !important;
+    margin: 0 0 0 -145px !important;  
+}
+
+.closed-filter > div.optionCarteItem{
+    display: none;
+}
+
+.closed-filter > div.active{
+    display: initial;
+    float:right;    
+}
+
+.closed-filter > div >i.fa-chevron-right{
+    display: none;
+}
+
+.closed-filter > div >i.fa-chevron-left{
+    display: block;
+}
+
 #nav {
     background-color: #595757;
     border-radius: 0;
@@ -58,35 +81,54 @@
     position: relative;
 }
 
-#signinButton.active, #signinButton:hover{
+#signinButton.active ,#signinButton.active > a, #signinButton:hover{
     background-color:#00A286;
 }
 
-#connectButton.active, #connectButton:hover{
+#connectButton.active ,#connectButton.active > a, #connectButton:hover{
     background-color: #EF6530;
 }
 
 #incscriptionPanel{
     position:absolute;
     top:52px;
-    right: 15px;
+    right: 30px;
     width:25%;
     z-index:1000;
+}
+
+#optionsCarte > .panel{    
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;  
+}
+
+
+#optionsCarte > i{
+    padding: 5px;
 }
 
 #optionUtilisateur{
     position:absolute;
     top: 60px;
-    right: 22px;
-    z-index:900;
-}
-
-#optionsCarte{
-    position: absolute;
-    top:100px;
     right: 0;
     z-index:900;
 }
+
+#optionUtilisateur > .panel-body{
+    padding: 5px 9px 1px;
+}
+
+#visibilityFilter{
+    position: absolute;
+    top:110px;
+    right: 0;
+    z-index:900;
+}
+
+#visibilityFilter > .panel-body{
+    margin: -10px 6px;
+}
+
 
 #onFireButton.active{
     color:#FC3A37;
@@ -98,6 +140,10 @@
 
 #allButton.active{
     color:#EEE544;
+}
+
+#searchButton.active {
+    color:#77FE7B;
 }
 
 /*TODO: à voir*/
@@ -121,6 +167,7 @@
 #brandImg {
 	height: 100%;
 	width: auto;
+    margin-left:15%;
 }
 
 #map-container{
