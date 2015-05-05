@@ -24,7 +24,8 @@
     
         <!-- Custom styles for this template -->
         <!-- <link href="../static/css/weLyon.css" rel="stylesheet">   -->
-        <link href="{{url_for('static', filename='./css/weLyon.css') }}" rel="stylesheet">        
+        <link href="{{url_for('static', filename='./css/weLyon.css') }}" rel="stylesheet">
+        <link href="{{url_for('static', filename='./css/social.css') }}" rel="stylesheet">     
     </head>
   
 
@@ -146,10 +147,12 @@
 
             </div>
 
-            <div class="row">
-                <div id="filActu" class="col-sm-12">
+            <div id="maRow" class="row">
+                <div id="filActubox" class="col-sm-12">
                         <div id="filActu" class="col-sm-2">
+                            <div id="color">
                             $('#filActu').append("blabla");
+                            </div>
                         </div>
                         <div id="filActu" class="col-sm-2">
                             salut2
@@ -220,8 +223,8 @@
                     url: 'fil/'+dernier_id,
                     success: function(data){
                         if(data!=''){
-                            $(data).prependTo('#filActu').hide().animate({'height':'toggle','opacity':'toggle'},2000);
-                            $('#filActu div:last-child').remove();
+                            $(data).prependTo('#filActubox').hide().animate({'height':'toggle','opacity':'toggle'},2000);
+                            $('#filActubox div:last-child').remove();
                         }
                     }
                 });

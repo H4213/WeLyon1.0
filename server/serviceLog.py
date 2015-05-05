@@ -56,7 +56,7 @@ def getFil(more):
 	script = "<script>setId("+str(more)+");</script>"
 
 
-	div = '<div id="filActu" class="col-sm-2"><span id="'+str(log.idUser)+'">'+user.pseudo+'</span><br>'+log.action+'<br><span id="'+str(log.idPin)+'">'+pinName+'</span><script>//alert("'+ str(log.id) +'appele")</script></div>'
+	div = '<div id="filActu" class="col-sm-2"><span id="'+str(log.idUser)+'">'+user.pseudo+'</span><br>'+log.action+'<br><span id="'+str(log.idPin)+'">'+pinName+'</span></div>'
 
 	return div + script + getNext
 		
