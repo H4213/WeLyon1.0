@@ -80,6 +80,7 @@ function WeLyon(){
 		});
 		$('#categoryTreeView').on('nodeSelected', function(event, data) {
 			if (data.nodes!=null){
+				console.log(data.tag);
 				for(var i = 0; i<data.nodes.length; i++)
 				{
 					$('#categoryTreeView').treeview('selectNode',[(data.nodes[i])]);
@@ -246,6 +247,7 @@ function WeLyon(){
 
 //---------------- Callbacks ------------------------ 
 	self.cbFillCat = function (data) {
+		mapManager.setListCategories(data.categories);
 		var dataTree = self.transformToTreeFormat(data.categories , 0);
     	$('#categoryTreeView').treeview({
           color: "#428bca",
