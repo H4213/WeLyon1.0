@@ -61,7 +61,15 @@ function WeLyon(){
 		});
 
 		$('#dateFilterButton').on('click', function(){
-			$('#dateFilterForm').toggle();
+			self.remplirFiltreDate();
+		});
+
+		$('#sendDateFilter').on('click', function(){
+			var date = $('#dateFilterDay').val()+"/"+
+						$('#dateFilterMonth').val()+"/"+
+						$('#dateFilterYear').val();
+			alert(date);
+			//TODO: send et filtrer par date
 		});
 
 		$('#signinButton').on('click', function(){
@@ -247,6 +255,32 @@ function WeLyon(){
 			// alert("Bienvenue "+ nameUser);
 		}
 		
+	};
+
+	self.remplirFiltreDate = function(){		
+		var jour ='<option value="" disabled selected>Jour</option>';
+		var mois = '<option value="" disabled selected>Mois</option>';
+		var annee = '<option value="" disabled selected>Année</option>';
+
+		for( var i=1; i<=31; i++){
+			jour+=' <option value="'+i+'">'+i+'</option>';
+		}
+		for( var i=1; i<=12; i++){
+			mois+=' <option value="'+i+'">'+i+'</option>';
+		}
+		for( var i=2015; i<=2020; i++){
+			annee+=' <option value="'+i+'">'+i+'</option>';
+		}
+
+		$('#dateFilterDay').html('');
+		$('#dateFilterMonth').html('');
+		$('#dateFilterYear').html('');
+
+		$('#dateFilterDay').append(jour);
+		$('#dateFilterMonth').append(mois);
+		$('#dateFilterYear').append(annee);
+
+		$('#dateFilterForm').toggle();
 	};
 
 	self.ouvrirPanelAuthentification = function(bouton){
