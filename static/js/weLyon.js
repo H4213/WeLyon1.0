@@ -7,7 +7,7 @@ function WeLyon(){
 	var idUser;
 	var nameUser;
 	var pinTest=new Pin();
-
+	var alertMessage=new MessageView();
 //TODO initialisation par rapport aux droits d'utilisateur
 
 //------------Les setups des pages/panels et ses boutons------------------
@@ -16,7 +16,7 @@ function WeLyon(){
 		self.setUser();
 		self.initialiserCarte();		
 		self.fillCategories();
-	
+		alertMessage.install('alert');
 		$('#categoryButton').on('click',function(){
 			self.toggleCategories();
 			$('.category-item').on('click', function() {
@@ -68,6 +68,7 @@ function WeLyon(){
 			mapManager.filterByDate();
 
 		});
+
 
 	};
 
