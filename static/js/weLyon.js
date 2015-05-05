@@ -56,8 +56,7 @@ function WeLyon(){
 
 		$('#sendSearch').on('click', function(){
 			var search = $('#searchInput').find('input').val();
-			alert( search);
-			//TODO: send search on mapManager
+			mapManager.getPinBySearch(search);
 		});
 
 		$('#dateFilterButton').on('click', function(){
@@ -65,15 +64,8 @@ function WeLyon(){
 		});
 
 		$('#sendDateFilter').on('click', function(){
-			var date = "Date debut: "+$('#dateFilterDayBegin').val()+"/"+
-						$('#dateFilterMonthBegin').val()+"/"+
-						$('#dateFilterYearBegin').val() +
-						"\nDate fin: "+
-						$('#dateFilterDayEnd').val()+"/"+
-						$('#dateFilterMonthEnd').val()+"/"+
-						$('#dateFilterYearEnd').val();
-			alert(date);
-			//TODO: send et filtrer par date
+			
+		mapManager.filterByDate()	
 		});
 
 		$('#signinButton').on('click', function(){

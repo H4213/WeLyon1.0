@@ -155,8 +155,9 @@ def updateVote(idPin =None, data=None):
     return service.UpdateUserVoteEvent(request.form,idPin)
 
 
-@app.route('/search/<term>')
-def search(term):
+@app.route('/pins/search/')
+def search():
+  term=request.args.get('search')
   if term:
     return service.globalSearch(term)
   else:
