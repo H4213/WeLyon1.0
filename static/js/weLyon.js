@@ -76,11 +76,16 @@ function WeLyon(){
 
 		});
 
-		$('#categoryTreeView').on('nodeSelected', function(event, data) {
+		$('#categoryTreeView').on('selectNode', function(event, data) {
+			$('.node-categoryTreeView')
 			if (data.nodes!=null){
+	
+
 				for(var i = 0; i<data.nodes.length; i++)
 				{
-					$('#categoryTreeView').treeview('selectNode',[(data.nodes[i])]);
+					data.nodes[i].backColor="#FFFF";
+					$('#categoryTreeView').treeview('selectNode',data.nodes[i]);
+					console.log(data.nodes[i])
 				}
 			}
 			else{
@@ -91,10 +96,7 @@ function WeLyon(){
 
 		$('#categoryTreeView').on('nodeUnselected', function(event, data) {
 			if (data.nodes!=null){
-				for(var i = 0; i<data.nodes.length; i++)
-				{
-					$('#categoryTreeView').treeview('unselectNode',[(data.nodes[i])]);
-				}
+				
 			}
 			else{
 					mapManager.categoryFilter(false,data.tag);
@@ -257,8 +259,9 @@ function WeLyon(){
 				if (data[i].idFather && data[i].idFather == father ) {
 					var node = { 
 						text : data[i].nom ,
-						tag : [data[i].id]  
-						  }
+						tag : [data[i].id],
+						 
+						 }
 					var nodes = self.transformToTreeFormat(data , data[i].id)
 					if (nodes.length != 0 ) {
 						node.nodes = nodes
@@ -270,8 +273,9 @@ function WeLyon(){
 				if(!data[i].idFather) {
 					var node = { 
 						text : data[i].nom ,
-						tag : [data[i].id] 
-						  }
+						tag : [data[i].id] ,
+					
+  						}
 					var nodes = self.transformToTreeFormat(data , data[i].id)
 					if (nodes.length != 0 ) {
 						node.nodes = nodes
