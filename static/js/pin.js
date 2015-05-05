@@ -123,7 +123,7 @@ function Pin() {
                         "pin_id": idPin
                 }
             console.log(data)
-            rest.insert("/comments/"+idPin+"/",data,callback);
+            rest.insert("/comments",data,callback);
         }
     }
   
