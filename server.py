@@ -59,9 +59,6 @@ def pins(category = None):
   if category:
     return servicePin.getPinsByIdCategory(category)
 
-  visibility = request.args.get('visibilite')
-  if visibility:
-    return servicePin.getPinByVisibility(visibility)
   return servicePin.getAllPin()
 
 @app.route('/pin/<idPin>/')
@@ -123,8 +120,8 @@ def addPin():
 @app.route('/add/dynPin/', methods=['POST'])
 def addDynPin():
   if request.method == 'POST':
+    print("ok")
     return servicePin.addDynPin(request.form)
-
 #inscription d'un utilisateur
 @app.route('/add/user', methods=('GET', 'POST'))
 def addUser():
@@ -153,10 +150,13 @@ def updateVote(idPin =None, data=None):
   if request.method =='POST':
     
     return service.UpdateUserVoteEvent(request.form,idPin)
+
+
   
 @app.errorhandler(404)
 def page_not_found(error):
     return jsonify(error="404"), 404
+	
 
 def load_facebook_event():
   facebookPin.refreshFacebookData()
@@ -167,7 +167,6 @@ def refresh():
 	while 1:
 		velov.refreshVelovData(VELOV_DATA_SOURCE)
 		time.sleep(DATA_REFRESH_INTERVAL)
-
 
 def start_refresh_thread():
 	thread.start_new_thread (refresh, ())
