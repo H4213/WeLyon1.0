@@ -46,16 +46,6 @@ function MapManager(){
 
 		google.maps.event.addListener(map, 'zoom_changed', self.zoomHandler );
 		google.maps.event.addListener(map, 'center_changed', self.zoomHandler );
-		google.maps.event.addListener(map, 'resize', function () {
-			var height =  $(window).height();
-			var width =  $(window).width();
-
-			$('body').css('width', 100 );
-			$('body').css('height', 100 );
-
-			alert ('');
-
-		});
 
 	    //self.refreshPins();
 	    //setInterval(self.refreshPins(), 60000 );
