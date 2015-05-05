@@ -204,55 +204,18 @@ function MapManager(){
 					'<p>' +
 					'<fieldset class="date">'+
 						 '<label>Date de début : </label><br />'+
-  								 '<select id="jour_debut" name="jour_debut" />'+
-			  						    '<option>1</option>'      +
-			  						    '<option>2</option>'      +
-			  						    '<option>3</option>'      +
-			  						    '<option>4</option>'      +
-			  						    '<option>5</option>'      +
-			  						    '<option>6</option>'      +
-			  						    '<option>7</option>'      +
-			  						    '<option>8</option>'      +
-			  						    '<option>9</option>'      +
-			  						    '<option>10</option>'      +
-			  						    '<option>11</option>'      +
-			  						    '<option>12</option>'      +
-			  						    '<option>13</option>'      +
-			  						    '<option>14</option>'      +
-			  						    '<option>15</option>'      +
-			  						    '<option>16</option>'      +
-			  						    '<option>17</option>'      +
-			  						    '<option>18</option>'      +
-			  						    '<option>19</option>'      +
-			  						    '<option>20</option>'      +
-			  						    '<option>21</option>'      +
-			  						    '<option>22</option>'      +
-			  						    '<option>23</option>'      +
-			  						    '<option>24</option>'      +
-			  						    '<option>25</option>'      +
-			  						    '<option>26</option>'      +
-			  						    '<option>27</option>'      +
-			  						    '<option>28</option>'      +
-			  						    '<option>29</option>'      +
-			  						    '<option>30</option>'      +
-			  						    '<option>31</option>'      +
-		  						  '</select>' +
-		  						  '<select id="mois_debut" name="mois_debut" />'+
-			  						    '<option >01</option> ' +
-			  						    '<option >02</option>'+      
-			  						    '<option>03</option>'   + 
-			  						    '<option>04</option>'+      
-			  						    '<option>05</option>'+     
-			  						    '<option>06</option>'+      
-			  						    '<option>07</option>'+      
-			  						    '<option>08</option>'     + 
-			  						    '<option>09</option>' +     
-			  						    '<option>10</option>'    +  
-			  						    '<option>11</option>'    +  
-			  						    '<option>12</option>'     + 
-		  						  '</select>'+
-		  						  '<select id="annee_debut" name="annee_debut" />'+
-		  						         
+  								 '<select id="jour_debut" name="jour_debut" />';
+  								 for (var i = 0 , i<31 ; i++) {
+  								 	contentString +=  '<option>' + (i+1) +'</option>';
+  								 }
+			  					
+		  						 contentString += '</select>'+
+		  						  '<select id="mois_debut" name="mois_debut" />';
+		  						  for (var i = 0 , i<12 , i++ ) {
+		  						  	contentString += '<option>' + (i+1) + '</option> '
+		  						  }    
+		  						  contentString += '</select>'+
+		  						  '<select id="annee_debut" name="annee_debut" />'
 			  						    '<option>2015</option>'      +
 			  						    '<option>2016</option>'      +
 			  						    '<option>2017</option>'      +
@@ -269,55 +232,17 @@ function MapManager(){
 
 		  			'<fieldset class="date">'+
 						 '<label>Date de Fin : </label><br />'+
-  								 '<select id="jour_fin" name="jour_fin" />'+
-			  						    '<option>1</option>'      +
-			  						    '<option>2</option>'      +
-			  						    '<option>3</option>'      +
-			  						    '<option>4</option>'      +
-			  						    '<option>5</option>'      +
-			  						    '<option>6</option>'      +
-			  						    '<option>7</option>'      +
-			  						    '<option>8</option>'      +
-			  						    '<option>9</option>'      +
-			  						    '<option>10</option>'      +
-			  						    '<option>11</option>'      +
-			  						    '<option>12</option>'      +
-			  						    '<option>13</option>'      +
-			  						    '<option>14</option>'      +
-			  						    '<option>15</option>'      +
-			  						    '<option>16</option>'      +
-			  						    '<option>17</option>'      +
-			  						    '<option>18</option>'      +
-			  						    '<option>19</option>'      +
-			  						    '<option>20</option>'      +
-			  						    '<option>21</option>'      +
-			  						    '<option>22</option>'      +
-			  						    '<option>23</option>'      +
-			  						    '<option>24</option>'      +
-			  						    '<option>25</option>'      +
-			  						    '<option>26</option>'      +
-			  						    '<option>27</option>'      +
-			  						    '<option>28</option>'      +
-			  						    '<option>29</option>'      +
-			  						    '<option>30</option>'      +
-			  						    '<option>31</option>'      +
-		  						  '</select>' +
-		  						  '<select id="mois_fin" name="mois_fin" />'+
-			  						    '<option value="1">Janvier</option> ' +
-			  						    '<option value=2>Février</option>'+      
-			  						    '<option value=3>Mars</option>'   + 
-			  						    '<option>Avril</option>'+      
-			  						    '<option>Mai</option>'+     
-			  						    '<option>Juin</option>'+      
-			  						    '<option>Juillet</option>'+      
-			  						    '<option>Août</option>'     + 
-			  						    '<option>Septembre</option>' +     
-			  						    '<option>Octobre</option>'    +  
-			  						    '<option>Novembre</option>'    +  
-			  						    '<option>Decembre</option>'     + 
-		  						  '</select>'+
+  								 '<select id="jour_fin" name="jour_fin" />';
+			  						    for (var i = 0 , i<31 ; i++) {
+  								 			contentString +=  '<option>' + (i+1) +'</option>';
+  								 		}	
+		  						contentString +=  '</select>' +
+		  						  '<select id="mois_fin" name="mois_fin" />';
+		  						  for (var i = 0 , i<13 , i++ ) {
+		  						  	contentString += '<option>' + (i+1) + '</option> '
+		  						  }    
+		  						  contentString += '</select>'+
 		  						  '<select id="annee_fin" name="annee_fin" />'+
-		  						         
 			  						    '<option>2015</option>'      +
 			  						    '<option>2016</option>'      +
 			  						    '<option>2017</option>'      +
@@ -331,8 +256,6 @@ function MapManager(){
 						'<label>h</label>'+
 						'<input type="text" name="minute_fin" id="minute_fin" size="2">'+	  					
 	  				'</fieldset>'+
-      						  
-      						  						
 						'<center><input type="button" class="pinCreationButtonDyn" name="valider" value="Valider"></center>' +
 					'</p>' +
 				'</form>';
@@ -365,9 +288,7 @@ function MapManager(){
 		infowindow.open(map,usedMarker);
 		$(document).on("click",".pinCreationButtonDyn",function(){
 				var jour_debut= document.getElementById('jour_debut').value;
-
 				var mois_debut= document.getElementById('mois_debut').value;
-
 				var annee_debut=document.getElementById('annee_debut').value;
 				var heure_debut=document.getElementById('heure_debut').value;
 				var minute_debut=document.getElementById('minute_debut').value;
