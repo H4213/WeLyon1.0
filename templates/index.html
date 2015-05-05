@@ -11,20 +11,20 @@
         <title>WeLyon</title>
 
         <!-- Bootstrap core CSS -->
-        <!-- <link href="../static/components/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet"> -->
-        <link href="{{url_for('static', filename='./components/bootstrap-3.3.4/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="../static/components/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="{{url_for('static', filename='./components/bootstrap-3.3.4/css/bootstrap.min.css') }}" rel="stylesheet"> -->
 
         <!-- Font-Awesome core CSS -->
-        <!-- <link href="../static/components/fonts/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
-        <link href="{{url_for('static', filename='./components/fonts/font-awesome-4.2.0/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link href="../static/components/fonts/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <!-- <link href="{{url_for('static', filename='./components/fonts/font-awesome-4.2.0/css/font-awesome.min.css') }}" rel="stylesheet"> -->
 
         <!-- Fontello core CSS -->
-        <!-- <link href="../static/components/fonts/fontello/css/fontello.css" rel="stylesheet"> -->
-        <link href="{{url_for('static', filename='./components/fonts/fontello/css/fontello.css') }}" rel="stylesheet">        
+        <link href="../static/components/fonts/fontello/css/fontello.css" rel="stylesheet">
+        <!-- <link href="{{url_for('static', filename='./components/fonts/fontello/css/fontello.css') }}" rel="stylesheet">         -->
     
         <!-- Custom styles for this template -->
-        <!-- <link href="../static/css/weLyon.css" rel="stylesheet">   -->
-        <link href="{{url_for('static', filename='./css/weLyon.css') }}" rel="stylesheet">        
+        <link href="../static/css/weLyon.css" rel="stylesheet">  
+        <!-- <link href="{{url_for('static', filename='./css/weLyon.css') }}" rel="stylesheet">         -->
     </head>
   
 
@@ -42,8 +42,8 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="#"> 
-                            <!--<img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoBlanc.png"> -->
-                            <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoBlanc.png') }}">  
+                            <img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoBlanc.png"> 
+                            <!-- <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoBlanc.png') }}">   -->
                         </a>
                     </div>
 
@@ -78,27 +78,7 @@
                 </div>
             </div>
 
-                 <!-- <div id="filters" class="col-sm-12 col-md-2">
-                    <div id="filter" class="col-md-12">
-                        <form>
-                            <div class="form-group">
-                                <p>De</p>
-                                <input type="date" class="form-control" id="dateInit" placeholder="">
-                            </div>
-                            <div class=" form-group">
-                                <p>à</p>
-                                <input type="date" class="form-control" id="dateFin" placeholder="">
-                            </div>
-                            <button type="submit" class="btn btn-primary pull-right">Filtrer</button>
-                        </form>
-                    </div>
-
-                    <div id="categories" class="btn-group-vertical btn-block" role="group" aria-label="...">
-                        <button id="categoryButton" class="col-md-4 btn btn-default category-title" type="button"><strong>Categories</strong></button> 
-
-                    </div>                                                       
-                </div>
- -->          <!-- Modal -->
+            <!-- Modal -->
             <div class="modal fade" id="formulaireAjoutEvenement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -127,12 +107,14 @@
                 
 
             <div class="row">
-                <div id="optionsCarte" class="row">
+                <div id="optionsCarte" class="row"  style="display:none;">
 
-                    <div id="optionUtilisateur" class="panel panel-default">
-                        <div class="panel-body" data-toggle="tooltip" data-placement="top" title="Ajouter Point">
-                            <div id="newEventButton" class="pull-right optionCarteItem">
-                                <i class="fa fa-plus-square fa-2x"></i>
+                    <div id="optionUtilisateur" class="panel panel-default" data-toggle="tooltip" data-placement="left" title="Ajouter Point">
+                        <div class="panel-body">
+                            <div class="row " style="text-align: center;">
+                                <div id="newEventButton" class="optionCarteItem">
+                                    <i class="fa fa-plus-square fa-2x"></i>
+                                </div>                           
                             </div>
                         </div>
                     </div>
@@ -154,15 +136,84 @@
                                 </div>                                
                             </div>
 
+                            <div id="searchInput" class="input-group row" style="display:none;">
+                                <input type="text" class="form-control finalInput" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button id="sendSearch" class="btn btn-default valider" type="button"><i class="glyphicon glyphicon-ok"></i></button>
+                                </span>
+                            </div>
+                        </div>                         
+                    </div>
+
+                    <div id="dateFilter" class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row " style="text-align: center;" data-toggle="tooltip" data-placement="top" title="Filtrer par date">
+                                <div id="dateFilterButton" class="optionCarteItem">
+                                    <i class="fa fa-clock-o fa-2x"></i>
+                                </div>                           
+                            </div>
+                            <div id="dateFilterForm" class="row" style="text-align: center; display:none;">
+                                <form class="form-inline">
+                                    <div class="form-group">
+                                        <select id="dateFilterDay" class="form-control">
+                                            <option value="" disabled selected>Jour</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="dateFilterMonth" class="form-control">
+                                            <option value="" disabled selected>Moi</option>
+                                        </select> 
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="dateFilterYear" class="form-control finalInput">
+                                            <option value="" disabled selected>Année</option>
+                                        </select>
+                                    </div>
+                                    <button id="okInscription" type="button" class="btn btn-default valider"><i class="glyphicon glyphicon-ok"></i></button>
+                                <form>                            
+                            </div>                           
+                        </div>
+                    </div>
+
+                   <!--  <div id="dateFilter" class="panel panel-default">                        
+                        <div  class="panel-body">
+                            <div class="row " style="text-align: center;">
+                                <div id="onFireButton" class="  optionCarteItem" data-visibility="hot">
+                                    <i class="fa icon-fire fa-2x"  data-toggle="tooltip" data-placement="bottom" title="On Fire"></i>
+                                </div>                             
+                            </div>
+
                             <div id="searchInput" class="input-group" style="display:none;">
                                 <input type="text" class="form-control finalInput" placeholder="Search for...">
                                 <span class="input-group-btn">
                                     <button id="sendSearch" class="btn btn-default valider" type="button"><i class="glyphicon glyphicon-ok"></i></button>
                                 </span>
                             </div>
-
                         </div>                         
-                    </div>                    
+                    </div> --> 
+
+                    <!-- <div id="categoryDateFilters" class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="filter" class="col-md-12">
+                                <form>
+                                    <div class="form-group">
+                                        <p>De</p>
+                                        <input type="date" class="form-control" id="dateInit" placeholder="">
+                                    </div>
+                                    <div class=" form-group">
+                                        <p>à</p>
+                                        <input type="date" class="form-control" id="dateFin" placeholder="">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary pull-right">Filtrer</button>
+                                </form>
+                            </div>
+
+                            <div id="categories" class="btn-group-vertical btn-block" role="group" aria-label="...">
+                                <button id="categoryButton" class="col-md-4 btn btn-default category-title" type="button"><strong>Categories</strong></button> 
+
+                            </div> 
+                        </div>
+                    </div> -->
                 </div>
 
                 <div id="map-container" class="col-md-12">
@@ -179,31 +230,31 @@
         Placed at the end of the document so the pages load faster -->
 
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <!-- // <script src="../static/components/jquery/jquery.js"></script> -->
-        <!-- // <script src="../static/components/bootstrap-3.3.4/js/bootstrap.min.js"></script>  -->
+        <script src="../static/components/jquery/jquery.js"></script>
+        <script src="../static/components/bootstrap-3.3.4/js/bootstrap.min.js"></script> 
          
-        <script src="{{url_for('static', filename='./components/jquery/jquery.js') }}"></script>   
-        <script src="{{url_for('static', filename='./components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>    
+        <!-- // <script src="{{url_for('static', filename='./components/jquery/jquery.js') }}"></script>    -->
+        <!-- // <script src="{{url_for('static', filename='./components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>     -->
 
           <!-- JavaScript inputs -->
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
 
-       <!--  // <script src="../static/js/RESTful.js"></script> 
-        // <script src="../static/js/pin.js"></script> 
-        // <script src="../static/js/mapManager.js"></script>
-        // <script src="../static/js/category.js"></script>
-        // <script src="../static/js/user.js"></script>
-        // <script src="../static/js/weLyon.js"></script> -->
+        <script src="../static/js/RESTful.js"></script> 
+        <script src="../static/js/pin.js"></script> 
+        <script src="../static/js/mapManager.js"></script>
+        <script src="../static/js/category.js"></script>
+        <script src="../static/js/user.js"></script>
+        <script src="../static/js/weLyon.js"></script>
 
-        {{ JSGlue.include() }}
+        <!-- {{ JSGlue.include() }} -->
 
-        <script src="{{url_for('static', filename='./js/mapManager.js') }}"></script>
-        <script src="{{url_for('static', filename='./js/RESTful.js') }}"></script>
-        <script src="{{url_for('static', filename='./js/category.js') }}"></script>
-        <script src="{{url_for('static', filename='./js/pin.js') }}"></script>
-        <script src="{{url_for('static', filename='./js/user.js') }}"></script>
-        <script src="{{url_for('static', filename='./js/weLyon.js') }}"></script>
+        <!-- // <script src="{{url_for('static', filename='./js/mapManager.js') }}"></script> -->
+        <!-- // <script src="{{url_for('static', filename='./js/RESTful.js') }}"></script> -->
+        <!-- // <script src="{{url_for('static', filename='./js/category.js') }}"></script> -->
+        <!-- // <script src="{{url_for('static', filename='./js/pin.js') }}"></script> -->
+        <!-- // <script src="{{url_for('static', filename='./js/user.js') }}"></script> -->
+        <!-- // <script src="{{url_for('static', filename='./js/weLyon.js') }}"></script> -->
 
 
     </body>

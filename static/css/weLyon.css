@@ -97,37 +97,40 @@
     z-index:1000;
 }
 
-#optionsCarte > .panel{    
-    background-color: rgba(0, 0, 0, 0.5);
-    margin-bottom: 10px;  
+#optionsCarte .panel{
+    position:absolute;    
+    right: 0;
+    z-index:900;   
+    background-color: rgba(0, 0, 0, 0.5); 
 }
-
 
 #optionsCarte > i{
     padding: 5px;
 }
 
-#optionUtilisateur{
-    position:absolute;
-    top: 60px;
-    right: 0;
-    z-index:900;
+#optionsCarte .panel-body{
+    margin: -10px 6px -13px ;
 }
 
-#optionUtilisateur > .panel-body{
-    padding: 5px 9px 1px;
+#optionUtilisateur{
+    top: 60px;
 }
 
 #visibilityFilter{
-    position: absolute;
-    top:110px;
-    right: 0;
-    z-index:900;
+    top: 110px;
+}
+
+#dateFilter{
+    top: 194px;
+}
+
+/*#optionUtilisateur > .panel-body{
+    padding: 5px 9px 1px;
 }
 
 #visibilityFilter > .panel-body{
     margin: -10px 6px;
-}
+}*/
 
 
 #onFireButton.active{

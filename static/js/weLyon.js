@@ -60,6 +60,10 @@ function WeLyon(){
 			//TODO: send search on mapManager
 		});
 
+		$('#dateFilterButton').on('click', function(){
+			$('#dateFilterForm').toggle();
+		});
+
 		$('#signinButton').on('click', function(){
 			self.ouvrirPanelAuthentification($(this));
 		});
@@ -86,9 +90,10 @@ function WeLyon(){
 	};
 
 	self.initialiserCarte = function(){		
-		google.maps.event.addDomListener(window, 'load', mapManager.initMap());
+		// google.maps.event.addDomListener(window, 'load', mapManager.initMap());
 		$('[data-toggle="tooltip"]').tooltip();
 		self.gererVisibilite($('#onFireButton'));
+		$('#optionsCarte').show();
 	};
 
 	self.setupAuthentificationPanel = function(bouton){
