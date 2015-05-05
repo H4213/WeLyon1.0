@@ -60,6 +60,22 @@ function WeLyon(){
 			//TODO: send search on mapManager
 		});
 
+		$('#dateFilterButton').on('click', function(){
+			self.remplirFiltreDate();
+		});
+
+		$('#sendDateFilter').on('click', function(){
+			var date = "Date debut: "+$('#dateFilterDayBegin').val()+"/"+
+						$('#dateFilterMonthBegin').val()+"/"+
+						$('#dateFilterYearBegin').val() +
+						"\nDate fin: "+
+						$('#dateFilterDayEnd').val()+"/"+
+						$('#dateFilterMonthEnd').val()+"/"+
+						$('#dateFilterYearEnd').val();
+			alert(date);
+			//TODO: send et filtrer par date
+		});
+
 		$('#signinButton').on('click', function(){
 			self.ouvrirPanelAuthentification($(this));
 		});
@@ -115,6 +131,7 @@ function WeLyon(){
 		google.maps.event.addDomListener(window, 'load', mapManager.initMap());
 		$('[data-toggle="tooltip"]').tooltip();
 		self.gererVisibilite($('#onFireButton'));
+		$('#optionsCarte').show();
 	};
 
 	self.setupAuthentificationPanel = function(bouton){
@@ -305,6 +322,38 @@ function WeLyon(){
 			// alert("Bienvenue "+ nameUser);
 		}
 		
+	};
+
+	self.remplirFiltreDate = function(){
+		var jour ='<option value="" disabled selected>Jour</option>';
+		var mois = '<option value="" disabled selected>Mois</option>';
+		var annee = '<option value="" disabled selected>Année</option>';
+
+		for( var i=1; i<=31; i++){
+			jour+=' <option value="'+i+'">'+i+'</option>';
+		}
+		for( var i=1; i<=12; i++){
+			mois+=' <option value="'+i+'">'+i+'</option>';
+		}
+		for( var i=2015; i<=2020; i++){
+			annee+=' <option value="'+i+'">'+i+'</option>';
+		}
+
+		$('#dateFilterDayBegin').html('');
+		$('#dateFilterMonthBegin').html('');
+		$('#dateFilterYearBegin').html('');
+		$('#dateFilterDayEnd').html('');
+		$('#dateFilterMonthEnd').html('');
+		$('#dateFilterYearEnd').html('');
+
+		$('#dateFilterDayBegin').append(jour);
+		$('#dateFilterMonthBegin').append(mois);
+		$('#dateFilterYearBegin').append(annee);
+		$('#dateFilterDayEnd').append(jour);
+		$('#dateFilterMonthEnd').append(mois);
+		$('#dateFilterYearEnd').append(annee);
+
+		$('#dateFilterForm').toggle();
 	};
 
 	self.ouvrirPanelAuthentification = function(bouton){

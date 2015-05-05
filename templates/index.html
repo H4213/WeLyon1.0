@@ -46,7 +46,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="#"> 
-                            <!--<img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoBlanc.png"> -->
+                            <!-- <img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoBlanc.png">  -->
                             <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoBlanc.png') }}">  
                         </a>
                     </div>
@@ -82,6 +82,7 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
                <!--   <div id="filters" class="col-sm-12 col-md-2">
                     <div id="filter" class="col-md-12">
                         <form>
@@ -213,6 +214,9 @@
                     </div>                                                       
                 </div> -->
           <!-- Modal -->
+=======
+            <!-- Modal -->
+>>>>>>> origin/front-ongletsFiltres
             <div class="modal fade" id="formulaireAjoutEvenement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -241,12 +245,14 @@
                 
 
             <div class="row">
-                <div id="optionsCarte" class="row">
+                <div id="optionsCarte" class="row"  style="display:none;">
 
-                    <div id="optionUtilisateur" class="panel panel-default">
-                        <div class="panel-body" data-toggle="tooltip" data-placement="top" title="Ajouter Point">
-                            <div id="newEventButton" class="pull-right optionCarteItem">
-                                <i class="fa fa-plus-square fa-2x"></i>
+                    <div id="optionUtilisateur" class="panel panel-default" data-toggle="tooltip" data-placement="left" title="Ajouter Point">
+                        <div class="panel-body">
+                            <div class="row " style="text-align: center;">
+                                <div id="newEventButton" class="optionCarteItem">
+                                    <i class="fa fa-plus-square fa-2x"></i>
+                                </div>                           
                             </div>
                         </div>
                     </div>
@@ -268,15 +274,80 @@
                                 </div>                                
                             </div>
 
-                            <div id="searchInput" class="input-group" style="display:none;">
+                            <div id="searchInput" class="input-group row" style="display:none;">
                                 <input type="text" class="form-control finalInput" placeholder="Search for...">
                                 <span class="input-group-btn">
                                     <button id="sendSearch" class="btn btn-default valider" type="button"><i class="glyphicon glyphicon-ok"></i></button>
                                 </span>
                             </div>
-
                         </div>                         
-                    </div>                    
+                    </div>
+
+                    <div id="dateFilter" class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row " style="text-align: center;" data-toggle="tooltip" data-placement="top" title="Filtrer par date">
+                                <div id="dateFilterButton" class="optionCarteItem">
+                                    <i class="fa fa-clock-o fa-2x"></i>
+                                </div>                           
+                            </div>
+                            <div id="dateFilterForm" class="row" style="text-align: center; display:none;">
+                                <label for="dateFormBegin">Date début</label>                                
+                                <div id="dateFormBegin" class="form-inline">
+                                    <div class="form-group">
+                                        <select id="dateFilterDayBegin" class="form-control">
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="dateFilterMonthBegin" class="form-control">
+                                        </select> 
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="dateFilterYearBegin" class="form-control finalInput">
+                                        </select>
+                                    </div>                                                                               
+                                </div>
+                                <label for="dateFormEnd">Date fin</label>
+                                <div id="dateFormEnd" class="form-inline">
+                                    <div class="form-group">
+                                        <select id="dateFilterDayEnd" class="form-control">
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="dateFilterMonthEnd" class="form-control">
+                                        </select> 
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="dateFilterYearEnd" class="form-control finalInput">
+                                        </select>
+                                    </div>                                                                               
+                                </div>  
+                                <button id="sendDateFilter" type="button" class="btn btn-default valider" style="margin:5px;"><i class="glyphicon glyphicon-ok"></i></button>                                 
+                            </div>                           
+                        </div>
+                    </div>
+
+                    <!-- <div id="categoryDateFilters" class="panel panel-default">
+                        <div class="panel-body">
+                            <div id="filter" class="col-md-12">
+                                <form>
+                                    <div class="form-group">
+                                        <p>De</p>
+                                        <input type="date" class="form-control" id="dateInit" placeholder="">
+                                    </div>
+                                    <div class=" form-group">
+                                        <p>à</p>
+                                        <input type="date" class="form-control" id="dateFin" placeholder="">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary pull-right">Filtrer</button>
+                                </form>
+                            </div>
+
+                            <div id="categories" class="btn-group-vertical btn-block" role="group" aria-label="...">
+                                <button id="categoryButton" class="col-md-4 btn btn-default category-title" type="button"><strong>Categories</strong></button> 
+
+                            </div> 
+                        </div>
+                    </div> -->
                 </div>
 
                 <div id="map-container" class="col-md-12">
