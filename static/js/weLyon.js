@@ -68,6 +68,30 @@ function WeLyon(){
 			mapManager.filterByDate();
 
 		});
+		$('#categoryTreeView').on('nodeSelected', function(event, data) {
+			if (data.nodes!=null){
+				for(var i = 0; i<data.nodes.length; i++)
+				{
+					$('#categoryTreeView').treeview('selectNode',[(data.nodes[i])]);
+				}
+			}
+			else{
+					mapManager.categoryFilter(true,data.tag);
+				}
+			
+		});
+
+		$('#categoryTreeView').on('nodeUnselected', function(event, data) {
+			if (data.nodes!=null){
+				for(var i = 0; i<data.nodes.length; i++)
+				{
+					$('#categoryTreeView').treeview('unselectNode',[(data.nodes[i])]);
+				}
+			}
+			else{
+					mapManager.categoryFilter(false,data.tag);
+				}
+		});
 
 	};
 

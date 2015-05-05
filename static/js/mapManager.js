@@ -128,7 +128,6 @@ function MapManager(){
 		var height =  $("#map").height();
 		var width =  $("#map").width();
 		var numberOfMarkers = Math.floor(height*width/(50*50));
-		console.log(numberOfMarkers);
 		var toDisplay = [];
 		for (var valeur of markers.values()) {
 			if (bounds.contains(valeur.marker.getPosition())) {
@@ -145,7 +144,6 @@ function MapManager(){
 			}
 			return 0;
 		});
-		console.log(toDisplay.length);
 		for ( var i = 0 ;  ( i <30 ) && (i < toDisplay.length)  ; i++) {
 			
 			toDisplay[i].marker.setVisible(true);
@@ -707,7 +705,6 @@ function MapManager(){
 				for (var j=0;j<valeur.pin.category.length;j++){
 					if(valeur.pin.category[j].indexOf(idCategory)!=-1){
 						found=1;
-						console.log(valeur.pin)
 						break;
 					}
 				}
