@@ -22,14 +22,59 @@ logs = LifoQueue(SIZE_OF_QUEUE)
 #---------------------------------------------------
 #--------------------------Log-----------------
 def getFil(more):
-	items = logs
 
-	if more >= SIZE_OF_QUEUE:
-		more = 2
+	last = Log.query.order_by(Log.id.desc()).first()
+	if not last:
+		return ""
+
+	lastId = last.id
+	print lastId
+
+	log = Log.query.get(more)
+	user = User.query.get(log.idUser)
+	pinName = ""
+	if not log.action == "subscribe":
+		pin = Pin.query.get(log.idPin)
+		pinName = pin.title
+
+
+	futurLast = int(lastId)+1
+
+	print "\n\n--------------------------\n", more ," et ",futurLast
+
+	if int(more) == int(futurLast):
+		print "egal"
+		return ""
+
+	getNext = ""
+	if not int(more) == int(lastId):
+		getNext = "<script>chargerNews();</script>"
+
+	more = int(more) + 1
+	more = defMore(more, lastId)
+
+	script = "<script>setId("+str(more)+");</script>"
+
+
+	div = '<div id="filActu" class="col-sm-2"><span id="'+str(log.idUser)+'">'+user.pseudo+'</span><br>'+log.action+'<br><span id="'+str(log.idPin)+'">'+pinName+'</span><script>//alert("'+ str(log.id) +'appele")</script></div>'
+
+	return div + script + getNext
+		
 	items = Log.query.all()
+	return jsonify(logs=[item.serialize() for item in items])
 
-	print items
+	return jsonify(logs=[item.serialize() for item in iter(logs.get, None)])
 
+def defMore(more, last):
+	if more == 0:
+		if last > 5:
+			newMore = int(last) - int(more)
+			return newMore
+		return more
+	return more
+
+def filTest():
+	items = Log.query.all()
 	return jsonify(logs=[item.serialize() for item in items])
 
 def logister(log):
@@ -39,12 +84,19 @@ def logister(log):
 	db.session.add(log)
 	db.session.commit()
 
+def user(idUser):
+	log = Log(idUser, "subscribe", 1)
+
+	logister(log)
+
 def like(idUser, idPin, posneg):
 	action = ""
-	if  posneg >= 0:
+	if  int(posneg) > 0:
 		action = "Like"
-	else:
+	elif int(posneg) < 0:
 		action = "Dislike"
+	else :
+		action = "Unlike"
 	log = Log(idUser, action, idPin)
 
 	logister(log)

@@ -145,6 +145,28 @@
                 </div>        
 
             </div>
+
+            <div class="row">
+                <div id="filActu" class="col-sm-12">
+                        <div id="filActu" class="col-sm-2">
+                            $('#filActu').append("blabla");
+                        </div>
+                        <div id="filActu" class="col-sm-2">
+                            salut2
+                        </div>
+                        <div id="filActu" class="col-md-2">
+                            lsqdg
+                        </div>
+                        <div id="filActu" class="col-md-2">
+                            sdgsdg
+                        </div>
+                        <div id="filActu" class="col-md-2">
+                            dsqgsdg
+                        </div>
+                        <div id="filActu" class="col-md-2">
+                        </div>                 
+                </div>
+            </div>
         </div>
 
 
@@ -179,6 +201,33 @@
         <script src="{{url_for('static', filename='./js/pin.js') }}"></script>
         <script src="{{url_for('static', filename='./js/user.js') }}"></script>
         <script src="{{url_for('static', filename='./js/weLyon.js') }}"></script>
+
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+                //charger le début du log
+                // chargeOldNews()
+                setInterval(chargerNews,5000);
+            });
+
+            var dernier_id = 1;
+            function setId(id){
+                dernier_id = id;
+            }
+
+            function chargerNews(){
+                jQuery.ajax({
+                    url: 'fil/'+dernier_id,
+                    success: function(data){
+                        if(data!=''){
+                            $(data).prependTo('#filActu').hide().animate({'height':'toggle','opacity':'toggle'},2000);
+                            $('#filActu div:last-child').remove();
+                        }
+                    }
+                });
+            }
+
+        </script>
 
 
     </body>

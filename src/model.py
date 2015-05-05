@@ -176,16 +176,16 @@ class Log(db.Model):
         self.idUser = idUser
         self.action = action
         self.idPin = idPin
-        self.dateTime = datetime.datetime.now
 
     def serialize(self):
         return {
+            'id':self.id,
             'idPin': self.idPin,
             'idUser': self.idUser,
             'action': self.action,
             'time': self.dateTime,
         }
 
-db.reflect()
-db.drop_all()
+#db.reflect()
+#db.drop_all()
 db.create_all()

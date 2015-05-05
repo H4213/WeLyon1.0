@@ -88,7 +88,7 @@ def addPin(form):
 
 			
 		pin = Pin('Event', form['titre'], float(form['lng']), float(form['lat']) , form['idUser'] , [Category.query.filter_by(nom=form['category']).first()] , form['description'])
-		serviceLog.add(pin.user, pin.id)
+		serviceLog.add(pin.idUser, pin.id)
 		service.addObject(pin)
 
 		return jsonify(pin = pin.serialize()) 

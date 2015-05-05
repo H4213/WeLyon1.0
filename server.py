@@ -118,6 +118,10 @@ def auth():
 def fil(more = None):
   return serviceLog.getFil(more)
 
+@app.route('/filTest/')
+def filTest():
+  return serviceLog.filTest()
+
 #ajout d'un marqueur
 @app.route('/add/pin/', methods=('GET', 'POST'))
 def addPin():

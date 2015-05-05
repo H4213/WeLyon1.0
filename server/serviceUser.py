@@ -1,7 +1,7 @@
 from src import model
 from src.model import User, Pin, Category
 
-from server import service
+from server import service, serviceLog
 
 from flask import Flask, flash, render_template, request, session
 from flask.ext.jsonpify import jsonify
@@ -50,6 +50,8 @@ def addUserFromForm(form):
 
 		db.session.add(user)
 		db.session.commit()
+
+		serviceLog.user(user.id)
 
 		return jsonify(idUser=user.id, nameUser=user.pseudo)
 
