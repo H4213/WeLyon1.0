@@ -46,7 +46,16 @@ function MapManager(){
 
 		google.maps.event.addListener(map, 'zoom_changed', self.zoomHandler );
 		google.maps.event.addListener(map, 'center_changed', self.zoomHandler );
+		google.maps.event.addListener(map, 'resize', function () {
+			var height =  $(window).height();
+			var width =  $(window).width();
 
+			$('body').css('width', 100 );
+			$('body').css('height', 100 );
+
+			alert ('');
+
+		});
 
 	    //self.refreshPins();
 	    //setInterval(self.refreshPins(), 60000 );
@@ -465,7 +474,7 @@ function MapManager(){
 		for(var i in data.Pins){
 			var p = data.Pins[i];
 			self.addMarker(p);
-			self.filterByDate();
+		self.filterByDate();
 		};
 	}
 
@@ -485,6 +494,7 @@ function MapManager(){
     	}
     	self.cbGetAllPins(data);
    	};
+
 	self.pinSetup = function(){
 			$(document).on("click",".like",function(){
 				var pinID= $(this).closest('#content').data('id-pin');
