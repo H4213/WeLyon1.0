@@ -471,8 +471,14 @@ function MapManager(){
 		for(var i in data.Pins){
 			var p = data.Pins[i];
 			self.addMarker(p);
+<<<<<<< HEAD
 		}
 		for(var i=0; i<listIdCategories.length; i++){
+=======
+
+		}
+		/*for(var i=0; i<listIdCategories.length; i++){
+>>>>>>> origin/dev-Paul-FiltreArbre
 			if($('#categoryButton'+listIdCategories[i]).data('id-category')!=null){
 				if ($('#categoryButton'+listIdCategories[i]).hasClass('active'))
 				{
@@ -483,7 +489,7 @@ function MapManager(){
 					self.categoryFilter(false,listIdCategories[i])
 				}			
 			}
-		}
+		}*/
 		self.filterByDate();
 	};
 
@@ -527,13 +533,15 @@ function MapManager(){
 	};
 
 	self.categoryFilter = function(visible, idCategory){
+
 		for (var valeur of markers.values()) {
 			if (valeur!=null){
 				var found=-1
 				for (var j=0;j<valeur.pin.category.length;j++){
-					if(valeur.pin.category[j].indexOf(idCategory)!=-1){
+
+					if(valeur.pin.category[j]==idCategory){
+						
 						found=1;
-						console.log(valeur.pin)
 						break;
 					}
 				}
@@ -550,6 +558,7 @@ function MapManager(){
 					} 
 					if (valeur.marker['visibilityCategoryToken']>0 && valeur.marker['visibilityDateToken']>0)
 					{
+
 						valeur.marker.setVisible(true);
 					}
 					else{
@@ -559,6 +568,7 @@ function MapManager(){
 		    }
 		}
 	};
+
 
 	self.setListCategories=function(listCategories){
 		listIdCategories=listCategories;
@@ -603,4 +613,15 @@ function MapManager(){
 			}
 		}
 	};
+<<<<<<< HEAD
+=======
+
+	self.getPinBySearch=function(search){
+		pin.getPinBySearch(search,cbGetAllPins);
+		
+	};
+
+
+
+>>>>>>> origin/dev-Paul-FiltreArbre
 }

@@ -180,6 +180,10 @@ if __name__ == '__main__':
   init_databases.init_all()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
+<<<<<<< HEAD
   # app.debug = True
+=======
+
+>>>>>>> origin/dev-Paul-FiltreArbre
   app.run()
 	
