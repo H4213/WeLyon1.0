@@ -182,12 +182,11 @@ class Log(db.Model):
 
     def serialize(self):
         return {
-            'idPin': self.idPin
-            'idUser': self.idUser
-            'action': self.action
-            'time': self.dateTime
+            'idPin': self.idPin,
+            'idUser': self.idUser,
+            'action': self.action,
+            'time': self.dateTime,
         }
-
 
 #db.reflect()
 #db.drop_all()
