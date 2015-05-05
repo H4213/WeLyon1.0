@@ -5,7 +5,6 @@ from flask.ext.jsonpify import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from server import serviceLog
 import time
 
 def connectToDatabase():
