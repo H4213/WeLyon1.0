@@ -72,7 +72,6 @@ function WeLyon(){
 			self.setUser();
 		});
 
-<<<<<<< HEAD
 		$('#filterByDateButton').on('click', function(){
 			
 
@@ -80,7 +79,6 @@ function WeLyon(){
 
 		});
 
-=======
 		$(".finalInput").keypress(function(event) {
 			if (event.which == 13) {
 				event.preventDefault();
@@ -92,7 +90,6 @@ function WeLyon(){
 		// 	self.toggleFiltreVisibvilite();
 		// });
 
->>>>>>> origin/front-ongletsFiltres
 	};
 
 	self.initialiserCarte = function(){		

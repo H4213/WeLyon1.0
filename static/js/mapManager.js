@@ -28,78 +28,6 @@ function MapManager(){
 
 
 
-	self.addMarker = function(aPin) {
-		var type = aPin.type;
-		var image;
-		var contentString;
-		var id=aPin.id;
-		switch (type) { 
-			case "velov" : 
-				image = imageVelov;
-				titre = "Velo'v";
-				contentString = self.buildDescription(aPin,"velov");
-				break;
-			case "stationTCL" : 
-				image = imageTCL;
-				titre = "Tcl";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "cafe" : 
-				image = imageBar;
-				titre = "Café/Bar";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "restaurant" : 
-				image = imageRestau;
-				titre = "Restaurant";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "nightClub" : 
-				image = imageSoiree;
-				titre = "Night Club";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "hopital" : 
-				image = imageHopital;
-				titre = "Hopital";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "facebookPin" : 
-				image = imageFacebook;
-				titre = "Facebook";
-				contentString = self.buildDescription(aPin,"dynamique");
-				break;
-			case "event" : 
-				image = imageFacebook;
-				titre = "Evenement";
-				contentString = self.buildDescription(aPin,"dynamique");
-				break;
-			default :
-				image = imageNormal
-				titre = "Autre";
-				contentString = self.buildDescription(aPin,"normal");
-			}
-	
-			
-		var aMarker = new google.maps.Marker({
-			position: new google.maps.LatLng(aPin.lat, aPin.lng),
-			map: map,
-			icon: image,
-			title: titre,
-			'idPin': aPin.id,
-			'visibilityCategoryToken': 0
-		});
-
-		markers.set(id,{pin : aPin,
-						marker : aMarker});
-		google.maps.event.addListener(aMarker, 'click', function() {
-			infowindow.setContent(self.buildDescription(markers.get(aMarker['idPin']).pin,markers.get(aMarker['idPin']).pin.type));
-		
-			infowindow.open(map,aMarker);
-
-		});
-	};
-
 	self.initMap = function() {
 		self.pinSetup();
 
@@ -128,7 +56,6 @@ function MapManager(){
 		var height =  $("#map").height();
 		var width =  $("#map").width();
 		var numberOfMarkers = Math.floor(height*width/(50*50));
-		console.log(numberOfMarkers);
 		var toDisplay = [];
 		for (var valeur of markers.values()) {
 			if (bounds.contains(valeur.marker.getPosition())) {
@@ -145,7 +72,6 @@ function MapManager(){
 			}
 			return 0;
 		});
-		console.log(toDisplay.length);
 		for ( var i = 0 ;  ( i <30 ) && (i < toDisplay.length)  ; i++) {
 			
 			toDisplay[i].marker.setVisible(true);
@@ -198,7 +124,6 @@ function MapManager(){
 					case "Lieu":
 					break;
 					case "Evenement":
-					alert();
 					break;
 				}
 			});
@@ -470,26 +395,6 @@ function MapManager(){
 
 	};
 
-/*	self.createPin=function(aForm, aType) {
-		usedMarker.setVisible(false);
-		infoWindow.close();
-		
-		// Création du marker
-		currentId += 1;
-		var newPin = { type : aType,
-				id : currentId,
-				lat : usedMarker.getPosition().lat(),
-				lng :  usedMarker.getPosition().lng(),
-				user : "JJG",
-				title : document.aForm.titre.value,
-				description : document.aForm.description.value,
-				score : 0};
-		addMarker(newPin);
-		
-		// TODO: Ajout dans la bdd*/
-		
-		
-	//};
 
 	self.addMarker = function(aPin) {
 		var type = aPin.type;
@@ -502,38 +407,46 @@ function MapManager(){
 				titre = "Velo'v";
 				contentString = self.buildDescription(aPin,"velov");
 				break;
-			case "bar" : 
-				image = imageBar;
-				titre = "Bar";
+			case "stationTCL" : 
+				image = imageTCL;
+				titre = "Velo'v";
 				contentString = self.buildDescription(aPin,"normal");
 				break;
-			case "restau" : 
+			case "cafe" : 
+				image = imageBar;
+				titre = "Café/Bar";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "restaurant" : 
 				image = imageRestau;
 				titre = "Restaurant";
 				contentString = self.buildDescription(aPin,"normal");
 				break;
-			case "soiree" : 
+			case "nightClub" : 
 				image = imageSoiree;
-				titre = "Soirée";
+				titre = "Night Club";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "hopital" : 
+				image = imageHopital;
+				titre = "Hopital";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "facebookPin" : 
+				image = imageFacebook;
+				titre = "Facebook";
 				contentString = self.buildDescription(aPin,"dynamique");
 				break;
-			case "hotel" : 
-				image = imageHotel;
-				titre = "Hôtel";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "monument" : 
-				image = imageMonument;
-				titre = "Monument";
-				contentString = self.buildDescription(aPin,"normal");
+			case "event" : 
+				image = imageFacebook;
+				titre = "Evenement";
+				contentString = self.buildDescription(aPin,"dynamique");
 				break;
 			default :
 				image = imageNormal
 				titre = "Autre";
 				contentString = self.buildDescription(aPin,"normal");
 			}
-
-		
 			
 		var aMarker = new google.maps.Marker({
 			position: new google.maps.LatLng(aPin.lat, aPin.lng),
@@ -639,7 +552,6 @@ function MapManager(){
 			self.addMarker(p);
 		}
 		for(var i=0; i<listIdCategories.length; i++){
-
 			if($('#categoryButton'+listIdCategories[i]).data('id-category')!=null){
 				if ($('#categoryButton'+listIdCategories[i]).hasClass('active'))
 				{
@@ -652,18 +564,13 @@ function MapManager(){
 			}
 		}
 		self.filterByDate();
-
 	};
 
 	self.cbVotePin = function(data){
 		if (data['error']==null){
 			aPin = data.pin;
-
 		self.addMarker(aPin);
-	/*	i
-		marker.setVisible(false);*/
 		infowindow.setContent(self.buildDescription(aPin, aPin.type));
-		
 		infowindow.open(map, markers.get(aPin.id));
 		}
 	};
@@ -671,11 +578,9 @@ function MapManager(){
 	self.cbGetPinVisibilite =function(data){
 		for (var valeur of markers.values()) {
  			
-    		valeur.marker.setMap(null);
-    		
+    		valeur.marker.setMap(null);	
     	}
     	self.cbGetAllPins(data);
-
    	};
 	self.pinSetup = function(){
 			$(document).on("click",".like",function(){
@@ -728,12 +633,10 @@ function MapManager(){
 					}
 					else{
 						valeur.marker.setVisible(false);
-
 					}
 		    	}
 		    }
 		}
-	  	
 	};
 
 	self.setListCategories=function(listCategories){
@@ -776,10 +679,7 @@ function MapManager(){
 					valeur.marker.visibilityDateToken=0
 					valeur.marker.setVisible(false)
 				}
-				
 			}
 		}
 	};
-
-
 }
