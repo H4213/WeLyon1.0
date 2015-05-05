@@ -65,9 +65,13 @@ function WeLyon(){
 		});
 
 		$('#sendDateFilter').on('click', function(){
-			var date = $('#dateFilterDay').val()+"/"+
-						$('#dateFilterMonth').val()+"/"+
-						$('#dateFilterYear').val();
+			var date = "Date debut: "+$('#dateFilterDayBegin').val()+"/"+
+						$('#dateFilterMonthBegin').val()+"/"+
+						$('#dateFilterYearBegin').val() +
+						"\nDate fin: "+
+						$('#dateFilterDayEnd').val()+"/"+
+						$('#dateFilterMonthEnd').val()+"/"+
+						$('#dateFilterYearEnd').val();
 			alert(date);
 			//TODO: send et filtrer par date
 		});
@@ -98,7 +102,7 @@ function WeLyon(){
 	};
 
 	self.initialiserCarte = function(){		
-		// google.maps.event.addDomListener(window, 'load', mapManager.initMap());
+		google.maps.event.addDomListener(window, 'load', mapManager.initMap());
 		$('[data-toggle="tooltip"]').tooltip();
 		self.gererVisibilite($('#onFireButton'));
 		$('#optionsCarte').show();
@@ -272,13 +276,19 @@ function WeLyon(){
 			annee+=' <option value="'+i+'">'+i+'</option>';
 		}
 
-		$('#dateFilterDay').html('');
-		$('#dateFilterMonth').html('');
-		$('#dateFilterYear').html('');
+		$('#dateFilterDayBegin').html('');
+		$('#dateFilterMonthBegin').html('');
+		$('#dateFilterYearBegin').html('');
+		$('#dateFilterDayEnd').html('');
+		$('#dateFilterMonthEnd').html('');
+		$('#dateFilterYearEnd').html('');
 
-		$('#dateFilterDay').append(jour);
-		$('#dateFilterMonth').append(mois);
-		$('#dateFilterYear').append(annee);
+		$('#dateFilterDayBegin').append(jour);
+		$('#dateFilterMonthBegin').append(mois);
+		$('#dateFilterYearBegin').append(annee);
+		$('#dateFilterDayEnd').append(jour);
+		$('#dateFilterMonthEnd').append(mois);
+		$('#dateFilterYearEnd').append(annee);
 
 		$('#dateFilterForm').toggle();
 	};

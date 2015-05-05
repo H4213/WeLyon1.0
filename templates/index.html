@@ -11,20 +11,20 @@
         <title>WeLyon</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="../static/components/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
-        <!-- <link href="{{url_for('static', filename='./components/bootstrap-3.3.4/css/bootstrap.min.css') }}" rel="stylesheet"> -->
+        <!-- <link href="../static/components/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet"> -->
+        <link href="{{url_for('static', filename='./components/bootstrap-3.3.4/css/bootstrap.min.css') }}" rel="stylesheet">
 
         <!-- Font-Awesome core CSS -->
-        <link href="../static/components/fonts/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <!-- <link href="{{url_for('static', filename='./components/fonts/font-awesome-4.2.0/css/font-awesome.min.css') }}" rel="stylesheet"> -->
+        <!-- <link href="../static/components/fonts/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="{{url_for('static', filename='./components/fonts/font-awesome-4.2.0/css/font-awesome.min.css') }}" rel="stylesheet">
 
         <!-- Fontello core CSS -->
-        <link href="../static/components/fonts/fontello/css/fontello.css" rel="stylesheet">
-        <!-- <link href="{{url_for('static', filename='./components/fonts/fontello/css/fontello.css') }}" rel="stylesheet">         -->
+        <!-- <link href="../static/components/fonts/fontello/css/fontello.css" rel="stylesheet"> -->
+        <link href="{{url_for('static', filename='./components/fonts/fontello/css/fontello.css') }}" rel="stylesheet">        
     
         <!-- Custom styles for this template -->
-        <link href="../static/css/weLyon.css" rel="stylesheet">  
-        <!-- <link href="{{url_for('static', filename='./css/weLyon.css') }}" rel="stylesheet">         -->
+        <!-- <link href="../static/css/weLyon.css" rel="stylesheet">   -->
+        <link href="{{url_for('static', filename='./css/weLyon.css') }}" rel="stylesheet">        
     </head>
   
 
@@ -42,8 +42,8 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="#"> 
-                            <img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoBlanc.png"> 
-                            <!-- <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoBlanc.png') }}">   -->
+                            <!-- <img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoBlanc.png">  -->
+                            <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoBlanc.png') }}">  
                         </a>
                     </div>
 
@@ -153,41 +153,40 @@
                                 </div>                           
                             </div>
                             <div id="dateFilterForm" class="row" style="text-align: center; display:none;">
-                                <form class="form-inline">
+                                <label for="dateFormBegin">Date début</label>                                
+                                <div id="dateFormBegin" class="form-inline">
                                     <div class="form-group">
-                                        <select id="dateFilterDay" class="form-control">
+                                        <select id="dateFilterDayBegin" class="form-control">
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <select id="dateFilterMonth" class="form-control">
+                                        <select id="dateFilterMonthBegin" class="form-control">
                                         </select> 
                                     </div>
                                     <div class="form-group">
-                                        <select id="dateFilterYear" class="form-control finalInput">
+                                        <select id="dateFilterYearBegin" class="form-control finalInput">
+                                        </select>
+                                    </div>                                                                               
+                                </div>
+                                <label for="dateFormEnd">Date fin</label>
+                                <div id="dateFormEnd" class="form-inline">
+                                    <div class="form-group">
+                                        <select id="dateFilterDayEnd" class="form-control">
                                         </select>
                                     </div>
-                                    <button id="sendDateFilter" type="button" class="btn btn-default valider"><i class="glyphicon glyphicon-ok"></i></button>
-                                <form>                            
+                                    <div class="form-group">
+                                        <select id="dateFilterMonthEnd" class="form-control">
+                                        </select> 
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="dateFilterYearEnd" class="form-control finalInput">
+                                        </select>
+                                    </div>                                                                               
+                                </div>  
+                                <button id="sendDateFilter" type="button" class="btn btn-default valider" style="margin:5px;"><i class="glyphicon glyphicon-ok"></i></button>                                 
                             </div>                           
                         </div>
                     </div>
-
-                   <!--  <div id="dateFilter" class="panel panel-default">                        
-                        <div  class="panel-body">
-                            <div class="row " style="text-align: center;">
-                                <div id="onFireButton" class="  optionCarteItem" data-visibility="hot">
-                                    <i class="fa icon-fire fa-2x"  data-toggle="tooltip" data-placement="bottom" title="On Fire"></i>
-                                </div>                             
-                            </div>
-
-                            <div id="searchInput" class="input-group" style="display:none;">
-                                <input type="text" class="form-control finalInput" placeholder="Search for...">
-                                <span class="input-group-btn">
-                                    <button id="sendSearch" class="btn btn-default valider" type="button"><i class="glyphicon glyphicon-ok"></i></button>
-                                </span>
-                            </div>
-                        </div>                         
-                    </div> --> 
 
                     <!-- <div id="categoryDateFilters" class="panel panel-default">
                         <div class="panel-body">
@@ -227,31 +226,31 @@
         Placed at the end of the document so the pages load faster -->
 
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="../static/components/jquery/jquery.js"></script>
-        <script src="../static/components/bootstrap-3.3.4/js/bootstrap.min.js"></script> 
+        <!-- // <script src="../static/components/jquery/jquery.js"></script> -->
+        <!-- // <script src="../static/components/bootstrap-3.3.4/js/bootstrap.min.js"></script>  -->
          
-        <!-- // <script src="{{url_for('static', filename='./components/jquery/jquery.js') }}"></script>    -->
-        <!-- // <script src="{{url_for('static', filename='./components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>     -->
+        <script src="{{url_for('static', filename='./components/jquery/jquery.js') }}"></script>   
+        <script src="{{url_for('static', filename='./components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>    
 
           <!-- JavaScript inputs -->
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
 
-        <script src="../static/js/RESTful.js"></script> 
-        <script src="../static/js/pin.js"></script> 
-        <script src="../static/js/mapManager.js"></script>
-        <script src="../static/js/category.js"></script>
-        <script src="../static/js/user.js"></script>
-        <script src="../static/js/weLyon.js"></script>
+       <!--  // <script src="../static/js/RESTful.js"></script> 
+        // <script src="../static/js/pin.js"></script> 
+        // <script src="../static/js/mapManager.js"></script>
+        // <script src="../static/js/category.js"></script>
+        // <script src="../static/js/user.js"></script>
+        // <script src="../static/js/weLyon.js"></script> -->
 
-        <!-- {{ JSGlue.include() }} -->
+        {{ JSGlue.include() }}
 
-        <!-- // <script src="{{url_for('static', filename='./js/mapManager.js') }}"></script> -->
-        <!-- // <script src="{{url_for('static', filename='./js/RESTful.js') }}"></script> -->
-        <!-- // <script src="{{url_for('static', filename='./js/category.js') }}"></script> -->
-        <!-- // <script src="{{url_for('static', filename='./js/pin.js') }}"></script> -->
-        <!-- // <script src="{{url_for('static', filename='./js/user.js') }}"></script> -->
-        <!-- // <script src="{{url_for('static', filename='./js/weLyon.js') }}"></script> -->
+        <script src="{{url_for('static', filename='./js/mapManager.js') }}"></script>
+        <script src="{{url_for('static', filename='./js/RESTful.js') }}"></script>
+        <script src="{{url_for('static', filename='./js/category.js') }}"></script>
+        <script src="{{url_for('static', filename='./js/pin.js') }}"></script>
+        <script src="{{url_for('static', filename='./js/user.js') }}"></script>
+        <script src="{{url_for('static', filename='./js/weLyon.js') }}"></script>
 
 
     </body>
