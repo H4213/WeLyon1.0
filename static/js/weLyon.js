@@ -50,6 +50,32 @@ function WeLyon(){
 			self.gererVisibilite($(this));
 		});
 
+		$('#searchButton').on('click', function(){
+			self.gererVisibilite($(this));
+		});
+
+		$('#sendSearch').on('click', function(){
+			var search = $('#searchInput').find('input').val();
+			alert( search);
+			//TODO: send search on mapManager
+		});
+
+		$('#dateFilterButton').on('click', function(){
+			self.remplirFiltreDate();
+		});
+
+		$('#sendDateFilter').on('click', function(){
+			var date = "Date debut: "+$('#dateFilterDayBegin').val()+"/"+
+						$('#dateFilterMonthBegin').val()+"/"+
+						$('#dateFilterYearBegin').val() +
+						"\nDate fin: "+
+						$('#dateFilterDayEnd').val()+"/"+
+						$('#dateFilterMonthEnd').val()+"/"+
+						$('#dateFilterYearEnd').val();
+			alert(date);
+			//TODO: send et filtrer par date
+		});
+
 		$('#signinButton').on('click', function(){
 			self.ouvrirPanelAuthentification($(this));
 		});
@@ -68,32 +94,86 @@ function WeLyon(){
 			mapManager.filterByDate();
 
 		});
+		$('#categoryTreeView').on('nodeSelected', function(event, data) {
+			if (data.nodes!=null){
+				for(var i = 0; i<data.nodes.length; i++)
+				{
+					$('#categoryTreeView').treeview('selectNode',[(data.nodes[i])]);
+				}
+			}
+			else{
+					mapManager.categoryFilter(true,data.tag);
+				}
+			
+		});
 
+		$('#categoryTreeView').on('nodeUnselected', function(event, data) {
+			if (data.nodes!=null){
+				for(var i = 0; i<data.nodes.length; i++)
+				{
+					$('#categoryTreeView').treeview('unselectNode',[(data.nodes[i])]);
+				}
+			}
+			else{
+					mapManager.categoryFilter(false,data.tag);
+				}
+		});
+
+		$(".finalInput").keypress(function(event) {
+			if (event.which == 13) {
+				event.preventDefault();
+				$(this).parent().find('.valider').click();
+			}
+		});
 	};
 
 	self.initialiserCarte = function(){		
 		google.maps.event.addDomListener(window, 'load', mapManager.initMap());
 		$('[data-toggle="tooltip"]').tooltip();
 		self.gererVisibilite($('#onFireButton'));
+		$('#optionsCarte').show();
 	};
 
 	self.setupAuthentificationPanel = function(bouton){
-		$('#okButton').on('click',function(){			
-			bouton.toggleClass('active');
-			$('#incscriptionPanel').toggle();
-		});
+		// $('#okButton').on('click',function(){			
+		// 	bouton.toggleClass('active');
+		// 	$('#incscriptionPanel').toggle()
+		// });
 		
 		$('#okInscription').on('click', function(){
 			self.signInUser($(this));
+			bouton.toggleClass('active');
+			$('#incscriptionPanel').hide()
 		});
 
 		$('#okConnexion').on('click', function(){
 			self.signUpUser($(this));
+			bouton.toggleClass('active');
+			$('#incscriptionPanel').hide();
 		});
 
 		$('.annuler').on('click', function(){
+			alert(2);
+			bouton.toggleClass('active');
 			$('#incscriptionPanel').hide();
 		});
+
+		$(".finalInput").keypress(function(event) {
+			if (event.which == 13) {
+				event.preventDefault();
+				$(this).closest('form').find('.valider').click();
+			}
+		});
+
+		$(document).keyup(function(event) {
+			if (event.which == 27) {
+				event.preventDefault();
+				if ($('#incscriptionPanel').is(":visible")){
+					$('#incscriptionPanel').find('.annuler').click();
+				}				
+			}
+		});
+
 	};
 
 //--------------Remplissage des formulaires----------------------
@@ -117,7 +197,7 @@ function WeLyon(){
 	        form+='        </div>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="confirmerMdP">Confirmer mot de passe</label>';
-	        form+='            <input type="password" class="form-control" id="confirmerMdP1" placeholder="Confirmez votre mot de passe">';
+	        form+='            <input type="password" class="form-control finalInput" id="confirmerMdP1" placeholder="Confirmez votre mot de passe">';
 	        form+='        </div>';
 	        form+='        <button id="annulerInscription" type="button" class="btn btn-danger pull-left annuler">Annuler</button>';
 	        form+='        <button  id="okInscription" type="button" class="btn btn-default pull-right valider">S\'inscrire</button>';
@@ -131,7 +211,7 @@ function WeLyon(){
 	        form+='        </div>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrireMdP">Mot de Passe</label>';
-	        form+='           <input type="password" class="form-control" id="inscrireMdP2" placeholder="Mot de Passe">';
+	        form+='           <input type="password" class="form-control finalInput" id="inscrireMdP2" placeholder="Mot de Passe">';
 	        form+='        </div>';
 	        form+='        <button id="annulerConnexion" type="button" class="btn btn-danger pull-left annuler">Annuler</button>';
 	        form+='        <button  id="okConnexion" type="button" class="btn btn-default pull-right valider">Connexion</button>';
@@ -180,6 +260,7 @@ function WeLyon(){
 
 //---------------- Callbacks ------------------------ 
 	self.cbFillCat = function (data) {
+		mapManager.setListCategories(data.categories);
 		var dataTree = self.transformToTreeFormat(data.categories , 0);
     	$('#categoryTreeView').treeview({
           color: "#428bca",
@@ -243,6 +324,38 @@ function WeLyon(){
 		
 	};
 
+	self.remplirFiltreDate = function(){
+		var jour ='<option value="" disabled selected>Jour</option>';
+		var mois = '<option value="" disabled selected>Mois</option>';
+		var annee = '<option value="" disabled selected>Année</option>';
+
+		for( var i=1; i<=31; i++){
+			jour+=' <option value="'+i+'">'+i+'</option>';
+		}
+		for( var i=1; i<=12; i++){
+			mois+=' <option value="'+i+'">'+i+'</option>';
+		}
+		for( var i=2015; i<=2020; i++){
+			annee+=' <option value="'+i+'">'+i+'</option>';
+		}
+
+		$('#dateFilterDayBegin').html('');
+		$('#dateFilterMonthBegin').html('');
+		$('#dateFilterYearBegin').html('');
+		$('#dateFilterDayEnd').html('');
+		$('#dateFilterMonthEnd').html('');
+		$('#dateFilterYearEnd').html('');
+
+		$('#dateFilterDayBegin').append(jour);
+		$('#dateFilterMonthBegin').append(mois);
+		$('#dateFilterYearBegin').append(annee);
+		$('#dateFilterDayEnd').append(jour);
+		$('#dateFilterMonthEnd').append(mois);
+		$('#dateFilterYearEnd').append(annee);
+
+		$('#dateFilterForm').toggle();
+	};
+
 	self.ouvrirPanelAuthentification = function(bouton){
 		if(bouton.hasClass('active')){
 			bouton.toggleClass('active');
@@ -260,8 +373,14 @@ function WeLyon(){
 		$('#visibilityFilter').find('.active').toggleClass('active');
 		bouton.toggleClass('active');
 		var visibilite = bouton.data('visibility');
-		mapManager.filtrerVisibilite(visibilite);
-		//TODO: methode qui gere visibilite des pins par leur data-visibility (dans mapManager)	
+		switch(visibilite){
+			case 'recherche':
+				$('#searchInput').show();
+			break;
+			default:
+				$('#searchInput').hide();
+				mapManager.filtrerVisibilite(visibilite);
+		}
 	};
 
 	self.ajouterEvenemment = function(){
@@ -281,39 +400,34 @@ function WeLyon(){
 	};
 		
 	self.signInUser = function(bouton){
-		var pseudo= document.getElementById('inscrirePseudo1').value;
-		var password= document.getElementById('inscrireMdP1').value;
-		var password2= document.getElementById('confirmerMdP1').value;
-		var mail = document.getElementById('inscrireEmail1').value;
-		if (password == password2 && pseudo!=null && password!=null){
+		var pseudo= $('#inscrirePseudo1').val();
+		var password= $('#inscrireMdP1').val();
+		var password2= $('#confirmerMdP1').val();
+		var mail = $('#inscrireEmail1').val();
+		if (password === password2 && pseudo!=="" && password!==""){
 			user.addUser(pseudo,password,self.cbAddUser);
 		}
-		else if (pseudo==""){
+		else if (pseudo ==""){
 			alert("veuillez choisir un pseudo")
 		}
 		else if (password == ""){
 			alert("Veuillez choisir un mot de passe")
 		}
-		else if (password == ""){
+		else if (password2 == ""){
 			alert("Les mots de passe ne correspondent pas")
 		}
-		$('#incscriptionPanel').hide();
 	};
 
 	self.signUpUser = function(bouton){
-		var pseudo= document.getElementById('inscrirePseudo2').value;
-		var password= document.getElementById('inscrireMdP2').value;
-		if (password!= null && pseudo != null)
-		{
+		alert($('#inscrireMdP2').val() == "");
+		var pseudo = $('#inscrirePseudo2').val();
+		var password = $('#inscrireMdP2').val();
+		if (password!== "" && pseudo !== ""){
 			user.authUser(pseudo,password,self.cbAuthUser);
+		}else if (pseudo =="" || password == ""){
+			alert("votre peseudo ou votre mot de passe est vide")
 		}
-		else if (pseudo==null){
-			alert("veuillez indiquez votre pseudo")
-		}
-		else if (password == null){
-			alert("Veuillez indiquez votre mot de passe")
-		}
-		$('#incscriptionPanel').hide();
+		
 	};
 
 
