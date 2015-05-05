@@ -46,10 +46,8 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="#"> 
-                            <!-- <img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoNoir.png">  -->
                             <!--<img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoBlanc.png"> -->
-                            <!-- <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoNoir.png') }}">  -->
-                             <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoBlanc.png') }}">  
+                            <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoBlanc.png') }}">  
                         </a>
                     </div>
 
@@ -68,26 +66,10 @@
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
             </div>
-
-            
-           <!--  <a class="navbar-brand" href="#"> 
-                <img id="brandImg" alt="WeLyon" src="../static/assets/weLyonLogoBlanc.png">                       
-                <img id="brandImg" alt="WeLyon" src="{{url_for('static', filename='./assets/weLyonLogoBlanc.png') }}"> 
-            </a>
-            <div class="navbar-right nav-items" >
-                <ul class="nav navbar-nav">  
-                    <li id="signinButton" class="nav-item nav-inscription"><a  href="#"> S'incrire </a></li>
-                    <li id="connectButton" class="nav-item nav-connexion"><a  href="#"> Se connecter </a></li>
-                    <li id="connectedUser" class="nav-item " style="display:none;"> 
-                        <a  href="#"><i class="fa fa-user"> </i></a>
-                    </li>
-                    <li id="disconnectButton" class="nav-item nav-connexion"  style="display:none;"><a  href="#"> déconnecter </a></li>
-                </ul>
-            </div> -->
         </nav>
         
 
-        <div id="incscriptionPanel" style="display:none;">
+        <div id="incscriptionPanel" class="col-sm-12" style="display:none;">
             <div class="panel panel-default">
                 <div class="panel-body">
                 </div>
@@ -95,7 +77,7 @@
         </div>
 
         <div id="container" class="container-fluid">
-            <div class="row">
+             <div class="row">
                 <div id="alert">
                 </div>
             </div>
@@ -259,32 +241,48 @@
                 
 
             <div class="row">
-                <div id="optionUtilisateur" style="display:none";>
-                    <div id="newEventButton" class="col-md-offset-9 col-md-2 pull-right optionCarteItem"  data-toggle="tooltip" data-placement="left" title="Ajouter Événement">
-                        <i class="fa fa-plus-square fa-2x"></i>
-                    </div>
-                </div>
+                <div id="optionsCarte" class="row">
 
-                <div id="optionsCarte">                        
-                    <div id="visibilityFilter" class="row">
-                        <div id="onFireButton" class="col-md-offset-4 col-md-2 text-center optionCarteItem" data-visibility="hot">
-                            <i class="fa icon-fire fa-2x"  data-toggle="tooltip" data-placement="left" title="On FIRE"></i>
+                    <div id="optionUtilisateur" class="panel panel-default">
+                        <div class="panel-body" data-toggle="tooltip" data-placement="top" title="Ajouter Point">
+                            <div id="newEventButton" class="pull-right optionCarteItem">
+                                <i class="fa fa-plus-square fa-2x"></i>
+                            </div>
                         </div>
-                        <div id="allButton" class="col-md-2 text-center optionCarteItem" data-visibility="all">
-                            <i class="fa icon-giraffe fa-2x"  data-toggle="tooltip" data-placement="bottom" title="All"></i>
-                        </div>
-                        <div id="freshButton" class=" col-md-2 text-center optionCarteItem" data-visibility="fresh">
-                            <i class="fa icon-snow fa-2x"  data-toggle="tooltip" data-placement="bottom" title="Fresh"></i>
-                        </div>
-                    </div>                        
+                    </div>
+
+                    <div id="visibilityFilter" class="panel panel-default">                        
+                        <div  class="panel-body">
+                            <div class="row " style="text-align: center;">
+                                <div id="onFireButton" class="  optionCarteItem" data-visibility="hot">
+                                    <i class="fa icon-fire fa-2x"  data-toggle="tooltip" data-placement="bottom" title="On Fire"></i>
+                                </div>
+                                <div id="allButton" class="optionCarteItem " data-visibility="all">
+                                    <i class="fa icon-giraffe fa-2x "  data-toggle="tooltip" data-placement="bottom" title="All"></i>
+                                </div>
+                                <div id="freshButton" class=" optionCarteItem " data-visibility="fresh" >
+                                    <i class="fa icon-snow fa-2x"  data-toggle="tooltip" data-placement="bottom" title="Fresh"></i>
+                                </div>
+                                <div id="searchButton" class=" optionCarteItem " data-visibility="recherche" >
+                                    <i class="fa fa-search fa-2x fa-flip-horizontal"  data-toggle="tooltip" data-placement="bottom" title="Recherche"></i>
+                                </div>                                
+                            </div>
+
+                            <div id="searchInput" class="input-group" style="display:none;">
+                                <input type="text" class="form-control finalInput" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button id="sendSearch" class="btn btn-default valider" type="button"><i class="glyphicon glyphicon-ok"></i></button>
+                                </span>
+                            </div>
+
+                        </div>                         
+                    </div>                    
                 </div>
-                    
 
                 <div id="map-container" class="col-md-12">
                     <div id="map">                            
                     </div>
-                </div>        
-
+                </div> 
             </div>
         </div>
         <div id="categoryTreeView" class=""></div>
