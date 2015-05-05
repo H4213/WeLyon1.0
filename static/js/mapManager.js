@@ -14,6 +14,7 @@ function MapManager(){
 	var map; // object containing the map
 	var cordinateLyon = new google.maps.LatLng(45.7601676, 4.8328885);
 	var newPos =new google.maps.LatLng(0,0);
+	var markersResume = []
 	
 	// image de marker
 	var imageNormal = Flask.url_for("static", {"filename": "./assets/normal.png"});
@@ -27,6 +28,7 @@ function MapManager(){
 	var imageTCL = Flask.url_for("static", {"filename": "./assets/tcl.png"})
 	var imageHopital = Flask.url_for("static", {"filename": "./assets/hopital.png"})
 	var imagePolice = Flask.url_for("static", {"filename": "./assets/police.png"})
+	var imageResume = Flask.url_for("static", {"filename": "./assets/plus.png"});
 
 
 
@@ -53,18 +55,27 @@ function MapManager(){
 	};
 
 	self.zoomHandler = function () {
+		for (var i = 0 ; i< markersResume.length ; i++ ) {
+			markersResume[i].setVisible(false);
+		}
+		markersResume = [];
 		var bounds = map.getBounds();
 		var height =  $("#map").height();
 		var width =  $("#map").width();
 		var numberOfMarkers = Math.floor(height*width/(50*50));
+		var zones = self.splitBounds(bounds);
 		var toDisplay = [];
 		for (var valeur of markers.values()) {
-			if (bounds.contains(valeur.marker.getPosition())) {
+			if (bounds.contains(valeur.marker.getPosition()) && valeur.marker.visibilityCategoryToken != 0 && valeur.marker.visibilityDateToken != 0 ) {
 				valeur.marker.setVisible(false);
-				toDisplay.push(valeur);	
+				toDisplay.push(valeur);
+				for (var i = 0 ; i < zones.length ; i++) {
+					if (zones[i].bound.contains(valeur.marker.getPosition())) {
+						zones[i].count ++;
+					}
+				}	
 			}
 		}
-		
 		toDisplay.sort(function(a,b) {
 			if (a.pin.score < b.pin.score) {
 				return -1;
@@ -75,9 +86,39 @@ function MapManager(){
 			return 0;
 		});
 		for ( var i = 0 ;  ( i <30 ) && (i < toDisplay.length)  ; i++) {
-			
 			toDisplay[i].marker.setVisible(true);
 		}
+		
+		zones.forEach(function (element , index) {
+			var aMarker = new google.maps.Marker({
+				position: element.bound.getCenter(),
+				map: map,
+				icon: imageResume,
+				count : element.count,
+				bound : element.bound
+			});
+
+			google.maps.event.addListener(aMarker, 'click', function() {
+				infowindow.setContent("Et " + aMarker.count + " autre lieux d'interet" );
+				infowindow.open(map,aMarker);
+				markersResume.push(aMarker);
+			});
+			markersResume.push(aMarker);
+
+		});
+			
+	};
+
+	self.splitBounds = function (bounds) {
+		result = [];
+		var northEast = bounds.getNorthEast();
+		var southWest = bounds.getSouthWest();
+		var center = bounds.getCenter();
+		result.push({bound : new google.maps.LatLngBounds(center , northEast) , count : 0});
+		result.push({bound : new google.maps.LatLngBounds(southWest, center) , count : 0});
+		result.push({bound : new google.maps.LatLngBounds( new google.maps.LatLng(center.lat() , southWest.lng()) , new google.maps.LatLng( northEast.lat() , center.lng())), count : 0});
+		result.push({bound : new google.maps.LatLngBounds( new google.maps.LatLng(southWest.lat() , center.lng()) , new google.maps.LatLng( center.lat() , northEast.lng())), count : 0});
+		return result;
 	}
   
 	self.CenterControl=function (controlDiv, map) {
@@ -319,52 +360,42 @@ function MapManager(){
 			case "velov" : 
 				image = imageVelov;
 				titre = "Velo'v";
-				contentString = self.buildDescription(aPin,"velov");
 				break;
 			case "stationTCL" : 
 				image = imageTCL;
 				titre = "Velo'v";
-				contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "cafe" : 
 				image = imageBar;
 				titre = "Café/Bar";
-				contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "restaurant" : 
 				image = imageRestau;
 				titre = "Restaurant";
-				contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "nightClub" : 
 				image = imageSoiree;
 				titre = "Night Club";
-				contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "hopital" : 
 				image = imageHopital;
 				titre = "Hopital";
-				contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "facebookPin" : 
 				image = imageFacebook;
 				titre = "Facebook";
-				contentString = self.buildDescription(aPin,"dynamique");
 				break;
 			case "event" : 
 				image = imageNormal;
 				titre = "Evenement";
-				contentString = self.buildDescription(aPin,"dynamique");
 				break;
 			case "police" : 
 				image = imagePolice;
 				titre = "Police";
-				contentString = self.buildDescription(aPin,"normal");
 				break;
 			default :
 				image = imageNormal
 				titre = "Autre";
-				contentString = self.buildDescription(aPin,"normal");
 			}
 			
 		var aMarker = new google.maps.Marker({
@@ -373,7 +404,7 @@ function MapManager(){
 			icon: image,
 			title: titre,
 			'idPin': aPin.id,
-			'visibilityCategoryToken': 0,
+			'visibilityCategoryToken': 1,
 			'visibilityDateToken': 1
 		});
 
@@ -381,9 +412,7 @@ function MapManager(){
 						marker : aMarker});
 		google.maps.event.addListener(aMarker, 'click', function() {
 			infowindow.setContent(self.buildDescription(markers.get(aMarker['idPin']).pin,markers.get(aMarker['idPin']).pin.type));
-		
 			infowindow.open(map,aMarker);
-
 		});
 	};
 
@@ -455,7 +484,6 @@ function MapManager(){
 		return contentString;
 	};
 	
-
 	self.refreshPins = function(){
 		for (var valeur of markers.values()) {
 	    	valeur.marker.setMap(null);
@@ -466,19 +494,24 @@ function MapManager(){
 	};
 
 	self.cbGetAllPins = function(data){
-		for(var i in data.Pins){
-			var p = data.Pins[i];
-			self.addMarker(p);
-		self.filterByDate();
-		};
+		data.Pins.forEach(function (element , index){
+			self.addMarker(element);
+			self.filterByDate();
+		});	
 	}
 
 	self.cbVotePin = function(data){
 		if (data['error']==null){
 			aPin = data.pin;
-		self.addMarker(aPin);
-		infowindow.setContent(self.buildDescription(aPin, aPin.type));
-		infowindow.open(map, markers.get(aPin.id));
+			alert(aPin.id);
+			markers.get(aPin.id).marker.setMap(null);
+			delete markers.get(aPin.id);
+			self.addMarker(aPin);
+			markers.get(aPin.id).marker.setAnimation(google.maps.Animation.BOUNCE);
+			setTimeout(function () {
+				markers.get(aPin.id).marker.setAnimation(null);
+			},2250);
+
 		}
 	};
 
