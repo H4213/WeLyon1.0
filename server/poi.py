@@ -122,6 +122,29 @@ def createPointOfInterestTable() :
 				listPointOfInterest.append(obj)
 				
 	json_file_nc.close()
+
+	#POI police
+	service.logMessage(".Loading police file")
+	json_file_police = open('police.json')
+	dataPolice = json.load(json_file_police)
+
+
+	service.logMessage(".Parsing police stations") 
+	categorie = Category.query.filter_by(nom = "Police").first()	
+	for i in range (0,31):
+		for j in dataPolice["node"][i]["tag"] :
+			if j["-k"] == "name" :
+				title = j["-v"]
+
+				idUser = 1
+				lat = dataPolice["node"][i]["-lat"]
+				lng = dataPolice["node"][i]["-lon"]
+					
+				obj = Pin('police',title, lng, lat, idUser, [categorie], "")
+				obj.typeSpecificID = dataPolice["node"][i]["-id"]
+				listPointOfInterest.append(obj)
+				
+	json_file_police.close()
 	return listPointOfInterest
 
 
