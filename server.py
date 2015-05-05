@@ -162,9 +162,9 @@ def load_facebook_event():
   facebookPin.refreshFacebookData()
 
 
-@app.route('/pins/comments/', methods=('GET', 'POST', 'PUT', 'DELETE'))
-@app.route('/pins/comments/<idPin>/')
-def comments(idPin = None, data=None):
+#@app.route('/comments/', methods=('GET', 'POST', 'PUT', 'DELETE'))
+@app.route('/comments/<idPin>/', methods=('GET', 'POST', 'PUT', 'DELETE'))
+def comments(idPin = None):
   if request.method == "POST":
     return servicePin.addCommentByIdPin(request.form)
   """

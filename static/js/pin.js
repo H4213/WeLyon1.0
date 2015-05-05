@@ -107,7 +107,10 @@ function Pin() {
 
     self.getComments=function(idPin,callback)
     {
-        rest.get(self.path+"comments/"+idPin,null,callback)
+        /*var data = {
+            "pin_id": idPin
+        }*/
+        rest.get("/comments/"+idPin,null,callback)
     }
     self.addComment=function(text, currentUser, idPin, callback){
         if (text=="")
@@ -117,10 +120,10 @@ function Pin() {
         else{
             var data = {
                         "text": text,
-                        "pin_id": idPin,
+                        "pin_id": idPin
                 }
             console.log(data)
-            rest.insert("/pins/comments/",data,callback);
+            rest.insert("/comments/"+idPin+"/",data,callback);
         }
     }
   

@@ -485,7 +485,7 @@ function MapManager(){
 	//};
 
 	self.addComment=function(){
-		//pin.addComment("yayaye", iduser, currentPin.id, cbBuildDescription);
+		pin.addComment("yayaye", iduser, currentPin.id, cbBuildDescription);
 	};
 	self.buildDescription=function(aPin, listofCommentsHTML) {
 		
@@ -561,7 +561,7 @@ function MapManager(){
 
 		var commentsEntete = '<br/><div id="commentzone"><h4>Commentaires</h4>'+
 					'<INPUT TYPE="textarea" placeholder="Ajoutez votre avis" VALUE="" class="newComment">'+
-					'<INPUT onclick="", TYPE="button" NAME="ADD" VALUE="+" class="newCommentOk">'
+					'<INPUT TYPE="button" NAME="ADD" VALUE="+" class="newCommentButton">'
 									+'<br/><br/><ul style="text-align:left">'+listofCommentsHTML+'</ul></div>';
 		contentString = '<div id="content" data-id-pin=' + aPin.id+contentString+commentsEntete+'</div>';
 		
@@ -639,6 +639,9 @@ function MapManager(){
 			$(document).on("click",".dislike",function(){
 				var pinID= $(this).closest('#content').data('id-pin');
 				pin.vote(idUser,pinID,-1,self.cbVotePin);
+			});
+			$(document).on("click",".newCommentButton",function(){
+				pin.addComment("yoy", 1, currentPin.id, self.cbBuildDescription);
 			});
 
 	};		
