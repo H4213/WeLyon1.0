@@ -635,9 +635,10 @@ function MapManager(){
 		for(var i in data.Pins){
 			var p = data.Pins[i];
 			self.addMarker(p);
+			console.log(data.Pins[i])
+
 		}
 		for(var i=0; i<listIdCategories.length; i++){
-
 			if($('#categoryButton'+listIdCategories[i]).data('id-category')!=null){
 				if ($('#categoryButton'+listIdCategories[i]).hasClass('active'))
 				{
@@ -733,6 +734,7 @@ function MapManager(){
 	  	
 	};
 
+
 	self.setListCategories=function(listCategories){
 		listIdCategories=listCategories;
 	};
@@ -777,6 +779,12 @@ function MapManager(){
 			}
 		}
 	};
+
+	self.getPinBySearch=function(search){
+		pin.getPinBySearch(search,cbGetAllPins);
+		
+	};
+
 
 
 }
