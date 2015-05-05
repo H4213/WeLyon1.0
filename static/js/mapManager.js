@@ -41,7 +41,7 @@ function MapManager(){
 				break;
 			case "stationTCL" : 
 				image = imageTCL;
-				titre = "Velo'v";
+				titre = "Tcl";
 				contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "cafe" : 
