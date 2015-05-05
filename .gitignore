@@ -58,3 +58,4 @@ target/
 *.db
 src/test.db-journal
 *.db
+src/test.db

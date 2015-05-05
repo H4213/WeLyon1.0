@@ -166,6 +166,6 @@ class Vote(db.Model):
         }
 
 
-db.reflect()
-db.drop_all()
+# db.reflect()
+# db.drop_all()
 db.create_all()
