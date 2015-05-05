@@ -55,6 +55,8 @@ function WeLyon(){
 		});
 
 		$('#sendSearch').on('click', function(){
+			var search = $('#searchInput').find('input').val();
+			alert( search);
 			//TODO: send search on mapManager
 		});
 
@@ -68,6 +70,13 @@ function WeLyon(){
 
 		$('#disconnectButton').on('click', function(){
 			self.setUser();
+		});
+
+		$(".finalInput").keypress(function(event) {
+			if (event.which == 13) {
+				event.preventDefault();
+				$(this).parent().find('.valider').click();
+			}
 		});
 
 		// $('.closedFilter').on('click',function(){
@@ -254,10 +263,10 @@ function WeLyon(){
 		var visibilite = bouton.data('visibility');
 		switch(visibilite){
 			case 'recherche':
-				$('#searchImput').show();
+				$('#searchInput').show();
 			break;
 			default:
-				$('#searchImput').hide();
+				$('#searchInput').hide();
 				mapManager.filtrerVisibilite(visibilite);
 		}
 	};

@@ -12,13 +12,13 @@
     margin-left: 15px;
 }
 
-.valider{
+#incscriptionPanel .valider{
     background-color: rgba(19,188,62,0.7);    
     border-color: #CCCCCC;
     color: #666666;
 }
 
-.valider:hover{
+#incscriptionPanel .valider:hover{
     background-color: #13BC3E;
 }
 
