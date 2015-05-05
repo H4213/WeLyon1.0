@@ -117,7 +117,7 @@ class Pin(db.Model):
 		self.lat = lat
 
 	def serialize(self):
-	
+
 		liste = self.categories.strip(",").split(",")
 		if liste[0] == "":
 			liste = []

@@ -25,7 +25,10 @@ def getFil(more):
 	items = logs
 
 	if more >= SIZE_OF_QUEUE:
-		items = Log.query.all()
+		more = 2
+	items = Log.query.all()
+
+	print items
 
 	return jsonify(logs=[item.serialize() for item in items])
 
