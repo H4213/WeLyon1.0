@@ -490,8 +490,7 @@ function MapManager(){
 		
 		
 	//};
-<<<<<<< HEAD
-=======
+
 	self.addMarker = function(aPin) {
 		var type = aPin.type;
 		var image;
@@ -554,14 +553,7 @@ function MapManager(){
 			infowindow.open(map,aMarker);
 
 		});
-		
-		
-		
-
-
 	};
->>>>>>> origin/dev-Paul-frontAjoutEvent
-
 
 	self.buildDescription=function(aPin, pinType) {
 		var contentString = '';
@@ -655,8 +647,7 @@ function MapManager(){
 				}
 				else
 				{
-				self.categoryFilter(false,listIdCategories[i])
-
+					self.categoryFilter(false,listIdCategories[i])
 				}			
 			}
 		}
@@ -687,8 +678,6 @@ function MapManager(){
 
    	};
 	self.pinSetup = function(){
-
-		
 			$(document).on("click",".like",function(){
 				var pinID= $(this).closest('#content').data('id-pin');
 				pin.vote(idUser,pinID,1,self.cbVotePin);

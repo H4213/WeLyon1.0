@@ -56,3 +56,5 @@ docs/_build/
 # PyBuilder
 target/
 *.db
+src/test.db-journal
+*.db
