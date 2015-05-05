@@ -138,3 +138,9 @@
     margin: 0;
     padding: 0;
 }
+#commentzone
+{
+    list-style-type: none; /* on annule la puce par défaut */
+    background-position: left; /* on positionne où l'on veut */
+    padding-left: 20px; /* pour éviter la superposition du contenu */
+}

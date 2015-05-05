@@ -161,6 +161,23 @@ def page_not_found(error):
 def load_facebook_event():
   facebookPin.refreshFacebookData()
 
+
+@app.route('/pins/comments/', methods=('GET', 'POST', 'PUT', 'DELETE'))
+@app.route('/pins/comments/<idPin>/')
+def comments(idPin = None, data=None):
+  if request.method == "POST":
+    return servicePin.addCommentByIdPin(request.form)
+  """
+  if request.method == 'PUT':
+    return service.majUser(request.form)
+  if request.method == 'DELETE':
+    return serviceUser.delete(request.form)
+  """
+  if idPin:
+    return servicePin.getCommentByIdPin(idPin)
+
+  return jsonify(retour = "no comments")
+
 def refresh():
 	#load_facebook_event()
 	load_static_data()
@@ -180,6 +197,6 @@ if __name__ == '__main__':
   init_databases.init_all()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
-  #app.debug = True
+  app.debug = True
   app.run()
 	

@@ -31,6 +31,21 @@ function Pin() {
        } 
     };   
 
+    self.comment =function(userID,pinID,posnegParam,callback){
+       if (userID==-1){
+        alert("Veuillez vous connecter")
+       }
+       else{
+        var data = {
+                        "idUser": userID,
+                        "posneg": posnegParam
+                }
+        
+        var url='/pin/vote/'+pinID+'/';
+        rest.insert(url,data,callback);
+       } 
+    };
+
     self.addDynPin=function(title,description,user,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin,lat,lng,categorie,callback){
         if (title=="")
             {alert("Donnez un titre à votre évènement")}
@@ -90,7 +105,24 @@ function Pin() {
         rest.get(self.path,data,callback)
     }
 
-
+    self.getComments=function(idPin,callback)
+    {
+        rest.get(self.path+"comments/"+idPin,null,callback)
+    }
+    self.addComment=function(text, currentUser, idPin, callback){
+        if (text=="")
+            {alert("Donnez un titre à votre évènement")}
+        else if (currentUser==-1)
+            {alert("veuillez vous connecter")}
+        else{
+            var data = {
+                        "text": text,
+                        "pin_id": idPin,
+                }
+            console.log(data)
+            rest.insert("/pins/comments/",data,callback);
+        }
+    }
   
 
 }

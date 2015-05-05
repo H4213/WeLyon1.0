@@ -129,3 +129,34 @@ def deletePin(form):
 
 def majPin(form):
 	return "0"
+
+def getCommentByIdPin(idPin):
+	print("comment requested")
+	if idPin:
+		items = db.engine.execute("select * from comments where pin_id="+str(idPin))
+		list = []
+		if items:
+			for row in items:
+				list.append({
+					"text":row['text'],
+					"date":row['date']
+					})
+			print("got results")
+			return jsonify(Comments=list)
+		else:
+			return jsonify(Comments=list)
+
+	return jsonify(error="Wrong request")
+
+def addCommentByIdPin(form):
+	if idPin:
+		if form["text"] and form["pin_id"]:
+			exist = User.query.get(form['pin_id'])
+			if exist:
+				db.engine.execute("insert into comments(pin_id, text) values ("+form["pin_id"]+","+form["text"])
+				
+				return getCommentByIdPin(int(form["pin_id"]))
+			else:
+				return jsonify(error="No associated pins")
+	else:
+		return jsonify(error="Wrong request")

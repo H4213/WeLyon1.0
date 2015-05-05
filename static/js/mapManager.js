@@ -7,6 +7,7 @@ function MapManager(){
 	idUser=-1;
 	}
 	var infowindow = new google.maps.InfoWindow({content : ""});
+	var currentPin = new Pin();
 	var markers = new Map();
 	var pins = [];
 	var marker;
@@ -37,49 +38,49 @@ function MapManager(){
 			case "velov" : 
 				image = imageVelov;
 				titre = "Velo'v";
-				contentString = self.buildDescription(aPin,"velov");
+				//contentString = self.buildDescription(aPin,"velov");
 				break;
 			case "stationTCL" : 
 				image = imageTCL;
 				titre = "Velo'v";
-				contentString = self.buildDescription(aPin,"normal");
+				//contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "cafe" : 
 				image = imageBar;
 				titre = "Café/Bar";
-				contentString = self.buildDescription(aPin,"normal");
+				//contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "restaurant" : 
 				image = imageRestau;
 				titre = "Restaurant";
-				contentString = self.buildDescription(aPin,"normal");
+				//contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "nightClub" : 
 				image = imageSoiree;
 				titre = "Night Club";
-				contentString = self.buildDescription(aPin,"normal");
+				//contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "hopital" : 
 				image = imageHopital;
 				titre = "Hopital";
-				contentString = self.buildDescription(aPin,"normal");
+				//contentString = self.buildDescription(aPin,"normal");
 				break;
 			case "facebookPin" : 
 				image = imageFacebook;
 				titre = "Facebook";
-				contentString = self.buildDescription(aPin,"dynamique");
+				//contentString = self.buildDescription(aPin,"dynamique");
 				break;
 			case "event" : 
 				image = imageFacebook;
 				titre = "Evenement";
-				contentString = self.buildDescription(aPin,"dynamique");
+				//contentString = self.buildDescription(aPin,"dynamique");
 				break;
 			default :
 				image = imageNormal
 				titre = "Autre";
-				contentString = self.buildDescription(aPin,"normal");
+				//contentString = self.buildDescription(aPin,"normal");
 			}
-	
+			
 			
 		var aMarker = new google.maps.Marker({
 			position: new google.maps.LatLng(aPin.lat, aPin.lng),
@@ -93,7 +94,11 @@ function MapManager(){
 		markers.set(id,{pin : aPin,
 						marker : aMarker});
 		google.maps.event.addListener(aMarker, 'click', function() {
-			infowindow.setContent(self.buildDescription(markers.get(aMarker['idPin']).pin,markers.get(aMarker['idPin']).pin.type));
+
+			
+			infowindow.setContent(self.buildDescription(
+										markers.get(aMarker['idPin']).pin,
+										"#first"));
 		
 			infowindow.open(map,aMarker);
 
@@ -479,13 +484,16 @@ function MapManager(){
 		
 	//};
 
-
-	self.buildDescription=function(aPin, pinType) {
+	self.addComment=function(){
+		//pin.addComment("yayaye", iduser, currentPin.id, cbBuildDescription);
+	};
+	self.buildDescription=function(aPin, listofCommentsHTML) {
+		
+		currentPin = aPin;
 		var contentString = '';
-		switch (pinType) { 
+		switch (aPin.type) { 
 			case "velov" : 
-				contentString = '<div id="content" data-id-pin=' + aPin.id + '>'+
-									'<div id="siteNotice">'+
+				contentString = '<div id="siteNotice">'+
 									'</div>'+
 									'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
 										'<div id="bodyContent">'+						
@@ -501,12 +509,11 @@ function MapManager(){
 													'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
 												'</p>' +
 											'</form>' +
-										'</div>'+
-									'</div>';
+										'</div>';
 				break;
 				
 			case "dynamique" : 
-				contentString = '<div id="content" data-id-pin=' + aPin.id + '>'+
+				contentString = 
 					'<div id="siteNotice">'+
 					'</div>'+
 					'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
@@ -521,13 +528,11 @@ function MapManager(){
 							'<INPUT TYPE="button" NAME="unlike" VALUE="Unlike" class="unlike"> ' +
 							'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
 						'</p>' +
-					'</form>' +
-					'</div>'+
-					'</div>';
+					'</form>' ;
 				break;
 			
 			default :
-				contentString = '<div id="content" data-id-pin=' + aPin.id + '>'+
+				contentString = 
 					'<div id="siteNotice">'+
 					'</div>'+
 					'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
@@ -542,14 +547,48 @@ function MapManager(){
 							'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
 						'</p>' +
 					'</form>' +
-					'</div>'+
 					'</div>';
 		}
+		if(listofCommentsHTML=='#first')
+		{
+			 pin.getComments(aPin.id, self.cbBuildDescription);
+
+		}
+		if(listofCommentsHTML=="#first")
+		listofCommentsHTML = '<img src="./static/assets/load.gif">';
+		else if(listofCommentsHTML=="#no")
+		listofCommentsHTML = '<p>--Pas de commentaire encore--</p';
+
+		var commentsEntete = '<br/><div id="commentzone"><h4>Commentaires</h4>'+
+					'<INPUT TYPE="textarea" placeholder="Ajoutez votre avis" VALUE="" class="newComment">'+
+					'<INPUT onclick="", TYPE="button" NAME="ADD" VALUE="+" class="newCommentOk">'
+									+'<br/><br/><ul style="text-align:left">'+listofCommentsHTML+'</ul></div>';
+		contentString = '<div id="content" data-id-pin=' + aPin.id+contentString+commentsEntete+'</div>';
+		
 		return contentString;
 	};
 	
+	self.cbBuildDescription=function(data){
+		var string_list = "#no";
+			if(data.Comments.length > 0)
+			{
+					string_list="";
+				
+				for(i = 0; i < data.Comments.length;i++){
+	    			string_list+='<li>'+data.Comments[i].text+'</li>';
+	    			infowindow.setContent(self.buildDescription(currentPin, string_list));
+				}
+			}
+			else
+			{
+				infowindow.setContent(self.buildDescription(currentPin, "#no"));
+			}
+
+		
+   	};
 
 	self.refreshPins = function(){
+
 		for (var valeur of markers.values()) {
 	    	valeur.marker.setMap(null);
 	  	}
