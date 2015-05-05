@@ -119,24 +119,16 @@
 			"file": "server/service.py",
 			"settings":
 			{
-				"buffer_size": 3074,
-				"line_ending": "Unix"
+				"buffer_size": 2614,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "server.py",
 			"settings":
 			{
-				"buffer_size": 3212,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/model.py",
-			"settings":
-			{
-				"buffer_size": 5552,
-				"line_ending": "Unix"
+				"buffer_size": 4904,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -164,6 +156,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Amin/Documents/GitHub/WeLyon1.0/src/model.py",
 		"/home/leo/Documents/WeLyon/web/Test Html/JSON.html",
 		"/home/leo/Documents/WeLyon/server/model/modele.py",
 		"/home/leo/Documents/Smart-City/testUser.html",
@@ -338,15 +331,15 @@
 					"file": "server/service.py",
 					"settings":
 					{
-						"buffer_size": 3074,
+						"buffer_size": 2614,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								803,
-								803
+								0,
+								0
 							]
 						],
 						"settings":
@@ -365,15 +358,15 @@
 					"file": "server.py",
 					"settings":
 					{
-						"buffer_size": 3212,
+						"buffer_size": 4904,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2121,
-								2121
+								0,
+								0
 							]
 						],
 						"settings":
@@ -391,37 +384,8 @@
 			]
 		},
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 2,
-					"file": "src/model.py",
-					"settings":
-					{
-						"buffer_size": 5552,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5524,
-								5524
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1967.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -453,7 +417,7 @@
 		"cols":
 		[
 			0.0,
-			0.5,
+			0.961240310078,
 			1.0
 		],
 		"rows":

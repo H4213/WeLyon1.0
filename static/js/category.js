@@ -8,4 +8,5 @@ function Category() {
     self.getCategories = function(callback) {
         rest.get(self.path, null, callback);
     };
+
 }

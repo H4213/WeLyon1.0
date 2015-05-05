@@ -174,12 +174,49 @@ function WeLyon(){
 
 //---------------- Callbacks ------------------------ 
 	self.cbFillCat = function (data) {
-		var cat = '';
-		for(var i in data.categories){
-			cat +=' <button data-id-category="'+data.categories[i].id+'" class="col-md-4 btn btn-default category-item active" type="button" style="display:none">'+ data.categories[i].nom +'</button> ';
+		var dataTree = self.transformToTreeFormat(data.categories , 0);
+    	$('#categoryTreeView').treeview({
+          color: "#428bca",
+          showBorder: false,
+          data: dataTree,
+          multiSelect : true,
+          levels : 1
+        });
+    
+	};
+
+	self.transformToTreeFormat = function (data , father) {
+		var result = [];
+		for (var i = 0; i<data.length; i++) {
+			if (father != 0 ) {
+				if (data[i].idFather && data[i].idFather == father ) {
+					var node = { 
+						text : data[i].nom ,
+						tag : [data[i].id] 
+						  }
+					var nodes = self.transformToTreeFormat(data , data[i].id)
+					if (nodes.length != 0 ) {
+						node.nodes = nodes
+					}
+					result.push(node)
+				} 
+			}
+			else {
+				if(!data[i].idFather) {
+					var node = { 
+						text : data[i].nom ,
+						tag : [data[i].id] 
+						  }
+					var nodes = self.transformToTreeFormat(data , data[i].id)
+					if (nodes.length != 0 ) {
+						node.nodes = nodes
+					}
+					result.push(node)
+				}
+			}
 		}
-		$('#categories').append(cat);
-		//TODO: remplir la liste des categories 
+		return result;
+
 	};
 
 	self.cbAddUser = function(data){
