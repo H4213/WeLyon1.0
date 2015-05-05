@@ -1,0 +1,485 @@
+{
+    "node": [
+      {
+        "-id": "34912479",
+        "-version": "2",
+        "-timestamp": "2011-11-05T23:49:12Z",
+        "-uid": "290680",
+        "-user": "wheelmap_visitor",
+        "-changeset": "9744488",
+        "-lat": "45.7412377",
+        "-lon": "4.8775005",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "created_by",
+            "-v": "JOSM"
+          },
+          {
+            "-k": "name",
+            "-v": "Centre anticancéreux Léon Bérard"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "36267481",
+        "-version": "2",
+        "-timestamp": "2012-01-09T09:48:12Z",
+        "-uid": "1626",
+        "-user": "FredB",
+        "-changeset": "10340059",
+        "-lat": "45.7488549",
+        "-lon": "4.7521472",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "name",
+            "-v": "Hôpital gériatrique Charial"
+          }
+        ]
+      },
+      {
+        "-id": "103717455",
+        "-version": "4",
+        "-timestamp": "2012-03-10T10:56:03Z",
+        "-uid": "123364",
+        "-user": "Tronikon",
+        "-changeset": "10930277",
+        "-lat": "45.7574872",
+        "-lon": "4.8857066",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "name",
+            "-v": "Clinique Psychiatrique Notre-Dame"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "173384601",
+        "-version": "4",
+        "-timestamp": "2014-09-09T15:29:02Z",
+        "-uid": "2178305",
+        "-user": "rm69",
+        "-changeset": "25330859",
+        "-lat": "45.7496793",
+        "-lon": "4.8359038",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "emergency",
+            "-v": "yes"
+          },
+          {
+            "-k": "name",
+            "-v": "Centre Hospitalier Saint-Joseph_Saint-Luc"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "193644797",
+        "-version": "3",
+        "-timestamp": "2012-06-14T08:15:31Z",
+        "-uid": "703893",
+        "-user": "MagicBeBeR",
+        "-changeset": "11892266",
+        "-lat": "45.7687293",
+        "-lon": "4.7813235",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "emergency",
+            "-v": "yes"
+          },
+          {
+            "-k": "name",
+            "-v": "Clinique du Val d'Ouest"
+          }
+        ]
+      },
+      {
+        "-id": "205457304",
+        "-version": "2",
+        "-timestamp": "2011-11-16T20:13:30Z",
+        "-uid": "333873",
+        "-user": "Otourly",
+        "-changeset": "9848323",
+        "-lat": "45.7405497",
+        "-lon": "4.7722795",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "name",
+            "-v": "La Maisonnée"
+          }
+        ]
+      },
+      {
+        "-id": "223167876",
+        "-version": "3",
+        "-timestamp": "2012-10-06T19:13:29Z",
+        "-uid": "45734",
+        "-user": "slpt",
+        "-changeset": "13389403",
+        "-lat": "45.7566663",
+        "-lon": "4.8716259",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "name",
+            "-v": "Clinique Émile de Vialar"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "258810203",
+        "-version": "3",
+        "-timestamp": "2011-11-05T23:46:58Z",
+        "-uid": "290680",
+        "-user": "wheelmap_visitor",
+        "-changeset": "9744488",
+        "-lat": "45.7231573",
+        "-lon": "4.851334",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "name",
+            "-v": "Hôpital Psychiatrique Saint-Jean-de-Dieu"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "258968466",
+        "-version": "3",
+        "-timestamp": "2012-03-17T13:47:36Z",
+        "-uid": "392139",
+        "-user": "Canuts",
+        "-changeset": "11008091",
+        "-lat": "45.7718404",
+        "-lon": "4.8644888",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "name",
+            "-v": "Hôpital Charpennes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "280409910",
+        "-version": "4",
+        "-timestamp": "2012-10-06T19:13:30Z",
+        "-uid": "45734",
+        "-user": "slpt",
+        "-changeset": "13389403",
+        "-lat": "45.7664785",
+        "-lon": "4.8664846",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "name",
+            "-v": "Hôpital des Charmettes"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "365090741",
+        "-version": "4",
+        "-timestamp": "2011-11-05T23:44:52Z",
+        "-uid": "290680",
+        "-user": "wheelmap_visitor",
+        "-changeset": "9744488",
+        "-lat": "45.7411185",
+        "-lon": "4.8835436",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "name",
+            "-v": "Clinique Natecia"
+          },
+          {
+            "-k": "source",
+            "-v": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2009"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "504902195",
+        "-version": "2",
+        "-timestamp": "2010-06-16T11:00:11Z",
+        "-uid": "54145",
+        "-user": "ycopin",
+        "-changeset": "4999542",
+        "-lat": "45.7494991",
+        "-lon": "4.8754694",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "name",
+            "-v": "Centre de Santé MGEN"
+          },
+          {
+            "-k": "source",
+            "-v": "Local survey 22 September 2009"
+          }
+        ]
+      },
+      {
+        "-id": "1428557103",
+        "-version": "2",
+        "-timestamp": "2011-11-05T23:45:54Z",
+        "-uid": "290680",
+        "-user": "wheelmap_visitor",
+        "-changeset": "9744488",
+        "-lat": "45.7360135",
+        "-lon": "4.8750666",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "name",
+            "-v": "IRIS"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "1451946906",
+        "-version": "2",
+        "-timestamp": "2011-11-04T17:00:39Z",
+        "-uid": "530603",
+        "-user": "la colle",
+        "-changeset": "9740030",
+        "-lat": "45.788007",
+        "-lon": "4.7868849",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "emergency",
+            "-v": "yes"
+          },
+          {
+            "-k": "name",
+            "-v": "clinique de la sauvegarde"
+          }
+        ]
+      },
+      {
+        "-id": "1683846890",
+        "-version": "3",
+        "-timestamp": "2013-12-30T06:03:10Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "19709174",
+        "-lat": "45.7488652",
+        "-lon": "4.8541071",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "emergency",
+            "-v": "no"
+          },
+          {
+            "-k": "name",
+            "-v": "Clinique dentaire et d'orthodontie mutualiste"
+          }
+        ]
+      },
+      {
+        "-id": "1803846344",
+        "-version": "1",
+        "-timestamp": "2012-06-27T12:02:26Z",
+        "-uid": "704885",
+        "-user": "foxinthecity",
+        "-changeset": "12036004",
+        "-lat": "45.8019956",
+        "-lon": "4.935851",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "emergency",
+            "-v": "yes"
+          },
+          {
+            "-k": "name",
+            "-v": "poste de secours"
+          }
+        ]
+      },
+      {
+        "-id": "1826600193",
+        "-version": "3",
+        "-timestamp": "2012-08-11T09:23:19Z",
+        "-uid": "530603",
+        "-user": "la colle",
+        "-changeset": "12688831",
+        "-lat": "45.7040955",
+        "-lon": "4.7982608",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "emergency",
+            "-v": "no"
+          },
+          {
+            "-k": "name",
+            "-v": "Sainte-Eugénie"
+          }
+        ]
+      },
+      {
+        "-id": "1846589008",
+        "-version": "1",
+        "-timestamp": "2012-08-01T09:09:44Z",
+        "-uid": "774045",
+        "-user": "yaumji",
+        "-changeset": "12571569",
+        "-lat": "45.7979399",
+        "-lon": "4.8108384",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "emergency",
+            "-v": "no"
+          },
+          {
+            "-k": "name",
+            "-v": "CRF Val Rosay"
+          }
+        ]
+      },
+      {
+        "-id": "2019635432",
+        "-version": "2",
+        "-timestamp": "2013-01-29T02:08:24Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "14830069",
+        "-lat": "45.7167512",
+        "-lon": "4.9268781",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "name",
+            "-v": "Hôpital du Sud-Est Lyonnais"
+          }
+        ]
+      },
+      {
+        "-id": "2214470038",
+        "-version": "1",
+        "-timestamp": "2013-03-22T10:17:25Z",
+        "-uid": "392139",
+        "-user": "Canuts",
+        "-changeset": "15452558",
+        "-lat": "45.7353003",
+        "-lon": "4.875886",
+        "tag": [
+          {
+            "-k": "amenity",
+            "-v": "hospital"
+          },
+          {
+            "-k": "name",
+            "-v": "Hôpital privé Jean Mermoz"
+          },
+          {
+            "-k": "website",
+            "-v": "http://www.generale-de-sante.fr/hopital-prive-jean-mermoz-lyon"
+          }
+        ]
+      }
+    ]
+  
+}

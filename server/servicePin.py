@@ -22,6 +22,29 @@ def getAllPin():
 
 	print "pin vide"
 	return jsonify(error="No pin")
+def getPinByVisibility(visibility):
+	if visibility=="fresh":
+		dateLimit = datetime.datetime.now() -datetime.timedelta(days=7)
+		items= Pin.query.filter(Pin.dateCreation>dateLimit)
+		if items:
+			return jsonify(Pins=[item.serialize() for item in items])
+	if visibility=="hot":
+		HOT_CONSTANT=10
+
+		itemsStaticHot = Pin.query.filter(Pin.staticHotVisibility==True, Pin.score<HOT_CONSTANT)
+		itemsScoreHot=Pin.query.filter(Pin.score>=HOT_CONSTANT)
+		for item in itemsStaticHot:
+			pint("?")
+			itemsScoreHot.push(itemsStaticHot)
+		if itemsScoreHot:
+			print('lel')
+			return jsonify(Pins=[item.serialize() for item in itemsScoreHot])
+	if visibility=="all":
+		return getAllPin()
+
+	return jsonify(error="No pin for "+visibility)
+
+
 
 def getPinById(idPin):
 	print idPin
@@ -62,24 +85,19 @@ def addPin(form):
 
 		if not(user):
 			return jsonify(error="user doesn't exist")
-		pin = DynPin(form['titre'], float(form['lng']), float(form['lat']))
-		pin.idUser =form['idUser']
-		pin.description = form['description']
-		pin.categories=[Category.query.filter_by(nom=form['category']).first()]
-		db.session.add(pin)
-		db.session.commit()
 
+			
+		pin = Pin('Event', form['titre'], float(form['lng']), float(form['lat']) , form['idUser'] , [Category.query.filter_by(nom=form['category']).first()] , form['description'])
 		serviceLog.add(pin.user, pin.id)
-		
+		service.addObject(pin)
+
 		return jsonify(pin = pin.serialize()) 
 		
 	return jsonify(error="invalid parameters")
 
 def addDynPin(form):
-#
 	if (form['titre'] and form['idUser'] and form['lng'] and form['lat']):
 		exist = Pin.query.filter_by(title=form['titre'], lng=form['lng'], lat=form['lat']).first()
-		print("la")
 		if exist:
 			return jsonify(error="already exists")
 
@@ -89,17 +107,15 @@ def addDynPin(form):
 			return jsonify(error="user doesn't exist")
 		
 		categorie1=Category.query.filter_by(nom=form['category']).first()
+		print("lo")
 		description = form['description']
 
 		pin = Pin("Event",form['titre'], float(form['lng']), float(form['lat']),form['idUser'],[categorie1],description)
-		print("ici")
 		dateDebut = datetime.datetime(year=int(form['annee_debut']),month=int(form['mois_debut']),day=int(form['jour_debut']),minute=int(form['minute_debut']),hour=int(form['heure_debut']))
 		dateFin  = datetime.datetime(year=int(form['annee_fin']),month=int(form['mois_fin']),day=int(form['jour_fin']),minute=int(form['minute_fin']),hour=int(form['heure_fin']))
 		pin.dateBegin=dateDebut
 		pin.dateEnd=dateFin
-		db.session.add(pin)
-		db.session.commit()
-		print("done")
+		service.addObject(pin)
 		return jsonify(pin = pin.serialize()) 
 		
 	return jsonify(error="invalid parameters")

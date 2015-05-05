@@ -1,23 +1,103 @@
+.nav-items{
+    margin-right: 15px;
+    color: white;
+}
+
+.nav-item:hover , .nav-item > a:hover, .nav-item > a:focus{
+    /*content: color: white;*/
+}
+
 .navbar-brand {
 	padding: 0;
+    margin-left: 15px;
+}
+
+.valider{
+    background-color: #09B969;
+    border-color: #CCCCCC;
+    color: #666666;
+}
+
+.valider:hover{
+    background-color: #09AF34;    
+}
+
+.annuler{    
+    background-color: white;
+    border-color: #CCCCCC;
+    color: #9F99A1;
+}
+
+.annuler:hover{
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+.optionCarteItem {
+    color: white;
+}
+
+.optionCarteItem > i {
+    text-shadow:-1px 0 rgba(0, 0, 0, 0.3), 0 1px rgba(0, 0, 0, 0.3), 1px 0 rgba(0, 0, 0, 0.3), 0 -1px 1px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.optionCarteItem > i:hover{
+    text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px 1px black;
+}
+
+#nav {
+    background-color: #595757;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+#container{
+    position: relative;
 }
 
 #signinButton.active, #signinButton:hover{
-    background-color:#0BAA16;
-    color: white;
+    background-color:#00A286;
 }
 
 #connectButton.active, #connectButton:hover{
-    background-color:#286090;
-    color: white;
+    background-color: #EF6530;
 }
 
 #incscriptionPanel{
     position:absolute;
-    top:45px;
+    top:52px;
     right: 15px;
     width:25%;
     z-index:1000;
+}
+
+#optionUtilisateur{
+    position:absolute;
+    top: 60px;
+    right: 22px;
+    z-index:900;
+}
+
+#optionsCarte{
+    position: absolute;
+    top:100px;
+    right: 0;
+    z-index:900;
+}
+
+#onFireButton.active{
+    color:#FC3A37;
+}
+
+#freshButton.active{
+    color:#5DC9F1;
+}
+
+#allButton.active{
+    color:#EEE544;
 }
 
 /*TODO: à voir*/
@@ -46,7 +126,7 @@
 #map-container{
     position: relative;
     width: 100%;
-    padding-bottom: 40%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+    padding-bottom: 50%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
 }
 
 #map-container #map{

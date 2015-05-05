@@ -7,12 +7,13 @@ function MapManager(){
 	idUser=-1;
 	}
 	var infowindow = new google.maps.InfoWindow({content : ""});
-	var markers = [];
+	var markers = new Map();
 	var pins = [];
 	var marker;
 	var map; // object containing the map
 	var cordinateLyon = new google.maps.LatLng(45.7601676, 4.8328885);
 	var newPos =new google.maps.LatLng(0,0);
+	
 	// image de marker
 	var imageNormal = Flask.url_for("static", {"filename": "./assets/normal.png"});
 	var imageVelov = Flask.url_for("static", {"filename": "./assets/velov.png"});
@@ -21,6 +22,84 @@ function MapManager(){
 	var imageRestau = Flask.url_for("static", {"filename": "./assets/restaurant.png"});
 	var imageHotel = Flask.url_for("static", {"filename": "./assets/hotel.png"});
 	var imageMonument = Flask.url_for("static", {"filename": "./assets/monument.png"});
+	var imageFacebook = Flask.url_for("static", {"filename": "./assets/facebook.png"})
+	var imageTCL = Flask.url_for("static", {"filename": "./assets/tcl.png"})
+	var imageHopital = Flask.url_for("static", {"filename": "./assets/hopital.png"})
+
+
+
+	self.addMarker = function(aPin) {
+		var type = aPin.type;
+		var image;
+		var contentString;
+		var id=aPin.id;
+		switch (type) { 
+			case "velov" : 
+				image = imageVelov;
+				titre = "Velo'v";
+				contentString = self.buildDescription(aPin,"velov");
+				break;
+			case "stationTCL" : 
+				image = imageTCL;
+				titre = "Velo'v";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "cafe" : 
+				image = imageBar;
+				titre = "Café/Bar";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "restaurant" : 
+				image = imageRestau;
+				titre = "Restaurant";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "nightClub" : 
+				image = imageSoiree;
+				titre = "Night Club";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "hopital" : 
+				image = imageHopital;
+				titre = "Hopital";
+				contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "facebookPin" : 
+				image = imageFacebook;
+				titre = "Facebook";
+				contentString = self.buildDescription(aPin,"dynamique");
+				break;
+			case "event" : 
+				image = imageFacebook;
+				titre = "Evenement";
+				contentString = self.buildDescription(aPin,"dynamique");
+				break;
+			default :
+				image = imageNormal
+				titre = "Autre";
+				contentString = self.buildDescription(aPin,"normal");
+			}
+	
+			
+		var aMarker = new google.maps.Marker({
+			position: new google.maps.LatLng(aPin.lat, aPin.lng),
+			map: map,
+			icon: image,
+			title: titre,
+			'idPin': aPin.id,
+			'visibilityCategoryToken': 0
+		});
+
+		markers.set(id,{pin : aPin,
+						marker : aMarker});
+		google.maps.event.addListener(aMarker, 'click', function() {
+			infowindow.setContent(self.buildDescription(markers.get(aMarker['idPin']).pin,markers.get(aMarker['idPin']).pin.type));
+		
+			infowindow.open(map,aMarker);
+
+		});
+	};
+
 
 	self.initMap = function() {
 		self.pinSetup();
@@ -35,10 +114,44 @@ function MapManager(){
 		var centerControl = self.CenterControl(centerControlDiv, map);
 		centerControlDiv.index = 1;
 		map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
-	
-	    self.refreshPins();
+		
+
+		google.maps.event.addListener(map, 'zoom_changed', self.zoomHandler );
+		google.maps.event.addListener(map, 'center_changed', self.zoomHandler );
+
+
+	    //self.refreshPins();
 	    //setInterval(self.refreshPins(), 60000 );
 	};
+
+	self.zoomHandler = function () {
+		var bounds = map.getBounds();
+		var height =  $("#map").height();
+		var width =  $("#map").width();
+		var numberOfMarkers = Math.floor(height*width/(50*50));
+		console.log(numberOfMarkers);
+		var toDisplay = [];
+		for (var valeur of markers.values()) {
+			if (bounds.contains(valeur.marker.getPosition())) {
+				valeur.marker.setVisible(false);
+				toDisplay.push(valeur);	
+			}
+		}
+		toDisplay.sort(function(a,b) {
+			if (a.pin.score < b.pin.score) {
+				return -1;
+			}
+			if (a.pin.score > b.pin.score) {
+				return 1;
+			}
+			return 0;
+		});
+		console.log(toDisplay.length);
+		for ( var i = 0 ;  ( i <30 ) && (i < toDisplay.length)  ; i++) {
+			
+			toDisplay[i].marker.setVisible(true);
+		}
+	}
   
 	self.CenterControl=function (controlDiv, map) {
 
@@ -52,6 +165,7 @@ function MapManager(){
 	  controlUI.style.marginTop = '22px';
 	  controlUI.style.marginRight = '22px';
 	  controlUI.style.textAlign = 'center';
+	  controlUI.style.display = 'none';
 	  controlUI.title = 'Cliquer pour ajouter un event';
 	  controlDiv.appendChild(controlUI);
 
@@ -75,6 +189,13 @@ function MapManager(){
 		});
 	  });
 	};
+
+	// self.ajouterEvenemment = function(){
+	// 	google.maps.event.addListenerOnce(map, 'click', function(e) {	
+	// 		controlText.innerHTML = 'Ajouter un event';
+	// 		self.placeNewMarker(e.latLng, map);
+	// 	});
+	// };
 
 	self.placeNewMarker=function(position, map) {
 		 if (marker){
@@ -357,72 +478,6 @@ function MapManager(){
 		
 		
 	//};
-	self.addMarker = function(aPin) {
-		var type = aPin.type;
-		var image;
-		var contentString;
-		var id=aPin.id;
-		switch (type) { 
-			case "velov" : 
-				image = imageVelov;
-				titre = "Velo'v";
-				contentString = self.buildDescription(aPin,"velov");
-				break;
-			case "bar" : 
-				image = imageBar;
-				titre = "Bar";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "restau" : 
-				image = imageRestau;
-				titre = "Restaurant";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "soiree" : 
-				image = imageSoiree;
-				titre = "Soirée";
-				contentString = self.buildDescription(aPin,"dynamique");
-				break;
-			case "hotel" : 
-				image = imageHotel;
-				titre = "Hôtel";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "monument" : 
-				image = imageMonument;
-				titre = "Monument";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			default :
-				image = imageNormal
-				titre = "Autre";
-				contentString = self.buildDescription(aPin,"normal");
-			}
-
-		
-			
-		var aMarker = new google.maps.Marker({
-			position: new google.maps.LatLng(aPin.lat, aPin.lng),
-			map: map,
-			icon: image,
-			title: titre,
-			'idPin': aPin.id
-		});
-
-		markers[id]={pin : aPin,
-						marker : aMarker};
-		google.maps.event.addListener(aMarker, 'click', function() {
-			infowindow.setContent(self.buildDescription(markers[aMarker['idPin']].pin,markers[aMarker['idPin']].pin.type));
-		
-			infowindow.open(map,aMarker);
-
-		});
-		
-		
-		
-
-
-	};
 
 
 	self.buildDescription=function(aPin, pinType) {
@@ -435,8 +490,8 @@ function MapManager(){
 									'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
 										'<div id="bodyContent">'+						
 											'<p>' + aPin.description + '</p>'+
-											'<p>Nombre de places: <b>' + aPin.velo + '</b><br />' +
-											'Nombre de vélos disponibles: <b>' + aPin.libre + '</b></p>'+
+											'<p>Nombre de places: <b>' + aPin.data1 + '</b><br />' +
+											'Nombre de vélos disponibles: <b>' + aPin.data2 + '</b></p>'+
 											'<p><small>Posté par ' + aPin.user + '</small></p>'+
 											'<form name="form1">' +
 												'<p>' +
@@ -495,8 +550,8 @@ function MapManager(){
 	
 
 	self.refreshPins = function(){
-		for (var i = 0; i < markers.length; i++) {
-	    	markers[i].marker.setMap(null);
+		for (var valeur of markers.values()) {
+	    	valeur.marker.setMap(null);
 	  	}
 		pins = [];
 		markers = [];
@@ -522,6 +577,15 @@ function MapManager(){
 		}
 	};
 
+	self.cbGetPinVisibilite =function(data){
+		for (var valeur of markers.values()) {
+ 			
+    		valeur.marker.setMap(null);
+    		
+    	}
+    	self.cbGetAllPins(data);
+
+   	};
 	self.pinSetup = function(){
 
 		
@@ -539,8 +603,47 @@ function MapManager(){
 			});
 
 	};		
+	self.filtrerVisibilite =function(visibilite){
+		pin.getPinVisibilite(visibilite, self.cbGetPinVisibilite);
+	};
+
 	self.setIdUser =function (idUserParam){
 		idUser = idUserParam;
+	};
+
+	self.categoryFilter = function(visible, idCategory){
+		for (var valeur of markers.values()) {
+			if (valeur!=null){
+				var found=-1
+				for (var j=0;j<valeur.pin.category.length;j++){
+					if(valeur.pin.category[j].indexOf(idCategory)!=-1){
+						found=1;
+						break;
+					}
+				}
+				if (found==1){
+					if (visible==true){
+						valeur.marker['visibilityCategoryToken']+=1;
+					}
+					else{
+
+						valeur.marker['visibilityCategoryToken']-=1;
+						if (valeur.marker['visibilityCategoryToken']<0){
+							valeur.marker['visibilityCategoryToken']=0
+						}
+					} 
+					if (valeur.marker['visibilityCategoryToken']==0)
+					{
+						valeur.marker.setVisible(false);
+					}
+					else{
+						valeur.marker.setVisible(true);
+
+					}
+		    	}
+		    }
+		}
+	  	
 	};
 
 }

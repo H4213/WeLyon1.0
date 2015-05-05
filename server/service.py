@@ -26,21 +26,18 @@ db = connectToDatabase()
 def addObject(obj):
 	db.session.add(obj)
 	db.session.commit()
-	return obj.serialize()
+	return obj
 
 def deleteObject(obj):
 	db.session.delete(obj)
 	db.session.commit()
 	return jsonify(deleted = "1")
 
-
-
 def authentification(form):
 	user = User.query.filter_by(pseudo=form['pseudo'], passw=form['passw']).first()
 	if user:
 		return jsonify(id=user.id, pseudo=user.pseudo)
 	return jsonify(error="authentification error")
-
 	
 #updates or creates a velov 
 def updateVelovByIdVelov(current):
@@ -53,14 +50,12 @@ def updateVelovByIdVelov(current):
 			db.session.commit()
 		else:
 			addObject(current)
-			
-
-		
+					
 #Creates Facebook events 
 def updateFacebookByIdFacebook(current):
 	if current:
 		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID, type='facebookPin').first()
-		
+		print item
 		if item == None:
 			addObject(current)
 
@@ -102,14 +97,10 @@ def UpdateUserVoteEvent(form,idPin):
 
 		return jsonify(pin=pinItem.serialize())
 			
-#Creates points of interest sncf
-def addPointOfInterest(form):
-	db.session.add(form)
-	db.session.commit()
 
 def updatePointOfInterestByIdPointOfInterest(current) :
 	if current:
-		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID, type='pointOfInterest').first()
+		item = Pin.query.filter_by(typeSpecificID=current.typeSpecificID, type=current.type).first()
 		if item is None:
 			addObject(current)
 

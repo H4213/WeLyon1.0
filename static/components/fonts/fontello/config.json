@@ -1,0 +1,40 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "fd8d9ae4422e55d3ca23f55d9cf4b20a",
+      "css": "waves",
+      "code": 59392,
+      "src": "typicons"
+    },
+    {
+      "uid": "d26795657ef6fb008bee4d54c358f7c8",
+      "css": "snow",
+      "code": 59394,
+      "src": "typicons"
+    },
+    {
+      "uid": "500cde26773d15aaac1bfaa2a33cc5a9",
+      "css": "spread",
+      "code": 59396,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "8815bdcacab2495dd436f029e78a15d7",
+      "css": "giraffe",
+      "code": 59395,
+      "src": "maki"
+    },
+    {
+      "uid": "dc73bee1d58539abe8c96b958bf4c931",
+      "css": "fire",
+      "code": 59393,
+      "src": "elusive"
+    }
+  ]
+}

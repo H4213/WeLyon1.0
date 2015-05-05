@@ -19,21 +19,14 @@ def createPointOfInterestTable() :
 	
 	i = 0
 	while i < 88 :
-
-
 		idUser = 1
 		title = data["node"][i]["tag"][0]["-v"]
 		lat = data["node"][i]["-lat"]
-		lng = data["node"][i]["-lon"]
-
-				
+		lng = data["node"][i]["-lon"]		
 		obj = Pin('pointOfInterest', title, lng, lat, idUser, [], "")
 		obj.typeSpecificID = data["node"][i]["-id"]
 		listPointOfInterest.append(obj)
-		
 		i+=1
-		
-
 	json_file.close()
 
 	return listPointOfInterest
@@ -41,9 +34,10 @@ def createPointOfInterestTable() :
 
 
 def loadSncfData() :
+	service.logMessage(".TCL : Getting data")
 	list = createPointOfInterestTable()
-	service.logMessage(".Updating the database")
+	service.logMessage(".TCL : Updating the database")
 	for l in list :
 		service.updatePointOfInterestByIdPointOfInterest(l)
-	service.logMessage(".Loading sncf data")
+	service.logMessage(".TCL : I'm up to date !")
 

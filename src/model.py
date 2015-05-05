@@ -8,9 +8,13 @@ from sqlalchemy import Integer, ForeignKey, String, Unicode, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import backref, relation
 import datetime
+#pour test
+from random import randint
 app = Flask(__name__)
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tmucotknskzdvn:B5Hyna3G7I1xIhPj3i_CSdl-GS@ec2-54-163-238-96.compute-1.amazonaws.com:5432/d6fisokcj01ulm'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://H4213:SabreESS32@82.241.33.248:3306/WeLyon-amine'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+
 db = SQLAlchemy(app)
  
 ########################################################################
@@ -32,11 +36,14 @@ class User(db.Model):
             'passw': self.passw,
         }
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+
+    # ceci est un service !!!!!!!     
+    # def delete(self):
+    #     db.session.delete(self)
+    #     db.session.commit()
 
     #---------------------------------------------------------------
+
 class Category(db.Model):
 
     __tablename__ = "categories"
@@ -46,30 +53,25 @@ class Category(db.Model):
     IdCategoryFather = db.Column(db.Integer, db.ForeignKey("categories.id"))
     categoryFather = db.relationship('Category', remote_side=[id], backref="categoriesChild")
 
-    #-------Usage-------
-    #
-    #   cat = Category("nom","description")
-    #   cat.categoryFather = LaCategorieParent
-    #   cat.categoriesChild.append(UneCategorieEnfant)
 
-    def __init__(self, nom, description):
+
+    def __init__(self, nom, description, idFather = id ):
         self.nom = nom
         self.description = description
+        self.IdCategoryFather = idFather
 
     def serialize(self):
-        if self.categoriesChild:
+        if self.IdCategoryFather:
             return {
                 'id': self.id,
                 'nom': self.nom,
                 'description': self.description,
-                #'pins' : [item.serializeSmall() for item in self.pins],
-                'child': [item.serializeSmall() for item in self.categoriesChild]
+                'idFather': self.IdCategoryFather
             }
         return {
             'id': self.id,
             'nom': self.nom,
-            'description': self.description,
-            #'pins' : [item.serializeSmall() for item in self.pins],
+            'description': self.description
         }
 
     def serializeSmall(self):
@@ -78,71 +80,71 @@ class Category(db.Model):
             'nom': self.nom
         }
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
     #------------------------------------------------------------------
 
 class Pin(db.Model):
-	__tablename__ = 'pins'
-	id = db.Column(db.Integer, primary_key = True)
-	type = db.Column(db.String(30))
-	idUser = db.Column(db.Integer, db.ForeignKey("users.id"))
-	title = db.Column(db.String(100))
-	categories = db.Column(db.String(100))
-	score = db.Column(db.Integer)		
-	description = db.Column(db.String(400)) 
-	lng = db.Column(db.Float)
-	lat = db.Column(db.Float)
-	
-	dateCreation = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-	dateBegin = db.Column(db.DateTime)
-	dateEnd = db.Column(db.DateTime)
-	
-	typeSpecificID = Column(db.BigInteger)
-	data1 = db.Column(db.String(30))
-	data2 = db.Column(db.String(30))
-	data3 = db.Column(db.String(30))
+    __tablename__ = 'pins'
+    id = db.Column(db.Integer, primary_key = True)
+    type = db.Column(db.String(30))
+    idUser = db.Column(db.Integer, db.ForeignKey("users.id"))
+    title = db.Column(db.String(100))
+    categories = db.Column(db.String(100))
+    score = db.Column(db.Integer)		
+    description = db.Column(db.String(400)) 
+    lng = db.Column(db.Float)
+    lat = db.Column(db.Float)
+    staticHotVisibility =db.Column(db.Boolean)
+    dateCreation = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    dateBegin = db.Column(db.DateTime)
+    dateEnd = db.Column(db.DateTime)
 
-	def __init__(self, type, title, lng, lat, idUser = 1, categories = [], description = "",score=0):
-		self.type = type
-		self.idUser = idUser
-		self.title = title
-		self.categories = ","
-		for i in categories:
-			self.categories = str(self.categories)+str(i.id)+","
-		self.description = description
-		self.lng = lng
-		self.lat = lat
+    typeSpecificID = Column(db.BigInteger)
+    data1 = db.Column(db.String(30))
+    data2 = db.Column(db.String(30))
+    data3 = db.Column(db.String(30))
 
-	def serialize(self):
+    def __init__(self, type, title, lng, lat, idUser = 1, categories = [], description = "", score = 0, staticHotVisibility = False):
+        self.type = type
+        self.idUser = idUser
+        self.title = title
+        self.categories = ","
+        #self.score = score
+        #pour test
+        self.score = randint(0,100)
+        for i in categories:
+            self.categories = str(self.categories)+str(i.id)+","
+        self.description = description
+        self.lng = lng
+        self.lat = lat
+        self.staticHotVisibility=staticHotVisibility
 
-		liste = self.categories.strip(",").split(",")
-		if liste[0] == "":
-			liste = []
-		return {
-			'id': self.id,
-			'type':self.type,
-			'dateCreation':self.dateCreation,
-			'dateBegin':self.dateBegin,
-			'dateEnd':self.dateEnd,
-			'user': self.idUser,
-			'title': self.title,
-			'category': liste,
-			'description': self.description,
-			'lng': self.lng,
-			'lat': self.lat,
-			'score': self.score,
-			'data1': self.data1,
-			'data2': self.data2,
-			'data3': self.data3,
-			'typeSpecificID': self.typeSpecificID
-		}
+    def serialize(self):
 
-	def delete(self):
-		db.session.delete(self)
-		db.session.commit()
+        liste = self.categories.strip(",").split(",")
+        if liste[0] == "":
+            liste = []
+        return {
+            'id': self.id,
+            'type':self.type,
+            'dateCreation':self.dateCreation,
+            'dateBegin':self.dateBegin,
+            'dateEnd':self.dateEnd,
+            'user': self.idUser,
+            'title': self.title,
+            'category': liste,
+            'description': self.description,
+            'lng': self.lng,
+            'lat': self.lat,
+            'score': self.score,
+            'data1': self.data1,
+            'data2': self.data2,
+            'data3': self.data3,
+            'typeSpecificID': self.typeSpecificID
+        }
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
 
 class Vote(db.Model):
@@ -161,10 +163,6 @@ class Vote(db.Model):
             'idUser': self.idUser,
             'idPin': self.idPin,
         }
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
 
 class Log(db.Model):
     __tablename__= "logs"
@@ -188,6 +186,6 @@ class Log(db.Model):
             'time': self.dateTime,
         }
 
-#db.reflect()
-#db.drop_all()
+db.reflect()
+db.drop_all()
 db.create_all()
