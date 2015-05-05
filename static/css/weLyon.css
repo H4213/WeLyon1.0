@@ -12,13 +12,13 @@
     margin-left: 15px;
 }
 
-#incscriptionPanel .valider{
+#inscriptionPanel .valider{
     background-color: rgba(19,188,62,0.7);    
     border-color: #CCCCCC;
     color: #666666;
 }
 
-#incscriptionPanel .valider:hover{
+#inscriptionPanel .valider:hover{
     background-color: #13BC3E;
 }
 
@@ -71,7 +71,7 @@
     background-color: #EF6530;
 }
 
-#incscriptionPanel{
+#inscriptionPanel{
     position:absolute;
     top:52px;
     right: 30px;
@@ -156,3 +156,10 @@
     margin: 0;
     padding: 0;
 }
+
+#appAlert{
+    position:absolute;
+    opacity: 0.9;
+    z-index:900;
+}
+

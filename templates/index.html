@@ -69,18 +69,23 @@
         </nav>
         
 
-        <div id="incscriptionPanel" class="col-sm-12" style="display:none;">
+        <div id="inscriptionPanel" class="col-sm-12" style="display:none;">
             <div class="panel panel-default">
+
                 <div class="panel-body">
+                    <div class="row">
+                        <div id="inscriptionAlert" class="">
+                        </div>
+                    </div>
                 </div>
             </div>               
         </div>
 
         <div id="container" class="container-fluid">
-             <div class="row">
-                <div id="alert">
-                </div>
+            
+            <div id="appAlert" class="col-md-offset-3 col-md-6 text-center"> 
             </div>
+
             <div class="modal fade" id="formulaireAjoutEvenement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -223,15 +228,20 @@
           <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <!-- // <script src="../static/components/jquery/jquery.js"></script> -->
         <!-- // <script src="../static/components/bootstrap-3.3.4/js/bootstrap.min.js"></script>  -->
+        <!-- // <script src="../static/components/sprintf/dist/sprintf.min.js"></script>  -->
          
         <script src="{{url_for('static', filename='./components/jquery/jquery.js') }}"></script>   
-        <script src="{{url_for('static', filename='./components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>    
+        <script src="{{url_for('static', filename='./components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>
+        <script src="{{url_for('static', filename='./components/sprintf/dist/sprintf.min.js') }}"></script>    
 
           <!-- JavaScript inputs -->
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
         <script src="{{url_for('static', filename='./components/bootstrap-treeview-1.1.0/src/js/bootstrap-treeview.js') }}"></script>
 
-       <!--  // <script src="../static/js/RESTful.js"></script> 
+       <!-- 
+        // <script src="../static/js/messageView.js"></script>
+        // <script src="../static/js/messages.js"></script> 
+        // <script src="../static/js/RESTful.js"></script> 
         // <script src="../static/js/pin.js"></script> 
         // <script src="../static/js/mapManager.js"></script>
         // <script src="../static/js/category.js"></script>
@@ -240,6 +250,8 @@
 
         {{ JSGlue.include() }}
 
+        <script src="{{url_for('static', filename='./js/messageView.js') }}"></script>
+        <script src="{{url_for('static', filename='./js/messages.js') }}"></script>
         <script src="{{url_for('static', filename='./js/mapManager.js') }}"></script>
         <script src="{{url_for('static', filename='./js/RESTful.js') }}"></script>
         <script src="{{url_for('static', filename='./js/category.js') }}"></script>

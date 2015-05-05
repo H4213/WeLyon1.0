@@ -4,6 +4,7 @@ function WeLyon(){
 	var category = new Category();
 	var mapManager = new MapManager();
 	var user = new User();
+	var messageView = new MessageView();
 	var idUser;
 	var nameUser;
 	var pinTest=new Pin();
@@ -121,30 +122,26 @@ function WeLyon(){
 		$('[data-toggle="tooltip"]').tooltip();
 		self.gererVisibilite($('#onFireButton'));
 		$('#optionsCarte').show();
+		messageView.install('appAlert');
 	};
 
 	self.setupAuthentificationPanel = function(bouton){
-		// $('#okButton').on('click',function(){			
-		// 	bouton.toggleClass('active');
-		// 	$('#incscriptionPanel').toggle()
-		// });
-		
+
 		$('#okInscription').on('click', function(){
 			self.signInUser($(this));
 			bouton.toggleClass('active');
-			$('#incscriptionPanel').hide()
+			$('#inscriptionPanel').hide()
 		});
 
 		$('#okConnexion').on('click', function(){
 			self.signUpUser($(this));
 			bouton.toggleClass('active');
-			$('#incscriptionPanel').hide();
+			$('#inscriptionPanel').hide();
 		});
 
 		$('.annuler').on('click', function(){
-			alert(2);
 			bouton.toggleClass('active');
-			$('#incscriptionPanel').hide();
+			$('#inscriptionPanel').hide();
 		});
 
 		$(".finalInput").keypress(function(event) {
@@ -157,8 +154,8 @@ function WeLyon(){
 		$(document).keyup(function(event) {
 			if (event.which == 27) {
 				event.preventDefault();
-				if ($('#incscriptionPanel').is(":visible")){
-					$('#incscriptionPanel').find('.annuler').click();
+				if ($('#inscriptionPanel').is(":visible")){
+					$('#inscriptionPanel').find('.annuler').click();
 				}				
 			}
 		});
@@ -167,7 +164,7 @@ function WeLyon(){
 
 //--------------Remplissage des formulaires----------------------
 	self.fillAuthentificationForm = function(bouton){
-		$("#incscriptionPanel").find(".panel-body").find('form').remove();
+		$("#inscriptionPanel").find(".panel-body").find('form').remove();
 		
 		var form = '';
 		if(bouton.get(0) === $('#signinButton').get(0)){
@@ -207,7 +204,7 @@ function WeLyon(){
 	        form+='    </form>';
 		}
 
-		$("#incscriptionPanel").find(".panel-body").append(form);
+		$("#inscriptionPanel").find(".panel-body").append(form);
 		self.setupAuthentificationPanel(bouton);
 	};
 
@@ -349,12 +346,12 @@ function WeLyon(){
 	self.ouvrirPanelAuthentification = function(bouton){
 		if(bouton.hasClass('active')){
 			bouton.toggleClass('active');
-			$('#incscriptionPanel').toggle();
+			$('#inscriptionPanel').toggle();
 		} else {
 			self.fillAuthentificationForm(bouton);
 			$('#nav').find('.active').toggleClass('active');
 			bouton.toggleClass('active');
-			$('#incscriptionPanel').show();
+			$('#inscriptionPanel').show();
 		}
 		
 	};
@@ -417,7 +414,9 @@ function WeLyon(){
 		if (password!== "" && pseudo !== ""){
 			user.authUser(pseudo,password,self.cbAuthUser);
 		}else if (pseudo =="" || password == ""){
-			alert("votre peseudo ou votre mot de passe est vide")
+			messageView.append(Messages.Login.LOGIN_ERROR, "haha");
+			messageView.show();
+			// alert("votre peseudo ou votre mot de passe est vide")
 		}
 		
 	};
