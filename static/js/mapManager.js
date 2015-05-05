@@ -26,6 +26,7 @@ function MapManager(){
 	var imageFacebook = Flask.url_for("static", {"filename": "./assets/facebook.png"})
 	var imageTCL = Flask.url_for("static", {"filename": "./assets/tcl.png"})
 	var imageHopital = Flask.url_for("static", {"filename": "./assets/hopital.png"})
+	var imagePolice = Flask.url_for("static", {"filename": "./assets/police.png"})
 
 
 
@@ -63,6 +64,7 @@ function MapManager(){
 				toDisplay.push(valeur);	
 			}
 		}
+		
 		toDisplay.sort(function(a,b) {
 			if (a.pin.score < b.pin.score) {
 				return -1;
@@ -308,8 +310,6 @@ function MapManager(){
 		});
 	}
 
-
-
 	self.addMarker = function(aPin) {
 		var type = aPin.type;
 		var image;
@@ -352,9 +352,14 @@ function MapManager(){
 				contentString = self.buildDescription(aPin,"dynamique");
 				break;
 			case "event" : 
-				image = imageFacebook;
+				image = imageNormal;
 				titre = "Evenement";
 				contentString = self.buildDescription(aPin,"dynamique");
+				break;
+			case "police" : 
+				image = imagePolice;
+				titre = "Police";
+				contentString = self.buildDescription(aPin,"normal");
 				break;
 			default :
 				image = imageNormal
