@@ -1,10 +1,11 @@
 function MapManager(){
+
 	var self = this;
 	var rest = new RESTful();
 	var pin = new Pin();
 	var idUser = localStorage.getItem('idUser');
 	if (idUser==null){
-	idUser=-1;
+		idUser=-1;
 	}
 	var infowindow = new google.maps.InfoWindow({content : ""});
 	var markers = new Map();
@@ -90,8 +91,7 @@ function MapManager(){
 	  controlUI.style.marginTop = '22px';
 	  controlUI.style.marginRight = '22px';
 	  controlUI.style.textAlign = 'center';
-/*	  controlUI.style.display = 'none';
-*/	  controlUI.title = 'Cliquer pour ajouter un event';
+	  controlUI.title = 'Cliquer pour ajouter un event';
 	  controlDiv.appendChild(controlUI);
 
 	  // Set CSS for the control interior
@@ -115,6 +115,7 @@ function MapManager(){
 	  });
 	};
 
+
 	self.ajouterEvenemment = function(){
 	 	google.maps.event.addListenerOnce(map, 'click', function(e) {	
 	 		
@@ -133,8 +134,8 @@ function MapManager(){
 	 };
 
 	self.placeNewMarker=function(position, map) {
-		 if (marker){
-		 marker.setVisible(false);
+		if (marker){
+			marker.setVisible(false);
 		}
 		 marker = new google.maps.Marker({
 			position: position,
@@ -144,6 +145,7 @@ function MapManager(){
 		newPos=position
 		self.buildForm(marker);
 	};
+
 	self.buildForm=function(aMarker) {
 		var contentString = '' +
 			'<p>' +
@@ -170,19 +172,19 @@ function MapManager(){
 		usedMarker = aMarker;
 		usedInfoWindow = infowindow;
 		google.maps.event.addListener(infowindow, 'closeclick', function(){
-		if (marker){
-			marker.setVisible(false); //removes the marker);
-		}
+			if (marker){
+				marker.setVisible(false); //removes the marker);
+			}
 		});
 
-	$('#okCreatePin').on("click",function(){
-				self.buildForm2();
-			});
-
+		$('#okCreatePin').on("click",function(){
+			self.buildForm2();
+		});
 	};
 
 	self.buildForm2=function() {
-		leFormulaire=document.getElementById('formulaire1');
+
+	    leFormulaire=document.getElementById('formulaire1');
 		theType=leFormulaire.type.value;
 		if(leFormulaire.type[0].checked)
 		{
@@ -205,13 +207,12 @@ function MapManager(){
 					'<fieldset class="date">'+
 						 '<label>Date de début : </label><br />'+
   								 '<select id="jour_debut" name="jour_debut" />';
-  								 for (var i = 0 , i<31 ; i++) {
+  								 for (var i = 0 ; i<31 ; i++) {
   								 	contentString +=  '<option>' + (i+1) +'</option>';
-  								 }
-			  					
+  								 };
 		  						 contentString += '</select>'+
 		  						  '<select id="mois_debut" name="mois_debut" />';
-		  						  for (var i = 0 , i<12 , i++ ) {
+		  						  for (var i = 0 ; i<12 ; i++ ) {
 		  						  	contentString += '<option>' + (i+1) + '</option> '
 		  						  }    
 		  						  contentString += '</select>'+
@@ -233,12 +234,12 @@ function MapManager(){
 		  			'<fieldset class="date">'+
 						 '<label>Date de Fin : </label><br />'+
   								 '<select id="jour_fin" name="jour_fin" />';
-			  						    for (var i = 0 , i<31 ; i++) {
+			  						    for (var i = 0 ; i<31 ; i++) {
   								 			contentString +=  '<option>' + (i+1) +'</option>';
   								 		}	
 		  						contentString +=  '</select>' +
 		  						  '<select id="mois_fin" name="mois_fin" />';
-		  						  for (var i = 0 , i<13 , i++ ) {
+		  						  for (var i = 0 ; i<13 ; i++ ) {
 		  						  	contentString += '<option>' + (i+1) + '</option> '
 		  						  }    
 		  						  contentString += '</select>'+
@@ -283,8 +284,7 @@ function MapManager(){
 				'</form>';
 		}
 
-		 infowindow.setContent(contentString);
-		
+		infowindow.setContent(contentString);
 		infowindow.open(map,usedMarker);
 		$(document).on("click",".pinCreationButtonDyn",function(){
 				var jour_debut= document.getElementById('jour_debut').value;
@@ -292,29 +292,23 @@ function MapManager(){
 				var annee_debut=document.getElementById('annee_debut').value;
 				var heure_debut=document.getElementById('heure_debut').value;
 				var minute_debut=document.getElementById('minute_debut').value;
-
 				var jour_fin=document.getElementById('jour_fin').value;
 				var mois_fin= document.getElementById('mois_fin').value;
 				var annee_fin=document.getElementById('annee_fin').value;
 				var heure_fin=document.getElementById('heure_fin').value;
 				var minute_fin=document.getElementById('minute_fin').value;
-
-
 				var title =document.getElementById('titreAjout').value;
 				var description =document.getElementById('descriptionAjout').value;
-
 				pin.addDynPin(title,description,idUser,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin, newPos.lat(), newPos.lng(),theType,self.cbVotePin);
-			});
+		});
 		$(document).on("click",".pinCreationButtonStatic",function(){
 
-				var title =document.getElementById('titre').value;
-				var description =document.getElementById('description').value;
+			var title =document.getElementById('titre').value;
+			var description =document.getElementById('description').value;
+			pin.addStaticPin(title,description,idUser, newPos.lat(), newPos.lng(),theType,self.cbVotePin);
+		});
+	}
 
-				pin.addStaticPin(title,description,idUser, newPos.lat(), newPos.lng(),theType,self.cbVotePin);
-			});
-
-
-	};
 
 
 	self.addMarker = function(aPin) {
@@ -471,27 +465,9 @@ function MapManager(){
 		for(var i in data.Pins){
 			var p = data.Pins[i];
 			self.addMarker(p);
-<<<<<<< HEAD
-		}
-		for(var i=0; i<listIdCategories.length; i++){
-=======
-
-		}
-		/*for(var i=0; i<listIdCategories.length; i++){
->>>>>>> origin/dev-Paul-FiltreArbre
-			if($('#categoryButton'+listIdCategories[i]).data('id-category')!=null){
-				if ($('#categoryButton'+listIdCategories[i]).hasClass('active'))
-				{
-					self.categoryFilter(true,listIdCategories[i])
-				}
-				else
-				{
-					self.categoryFilter(false,listIdCategories[i])
-				}			
-			}
-		}*/
-		self.filterByDate();
-	};
+			self.filterByDate();
+		};
+	}
 
 	self.cbVotePin = function(data){
 		if (data['error']==null){
@@ -523,7 +499,8 @@ function MapManager(){
 				pin.vote(idUser,pinID,-1,self.cbVotePin);
 			});
 
-	};		
+	};
+
 	self.filtrerVisibilite =function(visibilite){
 		pin.getPinVisibilite(visibilite, self.cbGetPinVisibilite);
 	};
@@ -575,12 +552,12 @@ function MapManager(){
 	};
 
 	self.filterByDate=function(){
-			startingDay=$('#jour_debutFilter').val();
-			startingMonth=$('#mois_debutFilter').val();
-			startingYear=$('#annee_debutFilter').val();
-			endingDay=$('#jour_finFilter').val();
-			endingMonth=$('#mois_finFilter').val();
-			endingYear=$('#annee_finFilter').val();
+		startingDay=$('#jour_debutFilter').val();
+		startingMonth=$('#mois_debutFilter').val();
+		startingYear=$('#annee_debutFilter').val();
+		endingDay=$('#jour_finFilter').val();
+		endingMonth=$('#mois_finFilter').val();
+		endingYear=$('#annee_finFilter').val();
 		for (var valeur of markers.values()){
 			if(valeur.pin.dateBegin!=null && valeur.pin.dateEnd!=null)
 			{
@@ -613,15 +590,4 @@ function MapManager(){
 			}
 		}
 	};
-<<<<<<< HEAD
-=======
-
-	self.getPinBySearch=function(search){
-		pin.getPinBySearch(search,cbGetAllPins);
-		
-	};
-
-
-
->>>>>>> origin/dev-Paul-FiltreArbre
 }

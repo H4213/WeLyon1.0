@@ -110,12 +110,6 @@ function WeLyon(){
 				$(this).parent().find('.valider').click();
 			}
 		});
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/dev-Paul-FiltreArbre
 	};
 
 	self.initialiserCarte = function(){		
