@@ -111,7 +111,7 @@
             <div class="row">
                 <div id="optionsCarte" class="row"  style="display:none;">
 
-                    <div id="optionUtilisateur" class="panel panel-default" data-toggle="tooltip" data-placement="left" title="Ajouter Point">
+                    <div id="optionUtilisateur" class="panel panel-default" data-toggle="tooltip" data-placement="left" title="Ajouter Point" >
                         <div class="panel-body">
                             <div class="row " style="text-align: center;">
                                 <div id="newEventButton" class="optionCarteItem">
@@ -147,9 +147,9 @@
                         </div>                         
                     </div>
 
-                    <div id="dateFilter" class="panel panel-default">
+                    <div id="dateFilter" class="panel panel-default"  data-toggle="tooltip" data-placement="left" title="Filtrer par date">
                         <div class="panel-body">
-                            <div class="row " style="text-align: center;" data-toggle="tooltip" data-placement="top" title="Filtrer par date">
+                            <div class="row " style="text-align: center;">
                                 <div id="dateFilterButton" class="optionCarteItem">
                                     <i class="fa fa-clock-o fa-2x"></i>
                                 </div>                           
@@ -190,28 +190,19 @@
                         </div>
                     </div>
 
-                    <!-- <div id="categoryDateFilters" class="panel panel-default">
+                    <div id="categoryFilter" class="panel panel-default" data-toggle="tooltip" data-placement="left" title="Filtrer par categorie">
                         <div class="panel-body">
-                            <div id="filter" class="col-md-12">
-                                <form>
-                                    <div class="form-group">
-                                        <p>De</p>
-                                        <input type="date" class="form-control" id="dateInit" placeholder="">
-                                    </div>
-                                    <div class=" form-group">
-                                        <p>à</p>
-                                        <input type="date" class="form-control" id="dateFin" placeholder="">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary pull-right">Filtrer</button>
-                                </form>
+                            <div class="row " style="text-align: center;" >
+                                <div id="categoryFilterButton" class="optionCarteItem">
+                                    <i class="fa fa-indent fa-2x"></i>
+                                </div>                           
                             </div>
-
-                            <div id="categories" class="btn-group-vertical btn-block" role="group" aria-label="...">
-                                <button id="categoryButton" class="col-md-4 btn btn-default category-title" type="button"><strong>Categories</strong></button> 
-
-                            </div> 
+                            <div id="categoryFilterTree" class="row" style="display:none;">
+                                <div id="categoryTreeView" class="">        
+                                </div>                            
+                            </div>                           
                         </div>
-                    </div> -->
+                    </div>
                 </div>
 
                 <div id="map-container" class="col-md-12">
@@ -220,7 +211,8 @@
                 </div> 
             </div>
         </div>
-        <div id="categoryTreeView" class=""></div>
+
+        
 
 
 

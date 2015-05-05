@@ -16,27 +16,10 @@ function WeLyon(){
 		self.setUser();
 		self.initialiserCarte();		
 		self.fillCategories();
-	
-		$('#categoryButton').on('click',function(){
-			self.toggleCategories();
-			$('.category-item').on('click', function() {
- 				$(this).toggleClass('active');
- 				var idCategory=$(this).data('id-category')
- 				if ($(this).hasClass('active')){
- 					mapManager.categoryFilter(true,idCategory);
- 				}
- 				else{
- 					mapManager.categoryFilter(false,idCategory);
- 				}
-  			
-			});
-		});
-
 
 		$('#newEventButton').on('click', function(){
 			self.ajouterEvenemment();
 		});
-
 
 		$('#onFireButton').on('click', function(){
 			self.gererVisibilite($(this));
@@ -76,6 +59,11 @@ function WeLyon(){
 			//TODO: send et filtrer par date
 		});
 
+		$('#categoryFilterButton').on('click', function(){
+			$('#categoryFilter').toggleClass('open-filter');
+			$('#categoryFilterTree').toggle();
+		})
+
 		$('#signinButton').on('click', function(){
 			self.ouvrirPanelAuthentification($(this));
 		});
@@ -94,6 +82,7 @@ function WeLyon(){
 			mapManager.filterByDate();
 
 		});
+
 		$('#categoryTreeView').on('nodeSelected', function(event, data) {
 			if (data.nodes!=null){
 				for(var i = 0; i<data.nodes.length; i++)
@@ -279,7 +268,7 @@ function WeLyon(){
 				if (data[i].idFather && data[i].idFather == father ) {
 					var node = { 
 						text : data[i].nom ,
-						tag : [data[i].id] 
+						tag : [data[i].id]  
 						  }
 					var nodes = self.transformToTreeFormat(data , data[i].id)
 					if (nodes.length != 0 ) {
@@ -354,6 +343,7 @@ function WeLyon(){
 		$('#dateFilterYearEnd').append(annee);
 
 		$('#dateFilterForm').toggle();
+		$('#categoryFilter').toggle();
 	};
 
 	self.ouvrirPanelAuthentification = function(bouton){
@@ -376,9 +366,11 @@ function WeLyon(){
 		switch(visibilite){
 			case 'recherche':
 				$('#searchInput').show();
+				$('#dateFilter').hide();
 			break;
 			default:
 				$('#searchInput').hide();
+				$('#dateFilter').show();
 				mapManager.filtrerVisibilite(visibilite);
 		}
 	};
