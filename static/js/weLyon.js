@@ -63,14 +63,9 @@ function WeLyon(){
 		});
 
 		$('#filterByDateButton').on('click', function(){
-			startingDay=$('#jour_debutFilter').val();
-			startingMonth=$('#mois_debutFilter').val();
-			startingYear=$('#annee_debutFilter').val();
-			endingDay=$('#jour_finFilter').val();
-			endingMonth=$('#mois_finFilter').val();
-			endingYear=$('#annee_finFilter').val();
+			
 
-			mapManager.filterByDate(startingDay,startingMonth,startingYear,endingDay,endingMonth,endingYear);
+			mapManager.filterByDate();
 
 		});
 

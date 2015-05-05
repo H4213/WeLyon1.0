@@ -429,7 +429,8 @@ function MapManager(){
 			icon: image,
 			title: titre,
 			'idPin': aPin.id,
-			'visibilityCategoryToken': 0
+			'visibilityCategoryToken': 0,
+			'visibilityDateToken': 1
 		});
 
 		markers.set(id,{pin : aPin,
@@ -542,9 +543,11 @@ function MapManager(){
 				{
 				self.categoryFilter(false,listIdCategories[i])
 
-				}
+				}			
 			}
 		}
+		self.filterByDate();
+
 	};
 
 	self.cbVotePin = function(data){
@@ -616,12 +619,12 @@ function MapManager(){
 							valeur.marker['visibilityCategoryToken']=0
 						}
 					} 
-					if (valeur.marker['visibilityCategoryToken']==0)
+					if (valeur.marker['visibilityCategoryToken']>0 && valeur.marker['visibilityDateToken']>0)
 					{
-						valeur.marker.setVisible(false);
+						valeur.marker.setVisible(true);
 					}
 					else{
-						valeur.marker.setVisible(true);
+						valeur.marker.setVisible(false);
 
 					}
 		    	}
@@ -634,9 +637,13 @@ function MapManager(){
 		listIdCategories=listCategories;
 	};
 
-	self.filterByDate=function(startingDay,startingMonth,startingYear,endingDay,endingMonth,endingYear){
-/*					alert(startingDay+"/"+startingMonth+"/"+startingYear+"/"+endingDay+"/"+endingMonth+"/"+endingYear)
-*/
+	self.filterByDate=function(){
+			startingDay=$('#jour_debutFilter').val();
+			startingMonth=$('#mois_debutFilter').val();
+			startingYear=$('#annee_debutFilter').val();
+			endingDay=$('#jour_finFilter').val();
+			endingMonth=$('#mois_finFilter').val();
+			endingYear=$('#annee_finFilter').val();
 		for (var valeur of markers.values()){
 			if(valeur.pin.dateBegin!=null && valeur.pin.dateEnd!=null)
 			{
@@ -657,11 +664,13 @@ function MapManager(){
 				{
 					if(valeur.marker.visibilityCategoryToken>0)
 					{
+					valeur.marker.visibilityDateToken=0
 					valeur.marker.setVisible(true)
 					}
 				}
 				else
 				{
+					valeur.marker.visibilityDateToken=0
 					valeur.marker.setVisible(false)
 				}
 				
