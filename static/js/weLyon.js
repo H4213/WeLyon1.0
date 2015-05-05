@@ -6,6 +6,7 @@ function WeLyon(){
 	var user = new User();
 	var idUser;
 	var nameUser;
+	var pinTest=new Pin();
 
 //TODO initialisation par rapport aux droits d'utilisateur
 
@@ -55,8 +56,8 @@ function WeLyon(){
 
 		$('#sendSearch').on('click', function(){
 			var search = $('#searchInput').find('input').val();
-			mapManager.getPinBySearch(search);
-				//TODO: send search on mapManager
+			alert( search);
+			//TODO: send search on mapManager
 		});
 
 		$('#signinButton').on('click', function(){
@@ -79,14 +80,12 @@ function WeLyon(){
 		});
 		$('#categoryTreeView').on('nodeSelected', function(event, data) {
 			if (data.nodes!=null){
-
 				for(var i = 0; i<data.nodes.length; i++)
 				{
 					$('#categoryTreeView').treeview('selectNode',[(data.nodes[i])]);
 				}
 			}
 			else{
-				console.log(data)
 					mapManager.categoryFilter(true,data.tag);
 				}
 			
@@ -100,7 +99,6 @@ function WeLyon(){
 				}
 			}
 			else{
-				console.log(data)
 					mapManager.categoryFilter(false,data.tag);
 				}
 		});

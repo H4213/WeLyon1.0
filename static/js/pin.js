@@ -87,16 +87,7 @@ function Pin() {
         var data = {
             "visibilite": visibilite
         }
-        rest.get(self.path,data,callback);
-    }
-
-    self.getPinBySearch=function(search,callback)
-    {
-        var data = {
-            "search": search
-        }
-        url=self.path+"search/"
-        rest.get(url,data,callback);
+        rest.get(self.path,data,callback)
     }
 
 
