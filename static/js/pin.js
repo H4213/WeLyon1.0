@@ -57,7 +57,6 @@ function Pin() {
 
 
                 }
-            console.log(data)
             var url="/add/dynPin/"
             rest.insert(url,data,callback);
         }
@@ -76,7 +75,6 @@ function Pin() {
                         "lng": lng,
                         "category": idCategorie
             }
-            console.log(data)
             var url="/add/pin/"
             rest.insert(url,data,callback);
         }

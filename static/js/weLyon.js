@@ -16,8 +16,9 @@ function WeLyon(){
 //------------Les setups des pages/panels et ses boutons------------------
 	self.setup = function(){
 		localStorage.clear();
-		self.setUser();
+		self.setUser();		
 		self.fillCategories();
+<<<<<<< HEAD
 	
 		/*$('#categoryButton').on('click',function(){
 			self.toggleCategories();
@@ -34,6 +35,8 @@ function WeLyon(){
 			});
 		});*/
 
+=======
+>>>>>>> origin/front-front-front
 		self.initialiserCarte();		
 
 
@@ -104,9 +107,9 @@ function WeLyon(){
 		setInterval(self.chargerNews,5000);
 	};
 
-	self.initialiserCarte = function(){		
-		google.maps.event.addDomListener(window, 'load', mapManager.initMap());
-		$('[data-toggle="tooltip"]').tooltip();
+	self.initialiserCarte = function(){			
+		google.maps.event.addDomListener(window, 'load', mapManager.initMap());	
+		$('[data-toggle="tooltip"]').tooltip();	
 		self.gererVisibilite($('#onFireButton'));
 		$('#optionsCarte').show();
 		messageView.install('appAlert');
@@ -236,13 +239,34 @@ function WeLyon(){
 		var dataTree = self.transformToTreeFormat(data.categories , 0);
 
     	$('#categoryTreeView').fancytree({
-          checkbox : true,
-          selectMode : 3,
-          source : dataTree,
-          select: function(event, data){
-       		self.filterCategory(event,data);
-				}
-
+    		extensions: ["glyph", "edit", "wide"],
+    		autoActivate:false,
+          	checkbox : true,
+          	selectMode : 3,
+          	source : dataTree,
+          	select: function(event, data){
+       			self.filterCategory(event,data);
+			},
+			toggleEffect: { effect: "drop", options: {direction: "left"}, duration: 400 },
+			glyph: {
+		        map: {
+		          	doc: "glyphicon glyphicon-file",
+		          	docOpen: "glyphicon glyphicon-file",
+		          	checkbox: "glyphicon glyphicon-unchecked",
+		          	checkboxSelected: "glyphicon glyphicon-check",
+		          	checkboxUnknown: "glyphicon glyphicon-share",
+		          	error: "glyphicon glyphicon-warning-sign",
+		          	expanderClosed: "glyphicon glyphicon-plus-sign",
+		          	expanderLazy: "glyphicon glyphicon-plus-sign",
+		          	// expanderLazy: "glyphicon glyphicon-expand",
+		          	expanderOpen: "glyphicon glyphicon-minus-sign",
+		          	// expanderOpen: "glyphicon glyphicon-collapse-down",
+		          	folder: "glyphicon glyphicon-folder-close",
+		          	folderOpen: "glyphicon glyphicon-folder-open",
+		          	loading: "glyphicon glyphicon-refresh"
+		          	// loading: "icon-spinner icon-spin"
+		        }
+		    }
         });
     
 	};
@@ -259,9 +283,8 @@ function WeLyon(){
 						expanded : false,
 						key : data[i].id,
 						icons : false,
-						selected : true
-						 
-						 }
+						selected : true						 
+					}
 					var nodes = self.transformToTreeFormat(data , data[i].id)
 					if (nodes.length != 0 ) {
 						node.children = nodes
@@ -277,7 +300,7 @@ function WeLyon(){
 						expanded : false,
 						key : data[i].id,
 						selected:true
-  						}
+  					}
 					var nodes = self.transformToTreeFormat(data , data[i].id)
 					if (nodes.length != 0 ) {
 						node.children = nodes
@@ -382,8 +405,8 @@ function WeLyon(){
 
 		mapManager.ajouterEvenemment();
 		//TODO: retour vrai?!
-		messageView.append(Messages.Point.NEW_POINT_SUCCESS);
-		messageView.show();
+		// messageView.append(Messages.Point.NEW_POINT_SUCCESS);
+		// messageView.show();
 	};
 
 	self.toggleBoutonsConnexion = function(){
@@ -431,6 +454,7 @@ function WeLyon(){
 	self.setId = function (id){
         dernier_id = id;
     }
+
 	self.chargerNews = function (){
         mapManager.getNews('fil/'+dernier_id+'/' , self.cbNews);
     }
@@ -464,5 +488,6 @@ function WeLyon(){
 
 
 }
+
 var weLyon = new WeLyon();
 weLyon.setup();
