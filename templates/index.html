@@ -77,10 +77,6 @@
             <div class="panel panel-default">
 
                 <div class="panel-body">
-                    <div class="row">
-                        <div id="inscriptionAlert" class="">
-                        </div>
-                    </div>
                 </div>
             </div>               
         </div>
@@ -91,31 +87,13 @@
             </div>
 
 
-          <!-- Modal -->
-            <div class="modal fade" id="formulaireAjoutPoint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h3 class="modal-title" id="myModalLabel">Ajout d'un nouveau point</h3>
-                  </div>
-                  <div class="modal-body">
-                        <form name="formulaire" id="ajoutPointChoixType">
-                            <p>
-                                <h4>Type de point:</h4>
-                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvent" VALUE="Evenement">Evénement <BR>
-                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeEvent" VALUE="Lieu">Lieu <BR>
-                            </p>
-                        <p>
-                        </p>
-                        </form>
-                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="valideTypePoint"> Suivant</button>
-                  </div>
+          <!--Ajout de point - Modal -->
+            <div class="modal fade" id="formulaireAjoutPoint">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        
+                    </div>
                 </div>
-              </div>
             </div>
 
             <div class="modal fade" id="formulaireTypeLieu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -181,34 +159,10 @@
               </div>
             </div>  
 
-			<div class="modal fade" id="formulaireAjoutLieu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h3 class="modal-title" id="myModalLabel">Ajout d'un nouveau point</h3>
-                  </div>
-                  <div class="modal-body">
-						<form name="formulaire" id="ajoutPointFormulaireLieu">
-							<p>
-                                <h3><img src="./static/assets/monument.png" alt="Monument"> Lieu:</h3>
-                            </p>
-                            <p>
-                                <label for="titreAjoutLieu">Titre</label> :<br /><input type="text" name="titreAjoutLieu" id="titreAjoutLieu"/>
-                            </p>
-                            <p>
-                                <label for="descriptionAjoutLieu">Description</label> :<br />
-                                <textarea name="descriptionAjoutLieu" id="descriptionAjoutLieu"></textarea>
-                            </p>                           
-						</form>
-                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="retourAjoutLieu"> Précédent</button>
-                    <button type="button" class="btn btn-primary" id="valideAjoutLieu"> Valider</button>
-                  </div>
+            <div class="modal fade" id="formulaireAjoutLieu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    
                 </div>
-              </div>
             </div> 
 
             <div class="modal fade" id="formulaireTypeEvenement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -407,10 +361,10 @@
             <div class="row">
                 <div id="optionsCarte" class="row"  style="display:none;">
 
-                    <div id="optionUtilisateur" class="panel panel-default" data-toggle="tooltip" data-placement="left" title="Ajouter Point" style="display:none;">
+                    <div id="optionUtilisateur" class="panel panel-default" data-toggle="tooltip" data-placement="left" title="Ajouter Point" >
                         <div class="panel-body">
                             <div class="row " style="text-align: center;">
-                                <div id="newEventButton" class="optionCarteItem">
+                                <div id="newEventButton" data-form-type="new-point" class="optionCarteItem">
                                     <i class="fa fa-plus-square fa-2x"></i>
                                 </div>                           
                             </div>

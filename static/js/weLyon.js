@@ -18,11 +18,11 @@ function WeLyon(){
 		localStorage.clear();
 		self.setUser();		
 		self.fillCategories();
-
 		self.initialiserCarte();		
 
 		$('#newEventButton').on('click', function(){
-			self.ajouterEvenemment();
+			self.ajouterEvenemment($(this));
+			
 		});
 
 		$('#onFireButton').on('click', function(){
@@ -90,14 +90,6 @@ function WeLyon(){
 
 	};
 
-	self.initialiserCarte = function(){			
-		google.maps.event.addDomListener(window, 'load', mapManager.initMap());	
-		$('[data-toggle="tooltip"]').tooltip();	
-		self.gererVisibilite($('#onFireButton'));
-		$('#optionsCarte').show();
-		messageView.install('appAlert');
-	};
-
 	self.setupAuthentificationPanel = function(bouton){
 
 		$('#okInscription').on('click', function(){
@@ -132,7 +124,47 @@ function WeLyon(){
 				}				
 			}
 		});
+	};
 
+	self.setupNewPointForm = function(buttonData){
+
+		switch	(buttonData){
+			default:
+			$(".annuler").on('click', function(){
+				$('#formulaireAjoutPoint').modal('hide');
+			});
+
+			case "new-point":
+				$(".pointType").on('click', function(){
+					$(this).parent().find('.active').toggleClass('active');
+					$(this).toggleClass('active');			
+				});
+
+				$("#validePointType").on('click', function(){
+					buttonData = $('#formulaireAjoutPoint').find('.active').data('form-type');
+					self.fillNewPointForm(buttonData);			
+				});
+
+				break;
+			case "event":
+
+			
+				break;
+			case "place":
+
+				break;
+
+		}
+
+	};
+
+
+	self.initialiserCarte = function(){			
+		google.maps.event.addDomListener(window, 'load', mapManager.initMap());	
+		$('[data-toggle="tooltip"]').tooltip();	
+		self.gererVisibilite($('#onFireButton'));
+		$('#optionsCarte').show();
+		messageView.install('appAlert');
 	};
 
 //--------------Remplissage des formulaires----------------------
@@ -181,6 +213,110 @@ function WeLyon(){
 		self.setupAuthentificationPanel(bouton);
 	};
 
+	self.fillNewPointForm = function(buttonData){
+		$('#formulaireAjoutPoint').find('.modal-content').html("");
+		var form = "";
+
+		switch	(buttonData){
+			case "new-point":
+				form+=' <div class="modal-header">';
+                form+='            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+                form+='           <h3 class="modal-title">Choisissez un type</h3>';
+                form+='        </div>';
+                form+='        <div class="modal-body"> ';                            
+                form+='            <div id="pointTypeButtons" class="row col-md-offset-1 text-center">';                             
+                form+='                <button type="button" data-form-type="event" class="btn btn-default col-md-5 pointType active">Evénement</button>';
+                form+='                <button type="button" data-form-type="place" class="btn btn-default col-md-5  pointType">Lieu</button>';
+                form+='            </div>';
+                form+='        </div>';
+                form+='        <div class="modal-footer">';
+                form+='            <button type="button" class="btn btn-default pull-left annuler" data-dismiss="modal">Close</button>';
+                form+='            <button type="button" class="btn btn-primary valider" id="validePointType"> Suivant</button>';
+                form+='        </div>';
+				break;
+
+			case "place":
+					form+='	<div class="modal-content">';
+	                form+='        <div class="modal-header">';
+	                form+='           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+	                form+='            <h3 class="modal-title">Ajout d\'un lieu</h3>';
+	                form+='        </div>';
+	                form+='        <div class="modal-body">';
+	                form+='            <form class="form-horizontal">';
+	                form+='                <div class="form-group">';
+	                form+='                    <label for="placeName" class="col-sm-2 control-label">Nom</label>';
+	                form+='                    <div class="col-sm-10">';
+	                form+='                        <input type="text" class="form-control" id="placeName" placeholder="Nom du lieu">';
+	                form+='                    </div>';
+	                form+='                </div>';
+	                form+='                <div class="form-group">';
+	                form+='                    <label for="placeDescription" class="col-sm-2 control-label">Description</label>';
+	                form+='                    <div class="col-sm-10">';
+	                form+='                        <textarea id="placeDescription" class="form-control" rows="3" placeholder="Description du lieu"></textarea>';
+	                form+='                    </div>';
+	                form+='                </div>';
+	                form+='                <div class="form-group">';
+	                form+='                    <div class="col-sm-10 pull-right">';
+	                form+='                        <select id class="form-control">';
+	                form+='                            <option value="" disabled selected>Categories</option>';
+	                form+='                        </select>';
+	                form+='                    </div>';
+	                form+='                </div>';
+	                form+='            </form>';
+	                form+='        </div>';
+	                form+='        <div class="modal-footer">';
+	                form+='            <button type="button" class="btn btn-default annuler pull-left " data-dismiss="modal">Close</button>';
+	                form+='            <button type="button" class="btn btn-info" id="retourAjoutLieu"> Précédent</button>';
+	                form+='            <button type="button" class="btn btn-primary valider" id="valideAjoutLieu"> Valider</button>';
+	                form+='        </div>';
+	                form+='    </div>';				
+				break;
+
+			case "event":
+
+				break;
+		}
+
+		$('#formulaireAjoutPoint').find('.modal-content').append(form);
+		self.setupNewPointForm(buttonData);
+
+		$('#formulaireAjoutPoint').modal('show');
+
+	};	
+
+	self.remplirFiltreDate = function(){
+		var jour ='<option value="" disabled selected>Jour</option>';
+		var mois = '<option value="" disabled selected>Mois</option>';
+		var annee = '<option value="" disabled selected>Année</option>';
+
+		for( var i=1; i<=31; i++){
+			jour+=' <option value="'+i+'">'+i+'</option>';
+		}
+		for( var i=1; i<=12; i++){
+			mois+=' <option value="'+i+'">'+i+'</option>';
+		}
+		for( var i=2015; i<=2020; i++){
+			annee+=' <option value="'+i+'">'+i+'</option>';
+		}
+
+		$('#dateFilterDayBegin').html('');
+		$('#dateFilterMonthBegin').html('');
+		$('#dateFilterYearBegin').html('');
+		$('#dateFilterDayEnd').html('');
+		$('#dateFilterMonthEnd').html('');
+		$('#dateFilterYearEnd').html('');
+
+		$('#dateFilterDayBegin').append(jour);
+		$('#dateFilterMonthBegin').append(mois);
+		$('#dateFilterYearBegin').append(annee);
+		$('#dateFilterDayEnd').append(jour);
+		$('#dateFilterMonthEnd').append(mois);
+		$('#dateFilterYearEnd').append(annee);
+
+		$('#dateFilterForm').toggle();
+		$('#categoryFilter').toggle();
+	};
+
 //----------------- Getters/Setters ------------------
 	self.getCategories = function(callback){
 		category.getCategories(callback);
@@ -192,21 +328,28 @@ function WeLyon(){
 
 	self.setUser = function(id,nom){
 		if(typeof(Storage) !== "undefined") {
+			//premiere connexion
 			if((typeof nameUser ===  "undefined" )|| (typeof idUser === "undefined")){
 				idUser = localStorage.getItem('idUser');
 				nameUser = localStorage.getItem('nameUser');	
 			}			
+			// localStorage vide
 			if ((nameUser ===  null )|| (idUser === null)){
 				nameUser='Anonyme';
 				idUser=-1;
-			} else if((typeof id !== "undefined") || (typeof nom !== "undefined")){
+			}
+			// connexion
+			else if((typeof id !== "undefined") || (typeof nom !== "undefined")){
 				idUser = id;
 				nameUser = nom;
 				$('#connectedUser').find('i').html(" "+nom);
 				self.toggleBoutonsConnexion();	
-			} else {
+			}
+			// deconnexion
+			else {
 				nameUser='Anonyme';
 				idUser=-1;
+				mapManager.setIdUser(idUser)
 				self.toggleBoutonsConnexion();
 			}
 			localStorage.setItem('idUser',idUser);
@@ -305,7 +448,6 @@ function WeLyon(){
 	};
 
 	self.cbAuthUser = function(data){
-
 		if (data['error'] == null){
 			self.setUser(data.idUser, data.nameUser);
 			mapManager.setIdUser(idUser);
@@ -316,41 +458,12 @@ function WeLyon(){
 				messageView.append(Messages.Login.LOGIN_SUCCESS, data.nameUser);
 				messageView.show();
 			}
+		}else{
+			//TODO a voir messageView
+			messageView.appendMessage(data['error'], Messages.MessageType.ERROR);
+			messageView.show();
 		}
 		
-	};
-
-	self.remplirFiltreDate = function(){
-		var jour ='<option value="" disabled selected>Jour</option>';
-		var mois = '<option value="" disabled selected>Mois</option>';
-		var annee = '<option value="" disabled selected>Année</option>';
-
-		for( var i=1; i<=31; i++){
-			jour+=' <option value="'+i+'">'+i+'</option>';
-		}
-		for( var i=1; i<=12; i++){
-			mois+=' <option value="'+i+'">'+i+'</option>';
-		}
-		for( var i=2015; i<=2020; i++){
-			annee+=' <option value="'+i+'">'+i+'</option>';
-		}
-
-		$('#dateFilterDayBegin').html('');
-		$('#dateFilterMonthBegin').html('');
-		$('#dateFilterYearBegin').html('');
-		$('#dateFilterDayEnd').html('');
-		$('#dateFilterMonthEnd').html('');
-		$('#dateFilterYearEnd').html('');
-
-		$('#dateFilterDayBegin').append(jour);
-		$('#dateFilterMonthBegin').append(mois);
-		$('#dateFilterYearBegin').append(annee);
-		$('#dateFilterDayEnd').append(jour);
-		$('#dateFilterMonthEnd').append(mois);
-		$('#dateFilterYearEnd').append(annee);
-
-		$('#dateFilterForm').toggle();
-		$('#categoryFilter').toggle();
 	};
 
 	self.ouvrirPanelAuthentification = function(bouton){
@@ -382,11 +495,14 @@ function WeLyon(){
 		}
 	};
 
-	self.ajouterEvenemment = function(){
+	self.ajouterEvenemment = function(bouton){
 		messageView.append(Messages.Point.NEW_POINT_INFO);
 		messageView.show();
 
-		mapManager.ajouterEvenemment();
+		var buttonData = bouton.data('form-type');
+		self.fillNewPointForm(buttonData);
+
+		// mapManager.ajouterEvenemment();
 		//TODO: retour vrai?!
 		// messageView.append(Messages.Point.NEW_POINT_SUCCESS);
 		// messageView.show();
@@ -429,7 +545,7 @@ function WeLyon(){
 		if (password!== "" && pseudo !== ""){
 			user.authUser(pseudo,password,self.cbAuthUser);
 		}else if (pseudo =="" || password == ""){
-			//TODO: gere avec validator
+			//TODO: gerer avec validator
 			// alert("votre peseudo ou votre mot de passe est vide")
 		}		
 	};
