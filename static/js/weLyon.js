@@ -84,7 +84,10 @@ function WeLyon(){
 			}
 		});
 
+
 		//setInterval(self.chargerNews,5000);
+		//TODO: leo
+
 	};
 
 	self.initialiserCarte = function(){			
