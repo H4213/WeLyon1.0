@@ -18,6 +18,15 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
  
 ########################################################################
+
+
+comments_table = Table('comments', db.Model.metadata,
+    Column('pin_id', Integer, ForeignKey('pins.id')),
+    Column('text', db.String(400)),
+    Column('date', db.DateTime, default=datetime.datetime.utcnow)
+)
+
+
 class User(db.Model):
 
     __tablename__ = "users"

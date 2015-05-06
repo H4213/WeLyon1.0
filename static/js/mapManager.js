@@ -8,6 +8,7 @@ function MapManager(){
 		idUser=-1;
 	}
 	var infowindow = new google.maps.InfoWindow({content : ""});
+	var currentPin = new Pin();
 	var markers = new Map();
 	var marker;
 	var listIdCategories=[];
@@ -32,6 +33,86 @@ function MapManager(){
 
 
 
+<<<<<<< HEAD
+=======
+	self.addMarker = function(aPin) {
+		var type = aPin.type;
+		var image;
+		var contentString;
+		var id=aPin.id;
+		switch (type) { 
+			case "velov" : 
+				image = imageVelov;
+				titre = "Velo'v";
+				//contentString = self.buildDescription(aPin,"velov");
+				break;
+			case "stationTCL" : 
+				image = imageTCL;
+				titre = "Velo'v";
+				//contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "cafe" : 
+				image = imageBar;
+				titre = "Café/Bar";
+				//contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "restaurant" : 
+				image = imageRestau;
+				titre = "Restaurant";
+				//contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "nightClub" : 
+				image = imageSoiree;
+				titre = "Night Club";
+				//contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "hopital" : 
+				image = imageHopital;
+				titre = "Hopital";
+				//contentString = self.buildDescription(aPin,"normal");
+				break;
+			case "facebookPin" : 
+				image = imageFacebook;
+				titre = "Facebook";
+				//contentString = self.buildDescription(aPin,"dynamique");
+				break;
+			case "event" : 
+				image = imageFacebook;
+				titre = "Evenement";
+				//contentString = self.buildDescription(aPin,"dynamique");
+				break;
+			default :
+				image = imageNormal
+				titre = "Autre";
+				//contentString = self.buildDescription(aPin,"normal");
+			}
+			
+			
+		var aMarker = new google.maps.Marker({
+			position: new google.maps.LatLng(aPin.lat, aPin.lng),
+			map: map,
+			icon: image,
+			title: titre,
+			'idPin': aPin.id,
+			'visibilityCategoryToken': 0
+		});
+
+		markers.set(id,{pin : aPin,
+						marker : aMarker});
+		google.maps.event.addListener(aMarker, 'click', function() {
+
+			
+			infowindow.setContent(self.buildDescription(
+										markers.get(aMarker['idPin']).pin,
+										"#first"));
+		
+			infowindow.open(map,aMarker);
+
+		});
+	};
+
+
+>>>>>>> origin/dev-comments
 	self.initMap = function() {
 		self.pinSetup();
 
@@ -418,12 +499,41 @@ function MapManager(){
 		});
 	};
 
+<<<<<<< HEAD
 	self.buildDescription=function(aPin, pinType) {
+=======
+/*	self.createPin=function(aForm, aType) {
+		usedMarker.setVisible(false);
+		infoWindow.close();
+		
+		// Création du marker
+		currentId += 1;
+		var newPin = { type : aType,
+				id : currentId,
+				lat : usedMarker.getPosition().lat(),
+				lng :  usedMarker.getPosition().lng(),
+				user : "JJG",
+				title : document.aForm.titre.value,
+				description : document.aForm.description.value,
+				score : 0};
+		addMarker(newPin);
+		
+		// TODO: Ajout dans la bdd*/
+		
+		
+	//};
+
+	self.addComment=function(){
+		pin.addComment("yayaye", iduser, currentPin.id, cbBuildDescription);
+	};
+	self.buildDescription=function(aPin, listofCommentsHTML) {
+		
+		currentPin = aPin;
+>>>>>>> origin/dev-comments
 		var contentString = '';
-		switch (pinType) { 
+		switch (aPin.type) { 
 			case "velov" : 
-				contentString = '<div id="content" data-id-pin=' + aPin.id + '>'+
-									'<div id="siteNotice">'+
+				contentString = '<div id="siteNotice">'+
 									'</div>'+
 									'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
 										'<div id="bodyContent">'+						
@@ -439,12 +549,11 @@ function MapManager(){
 													'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
 												'</p>' +
 											'</form>' +
-										'</div>'+
-									'</div>';
+										'</div>';
 				break;
 				
 			case "dynamique" : 
-				contentString = '<div id="content" data-id-pin=' + aPin.id + '>'+
+				contentString = 
 					'<div id="siteNotice">'+
 					'</div>'+
 					'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
@@ -459,13 +568,11 @@ function MapManager(){
 							'<INPUT TYPE="button" NAME="unlike" VALUE="Unlike" class="unlike"> ' +
 							'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
 						'</p>' +
-					'</form>' +
-					'</div>'+
-					'</div>';
+					'</form>' ;
 				break;
 			
 			default :
-				contentString = '<div id="content" data-id-pin=' + aPin.id + '>'+
+				contentString = 
 					'<div id="siteNotice">'+
 					'</div>'+
 					'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
@@ -480,13 +587,51 @@ function MapManager(){
 							'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
 						'</p>' +
 					'</form>' +
-					'</div>'+
 					'</div>';
 		}
+		if(listofCommentsHTML=='#first')
+		{
+			 pin.getComments(aPin.id, self.cbBuildDescription);
+
+		}
+		if(listofCommentsHTML=="#first")
+		listofCommentsHTML = '<img src="./static/assets/load.gif">';
+		else if(listofCommentsHTML=="#no")
+		listofCommentsHTML = '<p>--Pas de commentaire encore--</p';
+
+		var commentsEntete = '<br/><div id="commentzone"><h4>Commentaires</h4>'+
+					'<INPUT id="newComment" TYPE="textarea" placeholder="Ajoutez votre avis" VALUE="" class="newComment">'+
+					'<INPUT TYPE="button" NAME="ADD" VALUE="+" class="newCommentButton">'
+									+'<br/><br/><ul style="text-align:left">'+listofCommentsHTML+'</ul></div>';
+		contentString = '<div id="content" data-id-pin=' + aPin.id+contentString+commentsEntete+'</div>';
+		
 		return contentString;
 	};
 	
+<<<<<<< HEAD
+=======
+	self.cbBuildDescription=function(data){
+		var string_list = "#no";
+			if(data.Comments.length > 0)
+			{
+					string_list="";
+				
+				for(i = 0; i < data.Comments.length;i++){
+	    			string_list+='<li>'+data.Comments[i].text+'</li>';
+	    			infowindow.setContent(self.buildDescription(currentPin, string_list));
+				}
+			}
+			else
+			{
+				infowindow.setContent(self.buildDescription(currentPin, "#no"));
+			}
+
+		
+   	};
+
+>>>>>>> origin/dev-comments
 	self.refreshPins = function(){
+
 		for (var valeur of markers.values()) {
 	    	valeur.marker.setMap(null);
 	  	}
@@ -555,6 +700,9 @@ function MapManager(){
 			$(document).on("click",".dislike",function(){
 				var pinID= $(this).closest('#content').data('id-pin');
 				pin.vote(idUser,pinID,-1,self.cbVotePin);
+			});
+			$(document).on("click",".newCommentButton",function(){
+				pin.addComment( $("newComment").val(), 1, currentPin.id, self.cbBuildDescription);
 			});
 
 	};

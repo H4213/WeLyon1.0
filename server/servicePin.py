@@ -137,3 +137,30 @@ def deletePin(form):
 
 def majPin(form):
 	return "0"
+
+def getCommentByIdPin(idPin):
+	print("comment requested")
+	if idPin:
+		items = db.engine.execute("select * from comments where pin_id="+str(idPin))
+		list = []
+		if items:
+			for row in items:
+				list.append({
+					"text":row['text'],
+					"date":row['date']
+					})
+			print("got results")
+			return jsonify(Comments=list)
+		else:
+			return jsonify(Comments=list)
+
+	return jsonify(error="Wrong request")
+
+def addCommentByIdPin(idPin, text) :
+	if True:
+		print idPin
+		print text
+		db.engine.execute("insert into comments(pin_id, text) values ("+str(idPin)+"," +"'"+text+"')")
+		return getCommentByIdPin(str(idPin))
+	else:
+		return jsonify(error="Wrong request")
