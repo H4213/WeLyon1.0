@@ -494,12 +494,6 @@ function MapManager(){
 	};
 
 	self.cbGetAllPins = function(data){
-<<<<<<< HEAD
-		data.Pins.forEach(function (element , index){
-			self.addMarker(element);
-			self.filterByDate();
-		});	
-=======
 		for (var valeur of markers.values()) {
  			
     		valeur.marker.setMap(null);	
@@ -510,7 +504,6 @@ function MapManager(){
 		//self.filterByDate();
 		};
 		self.forceCategoryFilter();
->>>>>>> origin/dev-finirResearch
 	}
 
 	self.cbVotePin = function(data){
@@ -660,14 +653,12 @@ function MapManager(){
 		}
 	};
 
-<<<<<<< HEAD
 	self.getNews = function (path,  callback) {
 		rest.get(path , null , callback);
 	}
-=======
+
 	self.getPinBySearch = function(search){
 		pin.getPinBySearch(search,self.cbGetPinSearch);
 	}
 
->>>>>>> origin/dev-finirResearch
 }
