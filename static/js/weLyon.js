@@ -4,10 +4,15 @@ function WeLyon(){
 	var category = new Category();
 	var mapManager = new MapManager();
 	var user = new User();
+	var messageView = new MessageView();
 	var idUser;
 	var nameUser;
+<<<<<<< HEAD
 	var pinTest=new Pin();
 	var dernier_id = 1;
+=======
+	var pinTest = new Pin();
+>>>>>>> origin/front-filtres
 
 //TODO initialisation par rapport aux droits d'utilisateur
 
@@ -17,6 +22,7 @@ function WeLyon(){
 		self.setUser();
 		self.initialiserCarte();		
 		self.fillCategories();
+<<<<<<< HEAD
 
 	
 		$('#categoryButton').on('click',function(){
@@ -34,11 +40,12 @@ function WeLyon(){
 			});
 		});
 
+=======
+>>>>>>> origin/front-filtres
 
 		$('#newEventButton').on('click', function(){
 			self.ajouterEvenemment();
 		});
-
 
 		$('#onFireButton').on('click', function(){
 			self.gererVisibilite($(this));
@@ -78,6 +85,11 @@ function WeLyon(){
 			//TODO: send et filtrer par date
 		});
 
+		$('#categoryFilterButton').on('click', function(){
+			$('#categoryFilter').toggleClass('open-filter');
+			$('#categoryFilterTree').toggle();
+		})
+
 		$('#signinButton').on('click', function(){
 			self.ouvrirPanelAuthentification($(this));
 		});
@@ -91,11 +103,9 @@ function WeLyon(){
 		});
 
 		$('#filterByDateButton').on('click', function(){
-			
-
 			mapManager.filterByDate();
-
 		});
+
 		$('#categoryTreeView').on('nodeSelected', function(event, data) {
 			if (data.nodes!=null){
 				for(var i = 0; i<data.nodes.length; i++)
@@ -105,8 +115,7 @@ function WeLyon(){
 			}
 			else{
 					mapManager.categoryFilter(true,data.tag);
-				}
-			
+				}			
 		});
 
 		$('#categoryTreeView').on('nodeUnselected', function(event, data) {
@@ -136,30 +145,26 @@ function WeLyon(){
 		$('[data-toggle="tooltip"]').tooltip();
 		self.gererVisibilite($('#onFireButton'));
 		$('#optionsCarte').show();
+		messageView.install('appAlert');
 	};
 
 	self.setupAuthentificationPanel = function(bouton){
-		// $('#okButton').on('click',function(){			
-		// 	bouton.toggleClass('active');
-		// 	$('#incscriptionPanel').toggle()
-		// });
-		
+
 		$('#okInscription').on('click', function(){
 			self.signInUser($(this));
 			bouton.toggleClass('active');
-			$('#incscriptionPanel').hide()
+			$('#inscriptionPanel').hide()
 		});
 
 		$('#okConnexion').on('click', function(){
 			self.signUpUser($(this));
 			bouton.toggleClass('active');
-			$('#incscriptionPanel').hide();
+			$('#inscriptionPanel').hide();
 		});
 
 		$('.annuler').on('click', function(){
-			alert(2);
 			bouton.toggleClass('active');
-			$('#incscriptionPanel').hide();
+			$('#inscriptionPanel').hide();
 		});
 
 		$(".finalInput").keypress(function(event) {
@@ -172,8 +177,8 @@ function WeLyon(){
 		$(document).keyup(function(event) {
 			if (event.which == 27) {
 				event.preventDefault();
-				if ($('#incscriptionPanel').is(":visible")){
-					$('#incscriptionPanel').find('.annuler').click();
+				if ($('#inscriptionPanel').is(":visible")){
+					$('#inscriptionPanel').find('.annuler').click();
 				}				
 			}
 		});
@@ -182,14 +187,14 @@ function WeLyon(){
 
 //--------------Remplissage des formulaires----------------------
 	self.fillAuthentificationForm = function(bouton){
-		$("#incscriptionPanel").find(".panel-body").find('form').remove();
+		$("#inscriptionPanel").find(".panel-body").find('form').remove();
 		
 		var form = '';
 		if(bouton.get(0) === $('#signinButton').get(0)){
 			form+='	   <form>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrirePseudo">Pseudo</label>';
-	        form+='            <input type="text" class="form-control" id="inscrirePseudo1" placeholder="pseudo">';
+	        form+='            <input type="text" class="form-control" id="inscrirePseudo1" placeholder="Pseudo">';
 	        form+='        </div>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrireEmail">Email</label>';
@@ -211,7 +216,7 @@ function WeLyon(){
 			form+='	   <form>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrirePseudo">Pseudo</label>';
-	        form+='            <input type="text" class="form-control" id="inscrirePseudo2" placeholder="pseudo">';
+	        form+='            <input type="text" class="form-control" id="inscrirePseudo2" placeholder="Pseudo">';
 	        form+='        </div>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrireMdP">Mot de Passe</label>';
@@ -222,7 +227,7 @@ function WeLyon(){
 	        form+='    </form>';
 		}
 
-		$("#incscriptionPanel").find(".panel-body").append(form);
+		$("#inscriptionPanel").find(".panel-body").append(form);
 		self.setupAuthentificationPanel(bouton);
 	};
 
@@ -257,8 +262,7 @@ function WeLyon(){
 			localStorage.setItem('idUser',idUser);
 			localStorage.setItem('nameUser',nameUser);
 		} else {
-		    alert("WebStorage not supported, can't login");
-		    //TODO: message d'erreur
+		    messageView.append(Messages.Navigator.WEB_STORAGE_ERROR);
 		}		
 	};
 
@@ -269,6 +273,7 @@ function WeLyon(){
     	$('#categoryTreeView').treeview({
           color: "#428bca",
           showBorder: false,
+          nodeIcon:"",
           data: dataTree,
           multiSelect : true,
           levels : 1
@@ -276,43 +281,10 @@ function WeLyon(){
     
 	};
 
-	self.transformToTreeFormat = function (data , father) {
-		var result = [];
-		for (var i = 0; i<data.length; i++) {
-			if (father != 0 ) {
-				if (data[i].idFather && data[i].idFather == father ) {
-					var node = { 
-						text : data[i].nom ,
-						tag : [data[i].id] 
-						  }
-					var nodes = self.transformToTreeFormat(data , data[i].id)
-					if (nodes.length != 0 ) {
-						node.nodes = nodes
-					}
-					result.push(node)
-				} 
-			}
-			else {
-				if(!data[i].idFather) {
-					var node = { 
-						text : data[i].nom ,
-						tag : [data[i].id] 
-						  }
-					var nodes = self.transformToTreeFormat(data , data[i].id)
-					if (nodes.length != 0 ) {
-						node.nodes = nodes
-					}
-					result.push(node)
-				}
-			}
-		}
-		return result;
-	};
-
 	self.cbAddUser = function(data){
 		if (data['error'] == null){
+			messageView.append(Messages.Register.REGISTER_SUCCESS, data.nameUser);			
 			self.cbAuthUser(data);
-			alert("Votre compte WeLyon a bien été créé");
 		}else {
 			alert(data['error']);
 		}
@@ -323,7 +295,13 @@ function WeLyon(){
 		if (data['error'] == null){
 			self.setUser(data.idUser, data.nameUser);
 			mapManager.setIdUser(idUser);
-			// alert("Bienvenue "+ nameUser);
+			
+			if(messageView.count()==1){
+				messageView.show();
+			} else if(messageView.count()==0){
+				messageView.append(Messages.Login.LOGIN_SUCCESS, data.nameUser);
+				messageView.show();
+			}
 		}
 		
 	};
@@ -358,19 +336,20 @@ function WeLyon(){
 		$('#dateFilterYearEnd').append(annee);
 
 		$('#dateFilterForm').toggle();
+		$('#categoryFilter').toggle();
 	};
 
 	self.ouvrirPanelAuthentification = function(bouton){
 		if(bouton.hasClass('active')){
 			bouton.toggleClass('active');
-			$('#incscriptionPanel').toggle();
+			$('#inscriptionPanel').toggle();
 		} else {
 			self.fillAuthentificationForm(bouton);
 			$('#nav').find('.active').toggleClass('active');
 			bouton.toggleClass('active');
-			$('#incscriptionPanel').show();
-		}
-		
+			$('#inscriptionPanel').show();
+		}		
+		$('#inscriptionPanel').find('form:first *:input[type!=hidden]:first').focus();
 	};
 
 	self.gererVisibilite = function(bouton){		
@@ -380,15 +359,23 @@ function WeLyon(){
 		switch(visibilite){
 			case 'recherche':
 				$('#searchInput').show();
+				$('#dateFilter').hide();
 			break;
 			default:
 				$('#searchInput').hide();
+				$('#dateFilter').show();
 				mapManager.filtrerVisibilite(visibilite);
 		}
 	};
 
 	self.ajouterEvenemment = function(){
+		messageView.append(Messages.Point.NEW_POINT_INFO);
+		messageView.show();
+
 		mapManager.ajouterEvenemment();
+		//TODO: retour vrai?!
+		messageView.append(Messages.Point.NEW_POINT_SUCCESS);
+		messageView.show();
 	};
 
 	self.toggleBoutonsConnexion = function(){
@@ -410,7 +397,7 @@ function WeLyon(){
 		var mail = $('#inscrireEmail1').val();
 		if (password === password2 && pseudo!=="" && password!==""){
 			user.addUser(pseudo,password,self.cbAddUser);
-		}
+		} //TODO: gere avec validator
 		else if (pseudo ==""){
 			alert("veuillez choisir un pseudo")
 		}
@@ -423,15 +410,49 @@ function WeLyon(){
 	};
 
 	self.signUpUser = function(bouton){
-		alert($('#inscrireMdP2').val() == "");
 		var pseudo = $('#inscrirePseudo2').val();
 		var password = $('#inscrireMdP2').val();
 		if (password!== "" && pseudo !== ""){
 			user.authUser(pseudo,password,self.cbAuthUser);
 		}else if (pseudo =="" || password == ""){
-			alert("votre peseudo ou votre mot de passe est vide")
+			//TODO: gere avec validator
+			// alert("votre peseudo ou votre mot de passe est vide")
+		}		
+	};
+
+	self.transformToTreeFormat = function (data , father) {
+		var result = [];
+		for (var i = 0; i<data.length; i++) {
+			if (father != 0 ) {
+				if (data[i].idFather && data[i].idFather == father ) {
+					var node = { 
+						text : data[i].nom ,
+						icon : "glyphicon",
+						tag : [data[i].id] ,
+						selectable: true
+						  }
+					var nodes = self.transformToTreeFormat(data , data[i].id)
+					if (nodes.length != 0 ) {
+						node.nodes = nodes
+					}
+					result.push(node)
+				} 
+			}
+			else {
+				if(!data[i].idFather) {
+					var node = { 
+						text : data[i].nom ,
+						tag : [data[i].id] 
+						  }
+					var nodes = self.transformToTreeFormat(data , data[i].id)
+					if (nodes.length != 0 ) {
+						node.nodes = nodes
+					}
+					result.push(node)
+				}
+			}
 		}
-		
+		return result;
 	};
 
 	self.setId = function (id){

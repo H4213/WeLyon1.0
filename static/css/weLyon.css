@@ -1,25 +1,19 @@
+body{
+    overflow: hidden;
+}
+
 .nav-items{
     margin-right: 15px;
     color: white;
 }
 
-.nav-item:hover , .nav-item > a:hover, .nav-item > a:focus{
-    /*content: color: white;*/
+.navbar-inverse .navbar-nav > li > a{
+    color: white;
 }
 
 .navbar-brand {
 	padding: 0;
     margin-left: 15px;
-}
-
-#incscriptionPanel .valider{
-    background-color: rgba(19,188,62,0.7);    
-    border-color: #CCCCCC;
-    color: #666666;
-}
-
-#incscriptionPanel .valider:hover{
-    background-color: #13BC3E;
 }
 
 .annuler{    
@@ -49,32 +43,24 @@
     text-shadow:-1px 0 black, 0 1px black, 1px 0 black, 0 -1px 1px black;
 }
 
-.closed-filter{
-    padding: 2px 24px 1px !important;
-    margin: 0 0 0 -145px !important;  
-}
-
-.closed-filter > div.optionCarteItem{
-    display: none;
-}
-
-.closed-filter > div.active{
-    display: initial;
-    float:right;    
-}
-
-.closed-filter > div >i.fa-chevron-right{
-    display: none;
-}
-
-.closed-filter > div >i.fa-chevron-left{
-    display: block;
+.open-filter{
+    width: 250px;
 }
 
 #nav {
     background-color: #595757;
     border-radius: 0;
     margin-bottom: 0;
+}
+
+#inscriptionPanel .valider{
+    background-color: rgba(19,188,62,0.7);    
+    border-color: #CCCCCC;
+    color: #666666;
+}
+
+#inscriptionPanel .valider:hover{
+    background-color: #13BC3E;
 }
 
 #container{
@@ -89,7 +75,7 @@
     background-color: #EF6530;
 }
 
-#incscriptionPanel{
+    #inscriptionPanel{
     position:absolute;
     top:52px;
     right: 30px;
@@ -113,25 +99,20 @@
 }
 
 #optionUtilisateur{
-    top: 60px;
+    top: 30px;
 }
 
 #visibilityFilter{
-    top: 110px;
+    top: 80px;
 }
 
 #dateFilter{
-    top: 194px;
+    top: 130px;
 }
 
-/*#optionUtilisateur > .panel-body{
-    padding: 5px 9px 1px;
+#categoryFilter{
+    top: 180px;
 }
-
-#visibilityFilter > .panel-body{
-    margin: -10px 6px;
-}*/
-
 
 #onFireButton.active{
     color:#FC3A37;
@@ -149,22 +130,18 @@
     color:#77FE7B;
 }
 
-/*TODO: à voir*/
-#filters {
-    border-right: 1px solid #eee;
-    bottom: 0;
-    display: block;
-    left: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 20px;
-    z-index: 1000;
+#searchInput{
+    margin-bottom: 5px;
 }
 
-#filter {
-	padding: 5%;
-	margin: 5%;
-    border-bottom: 1px solid #eee;
+#categoryFilterTree{
+    max-height: 300px;
+    overflow: auto;
+}
+
+#categoryTreeView, #categoryTreeView li {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
 }
 
 #brandImg {
@@ -188,3 +165,10 @@
     margin: 0;
     padding: 0;
 }
+
+#appAlert{
+    position:absolute;
+    opacity: 0.9;
+    z-index:900;
+}
+
