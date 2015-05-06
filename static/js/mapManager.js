@@ -32,7 +32,6 @@ function MapManager(){
 
 
 
-
 	self.initMap = function() {
 		self.pinSetup();
 
@@ -337,6 +336,8 @@ function MapManager(){
 				var title =document.getElementById('titreAjout').value;
 				var description =document.getElementById('descriptionAjout').value;
 				pin.addDynPin(title,description,idUser,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin, newPos.lat(), newPos.lng(),theType,self.cbVotePin);
+						/*pin.addDynPin("Soirée","description",1,10,10,2015,10,10,10,10,2015,10,10, 45.76, 4.835,16,self.cbVotePin);
+*/
 		});
 		$(document).on("click",".pinCreationButtonStatic",function(){
 
@@ -493,10 +494,23 @@ function MapManager(){
 	};
 
 	self.cbGetAllPins = function(data){
+<<<<<<< HEAD
 		data.Pins.forEach(function (element , index){
 			self.addMarker(element);
 			self.filterByDate();
 		});	
+=======
+		for (var valeur of markers.values()) {
+ 			
+    		valeur.marker.setMap(null);	
+    	}
+		for(var i in data.Pins){
+			var p = data.Pins[i];
+			self.addMarker(p);
+		//self.filterByDate();
+		};
+		self.forceCategoryFilter();
+>>>>>>> origin/dev-finirResearch
 	}
 
 	self.cbVotePin = function(data){
@@ -515,12 +529,23 @@ function MapManager(){
 	};
 
 	self.cbGetPinVisibilite =function(data){
-		for (var valeur of markers.values()) {
- 			
-    		valeur.marker.setMap(null);	
-    	}
+
     	self.cbGetAllPins(data);
    	};
+
+   	self.cbGetPinSearch = function(data){
+   		console.log(data)
+   		for (var valeur of markers.values()) {
+    		valeur.marker.setMap(null);	
+
+    	}
+  
+    		for(var j in data.Pins[0]){
+    			var p =data.Pins[0][j];
+    			self.addMarker(p);
+    		
+	 	}
+	 };
 
 	self.pinSetup = function(){
 			$(document).on("click",".like",function(){
@@ -545,41 +570,43 @@ function MapManager(){
 	self.setIdUser =function (idUserParam){
 		idUser = idUserParam;
 	};
-
+	self.forceCategoryFilter=function(){
+		var tree = $("#categoryTreeView").fancytree("getTree")
+		tree.visit(function(node){
+			console.log(node)
+    		var idCategory=node.key;
+    		var param=node.isSelected();
+    		self.categoryFilter(param,idCategory)
+  		});
+	}
 	self.categoryFilter = function(visible, idCategory){
 
 		for (var valeur of markers.values()) {
-			if (valeur!=null){
+			
 				var found=-1
 				for (var j=0;j<valeur.pin.category.length;j++){
 
 					if(valeur.pin.category[j]==idCategory){
 						
 						found=1;
-						break;
+						
 					}
 				}
 				if (found==1){
 					if (visible==true){
-						valeur.marker['visibilityCategoryToken']+=1;
+						valeur.marker['visibilityCategoryToken']++;
 					}
 					else{
-
-						valeur.marker['visibilityCategoryToken']-=1;
+						valeur.marker.setVisible(visible);
+						valeur.marker['visibilityCategoryToken']--;
 						if (valeur.marker['visibilityCategoryToken']<0){
 							valeur.marker['visibilityCategoryToken']=0
 						}
 					} 
-					if (valeur.marker['visibilityCategoryToken']>0 && valeur.marker['visibilityDateToken']>0)
-					{
+					valeur.marker.setVisible(visible);
 
-						valeur.marker.setVisible(true);
-					}
-					else{
-						valeur.marker.setVisible(false);
-					}
 		    	}
-		    }
+		    
 		}
 	};
 
@@ -589,12 +616,12 @@ function MapManager(){
 	};
 
 	self.filterByDate=function(){
-		startingDay=$('#jour_debutFilter').val();
-		startingMonth=$('#mois_debutFilter').val();
-		startingYear=$('#annee_debutFilter').val();
-		endingDay=$('#jour_finFilter').val();
-		endingMonth=$('#mois_finFilter').val();
-		endingYear=$('#annee_finFilter').val();
+		startingDay=$('#dateFilterDayBegin').val();
+		startingMonth=$('#dateFilterMonthBegin').val();
+		startingYear=$('#dateFilterYearBegin').val();
+		endingDay=$('#dateFilterDayEnd').val();
+		endingMonth=$('#dateFilterMonthEnd').val();
+		endingYear=$('#dateFilterYearEnd').val();
 		for (var valeur of markers.values()){
 			if(valeur.pin.dateBegin!=null && valeur.pin.dateEnd!=null)
 			{
@@ -625,10 +652,22 @@ function MapManager(){
 					valeur.marker.setVisible(false)
 				}
 			}
+			else
+				{
+					valeur.marker.visibilityDateToken=0
+					valeur.marker.setVisible(false)
+				}
 		}
 	};
 
+<<<<<<< HEAD
 	self.getNews = function (path,  callback) {
 		rest.get(path , null , callback);
 	}
+=======
+	self.getPinBySearch = function(search){
+		pin.getPinBySearch(search,self.cbGetPinSearch);
+	}
+
+>>>>>>> origin/dev-finirResearch
 }

@@ -53,7 +53,7 @@ def init_categories():
 		rootEvent = try_push_category("Evenement" , "Evenements presents sur la carte" , None)
 		rootEventUser = try_push_category("Evenement utilisateur", "Evenements ajoutes par des utilisateurs" , rootEvent.id)
 		try_push_category("Evenement Facebook", "Evenements collectes sur Facebook" , rootEvent.id)
-		try_push_category("Soiee", "Soiree divers" , rootEventUser.id)
+		try_push_category("Soiree", "Soiree divers" , rootEventUser.id)
 		try_push_category("Concert", "Concert Divers" , rootEventUser.id)
 		try_push_category("Spectacle", "Scpectacle divers" , rootEventUser.id)
 		try_push_category("Associatif", "Evenements associatif" , rootEventUser.id)

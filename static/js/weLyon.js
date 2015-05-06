@@ -8,17 +8,21 @@ function WeLyon(){
 	var idUser;
 	var nameUser;
 	var pinTest=new Pin();
+<<<<<<< HEAD
 	var dernier_id = 1;
 
 
+=======
+	var levelofSearch=0;
+>>>>>>> origin/dev-finirResearch
 //TODO initialisation par rapport aux droits d'utilisateur
 
 //------------Les setups des pages/panels et ses boutons------------------
 	self.setup = function(){
 		localStorage.clear();
 		self.setUser();
-		self.initialiserCarte();		
 		self.fillCategories();
+<<<<<<< HEAD
 	
 		$('#categoryButton').on('click',function(){
 			self.toggleCategories();
@@ -35,6 +39,9 @@ function WeLyon(){
 			});
 		});
 
+=======
+		self.initialiserCarte();		
+>>>>>>> origin/dev-finirResearch
 
 		$('#newEventButton').on('click', function(){
 			self.ajouterEvenemment();
@@ -58,8 +65,7 @@ function WeLyon(){
 
 		$('#sendSearch').on('click', function(){
 			var search = $('#searchInput').find('input').val();
-			alert( search);
-			//TODO: send search on mapManager
+			mapManager.getPinBySearch(search);
 		});
 
 		$('#dateFilterButton').on('click', function(){
@@ -67,15 +73,8 @@ function WeLyon(){
 		});
 
 		$('#sendDateFilter').on('click', function(){
-			var date = "Date debut: "+$('#dateFilterDayBegin').val()+"/"+
-						$('#dateFilterMonthBegin').val()+"/"+
-						$('#dateFilterYearBegin').val() +
-						"\nDate fin: "+
-						$('#dateFilterDayEnd').val()+"/"+
-						$('#dateFilterMonthEnd').val()+"/"+
-						$('#dateFilterYearEnd').val();
-			alert(date);
-			//TODO: send et filtrer par date
+			
+		mapManager.filterByDate()	
 		});
 
 		$('#categoryFilterButton').on('click', function(){
@@ -99,6 +98,7 @@ function WeLyon(){
 			mapManager.filterByDate();
 		});
 
+<<<<<<< HEAD
 		$('#categoryTreeView').on('nodeSelected', function(event, data) {
 			if (data.nodes!=null){
 				for(var i = 0; i<data.nodes.length; i++)
@@ -110,18 +110,24 @@ function WeLyon(){
 					mapManager.categoryFilter(true,data.tag);
 				}			
 		});
-
-		$('#categoryTreeView').on('nodeUnselected', function(event, data) {
-			if (data.nodes!=null){
-				for(var i = 0; i<data.nodes.length; i++)
-				{
-					$('#categoryTreeView').treeview('unselectNode',[(data.nodes[i])]);
+=======
+		/*$("#categoryTreeView").fancytree({select: function(event, data){
+        	var node = data.node;
+   			var idCategory = node.key;
+					mapManager.categoryFilter(true,idCategory);
 				}
+			
+		});*/
+>>>>>>> origin/dev-finirResearch
+
+		/*$('#categoryTreeView').on('nodeUnselected', function(event, data) {
+			if (data.nodes!=null){
+				
 			}
 			else{
 					mapManager.categoryFilter(false,data.tag);
 				}
-		});
+		});*/
 
 		$(".finalInput").keypress(function(event) {
 			if (event.which == 13) {
@@ -263,6 +269,7 @@ function WeLyon(){
 	self.cbFillCat = function (data) {
 		mapManager.setListCategories(data.categories);
 		var dataTree = self.transformToTreeFormat(data.categories , 0);
+<<<<<<< HEAD
     	$('#categoryTreeView').treeview({
           color: "#428bca",
           showBorder: false,
@@ -270,10 +277,64 @@ function WeLyon(){
           data: dataTree,
           multiSelect : true,
           levels : 1
+=======
+    	$('#categoryTreeView').fancytree({
+          checkbox : true,
+          selectMode : 3,
+          source : dataTree,
+          select: function(event, data){
+       		self.filterCategory(event,data);
+				}
+			
+>>>>>>> origin/dev-finirResearch
         });
     
 	};
 
+<<<<<<< HEAD
+=======
+	self.transformToTreeFormat = function (data , father) {
+		var result = [];
+		for (var i = 0; i<data.length; i++) {
+			if (father != 0 ) {
+				if (data[i].idFather && data[i].idFather == father ) {
+					var node = { 
+						title : data[i].nom,
+						folder : false,
+						expanded : false,
+						key : data[i].id,
+						icons : false,
+						selected : true
+						 
+						 }
+					var nodes = self.transformToTreeFormat(data , data[i].id)
+					if (nodes.length != 0 ) {
+						node.children = nodes
+					}
+					result.push(node)
+				} 
+			}
+			else {
+				if(!data[i].idFather) {
+					var node = { 
+						title : data[i].nom,
+						folder : false,
+						expanded : false,
+						key : data[i].id,
+						selected:true
+  						}
+					var nodes = self.transformToTreeFormat(data , data[i].id)
+					if (nodes.length != 0 ) {
+						node.children = nodes
+					}
+					result.push(node)
+				}
+			}
+		}
+		return result;
+	};
+
+>>>>>>> origin/dev-finirResearch
 	self.cbAddUser = function(data){
 		if (data['error'] == null){
 			messageView.append(Messages.Register.REGISTER_SUCCESS, data.nameUser);			
@@ -413,6 +474,7 @@ function WeLyon(){
 		}		
 	};
 
+<<<<<<< HEAD
 	self.transformToTreeFormat = function (data , father) {
 		var result = [];
 		for (var i = 0; i<data.length; i++) {
@@ -461,6 +523,27 @@ function WeLyon(){
      	   	$('#filActubox div:last-child').remove();
         }
     };
+=======
+	self.filterCategory=function(event,data){
+		var node = data.node;
+		self.filtreCategoryNode(node);
+   		levelofSearch=0
+	};
+	self.filtreCategoryNode=function(node){
+		var idCategory = node.key;
+   		var param =node.isSelected();
+		mapManager.categoryFilter(param,idCategory);
+		if (node.children!=null && levelofSearch<2){
+				levelofSearch +=1;
+
+				for(i=0;i<node.children.length;i++){
+					console.log(node.children[i]);
+					self.filtreCategoryNode(node.children[i]);
+				}
+				
+		}
+	};
+>>>>>>> origin/dev-finirResearch
 
 
 }

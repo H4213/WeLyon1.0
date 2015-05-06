@@ -31,7 +31,7 @@ function Pin() {
        } 
     };   
 
-    self.addDynPin=function(title,description,user,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin,lat,lng,categorie,callback){
+    self.addDynPin=function(title,description,user,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin,lat,lng,idCategorie,callback){
         if (title=="")
             {alert("Donnez un titre à votre évènement")}
         else if (user==-1)
@@ -53,7 +53,7 @@ function Pin() {
                         "minute_fin": minute_fin,
                         "lat": lat,
                         "lng": lng,
-                        "category": categorie
+                        "category": idCategorie
 
 
                 }
@@ -62,7 +62,7 @@ function Pin() {
             rest.insert(url,data,callback);
         }
     }
-    self.addStaticPin=function(title,description,user,lat,lng,categorie,callback){
+    self.addStaticPin=function(title,description,user,lat,lng,idCategorie,callback){
          if (title=="")
             {alert("Donnez un titre à votre évènement")}
         else if (user==-1)
@@ -74,7 +74,7 @@ function Pin() {
                         "idUser": user,
                         "lat": lat,
                         "lng": lng,
-                        "category": categorie
+                        "category": idCcategorie
             }
             console.log(data)
             var url="/add/pin/"
@@ -88,6 +88,13 @@ function Pin() {
             "visibilite": visibilite
         }
         rest.get(self.path,data,callback)
+    }
+    self.getPinBySearch=function(search,callback)
+    {
+        var data = {
+            "search": search
+        }
+        rest.get(self.path+"search/",data,callback);
     }
 
 
