@@ -84,6 +84,7 @@ function WeLyon(){
 			}
 		});
 
+		//TODO: leo
 		setInterval(self.chargerNews,5000);
 	};
 

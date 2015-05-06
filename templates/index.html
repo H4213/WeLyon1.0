@@ -262,9 +262,12 @@
         <script src="{{url_for('static', filename='./components/fancytree-2.9.0/src/jquery.fancytree.edit.js') }}"></script>
         <script src="{{url_for('static', filename='./components/fancytree-2.9.0/src/jquery.fancytree.glyph.js') }}"></script>
         <script src="{{url_for('static', filename='./components/fancytree-2.9.0/src/jquery.fancytree.wide.js') }}"></script>    
-        $.widget.bridge('uibutton', $.ui.button);
-        $.widget.bridge('uitooltip', $.ui.tooltip);
-         
+        <script type="text/javascript">
+            // Change JQueryUI plugin names to fix name collision with Bootstrap.
+            $.widget.bridge('uitooltip', $.ui.tooltip);
+            $.widget.bridge('uibutton', $.ui.button);
+        </script>
+                 
         <script src="{{url_for('static', filename='./components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>
         <script src="{{url_for('static', filename='./components/sprintf/dist/sprintf.min.js') }}"></script>
 
@@ -294,7 +297,7 @@
         <script src="{{url_for('static', filename='./js/weLyon.js') }}"></script>
 
         <script type="text/javascript">
-
+        //TODO: leo
             // $(document).ready(function(){
             //     setInterval(chargerNews,5000);
             // });
