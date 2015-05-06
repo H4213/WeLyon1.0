@@ -33,6 +33,10 @@ function MapManager(){
 
 
 
+	// autres var
+	var lieuAlreadyAdded = false;
+	var evenementAlreadyAdded = false;
+
 	self.initMap = function() {
 		self.pinSetup();
 
@@ -154,20 +158,243 @@ function MapManager(){
 
 
 	self.ajouterEvenemment = function(){
+		var theType;
 	 	google.maps.event.addListenerOnce(map, 'click', function(e) {	
 	 		
-	 		$('#formulaireAjoutEvenement').modal('show');
+	 		$('#formulaireAjoutPoint').modal('show');
+			
+			// Bouton valider de la selection du type de point (Lieu ou Evenement)
 			$('#valideTypePoint').on('click',function(){
-				switch ($('#ajoutPointChoixType').type.value){
-					case "Lieu":
+							
+				switch ($('input[name=typeEvent]:checked', '#ajoutPointChoixType').val()){
+
+					// Si le type de point est "Lieu" => Choix du type de Lieu
+					case "Lieu":					
+						$('#formulaireAjoutPoint').modal('hide');
+						$('#formulaireTypeLieu').modal('show');
+
+						// Bouton valider de la selection du type de lieu
+						$('#valideTypeLieu').on('click',function(){
+							
+							switch ($('input[name=typeLieu]:checked', '#ajoutPointChoixTypeLieu').val()){
+
+								// Si le type de lieu est "Transport" => Choix du type de Transport
+								case "Transport":					
+									$('#formulaireTypeLieu').modal('hide');
+									$('#formulaireTypeLieuTransport').modal('show');								
+
+									// Bouton valider de la selection du type de transport 
+									$('#valideTypeLieuTransport').on('click',function(){
+							
+										switch ($('input[name=typeLieuTransport]:checked', '#ajoutPointChoixTypeLieuTransport').val()){
+
+											case "Parking":					
+												$('#formulaireTypeLieuTransport').modal('hide');
+												theType = "Parking"
+												$('#formulaireAjoutLieu').modal('show');
+
+												self.resetFields();							
+												if(!lieuAlreadyAdded)
+												{
+													$('#valideAjoutLieu').on('click',function(){
+														var title =document.getElementById('titreAjoutLieu').value;
+														var description =document.getElementById('descriptionAjoutLieu').value;
+
+														//TODO ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+														pin.addStaticPin(title,description,idUser, e.latLng.lat(), e.latLng.lng(),theType,self.cbVotePin);
+														//addMarker(newPin);
+
+														$('#formulaireAjoutLieu').modal('hide');
+													});	
+
+													$('#retourAjoutLieu').on('click',function(){
+														$('#formulaireAjoutLieu').modal('hide');
+														$('#formulaireTypeLieu').modal('show');
+													});
+
+													lieuAlreadyAdded = true;
+												}
+											break;
+
+											case "TCL":
+												$('#formulaireTypeLieuTransport').modal('hide');
+												theType = "TCL"
+												$('#formulaireAjoutLieu').modal('show');						
+												
+												self.resetFields();							
+												if(!lieuAlreadyAdded)
+												{
+													$('#valideAjoutLieu').on('click',function(){
+														var title =document.getElementById('titreAjoutLieu').value;
+														var description =document.getElementById('descriptionAjoutLieu').value;
+
+														//TODO ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+														pin.addStaticPin(title,description,idUser, e.latLng.lat(), e.latLng.lng(),theType,self.cbVotePin);
+														//addMarker(newPin);
+
+														$('#formulaireAjoutLieu').modal('hide');
+													});	
+
+													$('#retourAjoutLieu').on('click',function(){
+														$('#formulaireAjoutLieu').modal('hide');
+														$('#formulaireTypeLieu').modal('show');
+													});
+
+													lieuAlreadyAdded = true;
+												}
+											break;
+
+											default :
+												alert("Veuillez selectionner un type de transport");													
+										}
+									
+									});
+									// Bouton retour de la selection du type de transport
+									$('#retourChoixTypeLieuTransport').on('click',function(){
+										$('#formulaireTypeLieuTransport').modal('hide');
+										$('#formulaireTypeLieu').modal('show');
+									});
+								break;
+
+								// Si aucun type de lieu n'est selectionné
+								case "":
+									alert("Veuillez selectionner un type de lieu");									
+								break;
+
+								// Si le type de lieu est autre que "Transport" => Formulaire Lieu
+								default :
+									$('#formulaireTypeLieu').modal('hide');
+									theType = $('input[name=typeLieu]:checked', '#ajoutPointChoixTypeLieu').val();
+									$('#formulaireAjoutLieu').modal('show');
+
+									self.resetFields();							
+									if(!lieuAlreadyAdded)
+									{
+										$('#valideAjoutLieu').on('click',function(){
+											var title =document.getElementById('titreAjoutLieu').value;
+											var description =document.getElementById('descriptionAjoutLieu').value;
+
+											//TODO ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+											pin.addStaticPin(title,description,idUser, e.latLng.lat(), e.latLng.lng(),theType,self.cbVotePin);
+											//addMarker(newPin);
+
+											$('#formulaireAjoutLieu').modal('hide');
+										});	
+
+										$('#retourAjoutLieu').on('click',function(){
+											$('#formulaireAjoutLieu').modal('hide');
+											$('#formulaireTypeLieu').modal('show');
+										});
+
+										lieuAlreadyAdded = true;
+									}
+							}
+						
+						});
+
+						// Bouton retour de la selection du type de lieu
+						$('#retourChoixTypeLieu').on('click',function(){
+							$('#formulaireTypeLieu').modal('hide');
+							$('#formulaireAjoutPoint').modal('show');
+						});
 					break;
+
+					// Si le type de point est "Evenement" => Choix du type d'Evenement
 					case "Evenement":
+<<<<<<< HEAD
+=======
+						$('#formulaireAjoutPoint').modal('hide');
+						$('#formulaireTypeEvenement').modal('show');
+
+						// Bouton valider de la selection du type d'evenement 
+						$('#valideTypeEvenement').on('click',function(){
+							
+							switch ($('input[name=typeEvenement]:checked', '#ajoutPointChoixTypeEvenement').val()){
+
+								// Si aucun type d'evenement n'est selectionné
+								case "":	
+									alert("Veuillez selectionner un type d'evenement");																	
+								break;
+
+								// Si le type d'evenement est bien selectionné
+								default :
+									$('#formulaireTypeEvenement').modal('hide');
+									theType = $('input[name=typeEvenement]:checked', '#ajoutPointChoixTypeEvenement').val();
+									$('#formulaireAjoutEvenement').modal('show');	
+
+									self.resetFields();							
+									if(!evenementAlreadyAdded)
+									{
+										$('#valideAjoutEvenement').on('click',function(){
+											var jour_debut= document.getElementById('jour_debut').value;
+											var mois_debut= document.getElementById('mois_debut').value;
+											var annee_debut=document.getElementById('annee_debut').value;
+											var heure_debut=document.getElementById('heure_debut').value;
+											var minute_debut=document.getElementById('minute_debut').value;
+
+											var jour_fin=document.getElementById('jour_fin').value;
+											var mois_fin= document.getElementById('mois_fin').value;
+											var annee_fin=document.getElementById('annee_fin').value;
+											var heure_fin=document.getElementById('heure_fin').value;
+											var minute_fin=document.getElementById('minute_fin').value;
+
+											var title =document.getElementById('titreAjoutEvenement').value;
+											var description =document.getElementById('descriptionAjoutEvenement').value;
+
+											//TODO ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+											pin.addDynPin(title,description,idUser,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin, e.latLng.lat(), e.latLng.lng(),theType,self.cbVotePin);
+											//addMarker(newPin);
+
+											$('#formulaireAjoutEvenement').modal('hide');
+										});
+
+										$('#retourAjoutEvenement').on('click',function(){
+											$('#formulaireAjoutEvenement').modal('hide');
+											$('#formulaireTypeEvenement').modal('show');
+										});	 
+
+										evenementAlreadyAdded = true;
+									}																			
+							}
+
+						});
+
+						// Bouton retour de la selection du type d'evenement
+						$('#retourChoixTypeEvenement').on('click',function(){
+							$('#formulaireTypeEvenement').modal('hide');
+							$('#formulaireAjoutPoint').modal('show');
+						});						
+>>>>>>> origin/dev-AjotEvent-Xav
 					break;
+
+					// Si aucun type de point n'est selectionné
+					default :
+					alert("Veuillez selectionner un type de point");
 				}
+			
 			});
-	 		/*("#myModal .modal-body").load(target, function() { 
-         $("#myModal").modal("show"); */
+			
 	 	});
+	 };
+
+	 self.resetFields=function() {
+	 	document.getElementById('jour_debut').value = "1";
+	 	document.getElementById('mois_debut').value = "1";
+	 	document.getElementById('annee_debut').value = "2015";
+	 	document.getElementById('heure_debut').value = "";
+	 	document.getElementById('minute_debut').value = "";
+
+	 	document.getElementById('jour_fin').value = "1";
+	 	document.getElementById('mois_fin').value = "1";
+	 	document.getElementById('annee_fin').value = "2015";
+	 	document.getElementById('heure_fin').value = "";
+	 	document.getElementById('minute_fin').value = "";
+
+	 	document.getElementById('titreAjoutEvenement').value = "";
+	 	document.getElementById('descriptionAjoutEvenement').value = "";
+
+	 	document.getElementById('titreAjoutLieu').value = "";
+	 	document.getElementById('descriptionAjoutLieu').value = "";
 	 };
 
 	self.placeNewMarker=function(position, map) {
@@ -193,7 +420,7 @@ function MapManager(){
 					'<h3>Type d\'évènement</h3>' +
 					'<img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="type" VALUE="Soiree">Soirée <BR>' +
 					'<img src="./static/assets/bar.png" alt="Bar"> <INPUT TYPE="radio" NAME="type" VALUE="Bar">Bar <BR>' +
-					'<img src="./static/assets/restau.png" alt="Restaurant"> <INPUT TYPE="radio" NAME="type" VALUE="Restaurant">Restaurant <BR>' +
+					'<img src="./static/assets/restaurant.png" alt="Restaurant"> <INPUT TYPE="radio" NAME="type" VALUE="Restaurant">Restaurant <BR>' +
 					'<img src="./static/assets/hotel.png" alt="Hôtel"> <INPUT TYPE="radio" NAME="type" VALUE="Hotel">Hôtel <BR>' +		
 					'<img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="type" VALUE="Monument">Monument <BR>' +
 					'<img src="./static/assets/normal.png" alt="Autre"> <INPUT TYPE="radio" NAME="type" VALUE="normal">Autre <BR>' +
@@ -322,6 +549,10 @@ function MapManager(){
 		}
 
 		infowindow.setContent(contentString);
+<<<<<<< HEAD
+=======
+		
+>>>>>>> origin/dev-AjotEvent-Xav
 		infowindow.open(map,usedMarker);
 		$(document).on("click",".pinCreationButtonDyn",function(){
 				var jour_debut= document.getElementById('jour_debut').value;
@@ -395,7 +626,7 @@ function MapManager(){
 				titre = "Police";
 				break;
 			default :
-				image = imageNormal
+				image = imageNormal;
 				titre = "Autre";
 			}
 			
@@ -559,6 +790,7 @@ function MapManager(){
 	};
 
 	self.cbGetPinVisibilite =function(data){
+<<<<<<< HEAD
 
     	self.cbGetAllPins(data);
    	};
@@ -577,6 +809,17 @@ function MapManager(){
 	 };
 
 	self.pinSetup = function(){
+=======
+		for (var valeur of markers.values()) {
+ 			
+    		valeur.marker.setMap(null);
+    		
+    	}
+    	self.cbGetAllPins(data);
+   	};
+
+	self.pinSetup = function(){		
+>>>>>>> origin/dev-AjotEvent-Xav
 			$(document).on("click",".like",function(){
 				var pinID= $(this).closest('#content').data('id-pin');
 				pin.vote(idUser,pinID,1,self.cbVotePin);
@@ -589,11 +832,15 @@ function MapManager(){
 				var pinID= $(this).closest('#content').data('id-pin');
 				pin.vote(idUser,pinID,-1,self.cbVotePin);
 			});
+<<<<<<< HEAD
 			$(document).on("click",".newCommentButton",function(){
 				pin.addComment( $("#newComment").val(), 1, currentPin.id, self.cbBuildDescription);
 			});
 
 	};
+=======
+	};		
+>>>>>>> origin/dev-AjotEvent-Xav
 
 	self.filtrerVisibilite =function(visibilite){
 		pin.getPinVisibilite(visibilite, self.cbGetPinVisibilite);
@@ -631,7 +878,17 @@ function MapManager(){
 							valeur.marker['visibilityCategoryToken']=0
 						}
 					} 
+<<<<<<< HEAD
 					//valeur.marker.setVisible(visible);
+=======
+					if (valeur.marker['visibilityCategoryToken']==0)
+					{
+						valeur.marker.setVisible(false);
+					}
+					else{
+						valeur.marker.setVisible(true);
+					}
+>>>>>>> origin/dev-AjotEvent-Xav
 		    	}
 		}
 	};
@@ -661,8 +918,7 @@ function MapManager(){
 				var dateEndCompare=new Date();
 				dateEndCompare.setDate(endingDay);
 				dateEndCompare.setMonth(endingMonth);
-				dateEndCompare.setYear(endingYear);
-				
+				dateEndCompare.setYear(endingYear);				
 
 				if (dateBegin>dateBeginCompare && dateEnd<dateEndCompare)
 				{
@@ -676,7 +932,11 @@ function MapManager(){
 				{
 					valeur.marker.visibilityDateToken=0
 					valeur.marker.setVisible(false)
+<<<<<<< HEAD
 				}
+=======
+				}				
+>>>>>>> origin/dev-AjotEvent-Xav
 			}
 			else
 				{
