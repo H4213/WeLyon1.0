@@ -30,6 +30,17 @@ def getFil(more):
 	lastId = last.id
 	print lastId
 
+	more = defMore(more, lastId)
+
+
+	futurLast = int(lastId)+1
+
+	print "\n\n--------------------------", more ," et ",futurLast
+
+	if int(more) == int(futurLast):
+		print "egal"
+		return ""
+
 	log = Log.query.get(more)
 	user = User.query.get(log.idUser)
 	pinName = ""
@@ -37,21 +48,11 @@ def getFil(more):
 		pin = Pin.query.get(log.idPin)
 		pinName = pin.title
 
-
-	futurLast = int(lastId)+1
-
-	print "\n\n--------------------------\n", more ," et ",futurLast
-
-	if int(more) == int(futurLast):
-		print "egal"
-		return ""
-
 	getNext = ""
 	if not int(more) == int(lastId):
 		getNext = "<script>chargerNews();</script>"
 
 	more = int(more) + 1
-	more = defMore(more, lastId)
 
 	script = "<script>setId("+str(more)+");</script>"
 
@@ -66,12 +67,11 @@ def getFil(more):
 	return jsonify(logs=[item.serialize() for item in iter(logs.get, None)])
 
 def defMore(more, last):
-	if more == 0:
-		if last > 5:
-			newMore = int(last) - int(more)
-			return newMore
-		return more
-	return more
+	print "\ndefMore--------------------"
+	print more, last
+	if (int( int(last) - int(more) ) > 6):
+		return int( int(last) - 5)
+	return int(more)
 
 def filTest():
 	items = Log.query.all()
