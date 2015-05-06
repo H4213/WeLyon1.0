@@ -146,11 +146,12 @@ function WeLyon(){
 				});
 
 				break;
-			case "event":
-
+			case "place":
+			alert();
+				// self.getCategories(self.cbFillCatLieu);
 			
 				break;
-			case "place":
+			case "event":
 
 				break;
 
@@ -257,8 +258,7 @@ function WeLyon(){
 	                form+='                </div>';
 	                form+='                <div class="form-group">';
 	                form+='                    <div class="col-sm-10 pull-right">';
-	                form+='                        <select id class="form-control">';
-	                form+='                            <option value="" disabled selected>Categories</option>';
+	                form+='                        <select id="placeCategories" class="form-control">';
 	                form+='                        </select>';
 	                form+='                    </div>';
 	                form+='                </div>';
@@ -465,6 +465,12 @@ function WeLyon(){
 		}
 		
 	};
+
+	self.cbFillCatLieu = function(data){
+		var categories = '<option value="" disabled selected>Categories</option>';
+		//TODO amine 
+		$('#placeCategories').append(categories);
+	}
 
 	self.ouvrirPanelAuthentification = function(bouton){
 		if(bouton.hasClass('active')){
