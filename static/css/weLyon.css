@@ -178,16 +178,23 @@ body{
 {
     list-style-type: none; /* on annule la puce par défaut */
     background-position: left; /* on positionne où l'on veut */
+    display:block;
+    max-width: 200px;
+    margin: 2px 2px 2px 2px;
+    padding: 2px 2px 2px 2px; 
 
 }
 
 #content
 {
     background-color: rgba(0, 0, 0, 0.5);
+    display:block;
 }
 .comment-list-item
 {
     background-color: rgb(220, 220, 220);
+    display:block;
+    max-width: 200px;
 }
 
 .comment-list
@@ -196,6 +203,7 @@ body{
     list-style-type:none;
     padding-left: 3px; 
     padding-right: 3px; 
+    display:block;
 }
 
 .like, .dislike, .unlike
