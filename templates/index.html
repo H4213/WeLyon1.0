@@ -96,7 +96,8 @@
                 </div>
             </div>
 
-                 <div id="filters" class="col-sm-12 col-md-2">
+
+                 <!-- <div id="filters" class="col-sm-12 col-md-2">
                     <div id="filter" class="col-md-12">
                         <form>
                             <div class="form-group">
@@ -225,9 +226,11 @@
                         <button id="categoryButton" class="col-md-4 btn btn-default category-title" type="button"><strong>Categories</strong></button> 
 
                     </div>                                                       
-                </div>
+                </div> -->
+				
+				
           <!-- Modal -->
-            <div class="modal fade" id="formulaireAjoutEvenement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="formulaireAjoutPoint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -238,8 +241,8 @@
                         <form name="formulaire" id="ajoutPointChoixType">
                             <p>
                                 <h4>Type de point:</h4>
-                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="type" VALUE="Evenement">Evénement <BR>
-                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="type" VALUE="Lieu">Lieu <BR>
+                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvent" VALUE="Evenement">Evénement <BR>
+                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeEvent" VALUE="Lieu">Lieu <BR>
                             </p>
                         <p>
                         </p>
@@ -252,7 +255,292 @@
                 </div>
               </div>
             </div>
-                
+
+            <div class="modal fade" id="formulaireTypeLieu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="myModalLabel">Ajout d'un nouveau point</h3>
+                  </div>
+                  <div class="modal-body">
+                        <form name="formulaire" id="ajoutPointChoixTypeLieu">
+                            <p>
+                                <h4>Type de point:</h4>
+                                    <img src="./static/assets/bar.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Bar">Bar <BR>
+                                    <img src="./static/assets/hopital.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Hopital">Hôpital <BR>
+                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Musee">Musée <BR>
+                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Oeuvre">Oeuvre d'art <BR>
+                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Monument">Monument <BR>
+                                    <img src="./static/assets/police.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Police">Police <BR>
+                                    <img src="./static/assets/restaurant.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Restaurant">Restaurant <BR>
+                                    <img src="./static/assets/nightclub.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="NightClub">Night Club <BR>
+                                    <img src="./static/assets/tcl.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Transport">Transport <BR>
+                                    <img src="./static/assets/hotel.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Hotel">Hôtel <BR>
+                                    <img src="./static/assets/normal.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Autre">Autre <BR>
+                            </p>
+                        <p>
+                        </p>
+                        </form>
+                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="retourChoixTypeLieu"> Précédent</button>
+                    <button type="button" class="btn btn-primary" id="valideTypeLieu"> Suivant</button>
+                  </div>
+                </div>
+              </div>
+            </div>  
+
+            <div class="modal fade" id="formulaireTypeLieuTransport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="myModalLabel">Ajout d'un nouveau point</h3>
+                  </div>
+                  <div class="modal-body">
+                        <form name="formulaire" id="ajoutPointChoixTypeLieuTransport">
+                            <p>
+                                <h4>Type de point:</h4>
+                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieuTransport" VALUE="Parking">Parking <BR>
+                                    <img src="./static/assets/tcl.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieuTransport" VALUE="TCL">TCL <BR>
+                            </p>
+                        <p>
+                        </p>
+                        </form>
+                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="retourChoixTypeLieuTransport"> Précédent</button>
+                    <button type="button" class="btn btn-primary" id="valideTypeLieuTransport"> Suivant</button>
+                  </div>
+                </div>
+              </div>
+            </div>  
+
+			<div class="modal fade" id="formulaireAjoutLieu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="myModalLabel">Ajout d'un nouveau point</h3>
+                  </div>
+                  <div class="modal-body">
+						<form name="formulaire" id="ajoutPointFormulaireLieu">
+							<p>
+                                <h3><img src="./static/assets/monument.png" alt="Monument"> Lieu:</h3>
+                            </p>
+                            <p>
+                                <label for="titreAjoutLieu">Titre</label> :<br /><input type="text" name="titreAjoutLieu" id="titreAjoutLieu"/>
+                            </p>
+                            <p>
+                                <label for="descriptionAjoutLieu">Description</label> :<br />
+                                <textarea name="descriptionAjoutLieu" id="descriptionAjoutLieu"></textarea>
+                            </p>                           
+						</form>
+                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="retourAjoutLieu"> Précédent</button>
+                    <button type="button" class="btn btn-primary" id="valideAjoutLieu"> Valider</button>
+                  </div>
+                </div>
+              </div>
+            </div> 
+
+            <div class="modal fade" id="formulaireTypeEvenement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="myModalLabel">Ajout d'un nouveau point</h3>
+                  </div>
+                  <div class="modal-body">
+                        <form name="formulaire" id="ajoutPointChoixTypeEvenement">
+                            <p>
+                                <h4>Type de point:</h4>
+                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Soiree">Soirée <BR>
+                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Concert">Concert <BR>
+                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Spectacle">Spectacle <BR>
+                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Associatif">Evénement associatif <BR>
+                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Sport">Evénement sportif <BR>
+                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Etudiant">Evénement étudiant <BR>
+                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Conférence">Conférence <BR>
+                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="AutreEvt">Autre événement <BR>
+                            </p>
+                        <p>
+                        </p>
+                        </form>
+                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="retourChoixTypeEvenement"> Précédent</button>
+                    <button type="button" class="btn btn-primary" id="valideTypeEvenement"> Suivant</button>
+                  </div>
+                </div>
+              </div>
+            </div>  
+
+			<div class="modal fade" id="formulaireAjoutEvenement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="myModalLabel">Ajout d'un nouveau point</h3>
+                  </div>
+                  <div class="modal-body">
+						<form name="formulaire" id="ajoutPointFormulaireEvenement">
+							<p>
+								<h3><img src="./static/assets/soiree.png" alt="Soirée"> Evenement:</h3>
+							</p>
+							<p>
+                                <label for="titreAjoutEvenement">Titre</label> :<br /><input type="text" name="titreAjoutEvenement" id="titreAjoutEvenement"/>
+                            </p>
+                            <p>
+                                <label for="descriptionAjoutEvenement">Description</label> :<br />
+                                <textarea name="descriptionAjoutEvenement" id="descriptionAjoutEvenement"></textarea>
+                            </p>
+                            <p>
+                            <fieldset class="date">
+                                <label>Date de début : </label><br />
+                                    <select id="jour_debut" name="jour_debut" />
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                        <option>15</option>
+                                        <option>16</option>
+                                        <option>17</option>
+                                        <option>18</option>
+                                        <option>19</option>
+                                        <option>20</option>
+                                        <option>21</option>
+                                        <option>22</option>
+                                        <option>23</option>
+                                        <option>24</option>
+                                        <option>25</option>
+                                        <option>26</option>
+                                        <option>27</option>
+                                        <option>28</option>
+                                        <option>29</option>
+                                        <option>30</option>
+                                        <option>31</option>
+                                            </select>
+                                            <select id="mois_debut" name="mois_debut" />
+                                                <option value=1>Janvier</option> 
+                                                <option value=2>Février</option>     
+                                                <option value=3>Mars</option>
+                                                <option value=4>Avril</option>     
+                                                <option value=5>Mai</option>    
+                                                <option value=6>Juin</option>     
+                                                <option value=7>Juillet</option>     
+                                                <option value=8>Août</option>
+                                                <option value=9>Septembre</option>     
+                                                <option value=10>Octobre</option> 
+                                                <option value=11>Novembre</option> 
+                                                <option value=12>Decembre</option>
+                                            </select>
+                                            <select id="annee_debut" name="annee_debut" />                                                     
+                                                <option>2015</option>
+                                                <option>2016</option>
+                                                <option>2017</option>
+                                                <option>2018</option>
+                                            </select>
+                                        <span class="inst">(Jour-Mois-Année)</span>
+                                </fieldset>
+                                <fieldset class="heure">
+                                    <label>Heure de début : </label><br />
+                                    <input type="text" name="heure_debut" id="heure_debut" size="2">
+                                    <label>h</label>
+                                    <input type="text" name="minute_debut" id="minute_debut" size="2">                      
+                                </fieldset>
+
+                                <fieldset class="date">
+                                    <label>Date de Fin : </label><br />
+                                            <select id="jour_fin" name="jour_fin" />
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+                                                <option>13</option>
+                                                <option>14</option>
+                                                <option>15</option>
+                                                <option>16</option>
+                                                <option>17</option>
+                                                <option>18</option>
+                                                <option>19</option>
+                                                <option>20</option>
+                                                <option>21</option>
+                                                <option>22</option>
+                                                <option>23</option>
+                                                <option>24</option>
+                                                <option>25</option>
+                                                <option>26</option>
+                                                <option>27</option>
+                                                <option>28</option>
+                                                <option>29</option>
+                                                <option>30</option>
+                                                <option>31</option>
+                                            </select>
+                                            <select id="mois_fin" name="mois_fin" />
+                                                <option value=1>Janvier</option> 
+                                                <option value=2>Février</option>     
+                                                <option value=3>Mars</option>
+                                                <option value=4>Avril</option>     
+                                                <option value=5>Mai</option>    
+                                                <option value=6>Juin</option>     
+                                                <option value=7>Juillet</option>     
+                                                <option value=8>Août</option>
+                                                <option value=9>Septembre</option>     
+                                                <option value=10>Octobre</option> 
+                                                <option value=11>Novembre</option> 
+                                                <option value=12>Decembre</option>
+                                            </select>
+                                            <select id="annee_fin" name="annee_fin" />                                                     
+                                                <option>2015</option>
+                                                <option>2016</option>
+                                                <option>2017</option>
+                                                <option>2018</option>
+                                            </select>
+                                        <span class="inst">(Jour-Mois-Année)</span>
+                                </fieldset>
+                                <fieldset class="heure">
+                                    <label>Heure de début : </label><br />
+                                    <input type="text" name="heure_fin" id="heure_fin" size="2">
+                                    <label>h</label>
+                                    <input type="text" name="minute_fin" id="minute_fin" size="2">                      
+                                </fieldset>                                                    
+                            </p>						
+                        </form>
+                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="retourAjoutEvenement"> Précédent</button>
+                    <button type="button" class="btn btn-primary" id="valideAjoutEvenement"> Valider</button>
+                  </div>
+                </div>
+              </div>
+            </div>     
+
 
             <div class="row">
                 <div id="optionUtilisateur" style="display:none";>
