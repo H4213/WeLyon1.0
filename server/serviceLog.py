@@ -28,17 +28,12 @@ def getFil(more):
 		return ""
 
 	lastId = last.id
-	print lastId
-
 	more = defMore(more, lastId)
 
 
 	futurLast = int(lastId)+1
 
-	print "\n\n--------------------------", more ," et ",futurLast
-
 	if int(more) == int(futurLast):
-		print "egal"
 		return ""
 
 	log = Log.query.get(more)
@@ -67,8 +62,6 @@ def getFil(more):
 	return jsonify(logs=[item.serialize() for item in iter(logs.get, None)])
 
 def defMore(more, last):
-	print "\ndefMore--------------------"
-	print more, last
 	if (int( int(last) - int(more) ) > 6):
 		return int( int(last) - 5)
 	return int(more)

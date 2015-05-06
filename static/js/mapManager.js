@@ -73,10 +73,10 @@ function MapManager(){
 		}
 		toDisplay.sort(function(a,b) {
 			if (a.pin.score < b.pin.score) {
-				return -1;
+				return 1;
 			}
 			if (a.pin.score > b.pin.score) {
-				return 1;
+				return -1;
 			}
 			return 0;
 		});
