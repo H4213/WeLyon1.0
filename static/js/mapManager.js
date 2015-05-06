@@ -560,7 +560,7 @@ function MapManager(){
 		listofCommentsHTML = '<p>--Pas de commentaire encore--</p';
 
 		var commentsEntete = '<br/><div id="commentzone"><h4>Commentaires</h4>'+
-					'<INPUT TYPE="textarea" placeholder="Ajoutez votre avis" VALUE="" class="newComment">'+
+					'<INPUT id="newComment" TYPE="textarea" placeholder="Ajoutez votre avis" VALUE="" class="newComment">'+
 					'<INPUT TYPE="button" NAME="ADD" VALUE="+" class="newCommentButton">'
 									+'<br/><br/><ul style="text-align:left">'+listofCommentsHTML+'</ul></div>';
 		contentString = '<div id="content" data-id-pin=' + aPin.id+contentString+commentsEntete+'</div>';
@@ -641,7 +641,7 @@ function MapManager(){
 				pin.vote(idUser,pinID,-1,self.cbVotePin);
 			});
 			$(document).on("click",".newCommentButton",function(){
-				pin.addComment("yoy", 1, currentPin.id, self.cbBuildDescription);
+				pin.addComment( $("newComment").val(), 1, currentPin.id, self.cbBuildDescription);
 			});
 
 	};		

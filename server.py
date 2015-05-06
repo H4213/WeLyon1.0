@@ -161,18 +161,17 @@ def page_not_found(error):
 def load_facebook_event():
   facebookPin.refreshFacebookData()
 
-@app.route('/comments/', methods=['GET', 'POST'])
-@app.route('/comments/<idPin>/')
+@app.route('/comments/<idPin>/', methods=['GET', 'POST'])
 def comments(idPin = None):
-  if request.method == "POST":
-    return servicePin.addCommentByIdPin(request.form)
+  if int(idPin) == 0:
+    return servicePin.addCommentByIdPin(request.form["pin_id"], request.form["text"])
   """
   if request.method == 'PUT':
     return service.majUser(request.form)
   if request.method == 'DELETE':
     return serviceUser.delete(request.form)
   """
-  if idPin:
+  if int(idPin) > 0:
     return servicePin.getCommentByIdPin(idPin)
 
   return jsonify(retour = "no comments")

@@ -107,13 +107,17 @@ function Pin() {
 
     self.getComments=function(idPin,callback)
     {
-        /*var data = {
+        var data = {
             "pin_id": idPin
-        }*/
-        rest.get("/comments/"+idPin,null,callback)
+        }
+        rest.get("/comments/"+idPin+"/",data,callback)
     }
     self.addComment=function(text, currentUser, idPin, callback){
-        if (text=="")
+        var data = {
+                        "text": "text",
+                        "pin_id": idPin
+                }
+        /*if (text=="")
             {alert("Donnez un titre à votre évènement")}
         else if (currentUser==-1)
             {alert("veuillez vous connecter")}
@@ -123,10 +127,10 @@ function Pin() {
                         "pin_id": idPin
                 }
             console.log(data)
-            rest.insert("/comments/",data,callback);
-        }
+            rest.insert("/comments/"+0+"/",data,callback);
+        }*/
+        rest.insert("/comments/"+0+"/",data,callback);
     }
-  
 
 }
 

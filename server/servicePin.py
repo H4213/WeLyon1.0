@@ -148,14 +148,11 @@ def getCommentByIdPin(idPin):
 
 	return jsonify(error="Wrong request")
 
-def addCommentByIdPin(form):
-	if form["text"] and form["pin_id"]:
-		exist = User.query.get(form['pin_id'])
-		if exist:
-			db.engine.execute("insert into comments(pin_id, text) values ("+form["pin_id"]+","+form["text"])
-			print int(form["pin_id"])
-			return getCommentByIdPin(int(form["pin_id"]))
-		else:
-			return jsonify(error="No associated pins")
+def addCommentByIdPin(idPin, text) :
+	if True:
+		print idPin
+		print text
+		db.engine.execute("insert into comments(pin_id, text) values ("+str(idPin)+"," +"'"+text+"')")
+		return getCommentByIdPin(str(idPin))
 	else:
 		return jsonify(error="Wrong request")
