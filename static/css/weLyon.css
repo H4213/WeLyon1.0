@@ -197,3 +197,14 @@ body{
     padding-left: 3px; 
     padding-right: 3px; 
 }
+
+.like, .dislike, .unlike
+{
+    padding: 4px 4px 4px 4px; 
+    cursor: pointer;
+}
+.like
+{
+    margin-right: 10px;
+    margin-bottom: 10px;
+}

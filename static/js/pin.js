@@ -107,7 +107,7 @@ function Pin() {
     self.addComment=function(text, currentUser, nameUser, idPin, callback){
         
         if (text=="")
-            {alert("Donnez un titre à votre évènement")}
+            {alert("Ecrivez votre commentaire")}
         else if (currentUser==-1)
             {alert("veuillez vous connecter")}
         else{

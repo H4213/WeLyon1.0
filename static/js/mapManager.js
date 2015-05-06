@@ -651,6 +651,14 @@ function MapManager(){
 		
 		currentPin = aPin;
 		var contentString = '';
+		var temp =			/*'<INPUT TYPE="image" NAME="like" ALT="Like" SRC="./static/assets/like.png" class="like" VALUE="Like"> ' +
+							'<INPUT TYPE="image" NAME="dislike" ALT="Dislike" SRC="./static/assets/dislike.png" VALUE="Dislike" class="dislike"> ' +
+							'<INPUT TYPE="image" NAME="unlike" VALUE="Unlike" class="unlike"> ';*/
+							'<img alt="Like" class = "like" SRC="./static/assets/like.png">'+
+							'<img alt="Dislike" class = "dislike" SRC="./static/assets/dislike.png">'
+							/*'<INPUT TYPE="button" NAME="like" class="like" VALUE="Like"> ' +
+							'<INPUT TYPE="button" NAME="dislike" VALUE="Dislike" class="dislike"> ' +
+							'<INPUT TYPE="button" NAME="unlike" VALUE="Unlike" class="unlike"> '*/;
 		switch (aPin.type) { 
 			case "velov" : 
 				contentString = '<div id="siteNotice">'+
@@ -663,9 +671,7 @@ function MapManager(){
 											'<p><small>Posté par ' + aPin.user + '</small></p>'+
 											'<form name="form1">' +
 												'<p>' +
-													'<INPUT TYPE="button" NAME="like" class="like" VALUE="Like"> ' +
-													'<INPUT TYPE="button" NAME="dislike" VALUE="Dislike" class="dislike"> ' +
-													'<INPUT TYPE="button" NAME="unlike" VALUE="Unlike" class="unlike"> ' +
+													temp +
 													'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
 												'</p>' +
 											'</form>' +
@@ -683,9 +689,7 @@ function MapManager(){
 					'<p><small>Posté par ' + aPin.user + '</small></p>'+
 					'<form name="form1">' +
 						'<p>' +
-							'<INPUT TYPE="button" NAME="like" class="like" VALUE="Like"> ' +
-							'<INPUT TYPE="button" NAME="dislike" VALUE="Dislike" class="dislike"> ' +
-							'<INPUT TYPE="button" NAME="unlike" VALUE="Unlike" class="unlike"> ' +
+							temp +
 							'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
 						'</p>' +
 					'</form>' ;
@@ -701,9 +705,7 @@ function MapManager(){
 					'<p><small>Posté par ' + aPin.user + '</small></p>'+
 					'<form name="form1">' +
 						'<p>' +
-							'<INPUT TYPE="button" NAME="like" class="like" VALUE="Like"> ' +
-							'<INPUT TYPE="button" NAME="dislike" VALUE="Dislike" class="dislike"> ' +
-							'<INPUT TYPE="button" NAME="unlike" VALUE="Unlike" class="unlike"> ' +
+							temp +
 							'</br><small>Score : <b>' + aPin.score + ' </b></small>'+
 						'</p>' +
 					'</form>' +
@@ -721,7 +723,7 @@ function MapManager(){
 
 		var commentsEntete = '<br/><div id="commentzone"><h4>Commentaires</h4>'+
 					'<INPUT id="newComment" TYPE="textarea" placeholder="Ajoutez votre avis" VALUE="" class="newComment">'+
-					'<INPUT TYPE="button" NAME="ADD" VALUE="+" class="newCommentButton">'
+					'<INPUT alt="Ajouter le commentaire" TYPE="button" NAME="ADD" VALUE="+" class="newCommentButton">'
 									+'<br/><br/><ul class="comment-list">'+listofCommentsHTML+'</ul></div>';
 		contentString = '<div id="content" data-id-pin=' + aPin.id+contentString+commentsEntete+'</div>';
 		
