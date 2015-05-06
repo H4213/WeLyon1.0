@@ -5,7 +5,11 @@ from flask.ext.jsonpify import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+<<<<<<< HEAD
 from sqlalchemy import or_
+=======
+from server import serviceLog
+>>>>>>> origin/dev-Fil
 import time
 
 def logMessage(message):
@@ -92,6 +96,7 @@ def UpdateUserVoteEvent(form,idPin):
 				pinItem.score=0
 			
 		pinItem.score=int(pinItem.score)-oldposneg+int(posneg)
+		serviceLog.like(idUser, idPin, posneg) #log
 		db.session.commit()
 
 		return jsonify(pin=pinItem.serialize())

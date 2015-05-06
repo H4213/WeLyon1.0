@@ -1,6 +1,6 @@
 from src import model
 from src.model import User, Pin, Category
-from server import service
+from server import service, serviceLog
 
 from flask import Flask, flash, render_template, request, session
 from flask.ext.jsonpify import jsonify
@@ -91,8 +91,12 @@ def addPin(form):
 
 		if not(user):
 			return jsonify(error="user doesn't exist")
+
+			
 		pin = Pin('Event', form['titre'], float(form['lng']), float(form['lat']) , form['idUser'] , [Category.query.filter_by(nom=form['category']).first()] , form['description'])
+		serviceLog.add(pin.idUser, pin.id)
 		service.addObject(pin)
+
 		return jsonify(pin = pin.serialize()) 
 		
 	return jsonify(error="invalid parameters")

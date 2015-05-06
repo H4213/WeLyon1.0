@@ -1,0 +1,31 @@
+.maRow{
+	background-color: #34495e;
+	border: 1px solid black;
+	height: 40px;
+	overflow: hidden;
+}
+
+#filActubox{
+	background-color: #34495e;
+	border: 1px solid black;
+	height: 68px;
+	overflow: hidden;
+}
+
+#filActu{
+	font-size:0.8em;
+	background-color: #ecf0f1;
+	box-shadow: -1px 2px 3px 3px #34495e inset;
+	box-shadow: -1px 2px 0px 5px #34495e inset;
+	padding: 5px;
+	padding-left: 15px;
+	padding-top: 10px;
+	cursor:default;
+	cursor: hand;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+#filActu:hover{
+	background-color: #fbfcfc;
+}

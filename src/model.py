@@ -83,7 +83,6 @@ class Category(db.Model):
     #------------------------------------------------------------------
 
 class Pin(db.Model):
-
     __tablename__ = 'pins'
     id = db.Column(db.Integer, primary_key = True)
     type = db.Column(db.String(30))
@@ -165,7 +164,33 @@ class Vote(db.Model):
             'idPin': self.idPin,
         }
 
+class Log(db.Model):
+    __tablename__= "logs"
+    id= db.Column(db.Integer, primary_key = True)
+    action = db.Column(db.String(10))
+    dateTime = db.Column(db.DateTime, default=datetime.datetime.now)
+    idUser= db.Column(db.Integer,db.ForeignKey('users.id'))
+    idPin = db.Column(db.Integer,db.ForeignKey('pins.id'))
 
+    def __init__(self, idUser, action, idPin):
+        self.idUser = idUser
+        self.action = action
+        self.idPin = idPin
+
+    def serialize(self):
+        return {
+            'id':self.id,
+            'idPin': self.idPin,
+            'idUser': self.idUser,
+            'action': self.action,
+            'time': self.dateTime,
+        }
+
+<<<<<<< HEAD
 # db.reflect()
 # db.drop_all()
+=======
+#db.reflect()
+#db.drop_all()
+>>>>>>> origin/dev-Fil
 db.create_all()

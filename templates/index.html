@@ -25,10 +25,14 @@
         <!-- Custom styles for this template -->
         <!-- <link href="../static/css/weLyon.css" rel="stylesheet">   -->
         <link href="{{url_for('static', filename='./css/weLyon.css') }}" rel="stylesheet">
+<<<<<<< HEAD
 
         <!-- Style style sheet for treeview -->
         <link href="{{url_for('static', filename='./components/bootstrap-treeview-1.1.0/src/css/bootstrap-treeview.css') }}" rel="stylesheet">
 
+=======
+        <link href="{{url_for('static', filename='./css/social.css') }}" rel="stylesheet">     
+>>>>>>> origin/dev-Fil
     </head>
   
 
@@ -219,6 +223,28 @@
                     </div>
                 </div> 
             </div>
+
+            <div id="maRow" class="row">
+                <div id="filActubox" class="col-sm-12">
+                        <div id="filActu" class="col-sm-2">
+                          
+                        </div>
+                        <div id="filActu" class="col-sm-2">
+                         
+                        </div>
+                        <div id="filActu" class="col-md-2">
+                  
+                        </div>
+                        <div id="filActu" class="col-md-2">
+                         
+                        </div>
+                        <div id="filActu" class="col-md-2">
+                      
+                        </div>
+                        <div id="filActu" class="col-md-2">
+                        </div>                 
+                </div>
+            </div>
         </div>
         <div id="categoryTreeView" class=""></div>
 
@@ -254,6 +280,33 @@
         <script src="{{url_for('static', filename='./js/pin.js') }}"></script>
         <script src="{{url_for('static', filename='./js/user.js') }}"></script>
         <script src="{{url_for('static', filename='./js/weLyon.js') }}"></script>
+
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+                //charger le début du log
+                // chargeOldNews()
+                setInterval(chargerNews,5000);
+            });
+
+            var dernier_id = 1;
+            function setId(id){
+                dernier_id = id;
+            }
+
+            function chargerNews(){
+                jQuery.ajax({
+                    url: 'fil/'+dernier_id+'/',
+                    success: function(data){
+                        if(data!=''){
+                            $(data).prependTo('#filActubox').hide().animate({'height':'toggle','opacity':'toggle'},2000);
+                            $('#filActubox div:last-child').remove();
+                        }
+                    }
+                });
+            }
+
+        </script>
 
 
     </body>

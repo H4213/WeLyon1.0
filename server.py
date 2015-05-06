@@ -19,7 +19,7 @@ from flask_jsglue import JSGlue
 from server import service
 from server import servicePin
 from server import serviceUser
-from server import serviceCategory
+from server import serviceCategory, serviceLog
 
 import server
 from src.model import User, Pin, Category
@@ -110,6 +110,15 @@ def auth():
     return service.authentificaton(request.form)
   return jsonify(error="false request")
 
+@app.route('/fil/')
+@app.route('/fil/<more>/')
+def fil(more = None):
+  return serviceLog.getFil(more)
+
+@app.route('/filTest/')
+def filTest():
+  return serviceLog.filTest()
+
 #ajout d'un marqueur
 @app.route('/add/pin/', methods=('GET', 'POST'))
 def addPin():
@@ -185,6 +194,10 @@ if __name__ == '__main__':
   init_databases.init_all()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
+<<<<<<< HEAD
   # app.debug = True
+=======
+  app.debug = True
+>>>>>>> origin/dev-Fil
   app.run()
 	
