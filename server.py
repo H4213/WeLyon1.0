@@ -151,8 +151,6 @@ def updateVote(idPin =None, data=None):
     
     return service.UpdateUserVoteEvent(request.form,idPin)
 
-
-<<<<<<< HEAD
 @app.route('/search/<term>')
 def search(term):
   if term:
@@ -160,8 +158,6 @@ def search(term):
   else:
     return jsonify(error="false request")
 
-=======
->>>>>>> origin/dev-police
   
 @app.errorhandler(404)
 def page_not_found(error):

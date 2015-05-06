@@ -32,87 +32,7 @@ function MapManager(){
 
 
 
-<<<<<<< HEAD
-=======
-	self.addMarker = function(aPin) {
-		var type = aPin.type;
-		var image;
-		var contentString;
-		var id=aPin.id;
-		switch (type) { 
-			case "velov" : 
-				image = imageVelov;
-				titre = "Velo'v";
-				contentString = self.buildDescription(aPin,"velov");
-				break;
-			case "stationTCL" : 
-				image = imageTCL;
-				titre = "Velo'v";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "cafe" : 
-				image = imageBar;
-				titre = "Café/Bar";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "restaurant" : 
-				image = imageRestau;
-				titre = "Restaurant";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "nightClub" : 
-				image = imageSoiree;
-				titre = "Night Club";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "hopital" : 
-				image = imageHopital;
-				titre = "Hopital";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "facebookPin" : 
-				image = imageFacebook;
-				titre = "Facebook";
-				contentString = self.buildDescription(aPin,"dynamique");
-				break;
-			case "event" : 
-				image = imageFacebook;
-				titre = "Evenement";
-				contentString = self.buildDescription(aPin,"dynamique");
-				break;
-			case "monument" : 
-				image = imageMonument;
-				titre = "Monument";
-				contentString = self.buildDescription(aPin,"normal");
-				break;
-			default :
-				image = imageNormal
-				titre = "Autre";
-				contentString = self.buildDescription(aPin,"normal");
-			}
-	
-			
-		var aMarker = new google.maps.Marker({
-			position: new google.maps.LatLng(aPin.lat, aPin.lng),
-			map: map,
-			icon: image,
-			title: titre,
-			'idPin': aPin.id,
-			'visibilityCategoryToken': 0
-		});
 
-		markers.set(id,{pin : aPin,
-						marker : aMarker});
-		google.maps.event.addListener(aMarker, 'click', function() {
-			infowindow.setContent(self.buildDescription(markers.get(aMarker['idPin']).pin,markers.get(aMarker['idPin']).pin.type));
-		
-			infowindow.open(map,aMarker);
-
-		});
-	};
-
-
->>>>>>> origin/dev-police
 	self.initMap = function() {
 		self.pinSetup();
 
@@ -120,25 +40,13 @@ function MapManager(){
 			zoom: 13,
 			center: cordinateLyon
 	    };
-	    map = new google.maps.Map(document.getElementById('map'),	    							mapOptions);
+	    map = new google.maps.Map(document.getElementById('map'),mapOptions);
 	    var centerControlDiv = document.createElement('div');
 		var centerControl = self.CenterControl(centerControlDiv, map);
 		centerControlDiv.index = 1;
 		map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
 		google.maps.event.addListener(map, 'zoom_changed', self.zoomHandler );
 		google.maps.event.addListener(map, 'center_changed', self.zoomHandler );
-<<<<<<< HEAD
-
-	    //self.refreshPins();
-=======
-		google.maps.event.addDomListener(map, "resize", function() {
-	     var center = map.getCenter();
-	     google.maps.event.trigger(map, "resize");
-	     map.setCenter(center); 
-    	});
-		//self.refreshPins();
->>>>>>> origin/dev-police
-	    //setInterval(self.refreshPins(), 60000 );
 	};
 
 	self.zoomHandler = function () {
@@ -450,7 +358,7 @@ function MapManager(){
 				break;
 			case "stationTCL" : 
 				image = imageTCL;
-				titre = "Velo'v";
+				titre = "Metro/Tram";
 				break;
 			case "cafe" : 
 				image = imageBar;
@@ -471,6 +379,10 @@ function MapManager(){
 			case "facebookPin" : 
 				image = imageFacebook;
 				titre = "Facebook";
+				break;
+			case "Monument" : 
+				image = imageMonument;
+				titre = "Monument";
 				break;
 			case "event" : 
 				image = imageNormal;
