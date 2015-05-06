@@ -1,0 +1,952 @@
+{
+    "node": [
+      {
+        "-id": "21609292",
+        "-version": "7",
+        "-timestamp": "2014-06-05T13:44:25Z",
+        "-uid": "878284",
+        "-user": "Agamitsudo",
+        "-changeset": "22756300",
+        "-lat": "45.7806667",
+        "-lon": "4.8519176",
+        "tag": [
+          {
+            "-k": "heritage",
+            "-v": "3"
+          },
+          {
+            "-k": "heritage:operator",
+            "-v": "mhs"
+          },
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "image",
+            "-v": "http://phototheque.1000wallpapers.com/galleries/Nature/p/Pa+%E0+Pl/Parc+de+la+T%EAte+d'Or/Ile+du+souvenir/Monument+aux+morts/large/Monument+aux+morts+5.jpg"
+          },
+          {
+            "-k": "mhs:inscription_date",
+            "-v": "1982"
+          },
+          {
+            "-k": "name",
+            "-v": "Monument aux morts de l'île du Souvenir"
+          },
+          {
+            "-k": "ref:mhs",
+            "-v": "PA00117982"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Monument aux morts de l'île du Souvenir"
+          }
+        ]
+      },
+      {
+        "-id": "270483133",
+        "-version": "2",
+        "-timestamp": "2010-11-18T10:01:18Z",
+        "-uid": "10209",
+        "-user": "ryra6453",
+        "-changeset": "6398703",
+        "-lat": "45.7707891",
+        "-lon": "4.8292496",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "\"A la coopération\""
+          }
+        ]
+      },
+      {
+        "-id": "270483139",
+        "-version": "3",
+        "-timestamp": "2010-11-18T10:01:16Z",
+        "-uid": "10209",
+        "-user": "ryra6453",
+        "-changeset": "6398703",
+        "-lat": "45.7702328",
+        "-lon": "4.8303812",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "\"A Burdeau\""
+          }
+        ]
+      },
+      {
+        "-id": "273211850",
+        "-version": "3",
+        "-timestamp": "2014-09-07T15:43:16Z",
+        "-uid": "878284",
+        "-user": "Agamitsudo",
+        "-changeset": "25289483",
+        "-lat": "45.7582517",
+        "-lon": "4.8332712",
+        "tag": [
+          {
+            "-k": "artist_name",
+            "-v": "Georges Salendre"
+          },
+          {
+            "-k": "artwork_type",
+            "-v": "sculpture"
+          },
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "image",
+            "-v": "https://commons.wikimedia.org/wiki/File:Le_Veilleur_de_pierre_place_Bellecour.jpg"
+          },
+          {
+            "-k": "name",
+            "-v": "Veilleur de pierre"
+          },
+          {
+            "-k": "start_date",
+            "-v": "1948"
+          },
+          {
+            "-k": "tourism",
+            "-v": "artwork"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Veilleur de pierre"
+          }
+        ]
+      },
+      {
+        "-id": "985951657",
+        "-version": "3",
+        "-timestamp": "2012-06-06T01:08:27Z",
+        "-uid": "290680",
+        "-user": "wheelmap_visitor",
+        "-changeset": "11811491",
+        "-lat": "45.7684146",
+        "-lon": "4.8848785",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "plaque histoire déportation"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "1126064081",
+        "-version": "2",
+        "-timestamp": "2011-07-29T10:03:42Z",
+        "-uid": "17524",
+        "-user": "teamdindon",
+        "-changeset": "8861829",
+        "-lat": "45.8104017",
+        "-lon": "4.8131471",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Monument aux Morts"
+          }
+        ]
+      },
+      {
+        "-id": "1209588594",
+        "-version": "2",
+        "-timestamp": "2011-10-24T23:18:02Z",
+        "-uid": "158826",
+        "-user": "cquest",
+        "-changeset": "9648272",
+        "-lat": "45.7347906",
+        "-lon": "4.7688735",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Monument aux Morts"
+          },
+          {
+            "-k": "source",
+            "-v": "cadastre-dgi-fr source : Direction Générale des Impôts - Cadastre. Mise à jour : 2011"
+          }
+        ]
+      },
+      {
+        "-id": "1368894258",
+        "-version": "3",
+        "-timestamp": "2013-07-08T11:17:39Z",
+        "-uid": "963298",
+        "-user": "Gloumouth1",
+        "-changeset": "16872226",
+        "-lat": "45.7691356",
+        "-lon": "4.830385",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Au Sergent Blandan"
+          },
+          {
+            "-k": "note",
+            "-v": "Monument en hommage au Sergent Blandant."
+          }
+        ]
+      },
+      {
+        "-id": "1421941030",
+        "-version": "3",
+        "-timestamp": "2011-09-26T15:39:42Z",
+        "-uid": "200426",
+        "-user": "gottferdom",
+        "-changeset": "9402981",
+        "-lat": "45.7652069",
+        "-lon": "4.8766606",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Combattants d'Afrique du Nord"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "limited"
+          }
+        ]
+      },
+      {
+        "-id": "1423371887",
+        "-version": "4",
+        "-timestamp": "2012-12-11T07:26:48Z",
+        "-uid": "206119",
+        "-user": "MrsPeel",
+        "-changeset": "14234989",
+        "-lat": "45.7698564",
+        "-lon": "4.8771917",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Armées polonaises en France"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "1430561047",
+        "-version": "4",
+        "-timestamp": "2011-10-23T19:55:00Z",
+        "-uid": "515998",
+        "-user": "LQui",
+        "-changeset": "9637760",
+        "-lat": "45.7668281",
+        "-lon": "4.8808577",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Reconnaitre le génocide arménien de 1915"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "yes"
+          }
+        ]
+      },
+      {
+        "-id": "1511924415",
+        "-version": "2",
+        "-timestamp": "2012-02-03T19:38:04Z",
+        "-uid": "392139",
+        "-user": "Canuts",
+        "-changeset": "10578339",
+        "-lat": "45.766324",
+        "-lon": "4.9301941",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Monument à Missak Manouchian et aux résistants FTP fusillés"
+          }
+        ]
+      },
+      {
+        "-id": "1688832982",
+        "-version": "8",
+        "-timestamp": "2014-04-29T20:38:44Z",
+        "-uid": "181135",
+        "-user": "Manu1400",
+        "-changeset": "22031253",
+        "-lat": "45.781229",
+        "-lon": "4.8549053",
+        "tag": [
+          {
+            "-k": "description",
+            "-v": "Statue-buste du Senateur Jean-Claude Marius Magdeleine Vaïsse"
+          },
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "image",
+            "-v": "http://fr.wikipedia.org/wiki/Fichier:Statue_senateur_Vaise.jpg"
+          },
+          {
+            "-k": "image:1",
+            "-v": "http://fr.wikipedia.org/wiki/Fichier:Plaque_statue_Vaisse.jpg"
+          },
+          {
+            "-k": "inscription",
+            "-v": "SENATEUR VAÏSSE Jean-Claude / Préfet du Rhône du 25 mars 1853 au 29 août 1864 / Créateur du parc de la Tête d'Or"
+          },
+          {
+            "-k": "name",
+            "-v": "Claude-Marius Vaïsse"
+          }
+        ]
+      },
+      {
+        "-id": "1801090640",
+        "-version": "1",
+        "-timestamp": "2012-06-24T20:41:39Z",
+        "-uid": "515998",
+        "-user": "LQui",
+        "-changeset": "12005240",
+        "-lat": "45.7651996",
+        "-lon": "4.889317",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Droits de l'Homme"
+          }
+        ]
+      },
+      {
+        "-id": "1801090646",
+        "-version": "1",
+        "-timestamp": "2012-06-24T20:41:40Z",
+        "-uid": "515998",
+        "-user": "LQui",
+        "-changeset": "12005240",
+        "-lat": "45.7647803",
+        "-lon": "4.888636",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Otages du Liban"
+          }
+        ]
+      },
+      {
+        "-id": "1880418734",
+        "-version": "2",
+        "-timestamp": "2012-10-05T14:30:52Z",
+        "-uid": "664913",
+        "-user": "LaSoie",
+        "-changeset": "13373892",
+        "-lat": "45.774888",
+        "-lon": "4.8321335",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Statue de Joseph Marie Jacquard"
+          }
+        ]
+      },
+      {
+        "-id": "1945602144",
+        "-version": "2",
+        "-timestamp": "2012-10-04T07:25:36Z",
+        "-uid": "162016",
+        "-user": "Neil Dewhurst",
+        "-changeset": "13356817",
+        "-lat": "45.7243334",
+        "-lon": "4.914357",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "image",
+            "-v": "http://s4.e-monsite.com/2011/03/21/07/resize_550_550//IMG_0812.jpg"
+          },
+          {
+            "-k": "name",
+            "-v": "Mémorial pour les Anciens Combattants du Rhône Morts en Afrique du Nord"
+          },
+          {
+            "-k": "start_date",
+            "-v": "2006-09-18"
+          },
+          {
+            "-k": "website",
+            "-v": "http://sv69.e-monsite.com/pages/articles-algerie/memorial-pour-les-anciens-combattants-du-rhone-morts-en-afrique-du-nord.html"
+          }
+        ]
+      },
+      {
+        "-id": "2039127648",
+        "-version": "2",
+        "-timestamp": "2013-12-20T15:05:56Z",
+        "-uid": "1093436",
+        "-user": "Pierroux",
+        "-changeset": "19551247",
+        "-lat": "45.7504007",
+        "-lon": "4.8617537",
+        "tag": [
+          {
+            "-k": "addr:city",
+            "-v": "Lyon"
+          },
+          {
+            "-k": "addr:housename",
+            "-v": "Mémorial de la Prison de Montluc"
+          },
+          {
+            "-k": "addr:housenumber",
+            "-v": "4"
+          },
+          {
+            "-k": "addr:postcode",
+            "-v": "69003"
+          },
+          {
+            "-k": "addr:street",
+            "-v": "Rue Jeanne Hachette"
+          },
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Mémorial de la Prison de Montluc"
+          },
+          {
+            "-k": "wheelchair",
+            "-v": "limited"
+          }
+        ]
+      },
+      {
+        "-id": "2184350938",
+        "-version": "3",
+        "-timestamp": "2014-06-12T07:07:20Z",
+        "-uid": "878284",
+        "-user": "Agamitsudo",
+        "-changeset": "22883855",
+        "-lat": "45.8081376",
+        "-lon": "4.9204248",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "image",
+            "-v": "https://commons.wikimedia.org/wiki/File:M%C3%A9morial_h%C3%A9l%C3%A8ne_et_victor_Basch.JPG"
+          },
+          {
+            "-k": "memorial",
+            "-v": "war_memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Mémorial Hélène-et-Victor-Basch"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Mémorial Hélène-et-Victor-Basch"
+          }
+        ]
+      },
+      {
+        "-id": "2284148697",
+        "-version": "1",
+        "-timestamp": "2013-04-28T11:44:18Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "15894131",
+        "-lat": "45.7678113",
+        "-lon": "4.8581044",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Julien Barbero"
+          }
+        ]
+      },
+      {
+        "-id": "2311828056",
+        "-version": "1",
+        "-timestamp": "2013-05-19T20:01:09Z",
+        "-uid": "24888",
+        "-user": "renecha",
+        "-changeset": "16199023",
+        "-lat": "45.7742614",
+        "-lon": "4.8284204",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "\"A Henri Gorjus\""
+          },
+          {
+            "-k": "source",
+            "-v": "Local knowledge"
+          }
+        ]
+      },
+      {
+        "-id": "2426730224",
+        "-version": "1",
+        "-timestamp": "2013-08-21T11:57:40Z",
+        "-uid": "194536",
+        "-user": "Frédéric",
+        "-changeset": "17439463",
+        "-lat": "45.7711211",
+        "-lon": "4.8072178",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Rhodiaceta"
+          }
+        ]
+      },
+      {
+        "-id": "2447828152",
+        "-version": "1",
+        "-timestamp": "2013-09-06T07:03:39Z",
+        "-uid": "878284",
+        "-user": "Agamitsudo",
+        "-changeset": "17698667",
+        "-lat": "45.7988101",
+        "-lon": "4.9410751",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Mémorial Nathalie-Gautier"
+          }
+        ]
+      },
+      {
+        "-id": "2466195348",
+        "-version": "2",
+        "-timestamp": "2014-09-04T20:04:27Z",
+        "-uid": "2171342",
+        "-user": "Jerome__",
+        "-changeset": "25235092",
+        "-lat": "45.7667625",
+        "-lon": "4.8213138",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "L'Homme de la Roche - Jean Kleberger"
+          }
+        ]
+      },
+      {
+        "-id": "2476288480",
+        "-version": "2",
+        "-timestamp": "2015-04-05T12:15:11Z",
+        "-uid": "687476",
+        "-user": "maxlath",
+        "-changeset": "29991282",
+        "-lat": "45.7574366",
+        "-lon": "4.82992",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Antoine de Saint-Exupery"
+          },
+          {
+            "-k": "subject:wikidata",
+            "-v": "Q2908"
+          }
+        ]
+      },
+      {
+        "-id": "2477064628",
+        "-version": "2",
+        "-timestamp": "2014-12-13T16:12:11Z",
+        "-uid": "878284",
+        "-user": "Agamitsudo",
+        "-changeset": "27445570",
+        "-lat": "45.7587781",
+        "-lon": "4.8267828",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "image",
+            "-v": "https://commons.wikimedia.org/wiki/File:Buste_de_Joseph_Lavarenne_Place_Beno%C3%AEt-Cr%C3%A9pu_%C3%A0_Lyon.JPG"
+          },
+          {
+            "-k": "name",
+            "-v": "Monseigneur Lavarenne"
+          }
+        ]
+      },
+      {
+        "-id": "2483668690",
+        "-version": "1",
+        "-timestamp": "2013-10-05T14:18:53Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "18196306",
+        "-lat": "45.7610645",
+        "-lon": "4.8526686",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Charles de Gaulle"
+          }
+        ]
+      },
+      {
+        "-id": "2507941351",
+        "-version": "1",
+        "-timestamp": "2013-10-25T06:31:04Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "18530583",
+        "-lat": "45.7669524",
+        "-lon": "4.8055691",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Au Personnel de la Société Rhodiaceta Victime de la Guerre 1939-1945"
+          }
+        ]
+      },
+      {
+        "-id": "2573534498",
+        "-version": "1",
+        "-timestamp": "2013-12-09T20:16:29Z",
+        "-uid": "1763274",
+        "-user": "Eve Aporee",
+        "-changeset": "19365644",
+        "-lat": "45.7795821",
+        "-lon": "4.8014706",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "memorial:type",
+            "-v": "plaque"
+          },
+          {
+            "-k": "name",
+            "-v": "Lieu du Dernier Discours de Jean Jaurès"
+          }
+        ]
+      },
+      {
+        "-id": "2630265230",
+        "-version": "1",
+        "-timestamp": "2014-01-20T19:31:26Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "20109946",
+        "-lat": "45.7596923",
+        "-lon": "4.8480354",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Martin Luther King"
+          }
+        ]
+      },
+      {
+        "-id": "2725265640",
+        "-version": "1",
+        "-timestamp": "2014-03-18T14:13:18Z",
+        "-uid": "878284",
+        "-user": "Agamitsudo",
+        "-changeset": "21175032",
+        "-lat": "45.7685687",
+        "-lon": "4.9472953",
+        "tag": [
+          {
+            "-k": "artist_name",
+            "-v": "Robert Darnas"
+          },
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Mémorial du génocide arménien de Décines-Charpieu"
+          },
+          {
+            "-k": "start_date",
+            "-v": "1972"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Mémorial du génocide arménien de Décines-Charpieu"
+          }
+        ]
+      },
+      {
+        "-id": "2789756653",
+        "-version": "1",
+        "-timestamp": "2014-04-14T05:28:43Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "21678974",
+        "-lat": "45.772911",
+        "-lon": "4.8052919",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Souvenir Unité Paix"
+          }
+        ]
+      },
+      {
+        "-id": "2845450101",
+        "-version": "1",
+        "-timestamp": "2014-05-09T07:18:22Z",
+        "-uid": "1151930",
+        "-user": "Ludovic Drouard",
+        "-changeset": "22224263",
+        "-lat": "45.7601956",
+        "-lon": "4.8485244",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Adjudant Stéphane Abbes"
+          },
+          {
+            "-k": "note",
+            "-v": "A la mémoire de l'adjudant Stéphane Abbes du Corps départemental des sapeurs-pompiers du Rhône centre d’intervention Lyon-Corneille. Mort en service commandé le 28 février 2008 lors de l’explosion de gaz 117 cours Lafayette à Lyon"
+          }
+        ]
+      },
+      {
+        "-id": "3128834826",
+        "-version": "2",
+        "-timestamp": "2014-12-14T11:21:32Z",
+        "-uid": "39381",
+        "-user": "DD1GJ",
+        "-changeset": "27455348",
+        "-lat": "45.7638386",
+        "-lon": "4.8359236",
+        "tag": [
+          {
+            "-k": "description",
+            "-v": "Dalle rouge insérée dans la chaussée marquant le lieu de l'assassinat de Sadi Carnot"
+          },
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "memorial:type",
+            "-v": "floor_plate"
+          },
+          {
+            "-k": "name",
+            "-v": "Sadi Carnot"
+          },
+          {
+            "-k": "website",
+            "-v": "http://coord.info/GC16VNR"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Sadi Carnot (homme politique)#Assassinat"
+          }
+        ]
+      },
+      {
+        "-id": "3139885740",
+        "-version": "1",
+        "-timestamp": "2014-10-20T12:19:48Z",
+        "-uid": "704348",
+        "-user": "JBacc1",
+        "-changeset": "26210648",
+        "-lat": "45.7671849",
+        "-lon": "4.8571812",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Mémorial Général Brosset"
+          }
+        ]
+      },
+      {
+        "-id": "3209370959",
+        "-version": "2",
+        "-timestamp": "2015-04-19T13:17:57Z",
+        "-uid": "46239",
+        "-user": "MatthieuMartin",
+        "-changeset": "30328847",
+        "-lat": "45.7385146",
+        "-lon": "4.856947",
+        "tag": [
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "name",
+            "-v": "Monument aux Morts de la guerre franco-allemande de 1870"
+          },
+          {
+            "-k": "source",
+            "-v": "Orthophoto 2012 Smartdata Grand Lyon"
+          }
+        ]
+      },
+      {
+        "-id": "3450121250",
+        "-version": "1",
+        "-timestamp": "2015-04-11T08:16:43Z",
+        "-uid": "878284",
+        "-user": "Agamitsudo",
+        "-changeset": "30137574",
+        "-lat": "45.7894281",
+        "-lon": "4.8000012",
+        "tag": [
+          {
+            "-k": "artist_name",
+            "-v": "Albert Pommier"
+          },
+          {
+            "-k": "historic",
+            "-v": "memorial"
+          },
+          {
+            "-k": "inscription",
+            "-v": "En souvenir de leur terre natale la ville de Lyon à ses enfants d'Afrique du Nord qu'elle a accueillis"
+          },
+          {
+            "-k": "name",
+            "-v": "Monument aux morts d'Oran"
+          },
+          {
+            "-k": "start_date",
+            "-v": "1968"
+          },
+          {
+            "-k": "wikidata",
+            "-v": "Q19795235"
+          },
+          {
+            "-k": "wikipedia",
+            "-v": "fr:Monument aux morts d'Oran"
+          }
+        ]
+      }
+    ]
+  }

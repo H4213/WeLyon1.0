@@ -123,7 +123,7 @@ def createPointOfInterestTable() :
 				
 	json_file_nc.close()
 
-	#POI police
+	#POI police	
 	service.logMessage(".Loading police file")
 	json_file_police = open('police.json')
 	dataPolice = json.load(json_file_police)
@@ -145,6 +145,28 @@ def createPointOfInterestTable() :
 				listPointOfInterest.append(obj)
 				
 	json_file_police.close()
+
+	#POI monuments
+	service.logMessage(".Loading monuments file")
+	json_file_monuments = open('monuments.json')
+	dataMonuments = json.load(json_file_monuments)
+	categorie = Category.query.filter_by(nom = "Monument").first()
+	for i in range (0,37):
+		for j in dataMonuments["node"][i]["tag"] :
+			if j["-k"] == "name" :
+				title = j["-v"]
+				idUser = 1
+				lat = dataMonuments["node"][i]["-lat"]
+				lng = dataMonuments["node"][i]["-lon"]
+						
+				obj = Pin('Monument',title, lng, lat, idUser, [categorie], "")
+				obj.typeSpecificID = dataMonuments["node"][i]["-id"]
+				listPointOfInterest.append(obj)
+				
+	json_file_monuments.close()
+
+				
+
 	return listPointOfInterest
 
 
