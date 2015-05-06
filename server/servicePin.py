@@ -141,13 +141,14 @@ def majPin(form):
 def getCommentByIdPin(idPin):
 	print("comment requested")
 	if idPin:
-		items = db.engine.execute("select * from comments where pin_id="+str(idPin))
+		items = db.engine.execute("select * from comments where pin_id="+str(idPin)+" ORDER BY date DESC")
 		list = []
 		if items:
 			for row in items:
 				list.append({
 					"text":row['text'],
-					"date":row['date']
+					"date":row['date'],
+					"username":row['username']
 					})
 			print("got results")
 			return jsonify(Comments=list)
@@ -156,11 +157,11 @@ def getCommentByIdPin(idPin):
 
 	return jsonify(error="Wrong request")
 
-def addCommentByIdPin(idPin, text) :
+def addCommentByIdPin(idPin, text, username) :
 	if True:
 		print idPin
 		print text
-		db.engine.execute("insert into comments(pin_id, text) values ("+str(idPin)+"," +"'"+text+"')")
+		db.engine.execute("insert into comments(pin_id, text, date, username) values ("+str(idPin)+"," +"'"+text+"',datetime('now'),"+username+")")
 		return getCommentByIdPin(str(idPin))
 	else:
 		return jsonify(error="Wrong request")

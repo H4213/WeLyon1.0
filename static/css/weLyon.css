@@ -178,6 +178,22 @@ body{
 {
     list-style-type: none; /* on annule la puce par défaut */
     background-position: left; /* on positionne où l'on veut */
-    padding-left: 20px; /* pour éviter la superposition du contenu */
+
 }
 
+#content
+{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.comment-list-item
+{
+    background-color: rgb(220, 220, 220);
+}
+
+.comment-list
+{
+    background-color: rgb(240, 240, 240);
+    list-style-type:none;
+    padding-left: 3px; 
+    padding-right: 3px; 
+}

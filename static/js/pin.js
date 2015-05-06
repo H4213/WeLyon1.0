@@ -104,7 +104,7 @@ function Pin() {
         }
         rest.get("/comments/"+idPin+"/",data,callback)
     }
-    self.addComment=function(text, currentUser, idPin, callback){
+    self.addComment=function(text, currentUser, nameUser, idPin, callback){
         
         if (text=="")
             {alert("Donnez un titre à votre évènement")}
@@ -112,6 +112,7 @@ function Pin() {
             {alert("veuillez vous connecter")}
         else{
             var data = {
+                        "username:": nameUser,
                         "text": text,
                         "pin_id": idPin
                 }

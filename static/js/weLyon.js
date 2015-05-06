@@ -302,7 +302,7 @@ function WeLyon(){
 
 		if (data['error'] == null){
 			self.setUser(data.idUser, data.nameUser);
-			mapManager.setIdUser(idUser);
+			mapManager.setIdUser(idUser,nameUser);
 			
 			if(messageView.count()==1){
 				messageView.show();

@@ -7,6 +7,10 @@ function MapManager(){
 	if (idUser==null){
 		idUser=-1;
 	}
+	var nameUser = localStorage.getItem("nameUser");
+	if (nameUser==null){
+		nameUser="Anonyme";
+	}
 	var infowindow = new google.maps.InfoWindow({content : ""});
 	var currentPin = new Pin();
 	var markers = new Map();
@@ -562,8 +566,8 @@ function MapManager(){
 				var title =document.getElementById('titreAjout').value;
 				var description =document.getElementById('descriptionAjout').value;
 				pin.addDynPin(title,description,idUser,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin, newPos.lat(), newPos.lng(),theType,self.cbVotePin);
-						/*pin.addDynPin("Soirée","description",1,10,10,2015,10,10,10,10,2015,10,10, 45.76, 4.835,16,self.cbVotePin);
-*/
+						/*pin.addDynPin("Soirée","description",1,10,10,2015,10,10,10,10,2015,10,10, 45.76, 4.835,16,self.cbVotePin);*/
+
 		});
 		$(document).on("click",".pinCreationButtonStatic",function(){
 
@@ -718,7 +722,7 @@ function MapManager(){
 		var commentsEntete = '<br/><div id="commentzone"><h4>Commentaires</h4>'+
 					'<INPUT id="newComment" TYPE="textarea" placeholder="Ajoutez votre avis" VALUE="" class="newComment">'+
 					'<INPUT TYPE="button" NAME="ADD" VALUE="+" class="newCommentButton">'
-									+'<br/><br/><ul style="text-align:left">'+listofCommentsHTML+'</ul></div>';
+									+'<br/><br/><ul class="comment-list">'+listofCommentsHTML+'</ul></div>';
 		contentString = '<div id="content" data-id-pin=' + aPin.id+contentString+commentsEntete+'</div>';
 		
 		return contentString;
@@ -732,7 +736,9 @@ function MapManager(){
 					string_list="";
 				
 				for(i = 0; i < data.Comments.length;i++){
-	    			string_list+='<li>'+data.Comments[i].text+'</li>';
+	    			string_list+='<li><p class="comment-list-item" style="font-size: 9px;"><b>'+data.Comments[i].username + '</b> [Date :'+data.Comments[i].date +']</p>'
+	    							+ "<p>"+data.Comments[i].text+"</p>"
+	    							+	"</li>";
 	    			infowindow.setContent(self.buildDescription(currentPin, string_list));
 				}
 			}
@@ -817,7 +823,7 @@ function MapManager(){
 				pin.vote(idUser,pinID,-1,self.cbVotePin);
 			});
 			$(document).on("click",".newCommentButton",function(){
-				pin.addComment( $("#newComment").val(), 1, currentPin.id, self.cbBuildDescription);
+				pin.addComment( $("#newComment").val(), 1, nameUser, currentPin.id, self.cbBuildDescription);
 			});
 
 	};
@@ -827,8 +833,9 @@ function MapManager(){
 		pin.getPinVisibilite(visibilite, self.cbGetPinVisibilite);
 	};
 
-	self.setIdUser =function (idUserParam){
+	self.setIdUser =function (idUserParam, userName){
 		idUser = idUserParam;
+		nameUser = userName;
 	};
 	self.forceCategoryFilter=function(){
 		var tree = $("#categoryTreeView").fancytree("getTree")
