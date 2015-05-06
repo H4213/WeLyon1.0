@@ -6,9 +6,9 @@
 }
 
 #filActubox{
-	background-color: #34495e;
-	border: 1px solid black;
-	height: 68px;
+	background-color: rgb(233,229,220);
+	border: 0px solid black;
+	height: 60px;
 	overflow: hidden;
 }
 
@@ -24,8 +24,4 @@
 	cursor: hand;
 	cursor: pointer;
 	border-radius: 5px;
-}
-
-#filActu:hover{
-	background-color: #fbfcfc;
 }

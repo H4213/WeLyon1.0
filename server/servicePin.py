@@ -159,9 +159,9 @@ def getCommentByIdPin(idPin):
 
 def addCommentByIdPin(idPin, text, username) :
 	if True:
-		print idPin
+		print "rar"
 		print text
-		db.engine.execute("insert into comments(pin_id, text, date, username) values ("+str(idPin)+"," +"'"+text+"',datetime('now'),"+username+")")
+		db.engine.execute("insert into comments(pin_id, text, date, username) values ("+str(idPin)+"," +"'"+text+"',datetime('now'),'"+username+"')")
 		return getCommentByIdPin(str(idPin))
 	else:
 		return jsonify(error="Wrong request")

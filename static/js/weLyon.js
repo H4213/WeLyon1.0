@@ -84,6 +84,11 @@ function WeLyon(){
 			}
 		});
 
+		$('#map-container').css('height', (window.innerHeight-50-60)+'px');
+		$(window).resize(function() {
+			$('#map-container').css('height', (window.innerHeight-50-60)+'px');
+		});
+
 		setInterval(self.chargerNews,5000);
 	};
 

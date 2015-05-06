@@ -113,7 +113,7 @@ function Pin() {
             {alert("Commentaire vide")}
         else{
             var data = {
-                        "username:": nameUser,
+                        "username": nameUser,
                         "text": text,
                         "pin_id": idPin
                 }

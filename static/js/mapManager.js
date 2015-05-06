@@ -600,8 +600,7 @@ function MapManager(){
 				pin.vote(idUser,pinID,-1,self.cbVotePin);
 			});
 			$(document).on("click",".newCommentButton",function(){
-
-				pin.addComment( $("#newComment").val(), idUser , currentPin.id, self.cbBuildDescription);
+				pin.addComment( $("#newComment").val(), idUser , nameUser , currentPin.id, self.cbBuildDescription);
 			});
 
 	};

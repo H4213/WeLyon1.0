@@ -183,7 +183,7 @@ def load_facebook_event():
 @app.route('/comments/<idPin>/', methods=['GET', 'POST'])
 def comments(idPin = None):
   if int(idPin) == 0:
-    return servicePin.addCommentByIdPin(request.form["pin_id"], request.form["text"])
+    return servicePin.addCommentByIdPin(request.form["pin_id"], request.form["text"], request.form["username"])
   if int(idPin) > 0:
     return servicePin.getCommentByIdPin(idPin)
 
