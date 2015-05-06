@@ -161,9 +161,8 @@ def page_not_found(error):
 def load_facebook_event():
   facebookPin.refreshFacebookData()
 
-
-#@app.route('/comments/', methods=('GET', 'POST', 'PUT', 'DELETE'))
-@app.route('/comments/<idPin>/', methods=('GET', 'POST', 'PUT', 'DELETE'))
+@app.route('/comments/', methods=['GET', 'POST'])
+@app.route('/comments/<idPin>/')
 def comments(idPin = None):
   if request.method == "POST":
     return servicePin.addCommentByIdPin(request.form)
