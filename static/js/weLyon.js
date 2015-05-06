@@ -84,7 +84,7 @@ function WeLyon(){
 			}
 		});
 
-		//setInterval(self.chargerNews,5000);
+		setInterval(self.chargerNews,5000);
 	};
 
 	self.initialiserCarte = function(){			
@@ -436,13 +436,16 @@ function WeLyon(){
     }
 
 	self.chargerNews = function (){
-        mapManager.getNews('fil/'+dernier_id+'/' , self.cbNews);
+        mapManager.getNews('/fil/'+dernier_id+'/' , self.cbNews);
     }
 
     self.cbNews = function(data){
-        if(data!=''){
-           	$(data).prependTo('#filActubox').hide().animate({'height':'toggle','opacity':'toggle'},2000);
+            
+
+        if(data.logs!=''){
+           	$(data.logs).prependTo('#filActubox').hide().animate({'height':'toggle','opacity':'toggle'},2000);
      	   	$('#filActubox div:last-child').remove();
+     	   	self.setId(data.idLog);
         }
     };
 

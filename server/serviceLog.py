@@ -25,7 +25,7 @@ def getFil(more):
 
 	last = Log.query.order_by(Log.id.desc()).first()
 	if not last:
-		return ""
+		return jsonify(logs ="")
 
 	lastId = last.id
 	more = defMore(more, lastId)
@@ -34,7 +34,7 @@ def getFil(more):
 	futurLast = int(lastId)+1
 
 	if int(more) == int(futurLast):
-		return ""
+		return jsonify(logs="")
 
 	log = Log.query.get(more)
 
@@ -45,21 +45,18 @@ def getFil(more):
 		pinName = pin.title
 
 	getNext = ""
-	if not int(more) == int(lastId):
-		getNext = "<script>chargerNews();</script>"
 
 	more = int(more) + 1
 
-	script = "<script>setId("+str(more)+");</script>"
+	
 
 
 	div = '<div id="filActu" class="col-sm-2"><span id="'+str(log.idUser)+'">'+user.pseudo+'</span><br>'+log.action+'<br><span id="'+str(log.idPin)+'">'+pinName+'</span></div>'
 
-	return div + script + getNext
+	return jsonify(logs=div, idLog=str(more))
 		
 	items = Log.query.all()
-	return jsonify(logs=[item.serialize() for item in items])
-
+	#return jsonify(logs=[item.serialize() for item in items])
 	return jsonify(logs=[item.serialize() for item in iter(logs.get, None)])
 
 def defMore(more, last):
