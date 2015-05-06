@@ -7,6 +7,7 @@ function WeLyon(){
 	var idUser;
 	var nameUser;
 	var pinTest=new Pin();
+	var dernier_id = 1;
 
 //TODO initialisation par rapport aux droits d'utilisateur
 
@@ -16,6 +17,7 @@ function WeLyon(){
 		self.setUser();
 		self.initialiserCarte();		
 		self.fillCategories();
+
 	
 		$('#categoryButton').on('click',function(){
 			self.toggleCategories();
@@ -125,6 +127,8 @@ function WeLyon(){
 				$(this).parent().find('.valider').click();
 			}
 		});
+
+		setInterval(self.chargerNews,5000);
 	};
 
 	self.initialiserCarte = function(){		
@@ -430,7 +434,19 @@ function WeLyon(){
 		
 	};
 
+	self.setId = function (id){
+        dernier_id = id;
+    }
+	self.chargerNews = function (){
+        mapManager.getNews('fil/'+dernier_id+'/' , self.cbNews);
+    }
 
+    self.cbNews = function(data){
+        if(data!=''){
+           	$(data).prependTo('#filActubox').hide().animate({'height':'toggle','opacity':'toggle'},2000);
+     	   	$('#filActubox div:last-child').remove();
+        }
+    };
 
 
 }

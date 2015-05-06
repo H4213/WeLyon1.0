@@ -186,11 +186,8 @@ class Log(db.Model):
             'time': self.dateTime,
         }
 
-<<<<<<< HEAD
-# db.reflect()
-# db.drop_all()
-=======
+
+
 #db.reflect()
 #db.drop_all()
->>>>>>> origin/dev-Fil
 db.create_all()

@@ -5,11 +5,8 @@ from flask.ext.jsonpify import jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-<<<<<<< HEAD
 from sqlalchemy import or_
-=======
 from server import serviceLog
->>>>>>> origin/dev-Fil
 import time
 
 def logMessage(message):

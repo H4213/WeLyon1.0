@@ -627,4 +627,8 @@ function MapManager(){
 			}
 		}
 	};
+
+	self.getNews = function (path,  callback) {
+		rest.get(path , null , callback);
+	}
 }
