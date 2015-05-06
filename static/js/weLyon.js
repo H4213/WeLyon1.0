@@ -7,12 +7,9 @@ function WeLyon(){
 	var messageView = new MessageView();
 	var idUser;
 	var nameUser;
-<<<<<<< HEAD
 	var pinTest=new Pin();
 	var dernier_id = 1;
-=======
-	var pinTest = new Pin();
->>>>>>> origin/front-filtres
+
 
 //TODO initialisation par rapport aux droits d'utilisateur
 
@@ -22,8 +19,6 @@ function WeLyon(){
 		self.setUser();
 		self.initialiserCarte();		
 		self.fillCategories();
-<<<<<<< HEAD
-
 	
 		$('#categoryButton').on('click',function(){
 			self.toggleCategories();
@@ -40,8 +35,6 @@ function WeLyon(){
 			});
 		});
 
-=======
->>>>>>> origin/front-filtres
 
 		$('#newEventButton').on('click', function(){
 			self.ajouterEvenemment();
