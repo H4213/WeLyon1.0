@@ -24,10 +24,10 @@ function MapManager(){
 	var imageRestau = Flask.url_for("static", {"filename": "./assets/restaurant.png"});
 	var imageHotel = Flask.url_for("static", {"filename": "./assets/hotel.png"});
 	var imageMonument = Flask.url_for("static", {"filename": "./assets/monument.png"});
-	var imageFacebook = Flask.url_for("static", {"filename": "./assets/facebook.png"})
-	var imageTCL = Flask.url_for("static", {"filename": "./assets/tcl.png"})
-	var imageHopital = Flask.url_for("static", {"filename": "./assets/hopital.png"})
-	var imagePolice = Flask.url_for("static", {"filename": "./assets/police.png"})
+	var imageFacebook = Flask.url_for("static", {"filename": "./assets/facebook.png"});
+	var imageTCL = Flask.url_for("static", {"filename": "./assets/tcl.png"});
+	var imageHopital = Flask.url_for("static", {"filename": "./assets/hopital.png"});
+	var imagePolice = Flask.url_for("static", {"filename": "./assets/police.png"});
 	var imageResume = Flask.url_for("static", {"filename": "./assets/plus.png"});
 
 
@@ -527,7 +527,6 @@ function MapManager(){
    	};
 
    	self.cbGetPinSearch = function(data){
-   		console.log(data)
    		for (var valeur of markers.values()) {
     		valeur.marker.setMap(null);	
 
@@ -566,7 +565,6 @@ function MapManager(){
 	self.forceCategoryFilter=function(){
 		var tree = $("#categoryTreeView").fancytree("getTree")
 		tree.visit(function(node){
-			console.log(node)
     		var idCategory=node.key;
     		var param=node.isSelected();
     		self.categoryFilter(param,idCategory)
