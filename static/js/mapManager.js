@@ -63,8 +63,6 @@ function MapManager(){
 		for (var valeur of markers.values()) {
 			valeur.marker.setVisible(false);
 			if (bounds.contains(valeur.marker.getPosition()) && valeur.marker.visibilityCategoryToken > 0  ) {
-				console.log("token" + valeur.marker.visibilityCategoryToken);
-				console.log("type " + valeur.pin.type)
 				toDisplay.push(valeur);
 				for (var i = 0 ; i < zones.length ; i++) {
 					if (zones[i].bound.contains(valeur.marker.getPosition())) {
@@ -566,7 +564,6 @@ function MapManager(){
    	};
 
    	self.cbGetPinSearch = function(data){
-   		console.log(data)
    		for (var valeur of markers.values()) {
     		valeur.marker.setMap(null);	
 
@@ -608,7 +605,6 @@ function MapManager(){
 	self.forceCategoryFilter=function(){
 		var tree = $("#categoryTreeView").fancytree("getTree")
 		tree.visit(function(node){
-			console.log(node)
     		var idCategory=node.key;
     		var param=node.isSelected();
     		self.categoryFilter(param,idCategory)

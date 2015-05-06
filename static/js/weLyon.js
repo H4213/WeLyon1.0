@@ -455,7 +455,6 @@ function WeLyon(){
 		if (node.children!=null && levelofSearch<2){
 				levelofSearch +=1;
 				for(i=0;i<node.children.length;i++){
-					console.log(node.children[i]);
 					self.filtreCategoryNode(node.children[i]);
 				}
 				
