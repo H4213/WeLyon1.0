@@ -158,199 +158,13 @@ function MapManager(){
 
 
 	self.ajouterEvenemment = function(){
-	 	google.maps.event.addListenerOnce(map, 'click', function(e) {	
-	 		$('#formulaireAjoutPoint').modal('show');
-			$('#valideTypePoint').on('click',function(){
-				switch ($('#ajoutPointChoixType').type.value){
-					case "Lieu":
-					break;
-					case "Evenement":
-					break;
-				}
-			});
-	 		/*("#myModal .modal-body").load(target, function() { 
-         $("#myModal").modal("show"); */
-	 	});
-	 };
+			var theType;
+		 	google.maps.event.addListenerOnce(map, 'click', function(e) {
 
-	self.placeNewMarker=function(position, map) {
-		if (marker){
-			marker.setVisible(false);
-		}
-		 marker = new google.maps.Marker({
-			position: position,
-			map: map
-		});
-		map.panTo(position);
-		newPos=position
-		self.buildForm(marker);
+		 	pin.addDynPin("MonPi,","",idUser,2,2,2016,12,12,2,2,2017,12,12,e.latLng.lat(),e.latLng.lng(),18,self.cbAddPin);	
+		 	})
 	};
-
-	self.buildForm=function(aMarker) {
-		var contentString = '' +
-			'<p>' +
-				'<h2>Ajout d\'un nouvel évènement</h2>' +
-			'</p>' +
-			'<form name="formulaire" id="formulaire1">' +
-				'<p>' +
-					'<h3>Type d\'évènement</h3>' +
-					'<img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="type" VALUE="Soiree">Soirée <BR>' +
-					'<img src="./static/assets/bar.png" alt="Bar"> <INPUT TYPE="radio" NAME="type" VALUE="Bar">Bar <BR>' +
-					'<img src="./static/assets/restau.png" alt="Restaurant"> <INPUT TYPE="radio" NAME="type" VALUE="Restaurant">Restaurant <BR>' +
-					'<img src="./static/assets/hotel.png" alt="Hôtel"> <INPUT TYPE="radio" NAME="type" VALUE="Hotel">Hôtel <BR>' +		
-					'<img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="type" VALUE="Monument">Monument <BR>' +
-					'<img src="./static/assets/normal.png" alt="Autre"> <INPUT TYPE="radio" NAME="type" VALUE="normal">Autre <BR>' +
-				'</p>' +
-				'<p>' +
-					'<INPUT TYPE="button" id="okCreatePin" NAME="suivant" VALUE="Suivant">' +
-				'</p>' +
-			'</form>';
-
-		 infowindow.setContent(contentString)
-		
-		infowindow.open(map,aMarker);
-		usedMarker = aMarker;
-		usedInfoWindow = infowindow;
-		google.maps.event.addListener(infowindow, 'closeclick', function(){
-			if (marker){
-				marker.setVisible(false); //removes the marker);
-			}
-		});
-
-		$('#okCreatePin').on("click",function(){
-			self.buildForm2();
-		});
-	};
-
-	self.buildForm2=function() {
-
-	    leFormulaire=document.getElementById('formulaire1');
-		theType=leFormulaire.type.value;
-		if(leFormulaire.type[0].checked)
-		{
-			var contentString = '' +
-				'<p>' +
-					'<h2>Ajout d\'un nouvel évènement</h2>' +
-				'</p>' +
-				'<form name="formulaire">' +
-					'<p>' +
-						'<center><h3><img src="./static/assets/' + theType + '.png" alt="Soirée"> Soirée </h3></center>' +
-					'</p>' +
-					'<p>' +
-						'<label for="titre">Titre</label> :<br /><input type="text" name="titre" id="titreAjout"/>' +
-					'</p>' +
-					'<p>' +
-						'<label for="description">Description</label> :<br />' +
-						'<textarea name="description" id="descriptionAjout"></textarea>' +
-					'</p>' +
-					'<p>' +
-					'<fieldset class="date">'+
-						 '<label>Date de début : </label><br />'+
-  								 '<select id="jour_debut" name="jour_debut" />';
-  								 for (var i = 0 ; i<31 ; i++) {
-  								 	contentString +=  '<option>' + (i+1) +'</option>';
-  								 };
-		  						 contentString += '</select>'+
-		  						  '<select id="mois_debut" name="mois_debut" />';
-		  						  for (var i = 0 ; i<12 ; i++ ) {
-		  						  	contentString += '<option>' + (i+1) + '</option> '
-		  						  }    
-		  						  contentString += '</select>'+
-		  						  '<select id="annee_debut" name="annee_debut" />'
-			  						    '<option>2015</option>'      +
-			  						    '<option>2016</option>'      +
-			  						    '<option>2017</option>'      +
-			  						    '<option>2018</option>'      +
-		  						  '</select>'+
-		  					'<span class="inst">(Jour-Mois-Année)</span>'+
-		  			'</fieldset>'+
-		  			'<fieldset class="heure">'+
-		  				'<label>Heure de début : </label><br />'+
-  						'<input type="text" name="heure_debut" id="heure_debut" size="2">'+
-  						'<label>h</label>'+
-  						'<input type="text" name="minute_debut" id="minute_debut" size="2">'+	  					
-		  			'</fieldset>'+
-
-		  			'<fieldset class="date">'+
-						 '<label>Date de Fin : </label><br />'+
-  								 '<select id="jour_fin" name="jour_fin" />';
-			  						    for (var i = 0 ; i<31 ; i++) {
-  								 			contentString +=  '<option>' + (i+1) +'</option>';
-  								 		}	
-		  						contentString +=  '</select>' +
-		  						  '<select id="mois_fin" name="mois_fin" />';
-		  						  for (var i = 0 ; i<13 ; i++ ) {
-		  						  	contentString += '<option>' + (i+1) + '</option> '
-		  						  }    
-		  						  contentString += '</select>'+
-		  						  '<select id="annee_fin" name="annee_fin" />'+
-			  						    '<option>2015</option>'      +
-			  						    '<option>2016</option>'      +
-			  						    '<option>2017</option>'      +
-			  						    '<option>2018</option>'      +
-		  						  '</select>'+
-		  					'<span class="inst">(Jour-Mois-Année)</span>'+
-		  			'</fieldset>'+
-	  				'<fieldset class="heure">'+
-	  					'<label>Heure de début : </label><br />'+
-						'<input type="text" name="heure_fin" id="heure_fin" size="2">'+
-						'<label>h</label>'+
-						'<input type="text" name="minute_fin" id="minute_fin" size="2">'+	  					
-	  				'</fieldset>'+
-						'<center><input type="button" class="pinCreationButtonDyn" name="valider" value="Valider"></center>' +
-					'</p>' +
-				'</form>';
-		}
-		else
-		{
-			var contentString = '' +
-				'<p>' +
-					'<h2>Ajout d\'un nouvel évènement</h2>' +
-				'</p>' +
-				'<p>' +
-					'<img src="./static/assets/' + theType + '.png" alt="' + theType + '">' +theType+
-				'</p>' +
-				'<form name="formulaire">' +				
-					'<p>' +
-						'<label for="titre">Titre</label> :<br /><input type="text" name="titre" id="titre"/>' +
-					'</p>' +
-					'<p>' +
-						'<label for="description">Description</label> :<br />' +
-						'<textarea name="description" id="description"></textarea>' +
-					'</p>' +
-					'<p>' +
-						'<center><input type="button" class="pinCreationButtonStatic" name="valider" value="Valider"></center>' +
-					'</p>' +
-				'</form>';
-		}
-
-		infowindow.setContent(contentString);
-		infowindow.open(map,usedMarker);
-		$(document).on("click",".pinCreationButtonDyn",function(){
-				var jour_debut= document.getElementById('jour_debut').value;
-				var mois_debut= document.getElementById('mois_debut').value;
-				var annee_debut=document.getElementById('annee_debut').value;
-				var heure_debut=document.getElementById('heure_debut').value;
-				var minute_debut=document.getElementById('minute_debut').value;
-				var jour_fin=document.getElementById('jour_fin').value;
-				var mois_fin= document.getElementById('mois_fin').value;
-				var annee_fin=document.getElementById('annee_fin').value;
-				var heure_fin=document.getElementById('heure_fin').value;
-				var minute_fin=document.getElementById('minute_fin').value;
-				var title =document.getElementById('titreAjout').value;
-				var description =document.getElementById('descriptionAjout').value;
-				pin.addDynPin(title,description,idUser,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin, newPos.lat(), newPos.lng(),theType,self.cbVotePin);
-						/*pin.addDynPin("Soirée","description",1,10,10,2015,10,10,10,10,2015,10,10, 45.76, 4.835,16,self.cbVotePin);*/
-
-		});
-		$(document).on("click",".pinCreationButtonStatic",function(){
-
-			var title =document.getElementById('titre').value;
-			var description =document.getElementById('description').value;
-			pin.addStaticPin(title,description,idUser, newPos.lat(), newPos.lng(),theType,self.cbVotePin);
-		});
-	}
-
+	
 	self.addMarker = function(aPin) {
 		var type = aPin.type;
 		var image;
@@ -563,6 +377,17 @@ function MapManager(){
 				markers.get(aPin.id).marker.setAnimation(null);
 			},2250);
 
+		}
+	};
+
+	self.cbAddPin=function(data){
+		if (data['error']==null){
+			aPin = data.pin;
+			self.addMarker(aPin);
+			markers.get(aPin.id).marker.setAnimation(google.maps.Animation.BOUNCE);
+			setTimeout(function () {
+				markers.get(aPin.id).marker.setAnimation(null);
+			},2250);
 		}
 	};
 

@@ -1,4 +1,7 @@
 .maRow{
+	position:absolute;    
+    bottom: 0px;
+    z-index:900;
 	background-color: #34495e;
 	border: 1px solid black;
 	height: 40px;

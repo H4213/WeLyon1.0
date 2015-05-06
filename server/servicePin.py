@@ -93,7 +93,7 @@ def addPin(form):
 			return jsonify(error="user doesn't exist")
 
 			
-		pin = Pin('Event', form['titre'], float(form['lng']), float(form['lat']) , form['idUser'] , [Category.query.filter_by(nom=form['category']).first()] , form['description'])
+		pin = Pin('Event', form['titre'], float(form['lng']), float(form['lat']) , form['idUser'] , [Category.query.get(form['category'])] , form['description'])
 		serviceLog.add(pin.idUser, pin.id)
 		service.addObject(pin)
 

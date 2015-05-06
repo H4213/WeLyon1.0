@@ -104,7 +104,7 @@
                             <p>
                                 <h4>Type de point:</h4>
                                     <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvent" VALUE="Evenement">Evénement <BR>
-                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeEvent" VALUE="Lieu">Lieu <BR>
+                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typevent" VALUE="Lieu">Lieu <BR>
                             </p>
                         <p>
                         </p>
@@ -129,17 +129,15 @@
                         <form name="formulaire" id="ajoutPointChoixTypeLieu">
                             <p>
                                 <h4>Type de point:</h4>
-                                    <img src="./static/assets/bar.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Bar">Bar <BR>
-                                    <img src="./static/assets/hopital.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Hopital">Hôpital <BR>
-                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Musee">Musée <BR>
-                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Oeuvre">Oeuvre d'art <BR>
-                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Monument">Monument <BR>
-                                    <img src="./static/assets/police.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Police">Police <BR>
-                                    <img src="./static/assets/restaurant.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Restaurant">Restaurant <BR>
-                                    <img src="./static/assets/nightclub.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="NightClub">Night Club <BR>
-                                    <img src="./static/assets/tcl.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Transport">Transport <BR>
-                                    <img src="./static/assets/hotel.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Hotel">Hôtel <BR>
-                                    <img src="./static/assets/normal.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="Autre">Autre <BR>
+                                    <img src="./static/assets/bar.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="2">Bar <BR>
+                                    <img src="./static/assets/hopital.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="3">Hôpital <BR>
+                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="4">Musée <BR>
+                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="5">Oeuvre d'art <BR>
+                                    <img src="./static/assets/monument.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="6">Monument <BR>
+                                    <img src="./static/assets/police.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="7">Police <BR>
+                                    <img src="./static/assets/restaurant.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="8">Restaurant <BR>
+                                    <img src="./static/assets/nightclub.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="9">Night Club <BR>
+                                    <img src="./static/assets/tcl.png" alt="Monument"> <INPUT TYPE="radio" NAME="typeLieu" VALUE="10">Transport <BR>
                             </p>
                         <p>
                         </p>
@@ -506,7 +504,6 @@
                     </div>
                 </div> 
             </div>
-
             <div id="maRow" class="row">
                 <div id="filActubox" class="col-sm-12">
                         <div id="filActu" class="col-sm-2">
@@ -553,7 +550,7 @@
         $.widget.bridge('uitooltip', $.ui.tooltip);
          
         <script src="{{url_for('static', filename='./components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>
-        <script src="{{url_for('static', filename='./components/sprintf/dist/sprintf.min.js') }}"></script>
+        <script src="{{url_for('static', filename='./components/sprintf/src/sprintf.js') }}"></script>
 
 
           <!-- JavaScript inputs -->
