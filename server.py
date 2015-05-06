@@ -113,6 +113,7 @@ def auth():
 @app.route('/fil/')
 @app.route('/fil/<more>/')
 def fil(more = None):
+  print "fsdfsdfsd"
   return serviceLog.getFil(more)
 
 @app.route('/filTest/')

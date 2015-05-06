@@ -155,8 +155,7 @@ function MapManager(){
 
 	self.ajouterEvenemment = function(){
 	 	google.maps.event.addListenerOnce(map, 'click', function(e) {	
-	 		
-	 		$('#formulaireAjoutEvenement').modal('show');
+	 		$('#formulaireAjoutPoint').modal('show');
 			$('#valideTypePoint').on('click',function(){
 				switch ($('#ajoutPointChoixType').type.value){
 					case "Lieu":

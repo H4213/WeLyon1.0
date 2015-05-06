@@ -37,6 +37,7 @@ def getFil(more):
 		return ""
 
 	log = Log.query.get(more)
+
 	user = User.query.get(log.idUser)
 	pinName = ""
 	if not log.action == "subscribe":

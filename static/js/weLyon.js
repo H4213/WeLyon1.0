@@ -18,27 +18,8 @@ function WeLyon(){
 		localStorage.clear();
 		self.setUser();		
 		self.fillCategories();
-<<<<<<< HEAD
-	
-		/*$('#categoryButton').on('click',function(){
-			self.toggleCategories();
-			$('.category-item').on('click', function() {
- 				$(this).toggleClass('active');
- 				var idCategory=$(this).data('id-category')
- 				if ($(this).hasClass('active')){
- 					mapManager.categoryFilter(true,idCategory);
- 				}
- 				else{
- 					mapManager.categoryFilter(false,idCategory);
- 				}
-  				mapManager.zoomHandler();
-			});
-		});*/
 
-=======
->>>>>>> origin/front-front-front
 		self.initialiserCarte();		
-
 
 		$('#newEventButton').on('click', function(){
 			self.ajouterEvenemment();
@@ -103,8 +84,7 @@ function WeLyon(){
 			}
 		});
 
-
-		setInterval(self.chargerNews,5000);
+		//setInterval(self.chargerNews,5000);
 	};
 
 	self.initialiserCarte = function(){			
