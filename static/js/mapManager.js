@@ -301,8 +301,6 @@ function MapManager(){
 
 					// Si le type de point est "Evenement" => Choix du type d'Evenement
 					case "Evenement":
-<<<<<<< HEAD
-=======
 						$('#formulaireAjoutPoint').modal('hide');
 						$('#formulaireTypeEvenement').modal('show');
 
@@ -364,7 +362,6 @@ function MapManager(){
 							$('#formulaireTypeEvenement').modal('hide');
 							$('#formulaireAjoutPoint').modal('show');
 						});						
->>>>>>> origin/dev-AjotEvent-Xav
 					break;
 
 					// Si aucun type de point n'est selectionné
@@ -549,10 +546,7 @@ function MapManager(){
 		}
 
 		infowindow.setContent(contentString);
-<<<<<<< HEAD
-=======
-		
->>>>>>> origin/dev-AjotEvent-Xav
+
 		infowindow.open(map,usedMarker);
 		$(document).on("click",".pinCreationButtonDyn",function(){
 				var jour_debut= document.getElementById('jour_debut').value;
@@ -790,7 +784,7 @@ function MapManager(){
 	};
 
 	self.cbGetPinVisibilite =function(data){
-<<<<<<< HEAD
+
 
     	self.cbGetAllPins(data);
    	};
@@ -809,17 +803,7 @@ function MapManager(){
 	 };
 
 	self.pinSetup = function(){
-=======
-		for (var valeur of markers.values()) {
- 			
-    		valeur.marker.setMap(null);
-    		
-    	}
-    	self.cbGetAllPins(data);
-   	};
 
-	self.pinSetup = function(){		
->>>>>>> origin/dev-AjotEvent-Xav
 			$(document).on("click",".like",function(){
 				var pinID= $(this).closest('#content').data('id-pin');
 				pin.vote(idUser,pinID,1,self.cbVotePin);
@@ -832,15 +816,12 @@ function MapManager(){
 				var pinID= $(this).closest('#content').data('id-pin');
 				pin.vote(idUser,pinID,-1,self.cbVotePin);
 			});
-<<<<<<< HEAD
 			$(document).on("click",".newCommentButton",function(){
 				pin.addComment( $("#newComment").val(), 1, currentPin.id, self.cbBuildDescription);
 			});
 
 	};
-=======
-	};		
->>>>>>> origin/dev-AjotEvent-Xav
+
 
 	self.filtrerVisibilite =function(visibilite){
 		pin.getPinVisibilite(visibilite, self.cbGetPinVisibilite);
@@ -878,17 +859,6 @@ function MapManager(){
 							valeur.marker['visibilityCategoryToken']=0
 						}
 					} 
-<<<<<<< HEAD
-					//valeur.marker.setVisible(visible);
-=======
-					if (valeur.marker['visibilityCategoryToken']==0)
-					{
-						valeur.marker.setVisible(false);
-					}
-					else{
-						valeur.marker.setVisible(true);
-					}
->>>>>>> origin/dev-AjotEvent-Xav
 		    	}
 		}
 	};
@@ -932,11 +902,9 @@ function MapManager(){
 				{
 					valeur.marker.visibilityDateToken=0
 					valeur.marker.setVisible(false)
-<<<<<<< HEAD
+
 				}
-=======
-				}				
->>>>>>> origin/dev-AjotEvent-Xav
+
 			}
 			else
 				{
