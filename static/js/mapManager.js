@@ -474,8 +474,9 @@ function MapManager(){
 		for(var i in data.Pins){
 			var p = data.Pins[i];
 			self.addMarker(p);
-		self.filterByDate();
+		//self.filterByDate();
 		};
+		self.forceCategoryFilter();
 	}
 
 	self.cbVotePin = function(data){
@@ -529,41 +530,43 @@ function MapManager(){
 	self.setIdUser =function (idUserParam){
 		idUser = idUserParam;
 	};
-
+	self.forceCategoryFilter=function(){
+		var tree = $("#categoryTreeView").fancytree("getTree")
+		tree.visit(function(node){
+			console.log(node)
+    		var idCategory=node.key;
+    		var param=node.isSelected();
+    		self.categoryFilter(param,idCategory)
+  		});
+	}
 	self.categoryFilter = function(visible, idCategory){
 
 		for (var valeur of markers.values()) {
-			if (valeur!=null){
+			
 				var found=-1
 				for (var j=0;j<valeur.pin.category.length;j++){
 
 					if(valeur.pin.category[j]==idCategory){
 						
 						found=1;
-						break;
+						
 					}
 				}
 				if (found==1){
 					if (visible==true){
-						valeur.marker['visibilityCategoryToken']+=1;
+						valeur.marker['visibilityCategoryToken']++;
 					}
 					else{
-
-						valeur.marker['visibilityCategoryToken']-=1;
+						valeur.marker.setVisible(visible);
+						valeur.marker['visibilityCategoryToken']--;
 						if (valeur.marker['visibilityCategoryToken']<0){
 							valeur.marker['visibilityCategoryToken']=0
 						}
 					} 
-					if (valeur.marker['visibilityCategoryToken']>0 && valeur.marker['visibilityDateToken']>0)
-					{
+					valeur.marker.setVisible(visible);
 
-						valeur.marker.setVisible(true);
-					}
-					else{
-						valeur.marker.setVisible(false);
-					}
 		    	}
-		    }
+		    
 		}
 	};
 

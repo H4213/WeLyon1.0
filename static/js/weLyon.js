@@ -8,15 +8,15 @@ function WeLyon(){
 	var idUser;
 	var nameUser;
 	var pinTest=new Pin();
-
+	var levelofSearch=0;
 //TODO initialisation par rapport aux droits d'utilisateur
 
 //------------Les setups des pages/panels et ses boutons------------------
 	self.setup = function(){
 		localStorage.clear();
 		self.setUser();
-		self.initialiserCarte();		
 		self.fillCategories();
+		self.initialiserCarte();		
 
 		$('#newEventButton').on('click', function(){
 			self.ajouterEvenemment();
@@ -74,31 +74,22 @@ function WeLyon(){
 
 		});
 
-		$('#categoryTreeView').on('selectNode', function(event, data) {
-			if (data.nodes!=null){
-	
-
-				for(var i = 0; i<data.nodes.length; i++)
-				{
-					data.nodes[i].backColor="#FFFF";
-					$('#categoryTreeView').treeview('selectNode',data.nodes[i]);
-					console.log(data.nodes[i])
-				}
-			}
-			else{
-					mapManager.categoryFilter(true,data.tag);
+		/*$("#categoryTreeView").fancytree({select: function(event, data){
+        	var node = data.node;
+   			var idCategory = node.key;
+					mapManager.categoryFilter(true,idCategory);
 				}
 			
-		});
+		});*/
 
-		$('#categoryTreeView').on('nodeUnselected', function(event, data) {
+		/*$('#categoryTreeView').on('nodeUnselected', function(event, data) {
 			if (data.nodes!=null){
 				
 			}
 			else{
 					mapManager.categoryFilter(false,data.tag);
 				}
-		});
+		});*/
 
 		$(".finalInput").keypress(function(event) {
 			if (event.which == 13) {
@@ -239,11 +230,14 @@ function WeLyon(){
 	self.cbFillCat = function (data) {
 		mapManager.setListCategories(data.categories);
 		var dataTree = self.transformToTreeFormat(data.categories , 0);
-		console.log(JSON.stringify(dataTree));
     	$('#categoryTreeView').fancytree({
           checkbox : true,
           selectMode : 3,
           source : dataTree,
+          select: function(event, data){
+       		self.filterCategory(event,data);
+				}
+			
         });
     
 	};
@@ -258,7 +252,8 @@ function WeLyon(){
 						folder : false,
 						expanded : false,
 						key : data[i].id,
-						icons : false
+						icons : false,
+						selected : true
 						 
 						 }
 					var nodes = self.transformToTreeFormat(data , data[i].id)
@@ -275,6 +270,7 @@ function WeLyon(){
 						folder : false,
 						expanded : false,
 						key : data[i].id,
+						selected:true
   						}
 					var nodes = self.transformToTreeFormat(data , data[i].id)
 					if (nodes.length != 0 ) {
@@ -417,7 +413,25 @@ function WeLyon(){
 		
 	};
 
+	self.filterCategory=function(event,data){
+		var node = data.node;
+		self.filtreCategoryNode(node);
+   		levelofSearch=0
+	};
+	self.filtreCategoryNode=function(node){
+		var idCategory = node.key;
+   		var param =node.isSelected();
+		mapManager.categoryFilter(param,idCategory);
+		if (node.children!=null && levelofSearch<2){
+				levelofSearch +=1;
 
+				for(i=0;i<node.children.length;i++){
+					console.log(node.children[i]);
+					self.filtreCategoryNode(node.children[i]);
+				}
+				
+		}
+	};
 
 
 }
