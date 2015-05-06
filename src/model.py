@@ -118,7 +118,7 @@ class Pin(db.Model):
         self.idUser = idUser
         self.title = title
         self.categories = ","
-        #self.score = score
+        self.score = score
         #pour test
         self.score = randint(0,100)
         for i in categories:
@@ -127,6 +127,7 @@ class Pin(db.Model):
         self.lng = lng
         self.lat = lat
         self.staticHotVisibility=staticHotVisibility
+        self.data3=User.query.get(idUser).pseudo
 
     def serialize(self):
 

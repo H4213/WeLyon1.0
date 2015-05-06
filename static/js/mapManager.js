@@ -668,7 +668,7 @@ function MapManager(){
 											'<p>' + aPin.description + '</p>'+
 											'<p>Nombre de places: <b>' + aPin.data1 + '</b><br />' +
 											'Nombre de vélos disponibles: <b>' + aPin.data2 + '</b></p>'+
-											'<p><small>Posté par ' + aPin.user + '</small></p>'+
+											'<p><small>Posté par <b>' + aPin.data3 + '</b></small></p>'+
 											'<form name="form1">' +
 												'<p>' +
 													temp +
@@ -686,7 +686,7 @@ function MapManager(){
 					'<div id="bodyContent">'+
 					'<p>' + aPin.description + '</p>'+
 					'<p>Début: <b>' + aPin.dateDebut + '</b><br />Fin: <b>' + aPin.dateFin + '</b></p>'+
-					'<p><small>Posté par ' + aPin.user + '</small></p>'+
+					'<p><small>Posté par <b>' + aPin.data3 + '</b></small></p>'+
 					'<form name="form1">' +
 						'<p>' +
 							temp +
@@ -702,7 +702,7 @@ function MapManager(){
 					'<h2 id="firstHeading" class="firstHeading">' + aPin.title + '</h2>'+
 					'<div id="bodyContent">'+
 					'<p>' + aPin.description + '</p>'+
-					'<p><small>Posté par ' + aPin.user + '</small></p>'+
+					'<p><small>Posté par <b>' + aPin.data3 + '</b></small></p>'+
 					'<form name="form1">' +
 						'<p>' +
 							temp +
