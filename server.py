@@ -117,7 +117,7 @@ def fil(more = None):
 
 @app.route('/filTest/')
 def filTest():
-  return serviceLog.filTest()
+  return jsonify(text=serviceLog.filTest())
 
 #ajout d'un marqueur
 @app.route('/add/pin/', methods=('GET', 'POST'))
@@ -157,7 +157,8 @@ def delete(obj = None, id = None):
 @app.route('/pin/vote/<idPin>/', methods=['POST'])
 def updateVote(idPin =None, data=None):
   if request.method =='POST':
-    
+    print("ok")
+    print(request.form)
     return service.UpdateUserVoteEvent(request.form,idPin)
 
 
@@ -181,7 +182,6 @@ def load_facebook_event():
 
 @app.route('/comments/<idPin>/', methods=['GET', 'POST'])
 def comments(idPin = None):
-  print('ok')
   if int(idPin) == 0:
     return servicePin.addCommentByIdPin(request.form["pin_id"], request.form["text"])
   if int(idPin) > 0:
@@ -207,6 +207,6 @@ if __name__ == '__main__':
   init_databases.init_all()
   start_refresh_thread()
   service.logMessage("Démarrage du serveur")
-  # app.debug = True
+  app.debug = True
   app.run()
 	

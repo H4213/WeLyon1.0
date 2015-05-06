@@ -57,7 +57,6 @@ function Pin() {
 
 
                 }
-            console.log(data)
             var url="/add/dynPin/"
             rest.insert(url,data,callback);
         }
@@ -76,7 +75,6 @@ function Pin() {
                         "lng": lng,
                         "category": idCategorie
             }
-            console.log(data)
             var url="/add/pin/"
             rest.insert(url,data,callback);
         }
@@ -106,10 +104,13 @@ function Pin() {
     }
     self.addComment=function(text, currentUser, nameUser, idPin, callback){
         
-        if (text=="")
-            {alert("Ecrivez votre commentaire")}
-        else if (currentUser==-1)
+
+        
+        if (currentUser==-1)
+
             {alert("veuillez vous connecter")}
+        else if (text=="")
+            {alert("Commentaire vide")}
         else{
             var data = {
                         "username:": nameUser,
