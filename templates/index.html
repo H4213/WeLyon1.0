@@ -218,7 +218,7 @@
 
             function chargerNews(){
                 jQuery.ajax({
-                    url: 'fil/'+dernier_id,
+                    url: 'fil/'+dernier_id+'/',
                     success: function(data){
                         if(data!=''){
                             $(data).prependTo('#filActubox').hide().animate({'height':'toggle','opacity':'toggle'},2000);

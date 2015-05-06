@@ -110,3 +110,8 @@ def delete(idUser, idPin):
 	log = Log(idUser, "delete", idPin)
 
 	logister(log)
+
+def comment(idUser, idPin):
+	log = Log(idUser, "Commented", idPin)
+
+	logister(log)
