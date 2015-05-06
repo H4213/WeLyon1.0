@@ -31,26 +31,7 @@ function Pin() {
        } 
     };   
 
-<<<<<<< HEAD
     self.addDynPin=function(title,description,user,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin,lat,lng,idCategorie,callback){
-=======
-    self.comment =function(userID,pinID,posnegParam,callback){
-       if (userID==-1){
-        alert("Veuillez vous connecter")
-       }
-       else{
-        var data = {
-                        "idUser": userID,
-                        "posneg": posnegParam
-                }
-        
-        var url='/pin/vote/'+pinID+'/';
-        rest.insert(url,data,callback);
-       } 
-    };
-
-    self.addDynPin=function(title,description,user,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin,lat,lng,categorie,callback){
->>>>>>> origin/dev-comments
         if (title=="")
             {alert("Donnez un titre à votre évènement")}
         else if (user==-1)
@@ -124,11 +105,8 @@ function Pin() {
         rest.get("/comments/"+idPin+"/",data,callback)
     }
     self.addComment=function(text, currentUser, idPin, callback){
-        var data = {
-                        "text": "text",
-                        "pin_id": idPin
-                }
-        /*if (text=="")
+        
+        if (text=="")
             {alert("Donnez un titre à votre évènement")}
         else if (currentUser==-1)
             {alert("veuillez vous connecter")}
@@ -139,9 +117,8 @@ function Pin() {
                 }
             console.log(data)
             rest.insert("/comments/"+0+"/",data,callback);
-        }*/
-        rest.insert("/comments/"+0+"/",data,callback);
-    }
+        }
+       }
 
 }
 

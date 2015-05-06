@@ -165,7 +165,7 @@ body{
     margin: 0;
     padding: 0;
 }
-<<<<<<< HEAD
+
 
 #appAlert{
     position:absolute;
@@ -173,11 +173,10 @@ body{
     z-index:900;
 }
 
-=======
 #commentzone
 {
     list-style-type: none; /* on annule la puce par défaut */
     background-position: left; /* on positionne où l'on veut */
     padding-left: 20px; /* pour éviter la superposition du contenu */
 }
->>>>>>> origin/dev-comments
+

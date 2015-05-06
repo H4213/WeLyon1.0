@@ -33,86 +33,6 @@ function MapManager(){
 
 
 
-<<<<<<< HEAD
-=======
-	self.addMarker = function(aPin) {
-		var type = aPin.type;
-		var image;
-		var contentString;
-		var id=aPin.id;
-		switch (type) { 
-			case "velov" : 
-				image = imageVelov;
-				titre = "Velo'v";
-				//contentString = self.buildDescription(aPin,"velov");
-				break;
-			case "stationTCL" : 
-				image = imageTCL;
-				titre = "Velo'v";
-				//contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "cafe" : 
-				image = imageBar;
-				titre = "Café/Bar";
-				//contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "restaurant" : 
-				image = imageRestau;
-				titre = "Restaurant";
-				//contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "nightClub" : 
-				image = imageSoiree;
-				titre = "Night Club";
-				//contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "hopital" : 
-				image = imageHopital;
-				titre = "Hopital";
-				//contentString = self.buildDescription(aPin,"normal");
-				break;
-			case "facebookPin" : 
-				image = imageFacebook;
-				titre = "Facebook";
-				//contentString = self.buildDescription(aPin,"dynamique");
-				break;
-			case "event" : 
-				image = imageFacebook;
-				titre = "Evenement";
-				//contentString = self.buildDescription(aPin,"dynamique");
-				break;
-			default :
-				image = imageNormal
-				titre = "Autre";
-				//contentString = self.buildDescription(aPin,"normal");
-			}
-			
-			
-		var aMarker = new google.maps.Marker({
-			position: new google.maps.LatLng(aPin.lat, aPin.lng),
-			map: map,
-			icon: image,
-			title: titre,
-			'idPin': aPin.id,
-			'visibilityCategoryToken': 0
-		});
-
-		markers.set(id,{pin : aPin,
-						marker : aMarker});
-		google.maps.event.addListener(aMarker, 'click', function() {
-
-			
-			infowindow.setContent(self.buildDescription(
-										markers.get(aMarker['idPin']).pin,
-										"#first"));
-		
-			infowindow.open(map,aMarker);
-
-		});
-	};
-
-
->>>>>>> origin/dev-comments
 	self.initMap = function() {
 		self.pinSetup();
 
@@ -494,42 +414,15 @@ function MapManager(){
 		markers.set(id,{pin : aPin,
 						marker : aMarker});
 		google.maps.event.addListener(aMarker, 'click', function() {
-			infowindow.setContent(self.buildDescription(markers.get(aMarker['idPin']).pin,markers.get(aMarker['idPin']).pin.type));
+			infowindow.setContent(self.buildDescription(markers.get(aMarker['idPin']).pin,"#first"));
 			infowindow.open(map,aMarker);
 		});
 	};
 
-<<<<<<< HEAD
-	self.buildDescription=function(aPin, pinType) {
-=======
-/*	self.createPin=function(aForm, aType) {
-		usedMarker.setVisible(false);
-		infoWindow.close();
-		
-		// Création du marker
-		currentId += 1;
-		var newPin = { type : aType,
-				id : currentId,
-				lat : usedMarker.getPosition().lat(),
-				lng :  usedMarker.getPosition().lng(),
-				user : "JJG",
-				title : document.aForm.titre.value,
-				description : document.aForm.description.value,
-				score : 0};
-		addMarker(newPin);
-		
-		// TODO: Ajout dans la bdd*/
-		
-		
-	//};
-
-	self.addComment=function(){
-		pin.addComment("yayaye", iduser, currentPin.id, cbBuildDescription);
-	};
+	
 	self.buildDescription=function(aPin, listofCommentsHTML) {
 		
 		currentPin = aPin;
->>>>>>> origin/dev-comments
 		var contentString = '';
 		switch (aPin.type) { 
 			case "velov" : 
@@ -608,8 +501,7 @@ function MapManager(){
 		return contentString;
 	};
 	
-<<<<<<< HEAD
-=======
+
 	self.cbBuildDescription=function(data){
 		var string_list = "#no";
 			if(data.Comments.length > 0)
@@ -629,7 +521,6 @@ function MapManager(){
 		
    	};
 
->>>>>>> origin/dev-comments
 	self.refreshPins = function(){
 
 		for (var valeur of markers.values()) {
@@ -702,7 +593,7 @@ function MapManager(){
 				pin.vote(idUser,pinID,-1,self.cbVotePin);
 			});
 			$(document).on("click",".newCommentButton",function(){
-				pin.addComment( $("newComment").val(), 1, currentPin.id, self.cbBuildDescription);
+				pin.addComment( $("#newComment").val(), 1, currentPin.id, self.cbBuildDescription);
 			});
 
 	};
