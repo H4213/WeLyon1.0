@@ -73,7 +73,7 @@ def UpdateUserVoteEvent(form,idPin):
 	posneg = form['posneg'];
 	if idUser and idPin and posneg:
 		item = Vote.query.filter_by(idUser=idUser, idPin=idPin).first()
-		pinItem = Pin.query.filter_by(id=idPin).first()
+		pinItem = Pin.query.get(idPin)
 		oldposneg=0
 		print ("ici")
 		if item:

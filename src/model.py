@@ -117,7 +117,7 @@ class Pin(db.Model):
         self.idUser = idUser
         self.title = title
         self.categories = ","
-        #self.score = score
+        self.score = score
         #pour test
         self.score = randint(0,100)
         for i in categories:
