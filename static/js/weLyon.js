@@ -7,7 +7,7 @@ function WeLyon(){
 	var messageView = new MessageView();
 	var idUser;
 	var nameUser;
-	var pinTest=new Pin();
+	var pinTest = new Pin();
 
 //TODO initialisation par rapport aux droits d'utilisateur
 
@@ -78,10 +78,7 @@ function WeLyon(){
 		});
 
 		$('#filterByDateButton').on('click', function(){
-			
-
 			mapManager.filterByDate();
-
 		});
 
 		$('#categoryTreeView').on('nodeSelected', function(event, data) {
@@ -93,8 +90,7 @@ function WeLyon(){
 			}
 			else{
 					mapManager.categoryFilter(true,data.tag);
-				}
-			
+				}			
 		});
 
 		$('#categoryTreeView').on('nodeUnselected', function(event, data) {
@@ -171,7 +167,7 @@ function WeLyon(){
 			form+='	   <form>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrirePseudo">Pseudo</label>';
-	        form+='            <input type="text" class="form-control" id="inscrirePseudo1" placeholder="pseudo">';
+	        form+='            <input type="text" class="form-control" id="inscrirePseudo1" placeholder="Pseudo">';
 	        form+='        </div>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrireEmail">Email</label>';
@@ -193,7 +189,7 @@ function WeLyon(){
 			form+='	   <form>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrirePseudo">Pseudo</label>';
-	        form+='            <input type="text" class="form-control" id="inscrirePseudo2" placeholder="pseudo">';
+	        form+='            <input type="text" class="form-control" id="inscrirePseudo2" placeholder="Pseudo">';
 	        form+='        </div>';
 	        form+='        <div class="form-group">';
 	        form+='            <label for="inscrireMdP">Mot de Passe</label>';
@@ -239,8 +235,7 @@ function WeLyon(){
 			localStorage.setItem('idUser',idUser);
 			localStorage.setItem('nameUser',nameUser);
 		} else {
-		    alert("WebStorage not supported, can't login");
-		    //TODO: message d'erreur
+		    messageView.append(Messages.Navigator.WEB_STORAGE_ERROR);
 		}		
 	};
 
@@ -251,6 +246,7 @@ function WeLyon(){
     	$('#categoryTreeView').treeview({
           color: "#428bca",
           showBorder: false,
+          nodeIcon:"",
           data: dataTree,
           multiSelect : true,
           levels : 1
@@ -258,43 +254,10 @@ function WeLyon(){
     
 	};
 
-	self.transformToTreeFormat = function (data , father) {
-		var result = [];
-		for (var i = 0; i<data.length; i++) {
-			if (father != 0 ) {
-				if (data[i].idFather && data[i].idFather == father ) {
-					var node = { 
-						text : data[i].nom ,
-						tag : [data[i].id]  
-						  }
-					var nodes = self.transformToTreeFormat(data , data[i].id)
-					if (nodes.length != 0 ) {
-						node.nodes = nodes
-					}
-					result.push(node)
-				} 
-			}
-			else {
-				if(!data[i].idFather) {
-					var node = { 
-						text : data[i].nom ,
-						tag : [data[i].id] 
-						  }
-					var nodes = self.transformToTreeFormat(data , data[i].id)
-					if (nodes.length != 0 ) {
-						node.nodes = nodes
-					}
-					result.push(node)
-				}
-			}
-		}
-		return result;
-	};
-
 	self.cbAddUser = function(data){
 		if (data['error'] == null){
+			messageView.append(Messages.Register.REGISTER_SUCCESS, data.nameUser);			
 			self.cbAuthUser(data);
-			alert("Votre compte WeLyon a bien été créé");
 		}else {
 			alert(data['error']);
 		}
@@ -305,7 +268,13 @@ function WeLyon(){
 		if (data['error'] == null){
 			self.setUser(data.idUser, data.nameUser);
 			mapManager.setIdUser(idUser);
-			// alert("Bienvenue "+ nameUser);
+			
+			if(messageView.count()==1){
+				messageView.show();
+			} else if(messageView.count()==0){
+				messageView.append(Messages.Login.LOGIN_SUCCESS, data.nameUser);
+				messageView.show();
+			}
 		}
 		
 	};
@@ -352,8 +321,8 @@ function WeLyon(){
 			$('#nav').find('.active').toggleClass('active');
 			bouton.toggleClass('active');
 			$('#inscriptionPanel').show();
-		}
-		
+		}		
+		$('#inscriptionPanel').find('form:first *:input[type!=hidden]:first').focus();
 	};
 
 	self.gererVisibilite = function(bouton){		
@@ -373,7 +342,13 @@ function WeLyon(){
 	};
 
 	self.ajouterEvenemment = function(){
+		messageView.append(Messages.Point.NEW_POINT_INFO);
+		messageView.show();
+
 		mapManager.ajouterEvenemment();
+		//TODO: retour vrai?!
+		messageView.append(Messages.Point.NEW_POINT_SUCCESS);
+		messageView.show();
 	};
 
 	self.toggleBoutonsConnexion = function(){
@@ -395,7 +370,7 @@ function WeLyon(){
 		var mail = $('#inscrireEmail1').val();
 		if (password === password2 && pseudo!=="" && password!==""){
 			user.addUser(pseudo,password,self.cbAddUser);
-		}
+		} //TODO: gere avec validator
 		else if (pseudo ==""){
 			alert("veuillez choisir un pseudo")
 		}
@@ -408,17 +383,49 @@ function WeLyon(){
 	};
 
 	self.signUpUser = function(bouton){
-		alert($('#inscrireMdP2').val() == "");
 		var pseudo = $('#inscrirePseudo2').val();
 		var password = $('#inscrireMdP2').val();
 		if (password!== "" && pseudo !== ""){
 			user.authUser(pseudo,password,self.cbAuthUser);
 		}else if (pseudo =="" || password == ""){
-			messageView.append(Messages.Login.LOGIN_ERROR, "haha");
-			messageView.show();
+			//TODO: gere avec validator
 			// alert("votre peseudo ou votre mot de passe est vide")
+		}		
+	};
+
+	self.transformToTreeFormat = function (data , father) {
+		var result = [];
+		for (var i = 0; i<data.length; i++) {
+			if (father != 0 ) {
+				if (data[i].idFather && data[i].idFather == father ) {
+					var node = { 
+						text : data[i].nom ,
+						icon : "glyphicon",
+						tag : [data[i].id] ,
+						selectable: true
+						  }
+					var nodes = self.transformToTreeFormat(data , data[i].id)
+					if (nodes.length != 0 ) {
+						node.nodes = nodes
+					}
+					result.push(node)
+				} 
+			}
+			else {
+				if(!data[i].idFather) {
+					var node = { 
+						text : data[i].nom ,
+						tag : [data[i].id] 
+						  }
+					var nodes = self.transformToTreeFormat(data , data[i].id)
+					if (nodes.length != 0 ) {
+						node.nodes = nodes
+					}
+					result.push(node)
+				}
+			}
 		}
-		
+		return result;
 	};
 
 

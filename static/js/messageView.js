@@ -132,6 +132,10 @@ function MessageView() {
         $(self.container + ' > .alert').fadeIn(1000);
 
         self.scrollMessage();
+        
+        setTimeout(function(){
+            self.fadeOut(1000);
+        },5000);
 
         self.clear();
     };
@@ -142,9 +146,6 @@ function MessageView() {
         self.uninstall();
         var alert = '';
         alert += '<div class="alert alert-white" style="display:none;">';
-        alert += '  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">';
-        alert += '      &times;';
-        alert += '  </button>';
         alert += '<p></p>';
         alert += '</div>';
         $(self.container).append(alert);
@@ -156,6 +157,10 @@ function MessageView() {
 
     this.hide = function() {
         $(self.container + ' > .alert').hide();
+    };
+
+    this.fadeOut = function(milliseconds) {        
+        $(self.container + ' > .alert').fadeOut(milliseconds);
     };
 
     this.count = function() {

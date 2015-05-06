@@ -1,25 +1,19 @@
+body{
+    overflow: hidden;
+}
+
 .nav-items{
     margin-right: 15px;
     color: white;
 }
 
-.nav-item:hover , .nav-item > a:hover, .nav-item > a:focus{
-    /*content: color: white;*/
+.navbar-inverse .navbar-nav > li > a{
+    color: white;
 }
 
 .navbar-brand {
 	padding: 0;
     margin-left: 15px;
-}
-
-#inscriptionPanel .valider{
-    background-color: rgba(19,188,62,0.7);    
-    border-color: #CCCCCC;
-    color: #666666;
-}
-
-#inscriptionPanel .valider:hover{
-    background-color: #13BC3E;
 }
 
 .annuler{    
@@ -59,6 +53,16 @@
     margin-bottom: 0;
 }
 
+#inscriptionPanel .valider{
+    background-color: rgba(19,188,62,0.7);    
+    border-color: #CCCCCC;
+    color: #666666;
+}
+
+#inscriptionPanel .valider:hover{
+    background-color: #13BC3E;
+}
+
 #container{
     position: relative;
 }
@@ -71,7 +75,7 @@
     background-color: #EF6530;
 }
 
-#inscriptionPanel{
+    #inscriptionPanel{
     position:absolute;
     top:52px;
     right: 30px;
@@ -128,6 +132,11 @@
 
 #searchInput{
     margin-bottom: 5px;
+}
+
+#categoryFilterTree{
+    max-height: 300px;
+    overflow: auto;
 }
 
 #categoryTreeView, #categoryTreeView li {
