@@ -60,8 +60,10 @@ function MapManager(){
 		var zones = self.splitBounds(bounds);
 		var toDisplay = [];
 		for (var valeur of markers.values()) {
-			if (bounds.contains(valeur.marker.getPosition()) && valeur.marker.visibilityCategoryToken != 0 && valeur.marker.visibilityDateToken != 0 ) {
-				valeur.marker.setVisible(false);
+			valeur.marker.setVisible(false);
+			if (bounds.contains(valeur.marker.getPosition()) && valeur.marker.visibilityCategoryToken > 0  ) {
+				console.log("token" + valeur.marker.visibilityCategoryToken);
+				console.log("type " + valeur.pin.type)
 				toDisplay.push(valeur);
 				for (var i = 0 ; i < zones.length ; i++) {
 					if (zones[i].bound.contains(valeur.marker.getPosition())) {
@@ -404,7 +406,7 @@ function MapManager(){
 			icon: image,
 			title: titre,
 			'idPin': aPin.id,
-			'visibilityCategoryToken': 1,
+			'visibilityCategoryToken': 0,
 			'visibilityDateToken': 1
 		});
 
@@ -504,6 +506,7 @@ function MapManager(){
 		//self.filterByDate();
 		};
 		self.forceCategoryFilter();
+		self.zoomHandler();
 	}
 
 	self.cbVotePin = function(data){
@@ -578,11 +581,8 @@ function MapManager(){
 			
 				var found=-1
 				for (var j=0;j<valeur.pin.category.length;j++){
-
 					if(valeur.pin.category[j]==idCategory){
-						
 						found=1;
-						
 					}
 				}
 				if (found==1){
@@ -590,16 +590,14 @@ function MapManager(){
 						valeur.marker['visibilityCategoryToken']++;
 					}
 					else{
-						valeur.marker.setVisible(visible);
+						//valeur.marker.setVisible(visible);
 						valeur.marker['visibilityCategoryToken']--;
 						if (valeur.marker['visibilityCategoryToken']<0){
 							valeur.marker['visibilityCategoryToken']=0
 						}
 					} 
-					valeur.marker.setVisible(visible);
-
+					//valeur.marker.setVisible(visible);
 		    	}
-		    
 		}
 	};
 

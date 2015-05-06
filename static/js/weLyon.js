@@ -19,7 +19,7 @@ function WeLyon(){
 		self.setUser();
 		self.fillCategories();
 	
-		$('#categoryButton').on('click',function(){
+		/*$('#categoryButton').on('click',function(){
 			self.toggleCategories();
 			$('.category-item').on('click', function() {
  				$(this).toggleClass('active');
@@ -30,10 +30,10 @@ function WeLyon(){
  				else{
  					mapManager.categoryFilter(false,idCategory);
  				}
-  			
+  				mapManager.zoomHandler();
 			});
-		});
-		
+		});*/
+
 		self.initialiserCarte();		
 
 
@@ -445,6 +445,7 @@ function WeLyon(){
 		var node = data.node;
 		self.filtreCategoryNode(node);
    		levelofSearch=0
+   		mapManager.zoomHandler();
 	};
 	self.filtreCategoryNode=function(node){
 		var idCategory = node.key;
@@ -452,7 +453,6 @@ function WeLyon(){
 		mapManager.categoryFilter(param,idCategory);
 		if (node.children!=null && levelofSearch<2){
 				levelofSearch +=1;
-
 				for(i=0;i<node.children.length;i++){
 					console.log(node.children[i]);
 					self.filtreCategoryNode(node.children[i]);
