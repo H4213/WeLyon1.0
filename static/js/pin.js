@@ -74,7 +74,7 @@ function Pin() {
                         "idUser": user,
                         "lat": lat,
                         "lng": lng,
-                        "category": idCcategorie
+                        "category": idCategorie
             }
             console.log(data)
             var url="/add/pin/"

@@ -100,6 +100,7 @@ function WeLyon(){
 			}
 		});
 
+
 		setInterval(self.chargerNews,5000);
 	};
 
