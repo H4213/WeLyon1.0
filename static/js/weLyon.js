@@ -70,14 +70,11 @@ function WeLyon(){
 		});
 
 		$('#filterByDateButton').on('click', function(){
-			
-
 			mapManager.filterByDate();
 
 		});
 
 		$('#categoryTreeView').on('selectNode', function(event, data) {
-			$('.node-categoryTreeView')
 			if (data.nodes!=null){
 	
 
@@ -242,12 +239,11 @@ function WeLyon(){
 	self.cbFillCat = function (data) {
 		mapManager.setListCategories(data.categories);
 		var dataTree = self.transformToTreeFormat(data.categories , 0);
-    	$('#categoryTreeView').treeview({
-          color: "#428bca",
-          showBorder: false,
-          data: dataTree,
-          multiSelect : true,
-          levels : 1
+		console.log(JSON.stringify(dataTree));
+    	$('#categoryTreeView').fancytree({
+          checkbox : true,
+          selectMode : 3,
+          source : dataTree,
         });
     
 	};
@@ -258,13 +254,16 @@ function WeLyon(){
 			if (father != 0 ) {
 				if (data[i].idFather && data[i].idFather == father ) {
 					var node = { 
-						text : data[i].nom ,
-						tag : [data[i].id],
+						title : data[i].nom,
+						folder : false,
+						expanded : false,
+						key : data[i].id,
+						icons : false
 						 
 						 }
 					var nodes = self.transformToTreeFormat(data , data[i].id)
 					if (nodes.length != 0 ) {
-						node.nodes = nodes
+						node.children = nodes
 					}
 					result.push(node)
 				} 
@@ -272,13 +271,14 @@ function WeLyon(){
 			else {
 				if(!data[i].idFather) {
 					var node = { 
-						text : data[i].nom ,
-						tag : [data[i].id] ,
-					
+						title : data[i].nom,
+						folder : false,
+						expanded : false,
+						key : data[i].id,
   						}
 					var nodes = self.transformToTreeFormat(data , data[i].id)
 					if (nodes.length != 0 ) {
-						node.nodes = nodes
+						node.children = nodes
 					}
 					result.push(node)
 				}
