@@ -15,14 +15,14 @@ function WeLyon(){
 
 //------------Les setups des pages/panels et ses boutons------------------
 	self.setup = function(){
+		$("#formulaireTypeEvenement").modal('show');
 		localStorage.clear();
 		self.setUser();		
 		self.fillCategories();
 		self.initialiserCarte();		
 
 		$('#newEventButton').on('click', function(){
-			self.ajouterEvenemment($(this));
-			
+			self.ajouterEvenemment($(this));			
 		});
 
 		$('#onFireButton').on('click', function(){
@@ -142,13 +142,23 @@ function WeLyon(){
 
 				$("#validePointType").on('click', function(){
 					buttonData = $('#formulaireAjoutPoint').find('.active').data('form-type');
+					//long et lat en data dans modal deja
 					self.fillNewPointForm(buttonData);			
 				});
 
+
 				break;
-			case "place":
-			alert();
+			case "place":			
 				// self.getCategories(self.cbFillCatLieu);
+
+				$('#valideAjoutLieu').on('click', function(){
+					// TODO: self.ajouterLieu();			
+				});
+
+				$("#retourAjoutLieu").on('click', function(){
+					//long et lat en data dans modal deja
+					self.fillNewPointForm('new-point');			
+				});
 			
 				break;
 			case "event":
@@ -273,7 +283,86 @@ function WeLyon(){
 				break;
 
 			case "event":
-
+					form+='		<div class="modal-header">';
+                    form+='            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+                    form+='            <h3 class="modal-title">Ajout d\'un événement</h3>';
+                    form+='        </div>';
+                    form+='        <div class="modal-body">';
+                    form+='            <form class="form-horizontal">';
+                    form+='                <div class="form-group">';
+                    form+='                    <label for="eventName" class="col-sm-2 control-label">Nom</label>';
+                    form+='                    <div class="col-sm-10">';
+                    form+='                        <input type="text" class="form-control" id="eventName" placeholder="Nom de l\'événement">';
+                    form+='                    </div>';
+                    form+='                </div>';
+                    form+='                <div class="form-group">';
+                    form+='                   <label for="eventDescription" class="col-sm-2 control-label">Description</label>';
+                    form+='                    <div class="col-sm-10">';
+                    form+='                        <textarea id="eventDescription" class="form-control" rows="3" placeholder="Description de l\'événement"></textarea>';
+                    form+='                    </div>';
+                    form+='                </div>';
+                    form+='                <div class="form-group">';
+                    form+='                    <div class="col-sm-10 pull-right">';
+                    form+='                        <select id="eventCategories" class="form-control">';
+                    form+='                           <option value="" disabled selected>Categories</option>';
+                    form+='                        </select>';
+                    form+='                    </div>';
+                    form+='                </div>';
+                    form+='                <div class="row">';
+                    form+='                    <div class="col-md-6">';
+                    form+='                        <label for="dateFormBegin">Date début:</label>   ';                             
+                    form+='                        <div id="dateFormBeguin" class="form-inline">';
+                    form+='                            <div class="form-group col-md-5">';
+                    form+='                                <select id="dateEventDayBeguin" class="form-control">';
+                    form+='                                <option value="" selected disabled>Jour</option>';
+                    form+='                    <option>2</option>';
+                    form+='                                </select>';
+                    form+='                            </div>';
+                    form+='                            <div class="form-group col-md-5">';
+                    form+='                                <select id="dateEventMonthBeguin" class="form-control">';
+                    form+='                               <option value="" selected disabled>Mois</option>';
+                    form+='                    <option>2</option>';
+                    form+='                                </select> ';
+                    form+='                            </div>';
+                    form+='                            <div class="form-group col-md-5">';
+                    form+='                                <select id="dateEventYearBeguin" class="form-control finalInput">';
+                    form+='                                <option value="" selected disabled>Année</option>';
+                    form+='                    <option>2</option>';
+                    form+='                                </select>';
+                    form+='                            </div>   ';                                                                            
+                    form+='                        </div> ';
+                    form+='                    </div>';
+                    form+='                    <div class="col-md-6">';
+                    form+='                        <label for="dateEventEnd">Date fin:</label>';
+                    form+='                        <div id="dateEventEnd" class="form-inline">';
+                    form+='                            <div class="form-group col-md-5">';
+                    form+='                                <select id="dateEventDayEnd" class="form-control">';
+                    form+='                                <option value="" selected disabled>Jour</option>';
+                    form+='                    <option>2</option>';
+                    form+='                                </select>';
+                    form+='                            </div>';
+                    form+='                            <div class="form-group col-md-5">';
+                    form+='                                <select id="dateEventMonthEnd" class="form-control">';
+                    form+='                                <option value="" selected disabled>Mois</option>';
+                    form+='                    <option>2</option>';
+                    form+='                                </select> ';
+                    form+='                            </div>';
+                    form+='                            <div class="form-group col-md-5">';
+                    form+='                                <select id="dateEventYearEnd" class="form-control finalInput">';
+                    form+='                                <option value="" selected disabled>Année</option>';
+                    form+='                    <option>2</option>';
+                    form+='                                </select>';
+                    form+='                            </div> ';                                                                              
+                    form+='                        </div>';
+                    form+='                    </div>';
+                    form+='                </div>';
+                    form+='            </form>';
+                    form+='        </div>';
+                    form+='        <div class="modal-footer">';
+                    form+='            <button type="button" class="btn btn-default annuler pull-left " data-dismiss="modal">Close</button>';
+                    form+='            <button type="button" class="btn btn-info" id="retourAjoutEvent"> Précédent</button>';
+                    form+='           <button type="button" class="btn btn-primary valider" id="valideAjoutEvent"> Valider</button>';
+                    form+='        </div>';
 				break;
 		}
 
@@ -504,6 +593,8 @@ function WeLyon(){
 	self.ajouterEvenemment = function(bouton){
 		messageView.append(Messages.Point.NEW_POINT_INFO);
 		messageView.show();
+
+		//TODO: recuperer long et lat mapManager.getLongLat();
 
 		var buttonData = bouton.data('form-type');
 		self.fillNewPointForm(buttonData);
