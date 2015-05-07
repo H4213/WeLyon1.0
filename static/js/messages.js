@@ -24,7 +24,9 @@ var Messages = (function() {
 
     var Point = {
         NEW_POINT_INFO:  {value: 0, description: '<b>Choisir l\'emplacement sur la carte</b>', type: MessageType.INFO},
-        NEW_POINT_SUCCESS: {value: 1, description: 'Le point <b>%s</b> a bien était crée', type: MessageType.SUCCESS}
+        NEW_POINT_SUCCESS: {value: 1, description: 'Le point <b>%s</b> a bien était crée', type: MessageType.SUCCESS},
+        NEW_EVENT_SUCCESS: {value: 2, description: 'L\'évenement <b>%s</b> a bien était crée', type: MessageType.SUCCESS},
+        NEW_PLACE_SUCCESS: {value: 3, description: 'Le lieu <b>%s</b> a bien était crée', type: MessageType.SUCCESS}
     };
 
 //TODO: prevoir les messages

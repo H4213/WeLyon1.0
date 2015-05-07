@@ -23,10 +23,7 @@ function WeLyon(){
 		self.initialiserCarte();		
 
 		$('#newEventButton').on('click', function(){
-
-			self.ajouterEvenemment($(this));			
-
-
+			self.ajouterEvenemment($(this));	
 		});
 
 		$('#onFireButton').on('click', function(){
@@ -56,9 +53,8 @@ function WeLyon(){
 			$('#categoryFilter').toggle();
 		});
 
-		$('#sendDateFilter').on('click', function(){
-			
-		mapManager.filterByDate()	
+		$('#sendDateFilter').on('click', function(){			
+			mapManager.filterByDate()	
 		});
 
 		$('#categoryFilterButton').on('click', function(){
@@ -96,7 +92,7 @@ function WeLyon(){
 			$('#map-container').css('height', (window.innerHeight-50-60)+'px');
 		});
 
-		setInterval(self.chargerNews,5000);
+		setInterval(self.chargerNews,4000);
 	};
 
 
@@ -160,7 +156,6 @@ function WeLyon(){
 
 				$("#validePointType").on('click', function(){
 					buttonData = $('#formulaireAjoutPoint').find('.active').data('form-type');
-					//long et lat en data dans modal deja
 					self.fillNewPointForm(buttonData);			
 				});
 
@@ -170,38 +165,23 @@ function WeLyon(){
 				self.getCategories(self.cbFillCatLieu);
 
 				$('#valideAjoutLieu').on('click', function(){
-					var name = $("#placeName").val();
-					var desc = $("#placeDescription").val();
-					var category = $("#placeCategories").val();
-					alert(desc);
-
-					pin.addStaticPin(name, desc, idUser, pos.lat(), pos.lng(), 6 , self.cbAddPin)
-					$('#formulaireAjoutPoint').modal('hide');			
+					self.ajouterEvent();
+					messageView.append(Messages.Point.NEW_PLACE_SUCCESS,$('#placeName').val());					
+					$('#formulaireAjoutPoint').modal('hide');
+					messageView.show();
 				});			
 				break;
+
 			case "event":
 				self.getCategories(self.cbFillCatEvent);
 				self.remplirFormEventDate();
 
 				$('#valideAjoutEvent').on('click', function(){
-					// TODO: self.ajouterLieu();
-					var jour_debut= $("#dateEventDayBegin").val();
-					var mois_debut= $("#dateEventMonthBegin").val();
-					var annee_debut=$("#dateEventYearBegin").val();
-					var heure_debut=0;
-					var minute_debut=0;
-					var jour_fin=$("#dateEventDayEnd").val();
-					var mois_fin= $("#dateEventMonthEnd").val();
-					var annee_fin=$("#dateEventYearEnd").val();
-					var heure_fin=12
-					var minute_fin=0
-					var title =$("#eventName").val();
-					var category = $("#eventCategories").val();
-					var description =$("#eventDescription").val();
-					pin.addDynPin(title,description,idUser,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin, pos.lat(), pos.lng(),16,self.cbAddPin);
-					$('#formulaireAjoutPoint').modal('hide');		
+					self.ajouterLieu();
+					messageView.append(Messages.Point.NEW_EVENT_SUCCESS,$('#eventName').val());					
+					$('#formulaireAjoutPoint').modal('hide');
+					messageView.show();	
 				});
-
 				break;
 
 		}
@@ -212,10 +192,11 @@ function WeLyon(){
 		if (data['error']==null){
 			aPin = data.pin;
 			mapManager.addMarker(aPin);
-			mapManager.markers.get(aPin.id).marker.setAnimation(google.maps.Animation.BOUNCE);
-			setTimeout(function () {
-				markers.get(aPin.id).marker.setAnimation(null);
-			},2250);
+
+			//mapManager.markers.get(aPin.id).marker.setAnimation(google.maps.Animation.BOUNCE);
+			// setTimeout(function () {
+			// 	markers.get(aPin.id).marker.setAnimation(null);
+			// },2250);
 		}
 	};
 
@@ -354,7 +335,6 @@ function WeLyon(){
                     form+='                <div class="form-group">';
                     form+='                    <div class="col-sm-10 pull-right">';
                     form+='                        <select id="eventCategories" class="form-control">';
-                    form+='                           <option value="" disabled selected>Categories</option>';
                     form+='                        </select>';
                     form+='                    </div>';
                     form+='                </div>';
@@ -406,7 +386,6 @@ function WeLyon(){
 
 		$('#formulaireAjoutPoint').find('.modal-content').append(form);
 		self.setupNewPointForm(buttonData);
-
 		$('#formulaireAjoutPoint').modal('show');
 
 	};	
@@ -694,7 +673,7 @@ function WeLyon(){
 				if(categories[i].father) {
 					return self.isLieu(categories[i].idFather , categories)
 				}
-				else if ( categories[i].nom === "Evenement" ) {
+				else if ( categories[i].nom === "Evenement" || categories[i].nom === "Evenement utilisateur" ) {
 					return true;
 				}
 			}
@@ -791,8 +770,7 @@ function WeLyon(){
         mapManager.getNews('/fil/'+dernier_id+'/' , self.cbNews);
     }
 
-    self.cbNews = function(data){
-            
+    self.cbNews = function(data){            
 
         if(data.logs!=''){
            	$(data.logs).prependTo('#filActubox').hide().animate({'height':'toggle','opacity':'toggle'},2000);
@@ -820,8 +798,29 @@ function WeLyon(){
 		}
 	};
 
+	self.ajouterEvent = function(){
+		var name = $("#placeName").val();
+		var desc = $("#placeDescription").val();
+		var category = $("#placeCategories").val();
+		pin.addStaticPin(name, desc, idUser, pos.lat(), pos.lng(), category , self.cbAddPin);
+	};
 
-
+	self.ajouterLieu = function(){
+		var jour_debut= $("#dateEventDayBegin").val();
+		var mois_debut= $("#dateEventMonthBegin").val();
+		var annee_debut=$("#dateEventYearBegin").val();
+		var heure_debut=0;
+		var minute_debut=0;
+		var jour_fin=$("#dateEventDayEnd").val();
+		var mois_fin= $("#dateEventMonthEnd").val();
+		var annee_fin=$("#dateEventYearEnd").val();
+		var heure_fin=12
+		var minute_fin=0
+		var title =$("#eventName").val();
+		var category = $("#eventCategories").val();
+		var description =$("#eventDescription").val();
+		pin.addDynPin(title,description,idUser,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin, pos.lat(), pos.lng(),category,self.cbAddPin);
+	};
 }
 
 var weLyon = new WeLyon();

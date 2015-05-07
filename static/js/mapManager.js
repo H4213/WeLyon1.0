@@ -145,6 +145,7 @@ function MapManager(){
 	  controlText.style.lineHeight = '38px';
 	  controlText.style.paddingLeft = '5px';
 	  controlText.style.paddingRight = '5px';
+	  controlText.style.display = 'none';
 	  controlText.innerHTML = 'Ajouter un event';
 	  controlUI.appendChild(controlText);
 
@@ -232,7 +233,7 @@ function MapManager(){
 						marker : aMarker});
 		google.maps.event.addListener(aMarker, 'click', function() {
 			infowindow.setContent(self.buildDescription(markers.get(aMarker['idPin']).pin,"#first"));
-			infowindow.open(map,aMarker);
+			infowindow.open(map,aMarker);			
 		});
 	};
 
