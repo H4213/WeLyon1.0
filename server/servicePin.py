@@ -92,13 +92,8 @@ def addPin(form):
 		if not(user):
 			return jsonify(error="user doesn't exist")
 
-<<<<<<< HEAD
-			
-		pin = Pin('Event', form['titre'], float(form['lng']), float(form['lat']) , form['idUser'] , [Category.query.get(form['category'])] , form['description'])
-=======
-		print(Category.query.get(form['category']).nom.lower())
+
 		pin = Pin(Category.query.get(form['category']).nom.lower(), form['titre'], float(form['lng']), float(form['lat']) , form['idUser'] , [Category.query.get(form['category'])] , form['description'])
->>>>>>> origin/front-event-lieu
 		serviceLog.add(pin.idUser, pin.id)
 		service.addObject(pin)
 
@@ -119,7 +114,7 @@ def addDynPin(form):
 		
 		categorie1=Category.query.filter_by(id=form['category']).first()
 		description = form['description']
-		pin = Pin("Event",form['titre'], float(form['lng']), float(form['lat']),form['idUser'],[categorie1],description)
+		pin = Pin("Event",form['titre'], float(form['lng']), float(form['lat']),form['idUser'],categorie1,description)
 		dateDebut = datetime.datetime(year=int(form['annee_debut']),month=int(form['mois_debut']),day=int(form['jour_debut']),minute=int(form['minute_debut']),hour=int(form['heure_debut']))
 		dateFin  = datetime.datetime(year=int(form['annee_fin']),month=int(form['mois_fin']),day=int(form['jour_fin']),minute=int(form['minute_fin']),hour=int(form['heure_fin']))
 		pin.dateBegin=dateDebut

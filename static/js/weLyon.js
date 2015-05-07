@@ -88,7 +88,7 @@ function WeLyon(){
 			}
 		});
 
-<<<<<<< HEAD
+
 		$('#map-container').css('height', (window.innerHeight-50-60)+'px');
 		$(window).resize(function() {
 			$('#map-container').css('height', (window.innerHeight-50-60)+'px');
@@ -96,13 +96,7 @@ function WeLyon(){
 
 		setInterval(self.chargerNews,5000);
 	};
-=======
 
-		//setInterval(self.chargerNews,5000);
-		//TODO: leo
->>>>>>> origin/front-event-lieu
-
-	};
 
 	self.setupAuthentificationPanel = function(bouton){
 
