@@ -92,7 +92,7 @@ function WeLyon(){
 			$('#map-container').css('height', (window.innerHeight-50-60)+'px');
 		});
 
-		setInterval(self.chargerNews,4000);
+		//setInterval(self.chargerNews,4000);
 	};
 
 
