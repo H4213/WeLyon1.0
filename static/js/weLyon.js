@@ -21,14 +21,10 @@ function WeLyon(){
 		self.initialiserCarte();		
 
 		$('#newEventButton').on('click', function(){
-<<<<<<< HEAD
 
-
-			self.ajouterEvenemment($(this));
-			
-=======
 			self.ajouterEvenemment($(this));			
->>>>>>> origin/front-event
+
+
 		});
 
 		$('#onFireButton').on('click', function(){
@@ -154,22 +150,18 @@ function WeLyon(){
 
 
 				break;
-<<<<<<< HEAD
-			case "place":
-				self.getCategories(self.cbFillCatLieu);
-=======
+
 			case "place":			
-				// self.getCategories(self.cbFillCatLieu);
+				self.getCategories(self.cbFillCatLieu);
 
 				$('#valideAjoutLieu').on('click', function(){
 					// TODO: self.ajouterLieu();			
 				});
 
 				$("#retourAjoutLieu").on('click', function(){
-					//long et lat en data dans modal deja
 					self.fillNewPointForm('new-point');			
 				});
->>>>>>> origin/front-event
+
 			
 				break;
 			case "event":
@@ -643,17 +635,6 @@ function WeLyon(){
 			var buttonData = bouton.data('form-type');
 			self.fillNewPointForm(buttonData);
 		});
-
-<<<<<<< HEAD
-		
-
-		
-=======
-		//TODO: recuperer long et lat mapManager.getLongLat();
-
-		var buttonData = bouton.data('form-type');
-		self.fillNewPointForm(buttonData);
->>>>>>> origin/front-event
 
 		// mapManager.ajouterEvenemment();
 		//TODO: retour vrai?!
