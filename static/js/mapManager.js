@@ -383,7 +383,7 @@ function MapManager(){
 				image = imageFacebook;
 				titre = "Facebook";
 				break;
-			case "Monument" : 
+			case "monument" : 
 				image = imageMonument;
 				titre = "Monument";
 				break;

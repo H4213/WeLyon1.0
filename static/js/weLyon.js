@@ -3,6 +3,7 @@ function WeLyon(){
 	var self = this;
 	var category = new Category();
 	var mapManager = new MapManager();
+	var pin = new Pin();
 	var user = new User();
 	var messageView = new MessageView();
 	var idUser;
@@ -10,6 +11,7 @@ function WeLyon(){
 	var pinTest=new Pin();
 	var dernier_id = 1;
 	var levelofSearch=0;
+	var pos = null;
 
 //TODO initialisation par rapport aux droits d'utilisateur
 
@@ -155,6 +157,12 @@ function WeLyon(){
 				self.getCategories(self.cbFillCatLieu);
 
 				$('#valideAjoutLieu').on('click', function(){
+					var name = $("#placeName").val();
+					var desc = $("#placeDescription").val();
+					var category = $("#placeCategories").val();
+					alert(desc);
+
+					pin.addStaticPin(name, desc, idUser, pos.lat(), pos.lng(), 6 , self.cbAddPin)
 					// TODO: self.ajouterLieu();			
 				});
 
@@ -170,6 +178,17 @@ function WeLyon(){
 
 		}
 
+	};
+
+	self.cbAddPin=function(data){
+		if (data['error']==null){
+			aPin = data.pin;
+			mapManager.addMarker(aPin);
+			mapManager.markers.get(aPin.id).marker.setAnimation(google.maps.Animation.BOUNCE);
+			setTimeout(function () {
+				markers.get(aPin.id).marker.setAnimation(null);
+			},2250);
+		}
 	};
 
 
@@ -634,12 +653,8 @@ function WeLyon(){
 		google.maps.event.addListenerOnce(mapManager.theMap, 'click', function(e) {
 			var buttonData = bouton.data('form-type');
 			self.fillNewPointForm(buttonData);
+			pos = e.latLng;
 		});
-
-		// mapManager.ajouterEvenemment();
-		//TODO: retour vrai?!
-		// messageView.append(Messages.Point.NEW_POINT_SUCCESS);
-		// messageView.show();
 	};
 
 	self.toggleBoutonsConnexion = function(){
