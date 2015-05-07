@@ -15,7 +15,6 @@ function WeLyon(){
 
 //------------Les setups des pages/panels et ses boutons------------------
 	self.setup = function(){
-		$("#formulaireTypeEvenement").modal('show');
 		localStorage.clear();
 		self.setUser();		
 		self.fillCategories();
