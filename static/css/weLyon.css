@@ -25,6 +25,7 @@ body{
 .annuler:hover{
     background-color: #d9534f;
     border-color: #d43f3a;
+    color: white;
 }
 
 .optionCarteItem {
@@ -47,6 +48,19 @@ body{
     width: 250px;
 }
 
+.pointType{
+    padding: 10%;
+    font-weight: bold;
+    margin: 2%; 
+    background-color:rgba(239, 101, 48, 0.8);
+    color:white;  
+}
+
+.pointType:hover, .pointType.active{
+    background-color: #EF6530;
+    color: white;
+}
+
 #nav {
     background-color: #595757;
     border-radius: 0;
@@ -57,12 +71,11 @@ body{
     background-color: #13BC3E;   
     border-color: #CCCCCC;
     color: #666666;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 #inscriptionPanel .valider:hover{
     opacity: 1;
-    /*background-color: #13BC3E;*/
 }
 
 #container{
@@ -155,9 +168,10 @@ body{
 
 #map-container{
     position: relative;
-    width: 100vw;
-    height: 100vw;
- /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+  /*  width: 100vw;
+    height: 100vw;*/
+    width: 100%;
+    padding-bottom: 30%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
 }
 
 #map-container #map{

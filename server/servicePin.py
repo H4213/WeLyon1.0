@@ -92,8 +92,13 @@ def addPin(form):
 		if not(user):
 			return jsonify(error="user doesn't exist")
 
+<<<<<<< HEAD
 			
 		pin = Pin('Event', form['titre'], float(form['lng']), float(form['lat']) , form['idUser'] , [Category.query.get(form['category'])] , form['description'])
+=======
+		print(Category.query.get(form['category']).nom.lower())
+		pin = Pin(Category.query.get(form['category']).nom.lower(), form['titre'], float(form['lng']), float(form['lat']) , form['idUser'] , [Category.query.get(form['category'])] , form['description'])
+>>>>>>> origin/front-event-lieu
 		serviceLog.add(pin.idUser, pin.id)
 		service.addObject(pin)
 

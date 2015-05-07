@@ -77,10 +77,6 @@
             <div class="panel panel-default">
 
                 <div class="panel-body">
-                    <div class="row">
-                        <div id="inscriptionAlert" class="">
-                        </div>
-                    </div>
                 </div>
             </div>               
         </div>
@@ -91,6 +87,7 @@
             </div>
 
 
+<<<<<<< HEAD
           <!-- Modal -->
             <div class="modal fade" id="formulaireAjoutPoint" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
@@ -114,10 +111,18 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" id="valideTypePoint"> Suivant</button>
                   </div>
+=======
+          <!--Ajout de point - Modal -->
+            <div class="modal fade" id="formulaireAjoutPoint">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        
+                    </div>
+>>>>>>> origin/front-event-lieu
                 </div>
-              </div>
             </div>
 
+<<<<<<< HEAD
             <div class="modal fade" id="formulaireTypeLieu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -209,40 +214,98 @@
               </div>
             </div> 
 
+=======
+>>>>>>> origin/front-event-lieu
             <div class="modal fade" id="formulaireTypeEvenement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h3 class="modal-title" id="myModalLabel">Ajout d'un nouveau point</h3>
-                  </div>
-                  <div class="modal-body">
-                        <form name="formulaire" id="ajoutPointChoixTypeEvenement">
-                            <p>
-                                <h4>Type de point:</h4>
-                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Soiree">Soirée <BR>
-                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Concert">Concert <BR>
-                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Spectacle">Spectacle <BR>
-                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Associatif">Evénement associatif <BR>
-                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Sport">Evénement sportif <BR>
-                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Etudiant">Evénement étudiant <BR>
-                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="Conférence">Conférence <BR>
-                                    <img src="./static/assets/soiree.png" alt="Soirée"> <INPUT TYPE="radio" NAME="typeEvenement" VALUE="AutreEvt">Autre événement <BR>
-                            </p>
-                        <p>
-                        </p>
-                        </form>
-                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="retourChoixTypeEvenement"> Précédent</button>
-                    <button type="button" class="btn btn-primary" id="valideTypeEvenement"> Suivant</button>
-                  </div>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h3 class="modal-title">Ajout d'un événement</h3>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="eventName" class="col-sm-2 control-label">Nom</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="eventName" placeholder="Nom de l\'événement">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="eventDescription" class="col-sm-2 control-label">Description</label>
+                                        <div class="col-sm-10">
+                                            <textarea id="eventDescription" class="form-control" rows="3" placeholder="Description de l\'événement"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-10 pull-right">
+                                            <select id class="form-control">
+                                                <option value="" disabled selected>Categories</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="dateFormBegin">Date début:</label>                                
+                                            <div id="dateFormBeguin" class="form-inline">
+                                                <div class="form-group col-md-5">
+                                                    <select id="dateEventDayBeguin" class="form-control">
+                                                    <option value="" selected disabled>Jour</option>
+                                        <option>2</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <select id="dateEventMonthBeguin" class="form-control">
+                                                    <option value="" selected disabled>Mois</option>
+                                        <option>2</option>
+                                                    </select> 
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <select id="dateEventYearBeguin" class="form-control finalInput">
+                                                    <option value="" selected disabled>Année</option>
+                                        <option>2</option>
+                                                    </select>
+                                                </div>                                                                               
+                                            </div> 
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="dateEventEnd">Date fin:</label>
+                                            <div id="dateEventEnd" class="form-inline">
+                                                <div class="form-group col-md-5">
+                                                    <select id="dateEventDayEnd" class="form-control">
+                                                    <option value="" selected disabled>Jour</option>
+                                        <option>2</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <select id="dateEventMonthEnd" class="form-control">
+                                                    <option value="" selected disabled>Mois</option>
+                                        <option>2</option>
+                                                    </select> 
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <select id="dateEventYearEnd" class="form-control finalInput">
+                                                    <option value="" selected disabled>Année</option>
+                                        <option>2</option>
+                                                    </select>
+                                                </div>                                                                               
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default annuler pull-left " data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-info" id="retourAjoutEvent"> Précédent</button>
+                                <button type="button" class="btn btn-primary valider" id="valideAjoutEvent"> Valider</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>  
 
-			<div class="modal fade" id="formulaireAjoutEvenement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" id="formulaireAjoutEvenement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -405,10 +468,10 @@
             <div class="row">
                 <div id="optionsCarte" class="row"  style="display:none;">
 
-                    <div id="optionUtilisateur" class="panel panel-default" data-toggle="tooltip" data-placement="left" title="Ajouter Point" style="display:none;">
+                    <div id="optionUtilisateur" class="panel panel-default" data-toggle="tooltip" data-placement="left" title="Ajouter Point" style="display:none;" >
                         <div class="panel-body">
                             <div class="row " style="text-align: center;">
-                                <div id="newEventButton" class="optionCarteItem">
+                                <div id="newEventButton" data-form-type="new-point" class="optionCarteItem">
                                     <i class="fa fa-plus-square fa-2x"></i>
                                 </div>                           
                             </div>
@@ -546,9 +609,12 @@
         <script src="{{url_for('static', filename='./components/fancytree-2.9.0/src/jquery.fancytree.edit.js') }}"></script>
         <script src="{{url_for('static', filename='./components/fancytree-2.9.0/src/jquery.fancytree.glyph.js') }}"></script>
         <script src="{{url_for('static', filename='./components/fancytree-2.9.0/src/jquery.fancytree.wide.js') }}"></script>    
-        $.widget.bridge('uibutton', $.ui.button);
-        $.widget.bridge('uitooltip', $.ui.tooltip);
-         
+        <script type="text/javascript">
+            // Change JQueryUI plugin names to fix name collision with Bootstrap.
+            $.widget.bridge('uitooltip', $.ui.tooltip);
+            $.widget.bridge('uibutton', $.ui.button);
+        </script>
+                 
         <script src="{{url_for('static', filename='./components/bootstrap-3.3.4/js/bootstrap.min.js') }}"></script>
         <script src="{{url_for('static', filename='./components/sprintf/src/sprintf.js') }}"></script>
 
@@ -577,6 +643,30 @@
         <script src="{{url_for('static', filename='./js/user.js') }}"></script>
         <script src="{{url_for('static', filename='./js/weLyon.js') }}"></script>
 
+        <script type="text/javascript">
+        //TODO: leo
+            // $(document).ready(function(){
+            //     setInterval(chargerNews,5000);
+            // });
+
+            // var dernier_id = 1;
+            // function setId(id){
+            //     dernier_id = id;
+            // }
+
+            // function chargerNews(){
+            //     jQuery.ajax({
+            //         url: 'fil/'+dernier_id+'/',
+            //         success: function(data){
+            //             if(data!=''){
+            //                 $(data).prependTo('#filActubox').hide().animate({'height':'toggle','opacity':'toggle'},2000);
+            //                 $('#filActubox div:last-child').remove();
+            //             }
+            //         }
+            //     });
+            // }
+
+        </script>
 
     </body>
 </html>

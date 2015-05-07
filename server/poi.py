@@ -159,7 +159,7 @@ def createPointOfInterestTable() :
 				lat = dataMonuments["node"][i]["-lat"]
 				lng = dataMonuments["node"][i]["-lon"]
 						
-				obj = Pin('Monument',title, lng, lat, idUser, [categorie], "")
+				obj = Pin('monument',title, lng, lat, idUser, [categorie], "")
 				obj.typeSpecificID = dataMonuments["node"][i]["-id"]
 				listPointOfInterest.append(obj)
 				

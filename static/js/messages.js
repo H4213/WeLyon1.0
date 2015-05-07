@@ -1,9 +1,9 @@
 var Messages = (function() {
     var MessageType = {
         SUCCESS: {value: 0, description: 'Succès'},
-        INFO: {value: 1, description: 'Informação'},
-        WARNING: {value: 2, description: 'Alerta'},
-        ERROR: {value: 3, description: 'Erro'}
+        INFO: {value: 1, description: 'Info'},
+        WARNING: {value: 2, description: 'Alert'},
+        ERROR: {value: 3, description: 'Error'}
     };
 
     var RESTful = {
