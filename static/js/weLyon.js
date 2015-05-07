@@ -52,6 +52,8 @@ function WeLyon(){
 
 		$('#dateFilterButton').on('click', function(){
 			self.remplirFiltreDate();
+			$('#dateFilterForm').toggle();
+			$('#categoryFilter').toggle();
 		});
 
 		$('#sendDateFilter').on('click', function(){
@@ -132,16 +134,24 @@ function WeLyon(){
 
 	self.setupNewPointForm = function(buttonData){
 
-		switch	(buttonData){
-			default:
-			$(".annuler").on('click', function(){
-				$('#formulaireAjoutPoint').modal('hide');
-			});
+		$(".annuler").on('click', function(){
+			$('#formulaireAjoutPoint').modal('hide');
+		});		
 
+		$(".retour").on('click', function(){
+			self.fillNewPointForm('new-point');			
+		});
+
+		switch	(buttonData){
 			case "new-point":
 				$(".pointType").on('click', function(){
 					$(this).parent().find('.active').toggleClass('active');
 					$(this).toggleClass('active');			
+				});
+
+				$(".pointType").dblclick(function(){
+					$(this).click();
+					$("#validePointType").click();
 				});
 
 				$("#validePointType").on('click', function(){
@@ -150,8 +160,8 @@ function WeLyon(){
 					self.fillNewPointForm(buttonData);			
 				});
 
-
 				break;
+<<<<<<< HEAD
 
 			case "place":			
 				self.getCategories(self.cbFillCatLieu);
@@ -170,9 +180,26 @@ function WeLyon(){
 					self.fillNewPointForm('new-point');			
 				});
 
+=======
+			case "place":
+				self.getCategories(self.cbFillCatLieu);
+
+				$('#valideAjoutLieu').on('click', function(){
+					// TODO: self.ajouterLieu();
+					$('#formulaireAjoutPoint').modal('hide');
+				});	
+		
+>>>>>>> origin/front-event
 			
 				break;
 			case "event":
+				//self.getCategories(self.cbFillCatEvent);
+				self.remplirFormEventDate();
+
+				$('#valideAjoutEvent').on('click', function(){
+					// TODO: self.ajouterLieu();	
+					$('#formulaireAjoutPoint').modal('hide');		
+				});
 
 				break;
 
@@ -258,8 +285,8 @@ function WeLyon(){
                 form+='        </div>';
                 form+='        <div class="modal-body"> ';                            
                 form+='            <div id="pointTypeButtons" class="row col-md-offset-1 text-center">';                             
-                form+='                <button type="button" data-form-type="event" class="btn btn-default col-md-5 pointType active">Evénement</button>';
-                form+='                <button type="button" data-form-type="place" class="btn btn-default col-md-5  pointType">Lieu</button>';
+                form+='                <button id="pointTypeEventButton" type="button" data-form-type="event" class="btn btn-default col-md-5 pointType active">Événement</button>';
+                form+='                <button id="pointTypePlaceButton"  type="button" data-form-type="place" class="btn btn-default col-md-5  pointType">Lieu</button>';
                 form+='            </div>';
                 form+='        </div>';
                 form+='        <div class="modal-footer">';
@@ -298,7 +325,7 @@ function WeLyon(){
 	                form+='        </div>';
 	                form+='        <div class="modal-footer">';
 	                form+='            <button type="button" class="btn btn-default annuler pull-left " data-dismiss="modal">Close</button>';
-	                form+='            <button type="button" class="btn btn-info" id="retourAjoutLieu"> Précédent</button>';
+	                form+='            <button type="button" class="btn btn-info retour" id="retourAjoutLieu"> Précédent</button>';
 	                form+='            <button type="button" class="btn btn-primary valider" id="valideAjoutLieu"> Valider</button>';
 	                form+='        </div>';
 	                form+='    </div>';				
@@ -333,21 +360,21 @@ function WeLyon(){
                     form+='                <div class="row">';
                     form+='                    <div class="col-md-6">';
                     form+='                        <label for="dateFormBegin">Date début:</label>   ';                             
-                    form+='                        <div id="dateFormBeguin" class="form-inline">';
+                    form+='                        <div id="dateFormBegin" class="form-inline">';
                     form+='                            <div class="form-group col-md-5">';
-                    form+='                                <select id="dateEventDayBeguin" class="form-control">';
+                    form+='                                <select id="dateEventDayBegin" class="form-control">';
                     form+='                                <option value="" selected disabled>Jour</option>';
                     form+='                    <option>2</option>';
                     form+='                                </select>';
                     form+='                            </div>';
                     form+='                            <div class="form-group col-md-5">';
-                    form+='                                <select id="dateEventMonthBeguin" class="form-control">';
+                    form+='                                <select id="dateEventMonthBegin" class="form-control">';
                     form+='                               <option value="" selected disabled>Mois</option>';
                     form+='                    <option>2</option>';
                     form+='                                </select> ';
                     form+='                            </div>';
                     form+='                            <div class="form-group col-md-5">';
-                    form+='                                <select id="dateEventYearBeguin" class="form-control finalInput">';
+                    form+='                                <select id="dateEventYearBegin" class="form-control finalInput">';
                     form+='                                <option value="" selected disabled>Année</option>';
                     form+='                    <option>2</option>';
                     form+='                                </select>';
@@ -382,7 +409,7 @@ function WeLyon(){
                     form+='        </div>';
                     form+='        <div class="modal-footer">';
                     form+='            <button type="button" class="btn btn-default annuler pull-left " data-dismiss="modal">Close</button>';
-                    form+='            <button type="button" class="btn btn-info" id="retourAjoutEvent"> Précédent</button>';
+                    form+='            <button type="button" class="btn btn-info retour" id="retourAjoutEvent"> Précédent</button>';
                     form+='           <button type="button" class="btn btn-primary valider" id="valideAjoutEvent"> Valider</button>';
                     form+='        </div>';
 				break;
@@ -396,19 +423,7 @@ function WeLyon(){
 	};	
 
 	self.remplirFiltreDate = function(){
-		var jour ='<option value="" disabled selected>Jour</option>';
-		var mois = '<option value="" disabled selected>Mois</option>';
-		var annee = '<option value="" disabled selected>Année</option>';
-
-		for( var i=1; i<=31; i++){
-			jour+=' <option value="'+i+'">'+i+'</option>';
-		}
-		for( var i=1; i<=12; i++){
-			mois+=' <option value="'+i+'">'+i+'</option>';
-		}
-		for( var i=2015; i<=2020; i++){
-			annee+=' <option value="'+i+'">'+i+'</option>';
-		}
+		var date = self.remplirDate();
 
 		$('#dateFilterDayBegin').html('');
 		$('#dateFilterMonthBegin').html('');
@@ -417,15 +432,54 @@ function WeLyon(){
 		$('#dateFilterMonthEnd').html('');
 		$('#dateFilterYearEnd').html('');
 
-		$('#dateFilterDayBegin').append(jour);
-		$('#dateFilterMonthBegin').append(mois);
-		$('#dateFilterYearBegin').append(annee);
-		$('#dateFilterDayEnd').append(jour);
-		$('#dateFilterMonthEnd').append(mois);
-		$('#dateFilterYearEnd').append(annee);
+		$('#dateFilterDayBegin').append(date.jour);
+		$('#dateFilterMonthBegin').append(date.mois);
+		$('#dateFilterYearBegin').append(date.annee);
+		$('#dateFilterDayEnd').append(date.jour);
+		$('#dateFilterMonthEnd').append(date.mois);
+		$('#dateFilterYearEnd').append(date.annee);		
+	};
 
-		$('#dateFilterForm').toggle();
-		$('#categoryFilter').toggle();
+	self.remplirFormEventDate = function(){
+		var date = self.remplirDate();
+
+		$('#dateEventDayBegin').html('');
+		$('#dateEventMonthBegin').html('');
+		$('#dateEventYearBegin').html('');
+		$('#dateEventDayEnd').html('');
+		$('#dateEventMonthEnd').html('');
+		$('#dateEventYearEnd').html('');
+
+		$('#dateEventDayBegin').append(date.jour);
+		$('#dateEventMonthBegin').append(date.mois);
+		$('#dateEventYearBegin').append(date.annee);
+		$('#dateEventDayEnd').append(date.jour);
+		$('#dateEventMonthEnd').append(date.mois);
+		$('#dateEventYearEnd').append(date.annee);
+	};
+
+	self.remplirDate = function(){
+		var date = {
+			jour:"",
+			mois:"",
+			annee:""
+		}
+
+		date.jour ='<option value="" disabled selected>Jour</option>';
+		date.mois = '<option value="" disabled selected>Mois</option>';
+		date.annee = '<option value="" disabled selected>Année</option>';
+
+		for( var i=1; i<=31; i++){
+			date.jour+=' <option value="'+i+'">'+i+'</option>';
+		}
+		for( var i=1; i<=12; i++){
+			date.mois+=' <option value="'+i+'">'+i+'</option>';
+		}
+		for( var i=2015; i<=2020; i++){
+			date.annee+=' <option value="'+i+'">'+i+'</option>';
+		}
+
+		return date;
 	};
 
 //----------------- Getters/Setters ------------------
@@ -616,6 +670,12 @@ function WeLyon(){
 			}
 		}
 		return false;
+	}
+
+	self.cbFillCatEvent = function(data){
+		var categories = '<option value="" disabled selected>Categories</option>';
+		//TODO amine 
+		$('#eventCategories').append(categories);
 	}
 
 	self.ouvrirPanelAuthentification = function(bouton){
