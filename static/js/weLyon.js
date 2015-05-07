@@ -21,6 +21,8 @@ function WeLyon(){
 		self.initialiserCarte();		
 
 		$('#newEventButton').on('click', function(){
+
+
 			self.ajouterEvenemment($(this));
 			
 		});
@@ -147,8 +149,7 @@ function WeLyon(){
 
 				break;
 			case "place":
-			alert();
-				// self.getCategories(self.cbFillCatLieu);
+				self.getCategories(self.cbFillCatLieu);
 			
 				break;
 			case "event":
@@ -468,8 +469,43 @@ function WeLyon(){
 
 	self.cbFillCatLieu = function(data){
 		var categories = '<option value="" disabled selected>Categories</option>';
-		//TODO amine 
+		self.getFeuilleList(data.categories).forEach(function (category , index) {
+			categories += '<option value="'+ category.id +' ">'+ category.nom +'</option>'
+		});
 		$('#placeCategories').append(categories);
+	};
+
+	self.getFeuilleList = function (categories) {
+		var result = [];
+		categories.forEach(function (category , index) {
+			if (category.idFather) {
+				var found = false;
+				for(var i = 0 ; i < categories.length ; i++ ) {
+					if (categories[i].idFather && category.id == categories[i].idFather ){
+						found = true;
+					}
+				}
+				if (!found && self.isLieu(category.idFather , categories )) {
+					result.push(category);
+				}
+			}
+			
+		});
+		return result;
+	};
+
+	self.isLieu = function (idFather , categories) {
+		for (var i = 0 ; i < categories.length ; i++) {
+			if ( idFather == categories[i].id ) {
+				if(categories[i].father) {
+					return self.isLieu(categories[i].idFather , categories)
+				}
+				else if ( categories[i].nom === "Lieux" ) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	self.ouvrirPanelAuthentification = function(bouton){
@@ -504,9 +540,14 @@ function WeLyon(){
 	self.ajouterEvenemment = function(bouton){
 		messageView.append(Messages.Point.NEW_POINT_INFO);
 		messageView.show();
+		google.maps.event.addListenerOnce(mapManager.theMap, 'click', function(e) {
+			var buttonData = bouton.data('form-type');
+			self.fillNewPointForm(buttonData);
+		});
 
-		var buttonData = bouton.data('form-type');
-		self.fillNewPointForm(buttonData);
+		
+
+		
 
 		// mapManager.ajouterEvenemment();
 		//TODO: retour vrai?!

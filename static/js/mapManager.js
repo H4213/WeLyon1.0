@@ -13,6 +13,7 @@ function MapManager(){
 	var marker;
 	var listIdCategories=[];
 	var map; // object containing the map
+	self.theMap = null;
 	var cordinateLyon = new google.maps.LatLng(45.7601676, 4.8328885);
 	var newPos =new google.maps.LatLng(0,0);
 	var markersResume = []
@@ -41,6 +42,7 @@ function MapManager(){
 			center: cordinateLyon
 	    };
 	    map = new google.maps.Map(document.getElementById('map'),mapOptions);
+	    self.theMap = map;
 	    var centerControlDiv = document.createElement('div');
 		var centerControl = self.CenterControl(centerControlDiv, map);
 		centerControlDiv.index = 1;
