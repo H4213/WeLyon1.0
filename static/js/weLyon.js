@@ -161,7 +161,6 @@ function WeLyon(){
 				});
 
 				break;
-<<<<<<< HEAD
 
 			case "place":			
 				self.getCategories(self.cbFillCatLieu);
@@ -173,31 +172,29 @@ function WeLyon(){
 					alert(desc);
 
 					pin.addStaticPin(name, desc, idUser, pos.lat(), pos.lng(), 6 , self.cbAddPin)
-					// TODO: self.ajouterLieu();			
-				});
-
-				$("#retourAjoutLieu").on('click', function(){
-					self.fillNewPointForm('new-point');			
-				});
-
-=======
-			case "place":
-				self.getCategories(self.cbFillCatLieu);
-
-				$('#valideAjoutLieu').on('click', function(){
-					// TODO: self.ajouterLieu();
-					$('#formulaireAjoutPoint').modal('hide');
-				});	
-		
->>>>>>> origin/front-event
-			
+					$('#formulaireAjoutPoint').modal('hide');			
+				});			
 				break;
 			case "event":
-				//self.getCategories(self.cbFillCatEvent);
+				self.getCategories(self.cbFillCatEvent);
 				self.remplirFormEventDate();
 
 				$('#valideAjoutEvent').on('click', function(){
-					// TODO: self.ajouterLieu();	
+					// TODO: self.ajouterLieu();
+					var jour_debut= $("#dateEventDayBegin").val();
+					var mois_debut= $("#dateEventMonthBegin").val();
+					var annee_debut=$("#dateEventYearBegin").val();
+					var heure_debut=0;
+					var minute_debut=0;
+					var jour_fin=$("#dateEventDayEnd").val();
+					var mois_fin= $("#dateEventMonthEnd").val();
+					var annee_fin=$("#dateEventYearEnd").val();
+					var heure_fin=12
+					var minute_fin=0
+					var title =$("#eventName").val();
+					var category = $("#eventCategories").val();
+					var description =$("#eventDescription").val();
+					pin.addDynPin(title,description,idUser,jour_debut,mois_debut,annee_debut,heure_debut,minute_debut,jour_fin,mois_fin,annee_fin,heure_fin,minute_fin, pos.lat(), pos.lng(),16,self.cbAddPin);
 					$('#formulaireAjoutPoint').modal('hide');		
 				});
 
@@ -363,20 +360,14 @@ function WeLyon(){
                     form+='                        <div id="dateFormBegin" class="form-inline">';
                     form+='                            <div class="form-group col-md-5">';
                     form+='                                <select id="dateEventDayBegin" class="form-control">';
-                    form+='                                <option value="" selected disabled>Jour</option>';
-                    form+='                    <option>2</option>';
                     form+='                                </select>';
                     form+='                            </div>';
                     form+='                            <div class="form-group col-md-5">';
                     form+='                                <select id="dateEventMonthBegin" class="form-control">';
-                    form+='                               <option value="" selected disabled>Mois</option>';
-                    form+='                    <option>2</option>';
                     form+='                                </select> ';
                     form+='                            </div>';
                     form+='                            <div class="form-group col-md-5">';
                     form+='                                <select id="dateEventYearBegin" class="form-control finalInput">';
-                    form+='                                <option value="" selected disabled>Année</option>';
-                    form+='                    <option>2</option>';
                     form+='                                </select>';
                     form+='                            </div>   ';                                                                            
                     form+='                        </div> ';
@@ -386,20 +377,14 @@ function WeLyon(){
                     form+='                        <div id="dateEventEnd" class="form-inline">';
                     form+='                            <div class="form-group col-md-5">';
                     form+='                                <select id="dateEventDayEnd" class="form-control">';
-                    form+='                                <option value="" selected disabled>Jour</option>';
-                    form+='                    <option>2</option>';
                     form+='                                </select>';
                     form+='                            </div>';
                     form+='                            <div class="form-group col-md-5">';
                     form+='                                <select id="dateEventMonthEnd" class="form-control">';
-                    form+='                                <option value="" selected disabled>Mois</option>';
-                    form+='                    <option>2</option>';
                     form+='                                </select> ';
                     form+='                            </div>';
                     form+='                            <div class="form-group col-md-5">';
                     form+='                                <select id="dateEventYearEnd" class="form-control finalInput">';
-                    form+='                                <option value="" selected disabled>Année</option>';
-                    form+='                    <option>2</option>';
                     form+='                                </select>';
                     form+='                            </div> ';                                                                              
                     form+='                        </div>';
@@ -674,9 +659,44 @@ function WeLyon(){
 
 	self.cbFillCatEvent = function(data){
 		var categories = '<option value="" disabled selected>Categories</option>';
-		//TODO amine 
+		self.getFeuilleListEvent(data.categories).forEach(function (category , index) {
+			categories += '<option value="'+ category.id +' ">'+ category.nom +'</option>'
+		});
 		$('#eventCategories').append(categories);
 	}
+
+	self.getFeuilleListEvent = function (categories) {
+		var result = [];
+		categories.forEach(function (category , index) {
+			if (category.idFather) {
+				var found = false;
+				for(var i = 0 ; i < categories.length ; i++ ) {
+					if (categories[i].idFather && category.id == categories[i].idFather ){
+						found = true;
+					}
+				}
+				if (!found && self.isEvent(category.idFather , categories )) {
+					result.push(category);
+				}
+			}
+			
+		});
+		return result;
+	};
+
+	self.isEvent = function (idFather , categories) {
+		for (var i = 0 ; i < categories.length ; i++) {
+			if ( idFather == categories[i].id ) {
+				if(categories[i].father) {
+					return self.isLieu(categories[i].idFather , categories)
+				}
+				else if ( categories[i].nom === "Evenement" ) {
+					return true;
+				}
+			}
+		}
+		return false;
+	};
 
 	self.ouvrirPanelAuthentification = function(bouton){
 		if(bouton.hasClass('active')){
